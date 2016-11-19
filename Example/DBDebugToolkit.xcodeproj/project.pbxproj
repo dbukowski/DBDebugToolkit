@@ -22,6 +22,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		BF0AAF78D26BBE364C17AD3F /* Pods_DBDebugToolkit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */; };
+		E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */; };
 		EAAA7239721FAA600A155293 /* Pods_DBDebugToolkit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16FE01ECBAB52F3B0D7D9D /* Pods_DBDebugToolkit_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		91D180BC1820F8DE5D1FCBFA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		93F675684769D20739FE3BE6 /* Pods-DBDebugToolkit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBDebugToolkit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBDebugToolkit_Tests/Pods-DBDebugToolkit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B86DD624B9EBCDC139C5CD07 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchImage.storyboard; sourceTree = "<group>"; };
 		EC232FA05C4C8FD4997750B9 /* Pods-DBDebugToolkit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBDebugToolkit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FC16FE01ECBAB52F3B0D7D9D /* Pods_DBDebugToolkit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 				6003F59C195388D20070C39A /* DBAppDelegate.h */,
 				6003F59D195388D20070C39A /* DBAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */,
 				6003F5A5195388D20070C39A /* DBViewController.h */,
 				6003F5A6195388D20070C39A /* DBViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -279,6 +282,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
