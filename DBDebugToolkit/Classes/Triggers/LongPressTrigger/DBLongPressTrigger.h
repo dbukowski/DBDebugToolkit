@@ -57,7 +57,7 @@
 + (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
 
 /**
- Creates and returns a `DBLongPressTrigger` object that requires one finger to be pressed.
+ Creates and returns a `DBLongPressTrigger` object that requires 1 finger to be pressed.
  
  @param minimumPressDuration Time in seconds the fingers must be held down for the gesture to be recognized.
  */

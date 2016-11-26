@@ -22,6 +22,82 @@
 
 #import "DBTapTrigger.h"
 
+static const NSUInteger DBTapTriggerDefaultNumberOfTapsRequired = 1;
+static const NSUInteger DBTapTriggerDefaultNumberOfTouchesRequired = 2;
+
+@interface DBTapTrigger ()
+
+@property (nonatomic, strong) UITapGestureRecognizer *gestureRecognizer;
+
+@end
+
 @implementation DBTapTrigger
+
+@synthesize delegate;
+
+#pragma mark - Initialization
+
+- (instancetype)initWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
+                     numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
+    self = [super init];
+    if (self) {
+        self.gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                         action:@selector(gestureRecognizerAction:)];
+        self.gestureRecognizer.numberOfTapsRequired = numberOfTapsRequired;
+        self.gestureRecognizer.numberOfTouchesRequired = numberOfTouchesRequired;
+    }
+    
+    return self;
+}
+
++ (instancetype)trigger {
+    return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:DBTapTriggerDefaultNumberOfTapsRequired
+                                      numberOfTouchesRequired:DBTapTriggerDefaultNumberOfTouchesRequired];
+}
+
++ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired {
+    return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:numberOfTapsRequired
+                                      numberOfTouchesRequired:DBTapTriggerDefaultNumberOfTouchesRequired];
+}
+
++ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
+    return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:DBTapTriggerDefaultNumberOfTapsRequired
+                                      numberOfTouchesRequired:numberOfTouchesRequired];
+}
+
++ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
+                        numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
+    return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:numberOfTapsRequired
+                                      numberOfTouchesRequired:numberOfTouchesRequired];
+}
+
+#pragma mark - Trigger properties
+
+- (NSUInteger)numberOfTapsRequired {
+    return self.gestureRecognizer.numberOfTapsRequired;
+}
+
+- (NSUInteger)numberOfTouchesRequired {
+    return self.gestureRecognizer.numberOfTouchesRequired;
+}
+
+#pragma mark - Handling gesture recognizer
+
+- (void)gestureRecognizerAction:(UITapGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        // numberOfTouchesRequired have tapped numberOfTapsRequired times.
+        [self.delegate debugToolkitTriggered:self];
+    }
+}
+
+#pragma mark - DBDebugToolkitTrigger
+
+- (void)addToView:(UIView *)view {
+    [view addGestureRecognizer:self.gestureRecognizer];
+}
+
+- (void)removeFromView:(UIView *)view {
+    [view removeGestureRecognizer:self.gestureRecognizer];
+}
 
 @end

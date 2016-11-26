@@ -21,7 +21,56 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "DBDebugToolkitTrigger.h"
 
-@interface DBTapTrigger : NSObject
+/**
+ `DBTapTrigger` is one of the provided `DBDebugToolkitTrigger` protocol implementations.
+ It fires on the tap gesture, when `numberOfTouchesRequired` are tapped `numberOfTapsRequired` times.
+ */
+@interface DBTapTrigger : NSObject <DBDebugToolkitTrigger>
+
+/**
+ Number of taps required for the trigger to fire. It has the default value equal 1.
+ */
+@property (nonatomic, readonly) NSUInteger numberOfTapsRequired;
+
+/**
+ Number of touches required for the trigger to fire. It has the default value equal 2.
+ */
+@property (nonatomic, readonly) NSUInteger numberOfTouchesRequired;
+
+
+///---------------------
+/// @name Initialization
+///---------------------
+
+/**
+ Creates and returns a `DBTapTrigger` object that requires 2 fingers to be tapped once.
+ */
++ (instancetype)trigger;
+
+/**
+ Creates and returns a `DBTapTrigger` object that requires 2 fingers to be tapped.
+ 
+ @param numberOfTapsRequired Number of taps needed for the trigger to be fired.
+ */
++ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired;
+
+/**
+ Creates and returns a `DBTapTrigger` object that requires 1 tap.
+ 
+ @param numberOfTouchesRequired Number of tapping fingers needed for the trigger to be fired. 
+ */
++ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
+
+
+/**
+ Creates and returns a fully specified `DBTapTrigger`.
+ 
+ @param numberOfTapsRequired Number of taps needed for the trigger to be fired.
+ @param numberOfTouchesRequired Number of tapping fingers needed for the trigger to be fired.
+ */
++ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
+                        numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
 
 @end
