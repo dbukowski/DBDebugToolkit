@@ -1,9 +1,9 @@
 {
   "name": "DBDebugToolkit",
   "version": "0.1.0",
-  "summary": "A short description of DBDebugToolkit.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/DBDebugToolkit",
+  "summary": "Set of easy to use debugging tools for developers & QA.",
+  "description": "TODO: Add long description of the pod here.\nSet of easy to use debugging tools for developers & QA",
+  "homepage": "https://github.com/dbukowski/DBDebugToolkit",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,9 +12,10 @@
     "Dariusz Bukowski": "dariusz.m.bukowski@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/DBDebugToolkit.git",
+    "git": "https://github.com/dbukowski/DBDebugToolkit.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/darekbukowski",
   "platforms": {
     "ios": "8.0"
   },

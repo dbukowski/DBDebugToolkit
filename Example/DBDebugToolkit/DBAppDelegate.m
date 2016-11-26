@@ -7,12 +7,13 @@
 //
 
 #import "DBAppDelegate.h"
+#import <DBDebugToolkit/DBDebugToolkit.h>
 
 @implementation DBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [DBDebugToolkit setup];
     return YES;
 }
 
