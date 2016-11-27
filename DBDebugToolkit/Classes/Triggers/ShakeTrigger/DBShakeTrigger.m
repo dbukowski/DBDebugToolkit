@@ -29,7 +29,7 @@
 
 @implementation DBShakeTrigger
 
-+ (instancetype)trigger {
++ (nonnull instancetype)trigger {
     return [[DBShakeTrigger alloc] init];
 }
 

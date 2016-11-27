@@ -47,21 +47,21 @@
 /**
  Creates and returns a `DBLongPressTrigger` object that requires 2 fingers to be pressed for 0.5 seconds.
  */
-+ (instancetype)trigger;
++ (nonnull instancetype)trigger;
 
 /**
  Creates and returns a `DBLongPressTrigger` object that requires the touches to be pressed for 0.5 seconds.
  
  @param numberOfTouchesRequired Number of fingers that must be held down for the trigger to be fired.
  */
-+ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
++ (nonnull instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
 
 /**
  Creates and returns a `DBLongPressTrigger` object that requires 2 finger to be pressed.
  
  @param minimumPressDuration Time in seconds the fingers must be held down for the gesture to be recognized.
  */
-+ (instancetype)triggerWithMinimumPressDuration:(NSTimeInterval)minimumPressDuration;
++ (nonnull instancetype)triggerWithMinimumPressDuration:(NSTimeInterval)minimumPressDuration;
 
 /**
  Creates and returns a fully specified `DBLongPressTrigger`.
@@ -69,7 +69,7 @@
  @param numberOfTouchesRequired Number of fingers that must be held down for the trigger to be fired.
  @param minimumPressDuration Time in seconds the fingers must be held down for the gesture to be recognized.
  */
-+ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired
-                              minimumPressDuration:(NSTimeInterval)minimumPressDuration;
++ (nonnull instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired
+                                      minimumPressDuration:(NSTimeInterval)minimumPressDuration;
 
 @end

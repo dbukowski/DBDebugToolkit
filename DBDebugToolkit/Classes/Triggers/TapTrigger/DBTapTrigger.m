@@ -55,22 +55,22 @@ static const NSUInteger DBTapTriggerDefaultNumberOfTouchesRequired = 2;
     return self;
 }
 
-+ (instancetype)trigger {
++ (nonnull instancetype)trigger {
     return [[DBTapTrigger alloc] init];
 }
 
-+ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired {
++ (nonnull instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired {
     return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:numberOfTapsRequired
                                       numberOfTouchesRequired:DBTapTriggerDefaultNumberOfTouchesRequired];
 }
 
-+ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
++ (nonnull instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
     return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:DBTapTriggerDefaultNumberOfTapsRequired
                                       numberOfTouchesRequired:numberOfTouchesRequired];
 }
 
-+ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
-                        numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
++ (nonnull instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
+                                numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
     return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:numberOfTapsRequired
                                       numberOfTouchesRequired:numberOfTouchesRequired];
 }

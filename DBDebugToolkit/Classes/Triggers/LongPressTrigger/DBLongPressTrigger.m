@@ -55,22 +55,22 @@ static const NSTimeInterval DBLongPressTriggerDefaultMinimumPressDuration = 0.5;
     return self;
 }
 
-+ (instancetype)trigger {
++ (nonnull instancetype)trigger {
     return [[self alloc] init];
 }
 
-+ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
++ (nonnull instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
     return [[self alloc] initWithNumberOfTouchesRequired:numberOfTouchesRequired
                                     minimumPressDuration:DBLongPressTriggerDefaultMinimumPressDuration];
 }
 
-+ (instancetype)triggerWithMinimumPressDuration:(NSTimeInterval)minimumPressDuration {
++ (nonnull instancetype)triggerWithMinimumPressDuration:(NSTimeInterval)minimumPressDuration {
     return [[self alloc] initWithNumberOfTouchesRequired:DBLongPressTriggerDefaultNumberOfTouchesRequired
                                     minimumPressDuration:minimumPressDuration];
 }
 
-+ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired
-                              minimumPressDuration:(NSTimeInterval)minimumPressDuration {
++ (nonnull instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired
+                                      minimumPressDuration:(NSTimeInterval)minimumPressDuration {
     return [[self alloc] initWithNumberOfTouchesRequired:numberOfTouchesRequired
                                     minimumPressDuration:minimumPressDuration];
 }

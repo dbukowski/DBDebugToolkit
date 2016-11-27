@@ -36,6 +36,6 @@
 /**
  Creates and returns a `DBShakeTrigger` object.
  */
-+ (instancetype)trigger;
++ (nonnull instancetype)trigger;
 
 @end

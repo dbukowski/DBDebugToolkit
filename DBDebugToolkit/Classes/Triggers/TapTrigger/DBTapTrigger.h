@@ -47,21 +47,21 @@
 /**
  Creates and returns a `DBTapTrigger` object that requires 2 fingers to be tapped twice.
  */
-+ (instancetype)trigger;
++ (nonnull instancetype)trigger;
 
 /**
  Creates and returns a `DBTapTrigger` object that requires 2 fingers to be tapped.
  
  @param numberOfTapsRequired Number of taps needed for the trigger to be fired.
  */
-+ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired;
++ (nonnull instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired;
 
 /**
  Creates and returns a `DBTapTrigger` object that requires 2 taps.
  
  @param numberOfTouchesRequired Number of tapping fingers needed for the trigger to be fired. 
  */
-+ (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
++ (nonnull instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
 
 
 /**
@@ -70,7 +70,7 @@
  @param numberOfTapsRequired Number of taps needed for the trigger to be fired.
  @param numberOfTouchesRequired Number of tapping fingers needed for the trigger to be fired.
  */
-+ (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
-                        numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
++ (nonnull instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
+                                numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
 
 @end
