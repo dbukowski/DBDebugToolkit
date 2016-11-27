@@ -164,7 +164,9 @@
 
 - (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController {
     UIViewController *presentingViewController = self.menuViewController.navigationController.presentingViewController;
-    [presentingViewController dismissViewControllerAnimated:true completion:nil];
+    [presentingViewController dismissViewControllerAnimated:true completion:^{
+        self.showsMenu = false;
+    }];
 }
 
 @end

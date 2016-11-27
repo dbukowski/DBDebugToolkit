@@ -48,7 +48,7 @@
 #pragma mark - Close button
 
 - (void)setupCloseButton {
-    self.closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleDone target:self action:@selector(closeButtonAction:)];
+    self.closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonAction:)];
     self.navigationItem.leftBarButtonItem = self.closeButton;
 }
 
