@@ -22,7 +22,7 @@
 
 #import "DBTapTrigger.h"
 
-static const NSUInteger DBTapTriggerDefaultNumberOfTapsRequired = 1;
+static const NSUInteger DBTapTriggerDefaultNumberOfTapsRequired = 2;
 static const NSUInteger DBTapTriggerDefaultNumberOfTouchesRequired = 2;
 
 @interface DBTapTrigger ()
@@ -36,6 +36,11 @@ static const NSUInteger DBTapTriggerDefaultNumberOfTouchesRequired = 2;
 @synthesize delegate;
 
 #pragma mark - Initialization
+
+- (instancetype)init {
+    return [self initWithNumberOfTapsRequired:DBTapTriggerDefaultNumberOfTapsRequired
+                      numberOfTouchesRequired:DBTapTriggerDefaultNumberOfTouchesRequired];
+}
 
 - (instancetype)initWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired
                      numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
@@ -51,8 +56,7 @@ static const NSUInteger DBTapTriggerDefaultNumberOfTouchesRequired = 2;
 }
 
 + (instancetype)trigger {
-    return [[DBTapTrigger alloc] initWithNumberOfTapsRequired:DBTapTriggerDefaultNumberOfTapsRequired
-                                      numberOfTouchesRequired:DBTapTriggerDefaultNumberOfTouchesRequired];
+    return [[DBTapTrigger alloc] init];
 }
 
 + (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired {
@@ -84,7 +88,7 @@ static const NSUInteger DBTapTriggerDefaultNumberOfTouchesRequired = 2;
 #pragma mark - Handling gesture recognizer
 
 - (void)gestureRecognizerAction:(UITapGestureRecognizer *)gestureRecognizer {
-    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         // numberOfTouchesRequired have tapped numberOfTapsRequired times.
         [self.delegate debugToolkitTriggered:self];
     }
@@ -92,12 +96,12 @@ static const NSUInteger DBTapTriggerDefaultNumberOfTouchesRequired = 2;
 
 #pragma mark - DBDebugToolkitTrigger
 
-- (void)addToView:(UIView *)view {
-    [view addGestureRecognizer:self.gestureRecognizer];
+- (void)addToWindow:(UIWindow *)window {
+    [window addGestureRecognizer:self.gestureRecognizer];
 }
 
-- (void)removeFromView:(UIView *)view {
-    [view removeGestureRecognizer:self.gestureRecognizer];
+- (void)removeFromWindow:(UIWindow *)window {
+    [window removeGestureRecognizer:self.gestureRecognizer];
 }
 
 @end

@@ -21,7 +21,34 @@
 // THE SOFTWARE.
 
 #import "DBShakeTrigger.h"
+#import "UIWindow+DBShakeTrigger.h"
+
+@interface DBShakeTrigger () <UIWindowShakeDelegate>
+
+@end
 
 @implementation DBShakeTrigger
+
++ (instancetype)trigger {
+    return [[DBShakeTrigger alloc] init];
+}
+
+@synthesize delegate;
+
+#pragma mark - UIWindowShakeDelegate
+
+- (void)windowDidEndShakeMotion:(UIWindow *)window {
+    [self.delegate debugToolkitTriggered:self];
+}
+
+#pragma mark - DBDebugToolkitTrigger
+
+- (void)addToWindow:(UIWindow *)window {
+    [window addShakeDelegate:self];
+}
+
+- (void)removeFromWindow:(UIWindow *)window {
+    [window removeShakeDelegate:self];
+}
 
 @end

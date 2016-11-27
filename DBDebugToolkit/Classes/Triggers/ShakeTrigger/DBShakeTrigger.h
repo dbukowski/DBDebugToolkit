@@ -21,7 +21,21 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "DBDebugToolkitTrigger.h"
 
-@interface DBShakeTrigger : NSObject
+/**
+ `DBShakeTrigger` is one of the provided `DBDebugToolkitTrigger` protocol implementations.
+ It fires when the device recognizes the shake motion.
+ */
+@interface DBShakeTrigger : NSObject <DBDebugToolkitTrigger>
+
+///---------------------
+/// @name Initialization
+///---------------------
+
+/**
+ Creates and returns a `DBShakeTrigger` object.
+ */
++ (instancetype)trigger;
 
 @end

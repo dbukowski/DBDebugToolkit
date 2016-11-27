@@ -22,7 +22,7 @@
 
 #import "DBLongPressTrigger.h"
 
-static const NSUInteger DBLongPressTriggerDefaultNumberOfTouchesRequired = 1;
+static const NSUInteger DBLongPressTriggerDefaultNumberOfTouchesRequired = 2;
 static const NSTimeInterval DBLongPressTriggerDefaultMinimumPressDuration = 0.5;
 
 @interface DBLongPressTrigger ()
@@ -36,6 +36,11 @@ static const NSTimeInterval DBLongPressTriggerDefaultMinimumPressDuration = 0.5;
 @synthesize delegate;
 
 #pragma mark - Initialization
+
+- (instancetype)init {
+    return [self initWithNumberOfTouchesRequired:DBLongPressTriggerDefaultNumberOfTouchesRequired
+                            minimumPressDuration:DBLongPressTriggerDefaultMinimumPressDuration];
+}
 
 - (instancetype)initWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired
                            minimumPressDuration:(NSTimeInterval)minimumPressDuration {
@@ -51,8 +56,7 @@ static const NSTimeInterval DBLongPressTriggerDefaultMinimumPressDuration = 0.5;
 }
 
 + (instancetype)trigger {
-    return [[self alloc] initWithNumberOfTouchesRequired:DBLongPressTriggerDefaultNumberOfTouchesRequired
-                                    minimumPressDuration:DBLongPressTriggerDefaultMinimumPressDuration];
+    return [[self alloc] init];
 }
 
 + (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired {
@@ -92,12 +96,12 @@ static const NSTimeInterval DBLongPressTriggerDefaultMinimumPressDuration = 0.5;
 
 #pragma mark - DBDebugToolkitTrigger
 
-- (void)addToView:(UIView *)view {
-    [view addGestureRecognizer:self.gestureRecognizer];
+- (void)addToWindow:(UIWindow *)window {
+    [window addGestureRecognizer:self.gestureRecognizer];
 }
 
-- (void)removeFromView:(UIView *)view {
-    [view removeGestureRecognizer:self.gestureRecognizer];
+- (void)removeFromWindow:(UIWindow *)window {
+    [window removeGestureRecognizer:self.gestureRecognizer];
 }
 
 @end

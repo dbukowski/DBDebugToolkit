@@ -30,7 +30,7 @@
 @interface DBTapTrigger : NSObject <DBDebugToolkitTrigger>
 
 /**
- Number of taps required for the trigger to fire. It has the default value equal 1.
+ Number of taps required for the trigger to fire. It has the default value equal 2.
  */
 @property (nonatomic, readonly) NSUInteger numberOfTapsRequired;
 
@@ -45,7 +45,7 @@
 ///---------------------
 
 /**
- Creates and returns a `DBTapTrigger` object that requires 2 fingers to be tapped once.
+ Creates and returns a `DBTapTrigger` object that requires 2 fingers to be tapped twice.
  */
 + (instancetype)trigger;
 
@@ -57,7 +57,7 @@
 + (instancetype)triggerWithNumberOfTapsRequired:(NSUInteger)numberOfTapsRequired;
 
 /**
- Creates and returns a `DBTapTrigger` object that requires 1 tap.
+ Creates and returns a `DBTapTrigger` object that requires 2 taps.
  
  @param numberOfTouchesRequired Number of tapping fingers needed for the trigger to be fired. 
  */

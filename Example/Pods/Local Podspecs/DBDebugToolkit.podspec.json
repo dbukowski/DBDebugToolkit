@@ -19,5 +19,10 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "DBDebugToolkit/Classes/**/*"
+  "source_files": "DBDebugToolkit/Classes/**/*",
+  "resource_bundles": {
+    "DBDebugToolkit": [
+      "DBDebugToolkit/Resources/*.storyboard"
+    ]
+  }
 }

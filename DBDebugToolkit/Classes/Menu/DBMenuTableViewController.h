@@ -20,28 +20,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import "DBDebugToolkitTrigger.h"
+#import <UIKit/UIKit.h>
+
+@class DBMenuTableViewController;
 
 /**
- `DBDebugToolkit` provides the interface that can be used to setup and customize the debugging tools.
+ A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
  */
-@interface DBDebugToolkit : NSObject
-
-///------------
-/// @name Setup
-///------------
+@protocol DBMenuTableViewControllerDelegate <NSObject>
 
 /**
- Sets up the `DBDebugToolkit` with one default trigger: `DBShakeTrigger`.
-*/
-+ (void)setup;
-
-/**
- Sets up the `DBDebugToolkit` with provided triggers.
+ Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
  
- @param triggers Array of triggers that should be used to open the `DBDebugToolkit` menu. The objects it contains should adopt the protocol `DBDebugToolkitTrigger`.
+ @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
  */
-+ (void)setupWithTriggers:(NSArray <id <DBDebugToolkitTrigger>> *)triggers;
+- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
+
+@end
+
+/**
+ `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
+ */
+@interface DBMenuTableViewController : UITableViewController
+
+/**
+ The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
+ */
+@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
 
 @end

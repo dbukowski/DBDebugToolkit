@@ -30,7 +30,7 @@
 @interface DBLongPressTrigger : NSObject <DBDebugToolkitTrigger>
 
 /**
- Number of touches required for the trigger to fire. It has the default value equal 1.
+ Number of touches required for the trigger to fire. It has the default value equal 2.
  */
 @property (nonatomic, readonly) NSUInteger numberOfTouchesRequired;
 
@@ -45,7 +45,7 @@
 ///---------------------
 
 /**
- Creates and returns a `DBLongPressTrigger` object that requires 1 finger to be pressed for 0.5 seconds.
+ Creates and returns a `DBLongPressTrigger` object that requires 2 fingers to be pressed for 0.5 seconds.
  */
 + (instancetype)trigger;
 
@@ -57,7 +57,7 @@
 + (instancetype)triggerWithNumberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
 
 /**
- Creates and returns a `DBLongPressTrigger` object that requires 1 finger to be pressed.
+ Creates and returns a `DBLongPressTrigger` object that requires 2 finger to be pressed.
  
  @param minimumPressDuration Time in seconds the fingers must be held down for the gesture to be recognized.
  */

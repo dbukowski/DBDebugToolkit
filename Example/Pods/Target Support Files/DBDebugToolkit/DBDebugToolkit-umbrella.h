@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 
 #import "DBDebugToolkit.h"
+#import "DBMenuTableViewController.h"
 #import "DBDebugToolkitTrigger.h"
 #import "DBDebugToolkitTriggerDelegate.h"
 #import "DBLongPressTrigger.h"

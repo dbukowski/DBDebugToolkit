@@ -8,12 +8,15 @@
 
 #import "DBAppDelegate.h"
 #import <DBDebugToolkit/DBDebugToolkit.h>
+#import <DBDebugToolkit/DBShakeTrigger.h>
+#import <DBDebugToolkit/DBTapTrigger.h>
+#import <DBDebugToolkit/DBLongPressTrigger.h>
 
 @implementation DBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [DBDebugToolkit setup];
+    [DBDebugToolkit setupWithTriggers: @[ [DBShakeTrigger trigger], [DBTapTrigger trigger], [DBLongPressTrigger trigger]]];
     return YES;
 }
 

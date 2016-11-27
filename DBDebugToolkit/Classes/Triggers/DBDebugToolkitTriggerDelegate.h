@@ -25,8 +25,16 @@
 
 @protocol DBDebugToolkitTrigger;
 
+/**
+ A protocol used for triggers to communicate with other objects.
+ */
 @protocol DBDebugToolkitTriggerDelegate <NSObject>
 
+/**
+ Informs the delegate about a trigger firing.
+ 
+ @param trigger Firing trigger. It needs to adopt the `DBDebugToolkitTrigger` protocol.
+ */
 - (void)debugToolkitTriggered:(id <DBDebugToolkitTrigger>)trigger;
 
 @end
