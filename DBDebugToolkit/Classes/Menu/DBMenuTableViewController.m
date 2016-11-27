@@ -41,6 +41,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
+
 #pragma mark - Close button
 
 - (void)setupCloseButton {
