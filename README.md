@@ -57,7 +57,7 @@ Triggers are the objects that tell DBDebugToolkit to present the menu. There are
 - `DBTapTrigger` - reacts to tapping the screen.
 - `DBLongPressTrigger` - reacts to long pressing the screen.
 
-By default, DBDebugToolkit is set up with `DBShakeTrigger`. You can provide your own array of triggers like this:
+By default, DBDebugToolkit is set up with `DBShakeTrigger`. You can also provide your own array of triggers:
 
 ```swift
 import DBDebugToolkit
