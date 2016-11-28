@@ -25,13 +25,13 @@
 
 static NSString *const UIWindowShakeDelegatesKey = @"DBDebugToolkit_shakeDelegates";
 
-@interface UIWindow (DBShakeTrigger)
+@interface UIWindow (DBShakeTriggerPrivate)
 
 @property (nonatomic) NSArray <id <UIWindowShakeDelegate>> *shakeDelegates;
 
 @end
 
-@implementation UIWindow (DBShakeTrigger)
+@implementation UIWindow (DBShakeTriggerPrivate)
 
 #pragma mark - ShakeTriggers property
 
@@ -47,6 +47,10 @@ static NSString *const UIWindowShakeDelegatesKey = @"DBDebugToolkit_shakeDelegat
     }
     return shakeDelegates;
 }
+
+@end
+
+@implementation UIWindow (DBShakeTrigger)
 
 #pragma mark - Category methods
 
