@@ -24,15 +24,12 @@
 
 @interface DBMenuTableViewController ()
 
-@property (nonatomic, strong) UIBarButtonItem *closeButton;
-
 @end
 
 @implementation DBMenuTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupCloseButton];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,25 +44,30 @@
 
 #pragma mark - Close button
 
-- (void)setupCloseButton {
-    self.closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonAction:)];
-    self.navigationItem.leftBarButtonItem = self.closeButton;
-}
-
-- (void)closeButtonAction:(id)sender {
+- (IBAction)closeButtonAction:(id)sender {
     [self.delegate menuTableViewControllerDidTapClose:self];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDelegate
+
+
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *displayName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    NSString *buildVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
+    NSString *buildNumber = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    return [NSString stringWithFormat:@"%@, v. %@ (%@)", displayName, buildVersion, buildNumber];
 }
 
 /*
