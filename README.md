@@ -89,21 +89,21 @@ The first submenu is dedicated to measuring your application performance. You ca
 * CPU
 
    Includes current CPU usage, max CPU usage recorded and a chart displaying the CPU usage over time.
-  [comment]: <> (insert cpu gif)
+   [//]: # (Insert cpu gif)
 * Memory
 
    Includes current memory usage, max memory usage recorded and a chart displaying the memory usage over time. Additionally it has a "Simulate memory warning" option.
-  [comment]: <> (insert memory gif)
+   [//]: # (Insert memory gif)
 * FPS
 
    Includes current FPS, min FPS recorded and a chart displaying the FPS value over time.
-  [comment]: <> (insert fps gif)
+   [//]: # (Insert fps gif)
 
 #### Widget
 
 On top of the performance submenu you can see a switch that enables the widget displaying current CPU usage, memory usage and frames per second. The widget will stay on top of the screen and will refresh every one second. It can be moved around the screen with pan gesture.
 Tapping on the widget opens the performance submenu with tapped section (CPU, memory or FPS).
-[comment]: <> (insert widget gif)
+[//]: # (Insert widget gif)
 
 #### Simulating memory warning
 
