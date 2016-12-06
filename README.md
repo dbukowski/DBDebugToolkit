@@ -103,7 +103,6 @@ The first submenu is dedicated to measuring your application performance. You ca
 
 On top of the performance submenu you can see a switch that enables the widget displaying current CPU usage, memory usage and frames per second. The widget will stay on top of the screen and will refresh every one second. It can be moved around the screen with pan gesture.
 Tapping on the widget opens the performance submenu with tapped section (CPU, memory or FPS).
-
 [comment]: <> (insert widget gif)
 
 #### Simulating memory warning
