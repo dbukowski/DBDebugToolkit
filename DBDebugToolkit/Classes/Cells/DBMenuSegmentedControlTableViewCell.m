@@ -20,37 +20,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "DBPerformanceToolkit.h"
+#import "DBMenuSegmentedControlTableViewCell.h"
 
-@class DBMenuTableViewController;
+@implementation DBMenuSegmentedControlTableViewCell
 
-/**
- A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
- */
-@protocol DBMenuTableViewControllerDelegate <NSObject>
+#pragma mark - Initialization
 
-/**
- Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
- 
- @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
- */
-- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self.segmentedControl addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:UIControlEventValueChanged];
+}
 
-@end
+#pragma mark - Segmented control
 
-/**
- `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
- */
-@interface DBMenuTableViewController : UITableViewController
+- (void)segmentedControlValueChanged:(UISegmentedControl *)segmentedControl {
+    NSUInteger selectedIndex = segmentedControl.selectedSegmentIndex;
+    [self.delegate menuSegmentedControlTableViewCell:self didSelectSegmentAtIndex:selectedIndex];
+}
 
-/**
- The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
- */
-@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
-
-@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
-
-- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
+- (void)configureWithTitles:(NSArray<NSString *> *)titles selectedIndex:(NSUInteger)selectedIndex {
+    [self.segmentedControl removeAllSegments];
+    [titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
+        [self.segmentedControl insertSegmentWithTitle:title atIndex:idx animated:false];
+    }];
+    [self.segmentedControl setSelectedSegmentIndex:selectedIndex];
+}
 
 @end

@@ -18,6 +18,8 @@ DBDebugToolkit is a debugging library written in Objective-C.
 
 ## Features
 
+- [x] Showing version & build number
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first. The example project is written in Objective-C. The Swift examples of using DBDebugToolkit are in this README.

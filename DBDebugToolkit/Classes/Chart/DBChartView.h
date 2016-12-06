@@ -21,36 +21,17 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBPerformanceToolkit.h"
 
-@class DBMenuTableViewController;
+IB_DESIGNABLE
+@interface DBChartView : UIView
 
-/**
- A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
- */
-@protocol DBMenuTableViewControllerDelegate <NSObject>
-
-/**
- Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
- 
- @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
- */
-- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
-
-@end
-
-/**
- `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
- */
-@interface DBMenuTableViewController : UITableViewController
-
-/**
- The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
- */
-@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
-
-@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
-
-- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
+@property (nonatomic, strong) NSArray *measurements;
+@property (nonatomic, assign) NSInteger measurementsLimit;
+@property (nonatomic, assign) CGFloat maxValue;
+@property (nonatomic, assign) CGFloat markedValue;
+@property (nonatomic, strong) NSString *markedValueFormat;
+@property (nonatomic, strong) IBInspectable UIColor *chartColor;
+@property (nonatomic, strong) IBInspectable UIColor *axisColor;
+@property (nonatomic, assign) IBInspectable BOOL filled;
 
 @end

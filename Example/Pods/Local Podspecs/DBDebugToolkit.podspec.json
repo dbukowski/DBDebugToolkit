@@ -22,7 +22,7 @@
   "source_files": "DBDebugToolkit/Classes/**/*",
   "resource_bundles": {
     "DBDebugToolkit": [
-      "DBDebugToolkit/Resources/*.storyboard"
+      "DBDebugToolkit/Resources/*.{storyboard,xib}"
     ]
   }
 }

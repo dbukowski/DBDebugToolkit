@@ -1,7 +1,17 @@
 #import <UIKit/UIKit.h>
 
+#import "NSBundle+DBDebugToolkit.h"
+#import "DBMenuChartTableViewCell.h"
+#import "DBMenuSegmentedControlTableViewCell.h"
+#import "DBMenuSwitchTableViewCell.h"
+#import "DBChartView.h"
 #import "DBDebugToolkit.h"
 #import "DBMenuTableViewController.h"
+#import "DBFPSCalculator.h"
+#import "DBPerformanceSection.h"
+#import "DBPerformanceTableViewController.h"
+#import "DBPerformanceToolkit.h"
+#import "DBPerformanceWidgetView.h"
 #import "DBDebugToolkitTrigger.h"
 #import "DBDebugToolkitTriggerDelegate.h"
 #import "DBLongPressTrigger.h"

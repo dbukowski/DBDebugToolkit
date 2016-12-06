@@ -20,37 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "DBPerformanceToolkit.h"
+#import <Foundation/Foundation.h>
 
-@class DBMenuTableViewController;
+@interface DBFPSCalculator : NSObject
 
-/**
- A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
- */
-@protocol DBMenuTableViewControllerDelegate <NSObject>
-
-/**
- Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
- 
- @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
- */
-- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
-
-@end
-
-/**
- `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
- */
-@interface DBMenuTableViewController : UITableViewController
-
-/**
- The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
- */
-@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
-
-@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
-
-- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
+- (CGFloat)fps;
 
 @end

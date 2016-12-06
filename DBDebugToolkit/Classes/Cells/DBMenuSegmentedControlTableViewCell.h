@@ -21,36 +21,21 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBPerformanceToolkit.h"
 
-@class DBMenuTableViewController;
+@class DBMenuSegmentedControlTableViewCell;
 
-/**
- A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
- */
-@protocol DBMenuTableViewControllerDelegate <NSObject>
+@protocol DBMenuSegmentedControlTableViewCellDelegate <NSObject>
 
-/**
- Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
- 
- @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
- */
-- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
+- (void)menuSegmentedControlTableViewCell:(DBMenuSegmentedControlTableViewCell *)menuSegmentedControlTableViewCell didSelectSegmentAtIndex:(NSUInteger)index;
 
 @end
 
-/**
- `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
- */
-@interface DBMenuTableViewController : UITableViewController
+@interface DBMenuSegmentedControlTableViewCell : UITableViewCell
 
-/**
- The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
- */
-@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DBMenuSegmentedControlTableViewCellDelegate> delegate;
 
-@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
-- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
+- (void)configureWithTitles:(NSArray <NSString *> *)titles selectedIndex:(NSUInteger)selectedIndex;
 
 @end

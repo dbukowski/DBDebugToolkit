@@ -21,6 +21,8 @@
 // THE SOFTWARE.
 
 #import "DBMenuTableViewController.h"
+#import "DBPerformanceTableViewController.h"
+#import "NSBundle+DBDebugToolkit.h"
 
 @interface DBMenuTableViewController ()
 
@@ -30,16 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
 }
 
 #pragma mark - Close button
@@ -48,26 +40,39 @@
     [self.delegate menuTableViewControllerDidTapClose:self];
 }
 
+#pragma mark - Opening Performance menu
+
+- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated {
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBPerformanceTableViewController" bundle:bundle];
+    DBPerformanceTableViewController *performanceTableViewController = [storyboard instantiateInitialViewController];
+    performanceTableViewController.performanceToolkit = self.performanceToolkit;
+    performanceTableViewController.selectedSection = section;
+    [self.navigationController setViewControllers:@[ self, performanceTableViewController ] animated:animated];
+}
+
 #pragma mark - UITableViewDelegate
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return 1;
+//}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *displayName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-    NSString *buildVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
-    NSString *buildNumber = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    return [NSString stringWithFormat:@"%@, v. %@ (%@)", displayName, buildVersion, buildNumber];
+    NSString *appName = [infoDictionary objectForKey:(NSString *)kCFBundleNameKey];
+    NSString *buildVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *buildNumber = [infoDictionary objectForKey:@"CFBundleVersion"];
+    return [NSString stringWithFormat:@"%@, v. %@ (%@)", appName, buildVersion, buildNumber];
 }
 
 /*
@@ -114,14 +119,14 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UIViewController *destinationViewController = [segue destinationViewController];
+    if ([destinationViewController isKindOfClass:[DBPerformanceTableViewController class]]) {
+        DBPerformanceTableViewController *performanceTableViewController = (DBPerformanceTableViewController *)destinationViewController;
+        performanceTableViewController.performanceToolkit = self.performanceToolkit;
+    }
 }
-*/
 
 @end

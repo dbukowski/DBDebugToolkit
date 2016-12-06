@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  DBDebugToolkit: 6e72bb89f21561ae050fc21031678ced53e0be0f
+  DBDebugToolkit: 90b7302522951f6ff8f06d5f65723a09634978ce
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 

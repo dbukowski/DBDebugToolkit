@@ -23,12 +23,17 @@
 #import "DBDebugToolkit.h"
 #import "DBShakeTrigger.h"
 #import "DBMenuTableViewController.h"
+#import "NSBundle+DBDebugToolkit.h"
+#import "DBPerformanceWidgetView.h"
+#import "DBPerformanceToolkit.h"
+#import "DBPerformanceTableViewController.h"
 
-@interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate>
+@interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
 @property (nonatomic, copy) NSArray <id <DBDebugToolkitTrigger>> *triggers;
 @property (nonatomic, strong) DBMenuTableViewController *menuViewController;
 @property (nonatomic, assign) BOOL showsMenu;
+@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
 
 @end
 
@@ -56,6 +61,7 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DBDebugToolkit alloc] init];
         [sharedInstance registerForNotifications];
+        [sharedInstance setupPerformanceToolkit];
     });
     return sharedInstance;
 }
@@ -103,31 +109,39 @@
 - (void)newKeyWindowNotification:(NSNotification *)notification {
     UIWindow *newKeyWindow = notification.object;
     [self addTriggersToWindow:newKeyWindow];
+    [self.performanceToolkit updateKeyWindow:newKeyWindow];
 }
 
 - (void)windowDidResignKeyNotification:(NSNotification *)notification {
     UIWindow *windowResigningKey = notification.object;
     [self removeTriggersFromWindow:windowResigningKey];
+    [self.performanceToolkit windowDidResignKey:windowResigningKey];
+}
+
+#pragma mark - Performance toolkit
+
+- (void)setupPerformanceToolkit {
+    self.performanceToolkit = [[DBPerformanceToolkit alloc] initWithWidgetDelegate:self];
 }
 
 #pragma mark - Showing menu
 
 - (void)showMenu {
     self.showsMenu = true;
+    UIViewController *presentingViewController = [self topmostViewController];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuViewController];
     navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     navigationController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    UIViewController *presentingViewController = [self topmostViewController];
+    navigationController.modalPresentationCapturesStatusBarAppearance = YES;
     [presentingViewController presentViewController:navigationController animated:YES completion: nil];
 }
 
 - (DBMenuTableViewController *)menuViewController {
     if (!_menuViewController) {
-        NSBundle *podBundle = [NSBundle bundleForClass:[self class]];
-        NSURL *bundleURL = [podBundle URLForResource:@"DBDebugToolkit" withExtension:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
+        NSBundle *bundle = [NSBundle debugToolkitBundle];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBMenuTableViewController" bundle:bundle];
         _menuViewController = [storyboard instantiateInitialViewController];
+        _menuViewController.performanceToolkit = self.performanceToolkit;
         _menuViewController.delegate = self;
     }
     return _menuViewController;
@@ -167,6 +181,26 @@
     [presentingViewController dismissViewControllerAnimated:true completion:^{
         self.showsMenu = false;
     }];
+}
+
+#pragma mark - DBPerformanceWidgetViewDelegate 
+
+- (void)performanceWidgetView:(DBPerformanceWidgetView *)performanceWidgetView didTapOnSection:(DBPerformanceSection)section {
+    BOOL shouldAnimateShowingPerformance = YES;
+    if (!self.showsMenu) {
+        [self showMenu];
+        shouldAnimateShowingPerformance = NO;
+    }
+    UINavigationController *navigationController = self.menuViewController.navigationController;
+    if (navigationController.viewControllers.count > 1 && [navigationController.viewControllers[1] isKindOfClass:[DBPerformanceTableViewController class]]) {
+        // Only update the presented DBPerformanceTableViewController instance.
+        DBPerformanceTableViewController *performanceTableViewController = (DBPerformanceTableViewController *)navigationController.viewControllers[1];
+        performanceTableViewController.selectedSection = section;
+    } else {
+        // Update navigation controller's view controllers.
+        [self.menuViewController openPerformanceMenuWithSection:section
+                                                       animated:shouldAnimateShowingPerformance];
+    }
 }
 
 @end

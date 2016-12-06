@@ -20,37 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "DBPerformanceToolkit.h"
+#import "NSBundle+DBDebugToolkit.h"
+#import "DBDebugToolkit.h"
 
-@class DBMenuTableViewController;
+@implementation NSBundle (DBDebugToolkit)
 
-/**
- A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
- */
-@protocol DBMenuTableViewControllerDelegate <NSObject>
-
-/**
- Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
- 
- @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
- */
-- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
-
-@end
-
-/**
- `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
- */
-@interface DBMenuTableViewController : UITableViewController
-
-/**
- The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
- */
-@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
-
-@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
-
-- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
++ (instancetype)debugToolkitBundle {
+    NSBundle *podBundle = [NSBundle bundleForClass:[DBDebugToolkit class]];
+    NSURL *bundleURL = [podBundle URLForResource:@"DBDebugToolkit" withExtension:@"bundle"];
+    return [NSBundle bundleWithURL:bundleURL];
+}
 
 @end

@@ -34,7 +34,7 @@ Set of easy to use debugging tools for developers & QA
   s.source_files = 'DBDebugToolkit/Classes/**/*'
   
   s.resource_bundles = {
-    'DBDebugToolkit' => ['DBDebugToolkit/Resources/*.storyboard']
+    'DBDebugToolkit' => ['DBDebugToolkit/Resources/*.{storyboard,xib}']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

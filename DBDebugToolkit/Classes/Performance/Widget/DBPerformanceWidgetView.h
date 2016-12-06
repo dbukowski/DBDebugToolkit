@@ -21,36 +21,22 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBPerformanceToolkit.h"
+#import "DBPerformanceSection.h"
 
-@class DBMenuTableViewController;
+@class DBPerformanceWidgetView;
 
-/**
- A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
- */
-@protocol DBMenuTableViewControllerDelegate <NSObject>
+@protocol DBPerformanceWidgetViewDelegate <NSObject>
 
-/**
- Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
- 
- @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
- */
-- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
+- (void)performanceWidgetView:(DBPerformanceWidgetView *)performanceWidgetView didTapOnSection:(DBPerformanceSection)section;
 
 @end
 
-/**
- `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
- */
-@interface DBMenuTableViewController : UITableViewController
+@interface DBPerformanceWidgetView : UIView
 
-/**
- The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
- */
-@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DBPerformanceWidgetViewDelegate> delegate;
 
-@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
-
-- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
+@property (strong, nonatomic) IBOutlet UILabel *cpuValueLabel;
+@property (strong, nonatomic) IBOutlet UILabel *memoryValueLabel;
+@property (strong, nonatomic) IBOutlet UILabel *fpsValueLabel;
 
 @end
