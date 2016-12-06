@@ -18,6 +18,11 @@ DBDebugToolkit is a debugging library written in Objective-C.
 
 ## Features
 
+- [x] CPU usage (current, max, chart)
+- [x] Memory usage (current, max, chart)
+- [x] FPS (current, min, chart)
+- [x] Widget displaying current CPU usage, memory usage and FPS that stays on top of the screen
+- [x] Simulating memory warning
 - [x] Showing version & build number
 
 ## Example
@@ -76,6 +81,34 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 These are just examples. Both `DBTapTrigger` and `DBLongPressTrigger` have more customization options.
 
 You can also create your own trigger. To do this, create a class that conforms to protocol `DBDebugToolkitTrigger`. Then create an instance of this class and pass it to the setup method.
+
+### Performance
+
+The first submenu is dedicated to measuring your application performance. You can find there statistics divided into three sections:
+
+* CPU
+
+   Includes current CPU usage, max CPU usage recorded and a chart displaying the CPU usage over time.
+  [comment]: <> (insert cpu gif)
+* Memory
+
+   Includes current memory usage, max memory usage recorded and a chart displaying the memory usage over time. Additionally it has a "Simulate memory warning" option.
+  [comment]: <> (insert memory gif)
+* FPS
+
+   Includes current FPS, min FPS recorded and a chart displaying the FPS value over time.
+  [comment]: <> (insert fps gif)
+
+#### Widget
+
+On top of the performance submenu you can see a switch that enables the widget displaying current CPU usage, memory usage and frames per second. The widget will stay on top of the screen and will refresh every one second. It can be moved around the screen with pan gesture.
+Tapping on the widget opens the performance submenu with tapped section (CPU, memory or FPS).
+
+[comment]: <> (insert widget gif)
+
+#### Simulating memory warning
+
+In the memory section you can also find the "Simulate memory warning" button. Use it to test if you handle the warning properly.
 
 ## Author
 
