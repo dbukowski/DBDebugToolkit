@@ -25,18 +25,46 @@
 
 @class DBPerformanceWidgetView;
 
+/**
+ A protocol used for informing about taps recognized on the widget.
+ */
 @protocol DBPerformanceWidgetViewDelegate <NSObject>
 
+/**
+ Informs the delegate which of the sections was tapped.
+ 
+ @param performanceWidgetView The widget that recognized the tap.
+ @param section Tapped section.
+ */
 - (void)performanceWidgetView:(DBPerformanceWidgetView *)performanceWidgetView didTapOnSection:(DBPerformanceSection)section;
 
 @end
 
+/**
+ `DBPerformanceWidgetView` is a simple view that is meant to stay on top of the screen all the time.
+ It shows the current CPU usage, memory usage and current frames per second value.
+ It can be moved around the window with pan gesture and it recognizes taps.
+ */
 @interface DBPerformanceWidgetView : UIView
 
+/**
+ Delegate that will be informed about tapping the widget. It needs to conform to `DBPerformanceWidgetViewDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBPerformanceWidgetViewDelegate> delegate;
 
+/**
+ An outlet to the label displaying current CPU usage.
+ */
 @property (strong, nonatomic) IBOutlet UILabel *cpuValueLabel;
+
+/**
+ An outlet to the label displaying current memory usage.
+ */
 @property (strong, nonatomic) IBOutlet UILabel *memoryValueLabel;
+
+/**
+ An outlet to the label displaying current frames per second value.
+ */
 @property (strong, nonatomic) IBOutlet UILabel *fpsValueLabel;
 
 @end

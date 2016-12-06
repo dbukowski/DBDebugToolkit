@@ -23,6 +23,9 @@
 #ifndef DBPerformanceSection_h
 #define DBPerformanceSection_h
 
+/**
+ Enum with performance table view controller sections.
+ */
 typedef NS_ENUM(NSUInteger, DBPerformanceSection) {
     DBPerformanceSectionCPU,
     DBPerformanceSectionMemory,

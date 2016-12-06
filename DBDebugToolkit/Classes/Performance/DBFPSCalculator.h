@@ -22,8 +22,14 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ `DBFPSCalculator` is a simple class that calculates the current frames per second value.
+ */
 @interface DBFPSCalculator : NSObject
 
+/**
+ Returns calculated frames per second.
+ */
 - (CGFloat)fps;
 
 @end

@@ -23,8 +23,14 @@
 #import <UIKit/UIKit.h>
 #import "DBChartView.h"
 
+/**
+ `DBMenuChartTableViewCell` is a simple table view cell with a `DBChartView` instance as its only subview.
+ */
 @interface DBMenuChartTableViewCell : UITableViewCell
 
+/**
+ An outlet to the `DBChartView` instance.
+ */
 @property (strong, nonatomic) IBOutlet DBChartView *chartView;
 
 @end

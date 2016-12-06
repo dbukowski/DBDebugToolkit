@@ -24,17 +24,39 @@
 
 @class DBMenuSwitchTableViewCell;
 
+/**
+ A protocol used for informing about changes in cell's switch.
+ */
 @protocol DBMenuSwitchTableViewCellDelegate <NSObject>
 
+/**
+ Informs the delegate that the switch value was changed in the cell.
+ 
+ @param menuSwitchTableViewCell The cell with a switch that changed its value.
+ @param isOn The new switch value.
+ */
 - (void)menuSwitchTableViewCell:(DBMenuSwitchTableViewCell *)menuSwitchTableViewCell didSetOn:(BOOL)isOn;
 
 @end
 
+/**
+ `DBMenuSwitchTableViewCell` is a simple table view cell subclass with a title label and a `UISwitch` instance.
+ */
 @interface DBMenuSwitchTableViewCell : UITableViewCell
 
+/**
+ Delegate that will be informed about switch value changes. It needs to conform to `DBMenuSwitchTableViewCellDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBMenuSwitchTableViewCellDelegate> delegate;
 
+/**
+ An outlet to `UILabel` instance displaying the title of the value changed with the switch.
+ */
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
+/**
+ An outlet to `UISwitch` instance.
+ */
 @property (strong, nonatomic) IBOutlet UISwitch *valueSwitch;
 
 @end

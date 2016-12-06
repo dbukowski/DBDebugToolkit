@@ -24,18 +24,42 @@
 
 @class DBMenuSegmentedControlTableViewCell;
 
+/**
+ A protocol used for informing about changes in cell's segmented control.
+ */
 @protocol DBMenuSegmentedControlTableViewCellDelegate <NSObject>
 
+/**
+ Informs the delegate that the selected segment was changed in the cell.
+ 
+ @param menuSegmentedControlTableViewCell The cell with a segmented control that changed selected segment.
+ @param index The selected segment index.
+ */
 - (void)menuSegmentedControlTableViewCell:(DBMenuSegmentedControlTableViewCell *)menuSegmentedControlTableViewCell didSelectSegmentAtIndex:(NSUInteger)index;
 
 @end
 
+/**
+ `DBMenuSegmentedControlTableViewCell` is a simple table view cell subclass with a centered `UISegmentedControl`.
+ */
 @interface DBMenuSegmentedControlTableViewCell : UITableViewCell
 
+/**
+ Delegate that will be informed about changes in segmented control. It needs to conform to `DBMenuSegmentedControlTableViewCellDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBMenuSegmentedControlTableViewCellDelegate> delegate;
 
+/**
+ An outlet to `UISegmentedControl` instance.
+ */
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
+/**
+ Configures the cell with segment titles and the selected segment index.
+ 
+ @param titles Titles for segments.
+ @param selectedIndex The initial selected segment index.
+ */
 - (void)configureWithTitles:(NSArray <NSString *> *)titles selectedIndex:(NSUInteger)selectedIndex;
 
 @end

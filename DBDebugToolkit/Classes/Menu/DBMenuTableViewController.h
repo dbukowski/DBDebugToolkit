@@ -49,8 +49,17 @@
  */
 @property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
 
+/**
+ `DBPerformanceToolkitz instance that will be passed on.
+ */
 @property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
 
+/**
+ Pushes `DBPerformanceTableViewController` onto the current navigation controller with the preselected section. Optionally animated.
+ 
+ @param section Preselected section in performance table view controller.
+ @param animated Boolean determining whether the push should be animated or not.
+ */
 - (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
 
 @end

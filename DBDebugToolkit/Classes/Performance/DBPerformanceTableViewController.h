@@ -24,10 +24,19 @@
 #import "DBPerformanceSection.h"
 #import "DBPerformanceToolkit.h"
 
+/**
+ `DBPerformanceTableViewController` is a view controller with a table view presenting statistics and allowing the user to show/hide the widget.
+ */
 @interface DBPerformanceTableViewController : UITableViewController
 
+/**
+ Currently selected section of the statistics part of the table view.
+ */
 @property (nonatomic, assign) DBPerformanceSection selectedSection;
 
+/**
+ `DBPerformanceToolkit` instance serving as a data source for the table view controller.
+ */
 @property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
 
 @end

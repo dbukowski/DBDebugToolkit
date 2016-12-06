@@ -38,6 +38,7 @@ static const CGFloat DBChartViewArrowHeight = 4;
 
 - (void)prepareForInterfaceBuilder {
     [super prepareForInterfaceBuilder];
+    // Simple data to present the chart nicely in Interface Builder.
     self.measurements = @[ @10, @20, @30, @25, @20, @15, @16, @10];
     self.maxValue = 35.0;
 }

@@ -25,39 +25,135 @@
 
 @class DBPerformanceToolkit;
 
+/**
+ A protocol used for informing about refreshing the performance data.
+ */
 @protocol DBPerformanceToolkitDelegate <NSObject>
 
+/**
+ Informs the delegate that there are new stats available.
+ @param performanceToolkit The object that refreshed stats and can now be accessed to retrieve them.
+ */
 - (void)performanceToolkitDidUpdateStats:(DBPerformanceToolkit *)performanceToolkit;
 
 @end
 
+/**
+ `DBPerformanceToolkit` is a class responsible for the features seen in the `DBPerformanceTableViewController`.
+ It calculates the performance stats, handles showing widget and can also simulate memory warning.
+ */
 @interface DBPerformanceToolkit : NSObject
 
-@property (nonatomic, readonly) DBPerformanceWidgetView *widget;
-@property (nonatomic, assign) BOOL isWidgetShown;
+/**
+ Delegate that will be informed about new stats available. It needs to conform to `DBPerformanceToolkitDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBPerformanceToolkitDelegate> delegate;
 
+/**
+ Created widget showing current CPU usage, memory usage and frames per second value.
+ */
+@property (nonatomic, readonly) DBPerformanceWidgetView *widget;
+
+/**
+ Boolean determining whether the widget should be shown or not.
+ */
+@property (nonatomic, assign) BOOL isWidgetShown;
+
+///----------
+/// @name CPU
+///----------
+
+/**
+ An array of last measurements of the CPU usage.
+ */
 @property (nonatomic, readonly) NSArray *cpuMeasurements;
+
+/**
+ Current CPU usage.
+ */
 @property (nonatomic, readonly) CGFloat currentCPU;
+
+/**
+ Maximal recorded CPU usage.
+ */
 @property (nonatomic, readonly) CGFloat maxCPU;
 
+///-------------
+/// @name Memory
+///-------------
+
+/**
+ An array of last measurements of the memory usage.
+ */
 @property (nonatomic, readonly) NSArray *memoryMeasurements;
+
+/**
+ Current memory usage.
+ */
 @property (nonatomic, readonly) CGFloat currentMemory;
+
+/**
+ Maximal recorded memory usage.
+ */
 @property (nonatomic, readonly) CGFloat maxMemory;
 
+///----------
+/// @name FPS
+///----------
+
+/**
+ An array of last measurements of the frames per second value.
+ */
 @property (nonatomic, readonly) NSArray *fpsMeasurements;
+
+/**
+ Current frames per second value.
+ */
 @property (nonatomic, readonly) CGFloat currentFPS;
+
+/**
+ Minimal recorded frames per second value.
+ */
 @property (nonatomic, readonly) CGFloat minFPS;
+
+/**
+ Maximal recorded frames per second value.
+ */
 @property (nonatomic, readonly) CGFloat maxFPS;
 
+/**
+ The limit of memorized measurements. When reached, a new measurement will override the oldest one.
+ */
 @property (nonatomic, readonly) NSInteger measurementsLimit;
 
+///---------------------
+/// @name Initialization
+///---------------------
+
+/**
+ Initializes `DBPerformanceToolkit` object with provided delegate, that will be informed about widget taps.
+ 
+ @param widgetDelegate A delegate for the performance widget. It has to conform to `DBPerformanceWidgetViewDelegate` protocol.
+ */
 - (instancetype)initWithWidgetDelegate:(id <DBPerformanceWidgetViewDelegate>)widgetDelegate;
 
+/**
+ Simulates the memory warning.
+ */
 - (void)simulateMemoryWarning;
 
+/**
+ Updates the widget with new key window.
+ 
+ @param window The new application key window.
+ */
 - (void)updateKeyWindow:(UIWindow *)window;
 
+/**
+ Removes the widget from the old key window.
+ 
+ @param window The window that resigned key. It should have the widget removed.
+ */
 - (void)windowDidResignKey:(UIWindow *)window;
 
 @end

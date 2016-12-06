@@ -107,6 +107,7 @@ static const NSUInteger DBFPSCalculatorSamplesCount = 60;
         return -1;
     }
     
+    // storedTickTimesSum should be equal to the sum of tickTimes array elements.
     CGFloat meanTickTime = self.storedTickTimesSum / self.tickTimes.count;
     return 1.0 / meanTickTime;
 }
