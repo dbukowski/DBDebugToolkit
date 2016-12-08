@@ -54,7 +54,11 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.row == 1) {
+        // Open application settings.
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        [tableView deselectRowAtIndexPath:indexPath animated:true];
+    }
 }
 
 #pragma mark - UITableViewDataSource
