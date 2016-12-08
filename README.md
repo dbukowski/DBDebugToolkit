@@ -23,6 +23,7 @@ DBDebugToolkit is a debugging library written in Objective-C.
 - [x] FPS (current, min, chart)
 - [x] Widget displaying current CPU usage, memory usage and FPS that stays on top of the screen
 - [x] Simulating memory warning
+- [x] Opening application settings
 - [x] Showing version & build number
 
 ## Example
