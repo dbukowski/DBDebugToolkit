@@ -21,54 +21,16 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBPerformanceToolkit.h"
 #import "DBConsoleOutputCaptor.h"
 #import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
 
-@class DBMenuTableViewController;
-
-/**
- A protocol used to communicate between `DBMenuTableViewController` object and the object that presented it.
- */
-@protocol DBMenuTableViewControllerDelegate <NSObject>
-
-/**
- Informs the delegate that the user tapped `Close` button in the `DBMenuTableViewController`.
- 
- @param menuTableViewController `DBMenuTableViewController` object that should be dismissed.
- */
-- (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController;
-
-@end
-
-/**
- `DBMenuTableViewController` is the main view controller used by `DBDebugToolkit`. It contains a `UITableView` containing all the debug tools.
- */
-@interface DBMenuTableViewController : UITableViewController
-
-/**
- The delegate adopting `DBMenuTableViewControllerDelegate` protocol.
- */
-@property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
-
-/**
- `DBPerformanceToolkitz instance that will be passed on.
- */
-@property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
+@interface DBConsoleViewController : UIViewController
 
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
 
 @property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
-
-/**
- Pushes `DBPerformanceTableViewController` onto the current navigation controller with the preselected section. Optionally animated.
- 
- @param section Preselected section in performance table view controller.
- @param animated Boolean determining whether the push should be animated or not.
- */
-- (void)openPerformanceMenuWithSection:(DBPerformanceSection)section animated:(BOOL)animated;
 
 @end

@@ -39,8 +39,30 @@
                                             <segue destination="Qfj-jA-S2e" kind="show" id="47I-QZ-T2s"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mm4-o7-8tn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="W7D-hp-1bf">
                                         <rect key="frame" x="0.0" y="164" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W7D-hp-1bf" id="9lB-9s-sCz">
+                                            <frame key="frameInset" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Console" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLi-gK-CBQ">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eLi-gK-CBQ" firstAttribute="leading" secondItem="9lB-9s-sCz" secondAttribute="leading" constant="16" id="0Kj-f0-D04"/>
+                                                <constraint firstItem="eLi-gK-CBQ" firstAttribute="centerY" secondItem="9lB-9s-sCz" secondAttribute="centerY" id="8f5-mW-v1D"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HUH-b2-D4F" kind="show" id="go1-s9-S5f"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mm4-o7-8tn">
+                                        <rect key="frame" x="0.0" y="208" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mm4-o7-8tn" id="SaJ-UP-1oU">
                                             <frame key="frameInset" width="375" height="43"/>
@@ -86,6 +108,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azm-V7-rVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="742" y="-233"/>
+        </scene>
+        <!--DBConsoleViewController-->
+        <scene sceneID="I53-7x-TV5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DBConsoleViewController" id="HUH-b2-D4F" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QTX-5I-wae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693" y="-78"/>
         </scene>
     </scenes>
 </document>

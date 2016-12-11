@@ -27,6 +27,7 @@
 #import "DBPerformanceWidgetView.h"
 #import "DBPerformanceToolkit.h"
 #import "DBPerformanceTableViewController.h"
+#import "DBConsoleOutputCaptor.h"
 
 @interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
@@ -34,6 +35,7 @@
 @property (nonatomic, strong) DBMenuTableViewController *menuViewController;
 @property (nonatomic, assign) BOOL showsMenu;
 @property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
+@property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
 
 @end
 
@@ -62,6 +64,7 @@
         sharedInstance = [[DBDebugToolkit alloc] init];
         [sharedInstance registerForNotifications];
         [sharedInstance setupPerformanceToolkit];
+        [sharedInstance setupConsoleOutputCaptor];
     });
     return sharedInstance;
 }
@@ -124,6 +127,17 @@
     self.performanceToolkit = [[DBPerformanceToolkit alloc] initWithWidgetDelegate:self];
 }
 
+#pragma mark - Console output captor
+
++ (void)setCapturingConsoleOutputEnabled:(BOOL)enabled {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    toolkit.consoleOutputCaptor.enabled = enabled;
+}
+
+- (void)setupConsoleOutputCaptor {
+    self.consoleOutputCaptor = [DBConsoleOutputCaptor sharedInstance];
+}
+
 #pragma mark - Showing menu
 
 - (void)showMenu {
@@ -142,6 +156,9 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBMenuTableViewController" bundle:bundle];
         _menuViewController = [storyboard instantiateInitialViewController];
         _menuViewController.performanceToolkit = self.performanceToolkit;
+        _menuViewController.consoleOutputCaptor = self.consoleOutputCaptor;
+        _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
+        _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;
     }
     return _menuViewController;

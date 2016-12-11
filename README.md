@@ -48,6 +48,7 @@ pod "DBDebugToolkit"
 ### Setup
 
 DBDebugToolkit was meant to provide as many useful debugging tools as possible. However, the second equally important goal was to keep the setup seamless for all the iOS projects. A good place for setting up DBDebugToolkit is in the `AppDelegate`:
+[//]: # (Why is it a good place?)
 
 ```swift
 import DBDebugToolkit
@@ -108,7 +109,7 @@ Tapping on the widget opens the performance submenu with tapped section (CPU, me
 
 #### Simulating memory warning
 
-In the memory section you can also find the "Simulate memory warning" button. Use it to test if you handle the warning properly.
+In the memory section you can also find the "Simulate memory warning" button. Use it to check if you handle the warning properly.
 
 ## Author
 

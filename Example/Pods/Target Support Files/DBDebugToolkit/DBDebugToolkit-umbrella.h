@@ -5,6 +5,8 @@
 #import "DBMenuSegmentedControlTableViewCell.h"
 #import "DBMenuSwitchTableViewCell.h"
 #import "DBChartView.h"
+#import "DBConsoleOutputCaptor.h"
+#import "DBConsoleViewController.h"
 #import "DBDebugToolkit.h"
 #import "DBMenuTableViewController.h"
 #import "DBFPSCalculator.h"

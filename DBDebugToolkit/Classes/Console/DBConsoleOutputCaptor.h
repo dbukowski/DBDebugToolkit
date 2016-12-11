@@ -20,26 +20,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-// https://github.com/Specta/Specta
+#import <Foundation/Foundation.h>
 
-SpecBegin(InitialSpecs)
+@class DBConsoleOutputCaptor;
 
-describe(@"these will pass", ^{
-    
-    it(@"can do maths", ^{
-        expect(1).beLessThan(23);
-    });
-    
-    it(@"can read", ^{
-        expect(@"team").toNot.contain(@"I");
-    });
-    
-    it(@"will wait and succeed", ^{
-        waitUntil(^(DoneCallback done) {
-            done();
-        });
-    });
-});
+@protocol DBConsoleOutputCaptorDelegate <NSObject>
 
-SpecEnd
+- (void)consoleOutputCaptorDidUpdateOutput:(DBConsoleOutputCaptor *)consoleOutputCaptor;
+- (void)consoleOutputCaptor:(DBConsoleOutputCaptor *)consoleOutputCaptor didSetEnabled:(BOOL)enabled;
 
+@end
+
+@interface DBConsoleOutputCaptor : NSObject
+
++ (instancetype)sharedInstance;
+
+@property (nonatomic, weak) id <DBConsoleOutputCaptorDelegate> delegate;
+
+@property (nonatomic, readonly) NSString *consoleOutput;
+
+@property (nonatomic, assign) BOOL enabled;
+
+- (void)clearConsoleOutput;
+
+@end

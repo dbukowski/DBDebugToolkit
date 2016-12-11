@@ -20,26 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-// https://github.com/Specta/Specta
+#import <Foundation/Foundation.h>
 
-SpecBegin(InitialSpecs)
+@interface DBDeviceInfoProvider : NSObject
 
-describe(@"these will pass", ^{
-    
-    it(@"can do maths", ^{
-        expect(1).beLessThan(23);
-    });
-    
-    it(@"can read", ^{
-        expect(@"team").toNot.contain(@"I");
-    });
-    
-    it(@"will wait and succeed", ^{
-        waitUntil(^(DoneCallback done) {
-            done();
-        });
-    });
-});
+- (NSString *)deviceModel;
 
-SpecEnd
+- (NSString *)systemVersion;
 
+@end

@@ -44,4 +44,6 @@
  */
 + (void)setupWithTriggers:(NSArray <id <DBDebugToolkitTrigger>> *)triggers;
 
++ (void)setCapturingConsoleOutputEnabled:(BOOL)enabled;
+
 @end

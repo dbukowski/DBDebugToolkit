@@ -23,6 +23,7 @@
 #import "DBMenuTableViewController.h"
 #import "DBPerformanceTableViewController.h"
 #import "NSBundle+DBDebugToolkit.h"
+#import "DBConsoleViewController.h"
 
 @interface DBMenuTableViewController ()
 
@@ -54,7 +55,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
+    if (indexPath.row == 2) {
         // Open application settings.
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -64,11 +65,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appName = [infoDictionary objectForKey:(NSString *)kCFBundleNameKey];
-    NSString *buildVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    NSString *buildNumber = [infoDictionary objectForKey:@"CFBundleVersion"];
-    return [NSString stringWithFormat:@"%@, v. %@ (%@)", appName, buildVersion, buildNumber];
+    return [self.buildInfoProvider buildInfoString];
 }
 
 
@@ -79,6 +76,11 @@
     if ([destinationViewController isKindOfClass:[DBPerformanceTableViewController class]]) {
         DBPerformanceTableViewController *performanceTableViewController = (DBPerformanceTableViewController *)destinationViewController;
         performanceTableViewController.performanceToolkit = self.performanceToolkit;
+    } else if ([destinationViewController isKindOfClass:[DBConsoleViewController class]]) {
+        DBConsoleViewController *consoleViewController = (DBConsoleViewController *)destinationViewController;
+        consoleViewController.consoleOutputCaptor = self.consoleOutputCaptor;
+        consoleViewController.buildInfoProvider = self.buildInfoProvider;
+        consoleViewController.deviceInfoProvider = self.deviceInfoProvider;
     }
 }
 
