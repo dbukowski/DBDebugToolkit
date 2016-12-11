@@ -41,6 +41,11 @@
     [self updateShowingConsole];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self scrollToBottom];
+}
+
 - (void)dealloc {
     [self.mailComposeViewController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -49,10 +54,14 @@
     CGSize contentSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, DBL_MAX)];
     BOOL shouldScrollToBottom = -self.textView.contentOffset.y + contentSize.height <= self.textView.frame.size.height + DBL_EPSILON;
     self.textView.text = self.consoleOutputCaptor.consoleOutput;
-    CGSize newContentSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, DBL_MAX)];
     if (shouldScrollToBottom) {
-        self.textView.contentOffset = CGPointMake(0, MAX(newContentSize.height - self.textView.frame.size.height, 0));
+        [self scrollToBottom];
     }
+}
+
+- (void)scrollToBottom {
+    CGSize contentSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, DBL_MAX)];
+    self.textView.contentOffset = CGPointMake(0, MAX(contentSize.height - self.textView.frame.size.height, 0));
 }
 
 - (void)updateShowingConsole {

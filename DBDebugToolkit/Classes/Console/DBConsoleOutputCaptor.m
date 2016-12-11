@@ -22,6 +22,8 @@
 
 #import "DBConsoleOutputCaptor.h"
 
+__strong static NSThread *stderrReadingThread = nil;
+
 typedef int File_Writer_t(void *, const char *, int);
 
 @interface DBConsoleOutputCaptor ()
@@ -66,7 +68,7 @@ typedef int File_Writer_t(void *, const char *, int);
 #pragma mark - Capturing console output
 
 - (void)startCapturingConsoleOutput {
-    [self startCapturingStderr];
+    [self performSelector:@selector(startCapturingStderr) onThread:stderrReadingThread withObject:nil waitUntilDone:NO];
     [self startCapturingStdout];
 }
 
@@ -76,8 +78,8 @@ typedef int File_Writer_t(void *, const char *, int);
 }
 
 - (void)appendConsoleOutput:(NSString *)consoleOutput {
-    self.consoleOutput = [self.consoleOutput stringByAppendingString:consoleOutput];
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.consoleOutput = [self.consoleOutput stringByAppendingString:consoleOutput];
         [self.delegate consoleOutputCaptorDidUpdateOutput:self];
     });
 }
@@ -93,6 +95,23 @@ typedef int File_Writer_t(void *, const char *, int);
             [self.delegate consoleOutputCaptorDidUpdateOutput:self];
         }
         [self.delegate consoleOutputCaptor:self didSetEnabled:enabled];
+    }
+}
+
+#pragma mark - Stderr reading thread
+
++ (void)load {
+    stderrReadingThread = [[NSThread alloc] initWithTarget:self selector:@selector(runStderrReadingThread) object:nil];
+    [stderrReadingThread start];
+}
+
++ (void)runStderrReadingThread {
+    @autoreleasepool {
+        [[NSThread currentThread] setName:@"DBDebugToolkit stderr reading thread"];
+        
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addPort:[NSPort port] forMode:NSDefaultRunLoopMode];
+        [runLoop run];
     }
 }
 

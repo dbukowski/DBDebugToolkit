@@ -8,7 +8,7 @@
 
 #import "DBViewController.h"
 
-@interface DBViewController ()
+@interface DBViewController () <UIScrollViewDelegate>
 
 @end
 
@@ -24,6 +24,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    fprintf(stderr, "fprintf to stderr: %lf\n", scrollView.contentOffset.y);
+    fprintf(stdout, "fprintf to stdout: %lf\n", scrollView.contentOffset.y);
+    NSLog(@"NSLog: %lf", scrollView.contentOffset.y);
 }
 
 @end
