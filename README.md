@@ -22,6 +22,8 @@ DBDebugToolkit is a debugging library written in Objective-C.
 - [x] Memory usage (current, max, chart)
 - [x] FPS (current, min, chart)
 - [x] Widget displaying current CPU usage, memory usage and FPS that stays on top of the screen
+- [x] Displaying console output in text view
+- [x] Sending console output by email with device and system information
 - [x] Simulating memory warning
 - [x] Opening application settings
 - [x] Showing version & build number
@@ -110,6 +112,28 @@ Tapping on the widget opens the performance submenu with tapped section (CPU, me
 #### Simulating memory warning
 
 In the memory section you can also find the "Simulate memory warning" button. Use it to check if you handle the warning properly.
+
+### Console
+
+DBDebugToolkit displays console output inside a UITextView. The text view will be automatically scrolled down to display the new output, unless you are currently reading older entries above.
+
+[//]: # (Insert horizontal console updating gif)
+
+The captured console output can be easily shared by email. The share button will open a mail compose view controller with prefilled subject containing build information and body containing device and system information and the console output.
+
+[//]: # (Insert horizontal sharing gif)
+
+**Warning!** Capturing both stderr and stdout is very complicated. Stderr and stdout could be both redirected to a file that would be displayed in the text view. However, that data should be redirected back to stderr and stdout, so that you could for example see it in the console. Unfortunately it would be impossible to distinguish which data came from stderr and which came from stdout, so everything would be redirected to one of them. DBDebugToolkit is meant to be noninvasive, so this solution was unacceptable. Instead, stdout and stderr are observed in the background. The only drawback is that if you would have a loop sending data alternately to stdout and stderr you could notice a slight change in the received data order. If for some reason it is not acceptable in your project you can disable console output capturing:
+
+```swift
+import DBDebugToolkit
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    DBDebugToolkit.setup()
+    DBDebugToolkit.setCapturingConsoleOutputEnabled(false)
+    return true
+}
+```
 
 ## Author
 
