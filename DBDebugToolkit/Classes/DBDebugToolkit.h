@@ -44,6 +44,11 @@
  */
 + (void)setupWithTriggers:(NSArray <id <DBDebugToolkitTrigger>> *)triggers;
 
+/**
+ Enables or disables console output capturing, which by default is enabled.
+ 
+ @param enabled Determines whether console output capturing should be enabled or disabled.
+ */
 + (void)setCapturingConsoleOutputEnabled:(BOOL)enabled;
 
 @end

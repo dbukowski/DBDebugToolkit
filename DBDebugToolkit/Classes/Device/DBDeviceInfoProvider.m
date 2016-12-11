@@ -23,9 +23,10 @@
 #import "DBDeviceInfoProvider.h"
 #import <sys/utsname.h>
 
-
 @implementation DBDeviceInfoProvider
 
+// Based on the list provided in https://github.com/dennisweissmann/DeviceKit
+// DeviceKit is a value-type replacement of UIDevice created by Dennis Weissmann.
 - (NSString *)deviceModel {
     struct utsname systemInfo;
     uname(&systemInfo);

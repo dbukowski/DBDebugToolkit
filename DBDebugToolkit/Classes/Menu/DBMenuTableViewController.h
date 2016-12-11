@@ -53,14 +53,23 @@
 @property (nonatomic, weak) id <DBMenuTableViewControllerDelegate> delegate;
 
 /**
- `DBPerformanceToolkitz instance that will be passed on.
+ `DBPerformanceToolkit` instance that will be passed on.
  */
 @property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
 
+/**
+ `DBConsoleOutputCaptor` instance that will be passed on.
+ */
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
 
+/**
+ `DBBuildInfoProvider` instance that will provide data for section header.
+ */
 @property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
+/**
+ `DBDeviceInfoProvider` instance that will be passed on.
+ */
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
 
 /**

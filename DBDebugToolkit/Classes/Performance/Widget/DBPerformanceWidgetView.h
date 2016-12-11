@@ -55,16 +55,16 @@
 /**
  An outlet to the label displaying current CPU usage.
  */
-@property (strong, nonatomic) IBOutlet UILabel *cpuValueLabel;
+@property (nonatomic, strong) IBOutlet UILabel *cpuValueLabel;
 
 /**
  An outlet to the label displaying current memory usage.
  */
-@property (strong, nonatomic) IBOutlet UILabel *memoryValueLabel;
+@property (nonatomic, strong) IBOutlet UILabel *memoryValueLabel;
 
 /**
  An outlet to the label displaying current frames per second value.
  */
-@property (strong, nonatomic) IBOutlet UILabel *fpsValueLabel;
+@property (nonatomic, strong) IBOutlet UILabel *fpsValueLabel;
 
 @end

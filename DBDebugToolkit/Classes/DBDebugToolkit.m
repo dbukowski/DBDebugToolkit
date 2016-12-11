@@ -129,13 +129,13 @@
 
 #pragma mark - Console output captor
 
+- (void)setupConsoleOutputCaptor {
+    self.consoleOutputCaptor = [DBConsoleOutputCaptor sharedInstance];
+}
+
 + (void)setCapturingConsoleOutputEnabled:(BOOL)enabled {
     DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
     toolkit.consoleOutputCaptor.enabled = enabled;
-}
-
-- (void)setupConsoleOutputCaptor {
-    self.consoleOutputCaptor = [DBConsoleOutputCaptor sharedInstance];
 }
 
 #pragma mark - Showing menu

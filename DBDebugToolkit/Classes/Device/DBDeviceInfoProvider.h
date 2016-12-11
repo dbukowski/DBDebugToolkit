@@ -22,10 +22,19 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ `DBDeviceInfoProvider` provides helper methods returning information about the device.
+ */
 @interface DBDeviceInfoProvider : NSObject
 
+/**
+ Returns the device model string, e.g. "iPhone 7 Plus".
+ */
 - (NSString *)deviceModel;
 
+/**
+ Returns the system version string, e.g. "iOS 10.0.2".
+ */
 - (NSString *)systemVersion;
 
 @end

@@ -25,12 +25,25 @@
 #import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
 
+/**
+ `DBConsoleViewController` is a view controller that presents the captured console output in a text view.
+ It also has two buttons on the navigation bar. One clears the captured output and the other send the output by email  along with the device information.
+ */
 @interface DBConsoleViewController : UIViewController
 
+/**
+ `DBConsoleOutputCaptor` instance that will provide data displayed in a text view.
+ */
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
 
+/**
+ `DBBuildInfoProvider` instance providing build information displayed in the email subject.
+ */
 @property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
+/**
+ `DBDeviceInfoProvider` instance providing device information displayed in the email body.
+ */
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
 
 @end

@@ -25,9 +25,10 @@
 
 @interface DBConsoleViewController () <DBConsoleOutputCaptorDelegate, MFMailComposeViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextView *textView;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *clearBarButtonItem;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *sendBarButtonItem;
+@property (nonatomic, strong) IBOutlet UITextView *textView;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *clearBarButtonItem;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *sendBarButtonItem;
+@property (nonatomic, strong) MFMailComposeViewController *mailComposeViewController;
 
 @end
 
@@ -38,6 +39,10 @@
     self.consoleOutputCaptor.delegate = self;
     [self reloadConsole];
     [self updateShowingConsole];
+}
+
+- (void)dealloc {
+    [self.mailComposeViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)reloadConsole {
@@ -59,16 +64,16 @@
 #pragma mark - Sending logs
 
 - (IBAction)sendButtonAction:(id)sender {
-    MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
-    mailComposeViewController.mailComposeDelegate = self;
-    [mailComposeViewController setSubject:[self consoleOutputMailSubject]];
-    [mailComposeViewController setMessageBody:[self consoleOutputMailHTMLBody] isHTML:YES];
+    self.mailComposeViewController = [[MFMailComposeViewController alloc] init];
+    self.mailComposeViewController.mailComposeDelegate = self;
+    [self.mailComposeViewController setSubject:[self consoleOutputMailSubject]];
+    [self.mailComposeViewController setMessageBody:[self consoleOutputMailHTMLBody] isHTML:YES];
     
-    [self presentViewController:mailComposeViewController animated:YES completion:NULL];
+    [self presentViewController:self.mailComposeViewController animated:YES completion:NULL];
 }
 
 - (NSString *)consoleOutputMailSubject {
-    return [NSString stringWithFormat:@"%@ - Console Output", [self.buildInfoProvider buildInfoString]];
+    return [NSString stringWithFormat:@"%@ - console output", [self.buildInfoProvider buildInfoString]];
 }
 
 - (NSString *)consoleOutputMailHTMLBody {

@@ -52,7 +52,7 @@
 /**
  An outlet to `UISegmentedControl` instance.
  */
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
 
 /**
  Configures the cell with segment titles and the selected segment index.

@@ -52,11 +52,11 @@
 /**
  An outlet to `UILabel` instance displaying the title of the value changed with the switch.
  */
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 
 /**
  An outlet to `UISwitch` instance.
  */
-@property (strong, nonatomic) IBOutlet UISwitch *valueSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *valueSwitch;
 
 @end

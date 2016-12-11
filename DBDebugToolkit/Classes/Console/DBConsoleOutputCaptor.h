@@ -24,23 +24,56 @@
 
 @class DBConsoleOutputCaptor;
 
+/**
+ A protocol used for informing about changes in the captured output or in the captor state.
+ */
 @protocol DBConsoleOutputCaptorDelegate <NSObject>
 
+/**
+ Informs the delegate that new console output is available.
+ 
+ @param consoleOutputCaptor The captor that updated its console output.
+ */
 - (void)consoleOutputCaptorDidUpdateOutput:(DBConsoleOutputCaptor *)consoleOutputCaptor;
+
+/**
+ Informs the delegate that the captor changed its enabled flag.
+ 
+ @param consoleOutputCaptor The captor that changed its enabled flag.
+ @param enabled The new value of enabled flag.
+ */
 - (void)consoleOutputCaptor:(DBConsoleOutputCaptor *)consoleOutputCaptor didSetEnabled:(BOOL)enabled;
 
 @end
 
+/**
+ `DBConsoleOutputCaptor` is a singleton responsible for capturing data from stdout and stderr.
+ */
 @interface DBConsoleOutputCaptor : NSObject
 
+/**
+ Returns the singleton instance.
+ */
 + (instancetype)sharedInstance;
 
+/**
+ Delegate that will be informed about changes in the available data or in the enabled flag value. It needs to conform to `DBConsoleOutputCaptorDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBConsoleOutputCaptorDelegate> delegate;
 
+/**
+ `NSString` object containing the captured console output.
+ */
 @property (nonatomic, readonly) NSString *consoleOutput;
 
+/**
+ Boolean variable determining whether the console output capturing is enabled or not. It is true by default.
+ */
 @property (nonatomic, assign) BOOL enabled;
 
+/**
+ Clears the captured console output.
+ */
 - (void)clearConsoleOutput;
 
 @end

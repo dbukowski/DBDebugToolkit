@@ -31,6 +31,6 @@
 /**
  An outlet to the `DBChartView` instance.
  */
-@property (strong, nonatomic) IBOutlet DBChartView *chartView;
+@property (nonatomic, strong) IBOutlet DBChartView *chartView;
 
 @end

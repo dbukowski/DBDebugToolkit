@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+#import "DBBuildInfoProvider.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBMenuChartTableViewCell.h"
 #import "DBMenuSegmentedControlTableViewCell.h"
@@ -8,6 +9,7 @@
 #import "DBConsoleOutputCaptor.h"
 #import "DBConsoleViewController.h"
 #import "DBDebugToolkit.h"
+#import "DBDeviceInfoProvider.h"
 #import "DBMenuTableViewController.h"
 #import "DBFPSCalculator.h"
 #import "DBPerformanceSection.h"
