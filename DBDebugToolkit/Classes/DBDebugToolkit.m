@@ -28,6 +28,7 @@
 #import "DBPerformanceToolkit.h"
 #import "DBPerformanceTableViewController.h"
 #import "DBConsoleOutputCaptor.h"
+#import "DBNetworkToolkit.h"
 
 @interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
@@ -36,6 +37,7 @@
 @property (nonatomic, assign) BOOL showsMenu;
 @property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
+@property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
 
 @end
 
@@ -65,6 +67,7 @@
         [sharedInstance registerForNotifications];
         [sharedInstance setupPerformanceToolkit];
         [sharedInstance setupConsoleOutputCaptor];
+        [sharedInstance setupNetworkToolkit];
     });
     return sharedInstance;
 }
@@ -136,6 +139,13 @@
 + (void)setCapturingConsoleOutputEnabled:(BOOL)enabled {
     DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
     toolkit.consoleOutputCaptor.enabled = enabled;
+}
+
+#pragma mark - Network toolkit
+
+- (void)setupNetworkToolkit {
+    self.networkToolkit = [DBNetworkToolkit sharedInstance];
+    self.networkToolkit.loggingEnabled = YES;
 }
 
 #pragma mark - Showing menu

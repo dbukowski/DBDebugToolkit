@@ -155,6 +155,14 @@
 		E0CE8F4AFEACF87948F2504741AFCF48 /* Specta.h in Headers */ = {isa = PBXBuildFile; fileRef = D61BC75AB795DFB7AE9CF80D79C1B530 /* Specta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EC4532663CA75DE5BD00CB0A56814D /* Expecta.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F9EE98E21A0C637A4E0FE3B6F402DAD /* Expecta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2ABCEA51005EB743CFB61F6BAB00997 /* DBPerformanceTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 91BC72A1D6240CDDA55946F8C6394F6F /* DBPerformanceTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E504337B1E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = E50433791E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.h */; };
+		E504337C1E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = E504337A1E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.m */; };
+		E5B131191E0B0DD200969D04 /* DBURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B131171E0B0DD200969D04 /* DBURLProtocol.h */; };
+		E5B1311A1E0B0DD200969D04 /* DBURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B131181E0B0DD200969D04 /* DBURLProtocol.m */; };
+		E5B1311D1E0B0DE400969D04 /* DBNetworkToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1311B1E0B0DE400969D04 /* DBNetworkToolkit.h */; };
+		E5B1311E1E0B0DE400969D04 /* DBNetworkToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1311C1E0B0DE400969D04 /* DBNetworkToolkit.m */; };
+		E5B131211E0B2CAB00969D04 /* DBRequestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1311F1E0B2CAB00969D04 /* DBRequestModel.h */; };
+		E5B131221E0B2CAB00969D04 /* DBRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B131201E0B2CAB00969D04 /* DBRequestModel.m */; };
 		E735386085CE344F6A01178CF4763852 /* EXPMatchers+beNil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A19FC30FAE97EDA655018A6AD2D54F /* EXPMatchers+beNil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE47E5601D15C3C5BA5C5ECC61160EFB /* Pods-DBDebugToolkit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B138B82C8B1ED05CFD275BDCBC72C829 /* Pods-DBDebugToolkit_Example-dummy.m */; };
 		EF6497EE123F6BC0C1B09717437C5908 /* EXPUnsupportedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E64EE1FA2E988E166397F7C5FFFBEBB6 /* EXPUnsupportedObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -381,6 +389,14 @@
 		E2794845A607B49204328076F000D0DF /* Specta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B1331DF7A02A3968D761A9CAA6E586 /* DBDeviceInfoProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBDeviceInfoProvider.h; sourceTree = "<group>"; };
 		E4286F5B187014B00F18766782F7018D /* SPTExampleGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTExampleGroup.h; path = Specta/Specta/SPTExampleGroup.h; sourceTree = "<group>"; };
+		E50433791E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionConfiguration+DBDebugToolkit.h"; sourceTree = "<group>"; };
+		E504337A1E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionConfiguration+DBDebugToolkit.m"; sourceTree = "<group>"; };
+		E5B131171E0B0DD200969D04 /* DBURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBURLProtocol.h; sourceTree = "<group>"; };
+		E5B131181E0B0DD200969D04 /* DBURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBURLProtocol.m; sourceTree = "<group>"; };
+		E5B1311B1E0B0DE400969D04 /* DBNetworkToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBNetworkToolkit.h; sourceTree = "<group>"; };
+		E5B1311C1E0B0DE400969D04 /* DBNetworkToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBNetworkToolkit.m; sourceTree = "<group>"; };
+		E5B1311F1E0B2CAB00969D04 /* DBRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestModel.h; sourceTree = "<group>"; };
+		E5B131201E0B2CAB00969D04 /* DBRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestModel.m; sourceTree = "<group>"; };
 		E64EE1FA2E988E166397F7C5FFFBEBB6 /* EXPUnsupportedObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXPUnsupportedObject.m; path = Expecta/EXPUnsupportedObject.m; sourceTree = "<group>"; };
 		E74421E2A2D93E05D103CD38F9E3A52A /* DBPerformanceToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBPerformanceToolkit.m; sourceTree = "<group>"; };
 		E8899DDCDB159906296A77EA9F670B8C /* EXPDoubleTuple.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXPDoubleTuple.m; path = Expecta/EXPDoubleTuple.m; sourceTree = "<group>"; };
@@ -540,6 +556,7 @@
 		423471A33B13A68441C28AABC7F79B55 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E5827EBD1DFF73E1005B0A68 /* Network */,
 				8F667924E4382921DC650B3E60E43BD7 /* DBDebugToolkit.h */,
 				F9520919F85A8B31CE443AADD904ADF6 /* DBDebugToolkit.m */,
 				2636980378010A57877EB46AEC7BBCB9 /* BuildInfo */,
@@ -617,6 +634,8 @@
 			children = (
 				6188E914ECF6781CF5E198B38B56A7F7 /* NSBundle+DBDebugToolkit.h */,
 				4002CB6ED8E585669FF2A887CD4848A6 /* NSBundle+DBDebugToolkit.m */,
+				E50433791E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.h */,
+				E504337A1E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -878,6 +897,19 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		E5827EBD1DFF73E1005B0A68 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E5B131171E0B0DD200969D04 /* DBURLProtocol.h */,
+				E5B131181E0B0DD200969D04 /* DBURLProtocol.m */,
+				E5B1311B1E0B0DE400969D04 /* DBNetworkToolkit.h */,
+				E5B1311C1E0B0DE400969D04 /* DBNetworkToolkit.m */,
+				E5B1311F1E0B2CAB00969D04 /* DBRequestModel.h */,
+				E5B131201E0B2CAB00969D04 /* DBRequestModel.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		E80352861C440E06B3AF7B1E876D0E4B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,16 +1045,20 @@
 				A3AF841182CCC656FEE84BF6467C097A /* DBChartView.h in Headers */,
 				07A2934116691BBEE44C271A9C745E9D /* DBConsoleOutputCaptor.h in Headers */,
 				0E0062EDC593261B84621A28AF3B29E8 /* DBConsoleViewController.h in Headers */,
+				E5B131191E0B0DD200969D04 /* DBURLProtocol.h in Headers */,
 				956F26A89E7240C99E3CB562C67FE325 /* DBDebugToolkit-umbrella.h in Headers */,
 				98B8BCE8FB6353AB36881E767350BBD1 /* DBDebugToolkit.h in Headers */,
+				E504337B1E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.h in Headers */,
 				5D44741B0D890F1C62D4FF5B6FF882E1 /* DBDebugToolkitTrigger.h in Headers */,
 				69705882A0BCA8555B5888C37E0CBF1A /* DBDebugToolkitTriggerDelegate.h in Headers */,
 				DBFB805FBAAEB8C1E6D3D01E86FF8C43 /* DBDeviceInfoProvider.h in Headers */,
 				B2A689BCFF64130F1BC21072F7438AB0 /* DBFPSCalculator.h in Headers */,
+				E5B1311D1E0B0DE400969D04 /* DBNetworkToolkit.h in Headers */,
 				97AB0231AB08246BAFCD25ECB9EADDDE /* DBLongPressTrigger.h in Headers */,
 				95DDEC277BFB07C3509333B8BD04D77E /* DBMenuChartTableViewCell.h in Headers */,
 				088C36B04876DB6572DE63D070A529B1 /* DBMenuSegmentedControlTableViewCell.h in Headers */,
 				18E1D51536B1FA8A337C655275AA202C /* DBMenuSwitchTableViewCell.h in Headers */,
+				E5B131211E0B2CAB00969D04 /* DBRequestModel.h in Headers */,
 				F4505ED322F4D15F9DD5ADC84549B428 /* DBMenuTableViewController.h in Headers */,
 				CEEDB57A80DA0B96DDB12AA90D045C4A /* DBPerformanceSection.h in Headers */,
 				E2ABCEA51005EB743CFB61F6BAB00997 /* DBPerformanceTableViewController.h in Headers */,
@@ -1283,6 +1319,8 @@
 			files = (
 				A9605D60E5224E10A675CE5D0B53CC5C /* DBBuildInfoProvider.m in Sources */,
 				6A454F078D0B0F655B9FAEEED004746D /* DBChartView.m in Sources */,
+				E5B1311E1E0B0DE400969D04 /* DBNetworkToolkit.m in Sources */,
+				E5B131221E0B2CAB00969D04 /* DBRequestModel.m in Sources */,
 				90127D6DDA6C1EE34F3AE5FD9880F2D8 /* DBConsoleOutputCaptor.m in Sources */,
 				D5E7601318377A7F16F8B0235BAED0FC /* DBConsoleViewController.m in Sources */,
 				8C1A1F84C73656F8088F28D667AC1FEC /* DBDebugToolkit-dummy.m in Sources */,
@@ -1292,6 +1330,7 @@
 				9FADC81A844D67BE1BD303D7D33A2FC1 /* DBLongPressTrigger.m in Sources */,
 				C874250FB04BBABCF11977B9160A5387 /* DBMenuChartTableViewCell.m in Sources */,
 				7DBC272A50E0EE555297D975116051B3 /* DBMenuSegmentedControlTableViewCell.m in Sources */,
+				E5B1311A1E0B0DD200969D04 /* DBURLProtocol.m in Sources */,
 				A95C276EE636FB8A4CB2B8358C151817 /* DBMenuSwitchTableViewCell.m in Sources */,
 				671314346E12F50F4938A84AF3BBBAD3 /* DBMenuTableViewController.m in Sources */,
 				F2042F7E5F37A97F472AFD2E7D26C73D /* DBPerformanceTableViewController.m in Sources */,
@@ -1301,6 +1340,7 @@
 				FFE3DC098394865A901192F59401E166 /* DBTapTrigger.m in Sources */,
 				ACFABA59FB1A2320312F00FB99E6063C /* NSBundle+DBDebugToolkit.m in Sources */,
 				1A557CC6AEAEA6EDB2B09E5FB50BEE8F /* UIWindow+DBShakeTrigger.m in Sources */,
+				E504337C1E006633009C7C31 /* NSURLSessionConfiguration+DBDebugToolkit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

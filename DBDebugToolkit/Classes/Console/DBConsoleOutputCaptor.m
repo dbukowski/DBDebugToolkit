@@ -45,8 +45,8 @@ typedef int File_Writer_t(void *, const char *, int);
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.consoleOutput = [NSString string];
-        self.enabled = YES;
+        _consoleOutput = [NSString string];
+        _enabled = YES;
     }
     
     return self;
