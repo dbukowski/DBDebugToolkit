@@ -20,17 +20,45 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
 #import "DBRequestOutcome.h"
 
-@interface DBNetworkToolkit : NSObject
+@interface DBRequestOutcome ()
 
-+ (instancetype)sharedInstance;
+@property (nonatomic, strong) NSURLResponse *response;
+@property (nonatomic, strong) NSData *data;
+@property (nonatomic, strong) NSError *error;
 
-- (void)saveRequest:(NSURLRequest *)request;
+@end
 
-- (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request;
+@implementation DBRequestOutcome
 
-@property (nonatomic, assign) BOOL loggingEnabled;
+#pragma mark - Initialization
+
+- (instancetype)initWithResponse:(NSURLResponse *)response data:(NSData *)data {
+    self = [super init];
+    if (self) {
+        _response = response;
+        _data = data;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithError:(NSError *)error {
+    self = [super init];
+    if (self) {
+        _error = error;
+    }
+    
+    return self;
+}
+
++ (instancetype)outcomeWithResponse:(NSURLResponse *)response data:(NSData *)data {
+    return [[self alloc] initWithResponse:response data:data];
+}
+
++ (instancetype)outcomeWithError:(NSError *)error {
+    return [[self alloc] initWithError:error];
+}
 
 @end

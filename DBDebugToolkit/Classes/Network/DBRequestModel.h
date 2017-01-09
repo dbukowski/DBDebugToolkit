@@ -21,13 +21,76 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "DBRequestOutcome.h"
+
+typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
+    DBRequestModelBodySynchronizationStatusNotStarted,
+    DBRequestModelBodySynchronizationStatusStarted,
+    DBRequestModelBodySynchronizationStatusFinished,
+};
 
 @interface DBRequestModel : NSObject
 
-- (instancetype)initWithRequest:(NSURLRequest *)request;
++ (instancetype)requestModelWithRequest:(NSURLRequest *)request;
 
-- (void)saveError:(NSError *)error;
+- (void)saveOutcome:(DBRequestOutcome *)requestOutcome;
 
-- (void)saveResponse:(NSURLResponse *)response data:(NSData *)data;
+///-------------------------
+/// @name Request properties
+///-------------------------
+
+@property (nonatomic, readonly) NSURL *url;
+
+@property (nonatomic, readonly) NSURLRequestCachePolicy cachePolicy;
+
+@property (nonatomic, readonly) NSTimeInterval timeoutInterval;
+
+@property (nonatomic, readonly) NSDate *sendingDate;
+
+@property (nonatomic, readonly) NSString *httpMethod;
+
+@property (nonatomic, readonly) NSDictionary<NSString *, NSString *> *allRequestHTTPHeaderFields;
+
+@property (nonatomic, readonly) NSInteger httpRequestBodyLength;
+
+@property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus requestBodySynchronizationStatus;
+
+- (void)readRequestBodyWithCompletion:(void(^)(NSData *))completion;
+
+///--------------------------
+/// @name Response properties
+///--------------------------
+
+@property (nonatomic, readonly) BOOL finished;
+
+@property (nonatomic, readonly) NSString *MIMEType;
+
+@property (nonatomic, readonly) NSString *textEncodingName;
+
+@property (nonatomic, readonly) NSDate *receivingDate;
+
+@property (nonatomic, readonly) NSTimeInterval duration;
+
+@property (nonatomic, readonly) NSInteger statusCode;
+
+@property (nonatomic, readonly) NSString *localizedStatusCodeString;
+
+@property (nonatomic, readonly) NSDictionary<NSString *, NSString *> *allResponseHTTPHeaderFields;
+
+@property (nonatomic, readonly) NSInteger httpResponseBodyLength;
+
+@property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus responseBodySynchronizationStatus;
+
+- (void)readResponseBodyWithCompletion:(void(^)(NSData *))completion;
+
+@property (nonatomic, readonly) UIImage *thumbnail;
+
+///-----------------------
+/// @name Error properties
+///-----------------------
+
+@property (nonatomic, readonly) NSInteger errorCode;
+
+@property (nonatomic, readonly) NSString *localizedDescription;
 
 @end

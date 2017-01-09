@@ -22,10 +22,12 @@
 
 #import "DBNetworkToolkit.h"
 #import "DBURLProtocol.h"
+#import "DBRequestModel.h"
 
 @interface DBNetworkToolkit ()
 
 @property (nonatomic, copy) NSMutableArray *savedRequests;
+@property (nonatomic, strong) NSMapTable *runningRequestsModels;
 
 @end
 
@@ -37,6 +39,7 @@
     self = [super init];
     if (self) {
         _savedRequests = [NSMutableArray array];
+        _runningRequestsModels = [NSMapTable weakToWeakObjectsMapTable];
     }
     
     return self;
@@ -56,8 +59,18 @@
     [NSURLProtocol registerClass:[DBURLProtocol class]];
 }
 
-- (void)saveRequest:(DBRequestModel *)requestModel {
+#pragma mark - Saving request data
+
+- (void)saveRequest:(NSURLRequest *)request {
+    DBRequestModel *requestModel = [DBRequestModel requestModelWithRequest:request];
+    [self.runningRequestsModels setObject:requestModel forKey:request];
     [self.savedRequests addObject:requestModel];
+}
+
+- (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request {
+    DBRequestModel *requestModel = [self.runningRequestsModels objectForKey:request];
+    [requestModel saveOutcome:requestOutcome];
+    [self.runningRequestsModels removeObjectForKey:request];
 }
 
 @end

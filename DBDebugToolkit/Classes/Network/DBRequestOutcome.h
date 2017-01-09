@@ -21,16 +21,17 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBRequestOutcome.h"
 
-@interface DBNetworkToolkit : NSObject
+@interface DBRequestOutcome : NSObject
 
-+ (instancetype)sharedInstance;
++ (instancetype)outcomeWithResponse:(NSURLResponse *)response data:(NSData *)data;
 
-- (void)saveRequest:(NSURLRequest *)request;
++ (instancetype)outcomeWithError:(NSError *)error;
 
-- (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request;
+@property (nonatomic, readonly) NSURLResponse *response;
 
-@property (nonatomic, assign) BOOL loggingEnabled;
+@property (nonatomic, readonly) NSData *data;
+
+@property (nonatomic, readonly) NSError *error;
 
 @end

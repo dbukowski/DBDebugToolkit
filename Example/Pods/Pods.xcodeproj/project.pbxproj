@@ -73,6 +73,8 @@
 		5FCC739BA14C79BDC1D1093FA086F8FF /* SPTTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF01BA5773CAF9B2F6768A5AEB29504 /* SPTTestSuite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60D8C224D16EB9C6BF72A57BE6FBCF94 /* Pods-DBDebugToolkit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DA555A84E05C1E0293860AB7872B90F1 /* Pods-DBDebugToolkit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65BC31095CCDFC80CBF6BBA843751F23 /* EXPMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A21F86A69C9F106AA92ADFA3CD7C46C /* EXPMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		667687831E22E57C0022DAE1 /* DBRequestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 667687811E22E57C0022DAE1 /* DBRequestModel.h */; };
+		667687841E22E57C0022DAE1 /* DBRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 667687821E22E57C0022DAE1 /* DBRequestModel.m */; };
 		66A27898E989A3FA5C15AA671C4536F0 /* EXPMatchers+beIdenticalTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 279DF95762E948BE7B719A7F673E9E56 /* EXPMatchers+beIdenticalTo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		671314346E12F50F4938A84AF3BBBAD3 /* DBMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EEEC9DFB6446E82D55ECC9CAFA9225 /* DBMenuTableViewController.m */; };
 		67459AD239EF669A365519E06B45DCFE /* EXPExpect.h in Headers */ = {isa = PBXBuildFile; fileRef = 67473F09A0FADF52D476EA88F48CFA54 /* EXPExpect.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -161,8 +163,8 @@
 		E5B1311A1E0B0DD200969D04 /* DBURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B131181E0B0DD200969D04 /* DBURLProtocol.m */; };
 		E5B1311D1E0B0DE400969D04 /* DBNetworkToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1311B1E0B0DE400969D04 /* DBNetworkToolkit.h */; };
 		E5B1311E1E0B0DE400969D04 /* DBNetworkToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1311C1E0B0DE400969D04 /* DBNetworkToolkit.m */; };
-		E5B131211E0B2CAB00969D04 /* DBRequestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1311F1E0B2CAB00969D04 /* DBRequestModel.h */; };
-		E5B131221E0B2CAB00969D04 /* DBRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B131201E0B2CAB00969D04 /* DBRequestModel.m */; };
+		E5B131211E0B2CAB00969D04 /* DBRequestOutcome.h in Headers */ = {isa = PBXBuildFile; fileRef = E5B1311F1E0B2CAB00969D04 /* DBRequestOutcome.h */; };
+		E5B131221E0B2CAB00969D04 /* DBRequestOutcome.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B131201E0B2CAB00969D04 /* DBRequestOutcome.m */; };
 		E735386085CE344F6A01178CF4763852 /* EXPMatchers+beNil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A19FC30FAE97EDA655018A6AD2D54F /* EXPMatchers+beNil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE47E5601D15C3C5BA5C5ECC61160EFB /* Pods-DBDebugToolkit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B138B82C8B1ED05CFD275BDCBC72C829 /* Pods-DBDebugToolkit_Example-dummy.m */; };
 		EF6497EE123F6BC0C1B09717437C5908 /* EXPUnsupportedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E64EE1FA2E988E166397F7C5FFFBEBB6 /* EXPUnsupportedObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -285,6 +287,8 @@
 		62243C2C92B9E9C22B7ED1EFA47422CA /* DBPerformanceWidgetView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBPerformanceWidgetView.m; sourceTree = "<group>"; };
 		62C01A8FB8FDD02BA4B79CC8DF3E4742 /* Pods-DBDebugToolkit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DBDebugToolkit_Example.modulemap"; sourceTree = "<group>"; };
 		65DA28E34D6B2634B0D3632970B9AFD0 /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raiseWithReason.h"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
+		667687811E22E57C0022DAE1 /* DBRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestModel.h; sourceTree = "<group>"; };
+		667687821E22E57C0022DAE1 /* DBRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestModel.m; sourceTree = "<group>"; };
 		67324AA26715C0742B62E59D0AAB374C /* EXPMatchers+beTruthy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beTruthy.h"; path = "Expecta/Matchers/EXPMatchers+beTruthy.h"; sourceTree = "<group>"; };
 		67473F09A0FADF52D476EA88F48CFA54 /* EXPExpect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPExpect.h; path = Expecta/EXPExpect.h; sourceTree = "<group>"; };
 		68F820C46D336F1E6EB733BFC4374C51 /* SPTExample.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTExample.h; path = Specta/Specta/SPTExample.h; sourceTree = "<group>"; };
@@ -395,8 +399,8 @@
 		E5B131181E0B0DD200969D04 /* DBURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBURLProtocol.m; sourceTree = "<group>"; };
 		E5B1311B1E0B0DE400969D04 /* DBNetworkToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBNetworkToolkit.h; sourceTree = "<group>"; };
 		E5B1311C1E0B0DE400969D04 /* DBNetworkToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBNetworkToolkit.m; sourceTree = "<group>"; };
-		E5B1311F1E0B2CAB00969D04 /* DBRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestModel.h; sourceTree = "<group>"; };
-		E5B131201E0B2CAB00969D04 /* DBRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestModel.m; sourceTree = "<group>"; };
+		E5B1311F1E0B2CAB00969D04 /* DBRequestOutcome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestOutcome.h; sourceTree = "<group>"; };
+		E5B131201E0B2CAB00969D04 /* DBRequestOutcome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestOutcome.m; sourceTree = "<group>"; };
 		E64EE1FA2E988E166397F7C5FFFBEBB6 /* EXPUnsupportedObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXPUnsupportedObject.m; path = Expecta/EXPUnsupportedObject.m; sourceTree = "<group>"; };
 		E74421E2A2D93E05D103CD38F9E3A52A /* DBPerformanceToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBPerformanceToolkit.m; sourceTree = "<group>"; };
 		E8899DDCDB159906296A77EA9F670B8C /* EXPDoubleTuple.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXPDoubleTuple.m; path = Expecta/EXPDoubleTuple.m; sourceTree = "<group>"; };
@@ -904,8 +908,10 @@
 				E5B131181E0B0DD200969D04 /* DBURLProtocol.m */,
 				E5B1311B1E0B0DE400969D04 /* DBNetworkToolkit.h */,
 				E5B1311C1E0B0DE400969D04 /* DBNetworkToolkit.m */,
-				E5B1311F1E0B2CAB00969D04 /* DBRequestModel.h */,
-				E5B131201E0B2CAB00969D04 /* DBRequestModel.m */,
+				E5B1311F1E0B2CAB00969D04 /* DBRequestOutcome.h */,
+				E5B131201E0B2CAB00969D04 /* DBRequestOutcome.m */,
+				667687811E22E57C0022DAE1 /* DBRequestModel.h */,
+				667687821E22E57C0022DAE1 /* DBRequestModel.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1058,7 +1064,8 @@
 				95DDEC277BFB07C3509333B8BD04D77E /* DBMenuChartTableViewCell.h in Headers */,
 				088C36B04876DB6572DE63D070A529B1 /* DBMenuSegmentedControlTableViewCell.h in Headers */,
 				18E1D51536B1FA8A337C655275AA202C /* DBMenuSwitchTableViewCell.h in Headers */,
-				E5B131211E0B2CAB00969D04 /* DBRequestModel.h in Headers */,
+				E5B131211E0B2CAB00969D04 /* DBRequestOutcome.h in Headers */,
+				667687831E22E57C0022DAE1 /* DBRequestModel.h in Headers */,
 				F4505ED322F4D15F9DD5ADC84549B428 /* DBMenuTableViewController.h in Headers */,
 				CEEDB57A80DA0B96DDB12AA90D045C4A /* DBPerformanceSection.h in Headers */,
 				E2ABCEA51005EB743CFB61F6BAB00997 /* DBPerformanceTableViewController.h in Headers */,
@@ -1320,9 +1327,10 @@
 				A9605D60E5224E10A675CE5D0B53CC5C /* DBBuildInfoProvider.m in Sources */,
 				6A454F078D0B0F655B9FAEEED004746D /* DBChartView.m in Sources */,
 				E5B1311E1E0B0DE400969D04 /* DBNetworkToolkit.m in Sources */,
-				E5B131221E0B2CAB00969D04 /* DBRequestModel.m in Sources */,
+				E5B131221E0B2CAB00969D04 /* DBRequestOutcome.m in Sources */,
 				90127D6DDA6C1EE34F3AE5FD9880F2D8 /* DBConsoleOutputCaptor.m in Sources */,
 				D5E7601318377A7F16F8B0235BAED0FC /* DBConsoleViewController.m in Sources */,
+				667687841E22E57C0022DAE1 /* DBRequestModel.m in Sources */,
 				8C1A1F84C73656F8088F28D667AC1FEC /* DBDebugToolkit-dummy.m in Sources */,
 				4AD62056222AA46996B30D0CBC2A1FCD /* DBDebugToolkit.m in Sources */,
 				CE2A4E9083DC8CF1FC708F5F030368CA /* DBDeviceInfoProvider.m in Sources */,

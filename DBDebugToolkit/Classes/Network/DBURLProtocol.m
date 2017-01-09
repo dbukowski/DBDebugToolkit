@@ -22,7 +22,7 @@
 
 #import "DBURLProtocol.h"
 #import "DBNetworkToolkit.h"
-#import "DBRequestModel.h"
+#import "DBRequestOutcome.h"
 
 static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
 
@@ -56,7 +56,7 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
 }
 
 - (void)startLoading {
-    DBRequestModel *requestModel = [[DBRequestModel alloc] initWithRequest:self.request];
+    [[DBNetworkToolkit sharedInstance] saveRequest:self.request];
     NSMutableURLRequest *request = [[DBURLProtocol canonicalRequestForRequest:self.request] mutableCopy];
     
     [DBURLProtocol setProperty:@YES forKey:DBURLProtocolHandledKey inRequest:request];
@@ -68,12 +68,10 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
     [[self.urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error != nil) {
-            [requestModel saveError:error];
-            [self finishWithRequestModel:requestModel];
+            [self finishWithOutcome:[DBRequestOutcome outcomeWithError:error]];
             [self.client URLProtocol:self didFailWithError:error];
         } else {
-            [requestModel saveResponse:response data:data];
-            [self finishWithRequestModel:requestModel];
+            [self finishWithOutcome:[DBRequestOutcome outcomeWithResponse:response data:data]];
         }
         
         if (response != nil) {
@@ -92,8 +90,8 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
     
 }
 
-- (void)finishWithRequestModel:(DBRequestModel *)requestModel {
-    [[DBNetworkToolkit sharedInstance] saveRequest:requestModel];
+- (void)finishWithOutcome:(DBRequestOutcome *)requestOutcome {
+    [[DBNetworkToolkit sharedInstance] saveRequestOutcome:requestOutcome forRequest:self.request];
 }
 
 @end
