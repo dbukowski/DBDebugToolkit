@@ -21,18 +21,20 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBRequestOutcome.h"
+#import "DBRequestModel.h"
 
-@interface DBNetworkToolkit : NSObject
+@interface DBRequestDataHandler : NSObject
 
-+ (instancetype)sharedInstance;
++ (instancetype)dataHandlerWithFilename:(NSString *)filename data:(NSData *)data shouldGenerateThumbnail:(BOOL)shouldGenerateThumbnail;
 
-- (NSString *)savedRequestsPath;
+@property (nonatomic, readonly) DBRequestModelBodyType dataType;
 
-- (void)saveRequest:(NSURLRequest *)request;
+@property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus synchronizationStatus;
 
-- (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request;
+@property (nonatomic, readonly) NSInteger dataLength;
 
-@property (nonatomic, assign) BOOL loggingEnabled;
+@property (nonatomic, strong) UIImage *thumbnail;
+
+- (void)readWithCompletion:(void(^)(NSData *))completion;
 
 @end

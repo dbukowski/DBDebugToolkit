@@ -38,8 +38,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _savedRequests = [NSMutableArray array];
-        _runningRequestsModels = [NSMapTable weakToWeakObjectsMapTable];
+        [self resetLoggedData];
     }
     
     return self;
@@ -59,7 +58,38 @@
     [NSURLProtocol registerClass:[DBURLProtocol class]];
 }
 
+#pragma mark - Logging settings 
+
+- (void)setLoggingEnabled:(BOOL)loggingEnabled {
+    _loggingEnabled = loggingEnabled;
+    if (!loggingEnabled) {
+        [self resetLoggedData];
+    }
+}
+
+- (void)resetLoggedData {
+    _savedRequests = [NSMutableArray array];
+    _runningRequestsModels = [NSMapTable weakToWeakObjectsMapTable];
+    [self removeOldSavedRequests];
+}
+
 #pragma mark - Saving request data
+
+- (void)removeOldSavedRequests {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *directory = [self savedRequestsPath];
+    NSError *error = nil;
+    for (NSString *file in [fileManager contentsOfDirectoryAtPath:directory error:&error]) {
+        NSString *filePath = [directory stringByAppendingPathComponent:file];
+        BOOL res = [fileManager removeItemAtPath:filePath error:&error];
+    }
+}
+
+- (NSString *)savedRequestsPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"DBDebugToolkit/Network"];
+}
 
 - (void)saveRequest:(NSURLRequest *)request {
     DBRequestModel *requestModel = [DBRequestModel requestModelWithRequest:request];

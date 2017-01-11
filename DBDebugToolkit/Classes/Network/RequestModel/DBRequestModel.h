@@ -23,6 +23,12 @@
 #import <Foundation/Foundation.h>
 #import "DBRequestOutcome.h"
 
+typedef NS_ENUM(NSUInteger, DBRequestModelBodyType) {
+    DBRequestModelBodyTypeJSON,
+    DBRequestModelBodyTypeImage,
+    DBRequestModelBodyTypeOther,
+};
+
 typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
     DBRequestModelBodySynchronizationStatusNotStarted,
     DBRequestModelBodySynchronizationStatusStarted,
@@ -51,9 +57,9 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 
 @property (nonatomic, readonly) NSDictionary<NSString *, NSString *> *allRequestHTTPHeaderFields;
 
-@property (nonatomic, readonly) NSInteger httpRequestBodyLength;
+@property (nonatomic, readonly) NSInteger requestBodyLength;
 
-@property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus requestBodySynchronizationStatus;
+@property (nonatomic, readonly) DBRequestModelBodyType requestBodyType;
 
 - (void)readRequestBodyWithCompletion:(void(^)(NSData *))completion;
 
@@ -77,9 +83,9 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 
 @property (nonatomic, readonly) NSDictionary<NSString *, NSString *> *allResponseHTTPHeaderFields;
 
-@property (nonatomic, readonly) NSInteger httpResponseBodyLength;
+@property (nonatomic, readonly) NSInteger responseBodyLength;
 
-@property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus responseBodySynchronizationStatus;
+@property (nonatomic, readonly) DBRequestModelBodyType responseBodyType;
 
 - (void)readResponseBodyWithCompletion:(void(^)(NSData *))completion;
 

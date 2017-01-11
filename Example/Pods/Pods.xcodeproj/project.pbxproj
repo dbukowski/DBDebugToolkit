@@ -73,6 +73,8 @@
 		5FCC739BA14C79BDC1D1093FA086F8FF /* SPTTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF01BA5773CAF9B2F6768A5AEB29504 /* SPTTestSuite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60D8C224D16EB9C6BF72A57BE6FBCF94 /* Pods-DBDebugToolkit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DA555A84E05C1E0293860AB7872B90F1 /* Pods-DBDebugToolkit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65BC31095CCDFC80CBF6BBA843751F23 /* EXPMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A21F86A69C9F106AA92ADFA3CD7C46C /* EXPMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66051FD11E26B70800F24D6E /* DBRequestDataHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 66051FCF1E26B70800F24D6E /* DBRequestDataHandler.h */; };
+		66051FD21E26B70800F24D6E /* DBRequestDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 66051FD01E26B70800F24D6E /* DBRequestDataHandler.m */; };
 		667687831E22E57C0022DAE1 /* DBRequestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 667687811E22E57C0022DAE1 /* DBRequestModel.h */; };
 		667687841E22E57C0022DAE1 /* DBRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 667687821E22E57C0022DAE1 /* DBRequestModel.m */; };
 		66A27898E989A3FA5C15AA671C4536F0 /* EXPMatchers+beIdenticalTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 279DF95762E948BE7B719A7F673E9E56 /* EXPMatchers+beIdenticalTo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -287,6 +289,8 @@
 		62243C2C92B9E9C22B7ED1EFA47422CA /* DBPerformanceWidgetView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBPerformanceWidgetView.m; sourceTree = "<group>"; };
 		62C01A8FB8FDD02BA4B79CC8DF3E4742 /* Pods-DBDebugToolkit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DBDebugToolkit_Example.modulemap"; sourceTree = "<group>"; };
 		65DA28E34D6B2634B0D3632970B9AFD0 /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raiseWithReason.h"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
+		66051FCF1E26B70800F24D6E /* DBRequestDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestDataHandler.h; sourceTree = "<group>"; };
+		66051FD01E26B70800F24D6E /* DBRequestDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestDataHandler.m; sourceTree = "<group>"; };
 		667687811E22E57C0022DAE1 /* DBRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestModel.h; sourceTree = "<group>"; };
 		667687821E22E57C0022DAE1 /* DBRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestModel.m; sourceTree = "<group>"; };
 		67324AA26715C0742B62E59D0AAB374C /* EXPMatchers+beTruthy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beTruthy.h"; path = "Expecta/Matchers/EXPMatchers+beTruthy.h"; sourceTree = "<group>"; };
@@ -725,6 +729,19 @@
 			path = Expecta;
 			sourceTree = "<group>";
 		};
+		66051FCC1E26B61300F24D6E /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				667687811E22E57C0022DAE1 /* DBRequestModel.h */,
+				667687821E22E57C0022DAE1 /* DBRequestModel.m */,
+				E5B1311F1E0B2CAB00969D04 /* DBRequestOutcome.h */,
+				E5B131201E0B2CAB00969D04 /* DBRequestOutcome.m */,
+				66051FCF1E26B70800F24D6E /* DBRequestDataHandler.h */,
+				66051FD01E26B70800F24D6E /* DBRequestDataHandler.m */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
 		68D428DCAFA346D6B2D304B825CF6ACA /* Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,14 +921,11 @@
 		E5827EBD1DFF73E1005B0A68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				66051FCC1E26B61300F24D6E /* RequestModel */,
 				E5B131171E0B0DD200969D04 /* DBURLProtocol.h */,
 				E5B131181E0B0DD200969D04 /* DBURLProtocol.m */,
 				E5B1311B1E0B0DE400969D04 /* DBNetworkToolkit.h */,
 				E5B1311C1E0B0DE400969D04 /* DBNetworkToolkit.m */,
-				E5B1311F1E0B2CAB00969D04 /* DBRequestOutcome.h */,
-				E5B131201E0B2CAB00969D04 /* DBRequestOutcome.m */,
-				667687811E22E57C0022DAE1 /* DBRequestModel.h */,
-				667687821E22E57C0022DAE1 /* DBRequestModel.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1075,6 +1089,7 @@
 				9C9B31FCA4710AADF525AEA212A4C95F /* DBTapTrigger.h in Headers */,
 				220351C7A133CCB842FC80BD39FBC63F /* NSBundle+DBDebugToolkit.h in Headers */,
 				150A208E6F2AEF2A93724AD0961985F5 /* UIWindow+DBShakeTrigger.h in Headers */,
+				66051FD11E26B70800F24D6E /* DBRequestDataHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1196,6 +1211,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					92825C341AB9ACF485BD69D1AACF07AD = {
+						LastSwiftMigration = 0820;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1336,6 +1356,7 @@
 				CE2A4E9083DC8CF1FC708F5F030368CA /* DBDeviceInfoProvider.m in Sources */,
 				F313A6991AC0A52E698C562BA40D5ADD /* DBFPSCalculator.m in Sources */,
 				9FADC81A844D67BE1BD303D7D33A2FC1 /* DBLongPressTrigger.m in Sources */,
+				66051FD21E26B70800F24D6E /* DBRequestDataHandler.m in Sources */,
 				C874250FB04BBABCF11977B9160A5387 /* DBMenuChartTableViewCell.m in Sources */,
 				7DBC272A50E0EE555297D975116051B3 /* DBMenuSegmentedControlTableViewCell.m in Sources */,
 				E5B1311A1E0B0DD200969D04 /* DBURLProtocol.m in Sources */,
@@ -1438,6 +1459,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A37059A4EB67656F296F14E1C0DB5DEA /* DBDebugToolkit.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1459,6 +1481,7 @@
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1610,6 +1633,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A37059A4EB67656F296F14E1C0DB5DEA /* DBDebugToolkit.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1631,6 +1655,8 @@
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
