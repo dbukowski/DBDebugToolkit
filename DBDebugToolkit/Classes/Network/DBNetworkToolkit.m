@@ -81,7 +81,7 @@
     NSError *error = nil;
     for (NSString *file in [fileManager contentsOfDirectoryAtPath:directory error:&error]) {
         NSString *filePath = [directory stringByAppendingPathComponent:file];
-        BOOL res = [fileManager removeItemAtPath:filePath error:&error];
+        [fileManager removeItemAtPath:filePath error:&error];
     }
 }
 

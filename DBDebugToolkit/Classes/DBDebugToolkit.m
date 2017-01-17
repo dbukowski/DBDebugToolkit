@@ -134,6 +134,7 @@
 
 - (void)setupConsoleOutputCaptor {
     self.consoleOutputCaptor = [DBConsoleOutputCaptor sharedInstance];
+    self.consoleOutputCaptor.enabled = YES;
 }
 
 + (void)setCapturingConsoleOutputEnabled:(BOOL)enabled {

@@ -94,7 +94,6 @@
 #pragma mark - Saving body
 
 - (NSString *)urlStringByRemovingSchemeFromURL:(NSURL *)url {
-    NSString *urlScheme = url.scheme;
     NSRange dividerRange = [url.absoluteString rangeOfString:@"://"];
     return dividerRange.length == 0 ? url.absoluteString : [url.absoluteString substringFromIndex:NSMaxRange(dividerRange)];
 }

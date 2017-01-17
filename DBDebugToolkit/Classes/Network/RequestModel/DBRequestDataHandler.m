@@ -133,6 +133,7 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
                 strongSelf.synchronizationStatus = DBRequestModelBodySynchronizationStatusFinished;
                 if (strongSelf.readingCompletion) {
                     strongSelf.readingCompletion(data);
+                    strongSelf.readingCompletion = nil;
                 }
             }];
         }];
@@ -141,6 +142,7 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
         self.synchronizationStatus = DBRequestModelBodySynchronizationStatusFinished;
         if (self.readingCompletion) {
             self.readingCompletion(nil);
+            self.readingCompletion = nil;
         }
     }
 }
