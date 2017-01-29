@@ -1,7 +1,10 @@
+#ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#endif
 
 #import "DBBuildInfoProvider.h"
 #import "NSBundle+DBDebugToolkit.h"
+#import "NSURLSessionConfiguration+DBDebugToolkit.h"
 #import "DBMenuChartTableViewCell.h"
 #import "DBMenuSegmentedControlTableViewCell.h"
 #import "DBMenuSwitchTableViewCell.h"
@@ -11,6 +14,12 @@
 #import "DBDebugToolkit.h"
 #import "DBDeviceInfoProvider.h"
 #import "DBMenuTableViewController.h"
+#import "DBNetworkToolkit.h"
+#import "DBNetworkViewController.h"
+#import "DBURLProtocol.h"
+#import "DBRequestDataHandler.h"
+#import "DBRequestModel.h"
+#import "DBRequestOutcome.h"
 #import "DBFPSCalculator.h"
 #import "DBPerformanceSection.h"
 #import "DBPerformanceTableViewController.h"

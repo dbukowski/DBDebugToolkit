@@ -24,6 +24,7 @@
 #import "DBRequestOutcome.h"
 
 typedef NS_ENUM(NSUInteger, DBRequestModelBodyType) {
+    DBRequestModelBodyTypeNotDetermined,
     DBRequestModelBodyTypeJSON,
     DBRequestModelBodyTypeImage,
     DBRequestModelBodyTypeOther,
@@ -35,11 +36,21 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
     DBRequestModelBodySynchronizationStatusFinished,
 };
 
+@class DBRequestModel;
+
+@protocol DBRequestModelDelegate <NSObject>
+
+- (void)requestModelDidFinishSynchronization:(DBRequestModel *)requestModel;
+
+@end
+
 @interface DBRequestModel : NSObject
 
 + (instancetype)requestModelWithRequest:(NSURLRequest *)request;
 
 - (void)saveOutcome:(DBRequestOutcome *)requestOutcome;
+
+@property (nonatomic, weak) id <DBRequestModelDelegate> delegate;
 
 ///-------------------------
 /// @name Request properties
@@ -77,7 +88,7 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 
 @property (nonatomic, readonly) NSTimeInterval duration;
 
-@property (nonatomic, readonly) NSInteger statusCode;
+@property (nonatomic, readonly) NSNumber *statusCode;
 
 @property (nonatomic, readonly) NSString *localizedStatusCodeString;
 
@@ -95,8 +106,10 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 /// @name Error properties
 ///-----------------------
 
+@property (nonatomic, readonly) BOOL didFinishWithError;
+
 @property (nonatomic, readonly) NSInteger errorCode;
 
-@property (nonatomic, readonly) NSString *localizedDescription;
+@property (nonatomic, readonly) NSString *localizedErrorDescription;
 
 @end

@@ -60,7 +60,9 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
     return [savedRequestsPath stringByAppendingPathComponent:self.filename];
 }
 
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+- (UIImage *)imageWithImage:(UIImage *)image scaledToFitSize:(CGSize)maxSize {
+    CGFloat scale = MAX(image.size.width / maxSize.width, image.size.height / maxSize.height);
+    CGSize newSize = CGSizeMake(image.size.width / scale, image.size.height / scale);
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -68,27 +70,17 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
     return newImage;
 }
 
-- (void)generateThumbnailFromData:(NSData *)data withCompletion:(void(^)())completion {
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        UIImage *image = [UIImage imageWithData:data];
-        if (image) {
-            self.thumbnail = [self imageWithImage:image scaledToSize:DBRequestDataHandlerThumbnailSize];
-        }
-        if (completion) {
-            completion();
-        }
-    });
-}
-
-- (void)determineDataTypeWithData:(NSData *)data completion:(void(^)())completion {
+- (void)determineDataTypeWithData:(NSData *)data shouldGenerateThumbnail:(BOOL)shouldGenerateThumbnail completion:(void(^)())completion {
     __weak DBRequestDataHandler *weakSelf = self;
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         DBRequestDataHandler *strongSelf = weakSelf;
         UIImage *image = [UIImage imageWithData:data];
         NSError *error;
         if (image) {
-            strongSelf.thumbnail = [strongSelf imageWithImage:image scaledToSize:CGSizeMake(50, 50)];
             strongSelf.dataType = DBRequestModelBodyTypeImage;
+            if (shouldGenerateThumbnail) {
+                strongSelf.thumbnail = [strongSelf imageWithImage:image scaledToFitSize:CGSizeMake(50, 50)];
+            }
         } else if ([NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error] != nil) {
             strongSelf.dataType = DBRequestModelBodyTypeJSON;
         } else {
@@ -127,10 +119,11 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
     self.synchronizationStatus = DBRequestModelBodySynchronizationStatusStarted;
     if (self.dataLength > 0) {
         __weak DBRequestDataHandler *weakSelf = self;
-        [self determineDataTypeWithData:data completion:^{
+        [self determineDataTypeWithData:data shouldGenerateThumbnail:(BOOL)shouldGenerateThumbnail completion:^{
             [self saveData:data withCompletion:^{
                 DBRequestDataHandler *strongSelf = weakSelf;
                 strongSelf.synchronizationStatus = DBRequestModelBodySynchronizationStatusFinished;
+                [strongSelf.delegate requestDataHandlerDidFinishSynchronization:self];
                 if (strongSelf.readingCompletion) {
                     strongSelf.readingCompletion(data);
                     strongSelf.readingCompletion = nil;

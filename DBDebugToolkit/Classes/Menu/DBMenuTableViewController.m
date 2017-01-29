@@ -24,6 +24,7 @@
 #import "DBPerformanceTableViewController.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBConsoleViewController.h"
+#import "DBNetworkViewController.h"
 
 @interface DBMenuTableViewController ()
 
@@ -55,7 +56,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 2) {
+    if (indexPath.row == 3) {
         // Open application settings.
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -81,6 +82,9 @@
         consoleViewController.consoleOutputCaptor = self.consoleOutputCaptor;
         consoleViewController.buildInfoProvider = self.buildInfoProvider;
         consoleViewController.deviceInfoProvider = self.deviceInfoProvider;
+    } else if ([destinationViewController isKindOfClass:[DBNetworkViewController class]]) {
+        DBNetworkViewController *networkViewController = (DBNetworkViewController *)destinationViewController;
+        networkViewController.networkToolkit = self.networkToolkit;
     }
 }
 

@@ -23,7 +23,7 @@
 #import "DBRequestModel.h"
 #import "DBRequestDataHandler.h"
 
-@interface DBRequestModel ()
+@interface DBRequestModel () <DBRequestDataHandlerDelegate>
 
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, assign) NSURLRequestCachePolicy cachePolicy;
@@ -112,6 +112,7 @@
 
 - (void)saveResponseBody:(NSData *)data {
     self.responseDataHandler = [DBRequestDataHandler dataHandlerWithFilename:[self responseBodyFilename] data:data shouldGenerateThumbnail:YES];
+    self.responseDataHandler.delegate = self;
 }
 
 #pragma mark - Accessing saved body
@@ -159,12 +160,13 @@
     return self.response.textEncodingName;
 }
 
-- (NSInteger)statusCode {
-    return [self httpURLResponse].statusCode;
+- (NSNumber *)statusCode {
+    NSHTTPURLResponse *httpResponse = [self httpURLResponse];
+    return httpResponse == nil ? nil : @(httpResponse.statusCode);
 }
 
 - (NSString *)localizedStatusCodeString {
-    return [NSHTTPURLResponse localizedStringForStatusCode:self.statusCode];
+    return [NSHTTPURLResponse localizedStringForStatusCode:self.statusCode.integerValue];
 }
 
 - (NSDictionary<NSString *, NSString *> *)allResponseHTTPHeaderFields {
@@ -177,12 +179,22 @@
 
 #pragma mark - Error properties
 
+- (BOOL)didFinishWithError {
+    return self.error != nil;
+}
+
 - (NSInteger)errorCode {
     return self.error.code;
 }
 
-- (NSString *)localizedDescription {
+- (NSString *)localizedErrorDescription {
     return self.error.localizedDescription;
+}
+
+#pragma mark - DBRequestDataHandlerDelegate
+
+- (void)requestDataHandlerDidFinishSynchronization:(DBRequestDataHandler *)requestDataHandler {
+    [self.delegate requestModelDidFinishSynchronization:self];
 }
 
 @end

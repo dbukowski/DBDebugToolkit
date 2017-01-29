@@ -23,6 +23,14 @@
 #import <Foundation/Foundation.h>
 #import "DBRequestModel.h"
 
+@class DBRequestDataHandler;
+
+@protocol DBRequestDataHandlerDelegate <NSObject>
+
+- (void)requestDataHandlerDidFinishSynchronization:(DBRequestDataHandler *)requestDataHandler;
+
+@end
+
 @interface DBRequestDataHandler : NSObject
 
 + (instancetype)dataHandlerWithFilename:(NSString *)filename data:(NSData *)data shouldGenerateThumbnail:(BOOL)shouldGenerateThumbnail;
@@ -34,6 +42,8 @@
 @property (nonatomic, readonly) NSInteger dataLength;
 
 @property (nonatomic, strong) UIImage *thumbnail;
+
+@property (nonatomic, weak) id <DBRequestDataHandlerDelegate> delegate;
 
 - (void)readWithCompletion:(void(^)(NSData *))completion;
 

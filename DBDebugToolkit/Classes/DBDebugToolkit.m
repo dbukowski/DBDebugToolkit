@@ -168,6 +168,7 @@
         _menuViewController = [storyboard instantiateInitialViewController];
         _menuViewController.performanceToolkit = self.performanceToolkit;
         _menuViewController.consoleOutputCaptor = self.consoleOutputCaptor;
+        _menuViewController.networkToolkit = self.networkToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;

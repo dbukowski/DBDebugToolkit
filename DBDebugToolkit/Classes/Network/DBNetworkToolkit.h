@@ -23,6 +23,16 @@
 #import <Foundation/Foundation.h>
 #import "DBRequestOutcome.h"
 
+@class DBNetworkToolkit;
+
+@protocol DBNetworkToolkitDelegate <NSObject>
+
+- (void)networkDebugToolkitDidUpdateRequestsList:(DBNetworkToolkit *)networkToolkit;
+- (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didUpdateRequestAtIndex:(NSInteger)index;
+- (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didSetEnabled:(BOOL)enabled;
+
+@end
+
 @interface DBNetworkToolkit : NSObject
 
 + (instancetype)sharedInstance;
@@ -34,5 +44,9 @@
 - (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request;
 
 @property (nonatomic, assign) BOOL loggingEnabled;
+
+@property (nonatomic, weak) id <DBNetworkToolkitDelegate> delegate;
+
+@property (nonatomic, readonly) NSArray *savedRequests;
 
 @end

@@ -24,9 +24,9 @@
 #import "DBURLProtocol.h"
 #import "DBRequestModel.h"
 
-@interface DBNetworkToolkit ()
+@interface DBNetworkToolkit () <DBRequestModelDelegate>
 
-@property (nonatomic, copy) NSMutableArray *savedRequests;
+@property (nonatomic, copy) NSMutableArray *requests;
 @property (nonatomic, strong) NSMapTable *runningRequestsModels;
 
 @end
@@ -65,10 +65,11 @@
     if (!loggingEnabled) {
         [self resetLoggedData];
     }
+    [self.delegate networkDebugToolkit:self didSetEnabled:loggingEnabled];
 }
 
 - (void)resetLoggedData {
-    _savedRequests = [NSMutableArray array];
+    _requests = [NSMutableArray array];
     _runningRequestsModels = [NSMapTable weakToWeakObjectsMapTable];
     [self removeOldSavedRequests];
 }
@@ -93,14 +94,32 @@
 
 - (void)saveRequest:(NSURLRequest *)request {
     DBRequestModel *requestModel = [DBRequestModel requestModelWithRequest:request];
+    requestModel.delegate = self;
     [self.runningRequestsModels setObject:requestModel forKey:request];
-    [self.savedRequests addObject:requestModel];
+    [self.requests addObject:requestModel];
+    [self.delegate networkDebugToolkitDidUpdateRequestsList:self];
 }
 
 - (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request {
     DBRequestModel *requestModel = [self.runningRequestsModels objectForKey:request];
     [requestModel saveOutcome:requestOutcome];
     [self.runningRequestsModels removeObjectForKey:request];
+    [self didUpdateRequestModel:requestModel];
+}
+
+- (NSArray *)savedRequests {
+    return self.requests;
+}
+
+#pragma mark - DBRequestModelDelegate
+
+- (void)requestModelDidFinishSynchronization:(DBRequestModel *)requestModel {
+    [self didUpdateRequestModel:requestModel];
+}
+
+- (void)didUpdateRequestModel:(DBRequestModel *)requestModel {
+    NSInteger requestIndex = [self.requests indexOfObject:requestModel];
+    [self.delegate networkDebugToolkit:self didUpdateRequestAtIndex:requestIndex];
 }
 
 @end

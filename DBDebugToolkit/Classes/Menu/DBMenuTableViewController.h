@@ -25,6 +25,7 @@
 #import "DBConsoleOutputCaptor.h"
 #import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
+#import "DBNetworkToolkit.h"
 
 @class DBMenuTableViewController;
 
@@ -61,6 +62,11 @@
  `DBConsoleOutputCaptor` instance that will be passed on.
  */
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
+
+/**
+ `DBNetworkToolkit` instance that will be passed on.
+ */
+@property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
 
 /**
  `DBBuildInfoProvider` instance that will provide data for section header.
