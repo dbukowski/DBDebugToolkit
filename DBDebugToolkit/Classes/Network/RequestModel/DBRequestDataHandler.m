@@ -79,7 +79,7 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
         if (image) {
             strongSelf.dataType = DBRequestModelBodyTypeImage;
             if (shouldGenerateThumbnail) {
-                strongSelf.thumbnail = [strongSelf imageWithImage:image scaledToFitSize:CGSizeMake(50, 50)];
+                strongSelf.thumbnail = [strongSelf imageWithImage:image scaledToFitSize:DBRequestDataHandlerThumbnailSize];
             }
         } else if ([NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error] != nil) {
             strongSelf.dataType = DBRequestModelBodyTypeJSON;

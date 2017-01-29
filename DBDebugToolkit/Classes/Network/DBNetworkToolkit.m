@@ -64,6 +64,7 @@
     _loggingEnabled = loggingEnabled;
     if (!loggingEnabled) {
         [self resetLoggedData];
+        [self.delegate networkDebugToolkitDidUpdateRequestsList:self];
     }
     [self.delegate networkDebugToolkit:self didSetEnabled:loggingEnabled];
 }

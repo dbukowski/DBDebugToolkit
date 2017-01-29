@@ -9,6 +9,7 @@
 #import "DBNetworkViewController.h"
 #import "DBRequestTableViewCell.h"
 #import "NSBundle+DBDebugToolkit.h"
+#import "DBNetworkSettingsTableViewController.h"
 
 static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBRequestTableViewCell";
 
@@ -16,6 +17,7 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *loggingRequestsDisabledLabel;
 @property (nonatomic, strong) NSArray *filteredRequests;
 
 @end
@@ -34,6 +36,7 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     [self.tableView registerNib:[UINib nibWithNibName:@"DBRequestTableViewCell" bundle:bundle]
          forCellReuseIdentifier:DBNetworkViewControllerRequestCellIdentifier];
     self.tableView.tableFooterView = [UIView new];
+    [self configureViewWithLoggingRequestsEnabled:self.networkToolkit.loggingEnabled];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -59,15 +62,13 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
                                                   object:nil];
 }
 
+#pragma mark - Configuring View
+
 - (void)updateRequests {
     NSString *searchBarText = self.searchBar.text;
     if (searchBarText.length > 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.url.relativePath contains[cd] %@) OR (SELF.url.host contains[cd] %@)", searchBarText, searchBarText];
         self.filteredRequests = [self.networkToolkit.savedRequests filteredArrayUsingPredicate:predicate];
-        for (DBRequestModel *model in self.filteredRequests) {
-            NSLog(@"Got path: %@", model.url.absoluteString);
-        }
-        NSLog(@"Thats it");
     } else {
         self.filteredRequests = self.networkToolkit.savedRequests;
     }
@@ -76,6 +77,21 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 - (void)reloadData {
     [self updateRequests];
     [self.tableView reloadData];
+}
+
+- (void)configureViewWithLoggingRequestsEnabled:(BOOL)enabled {
+    self.tableView.alpha = enabled ? 1.0 : 0.0;
+    self.searchBar.alpha = enabled ? 1.0 : 0.0;
+    self.loggingRequestsDisabledLabel.alpha = enabled ? 0.0 : 1.0;
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[DBNetworkSettingsTableViewController class]]) {
+        DBNetworkSettingsTableViewController *settingsViewController = (DBNetworkSettingsTableViewController *)segue.destinationViewController;
+        settingsViewController.networkToolkit = self.networkToolkit;
+    }
 }
 
 #pragma mark - Keyboard notifications
@@ -155,7 +171,7 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 }
 
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didSetEnabled:(BOOL)enabled {
-    
+    [self configureViewWithLoggingRequestsEnabled:enabled];
 }
 
 @end

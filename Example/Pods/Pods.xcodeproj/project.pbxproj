@@ -76,6 +76,9 @@
 		60CD83FA1B2BF6E93B59834C1E0CBEF0 /* EXPUnsupportedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE369528DB94DD9FD6880DCFAAAAB69 /* EXPUnsupportedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		644E2A754DCB0B217B998578DD36ACCB /* DBNetworkToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A9D08A233A4535126A0A8164FEC1C1 /* DBNetworkToolkit.m */; };
 		64C46AF200F2347115A0DF2799D6E403 /* EXPMatchers+beNil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A19FC30FAE97EDA655018A6AD2D54F /* EXPMatchers+beNil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		666E74EE1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 666E74EC1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.h */; };
+		666E74EF1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666E74ED1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.m */; };
+		666E74F11E3E9BB5009348BE /* DBNetworkSettingsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666E74F01E3E9BB5009348BE /* DBNetworkSettingsTableViewController.storyboard */; };
 		667228F11E380A8F00BFFA65 /* DBRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667228F01E380A8F00BFFA65 /* DBRequestTableViewCell.xib */; };
 		667228F41E380AB400BFFA65 /* DBRequestTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 667228F21E380AB400BFFA65 /* DBRequestTableViewCell.h */; };
 		667228F51E380AB400BFFA65 /* DBRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 667228F31E380AB400BFFA65 /* DBRequestTableViewCell.m */; };
@@ -301,6 +304,9 @@
 		62C01A8FB8FDD02BA4B79CC8DF3E4742 /* Pods-DBDebugToolkit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DBDebugToolkit_Example.modulemap"; sourceTree = "<group>"; };
 		63B72F4A04268FAB8B149322A314C2C3 /* NSURLSessionConfiguration+DBDebugToolkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionConfiguration+DBDebugToolkit.h"; sourceTree = "<group>"; };
 		65DA28E34D6B2634B0D3632970B9AFD0 /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raiseWithReason.h"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
+		666E74EC1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBNetworkSettingsTableViewController.h; sourceTree = "<group>"; };
+		666E74ED1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBNetworkSettingsTableViewController.m; sourceTree = "<group>"; };
+		666E74F01E3E9BB5009348BE /* DBNetworkSettingsTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DBNetworkSettingsTableViewController.storyboard; sourceTree = "<group>"; };
 		667228F01E380A8F00BFFA65 /* DBRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBRequestTableViewCell.xib; sourceTree = "<group>"; };
 		667228F21E380AB400BFFA65 /* DBRequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestTableViewCell.h; sourceTree = "<group>"; };
 		667228F31E380AB400BFFA65 /* DBRequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestTableViewCell.m; sourceTree = "<group>"; };
@@ -674,6 +680,7 @@
 				D621A548BCE32C59809A044232294E9D /* DBPerformanceTableViewController.storyboard */,
 				01AF051C4DC6338AD0FE09FFBCCD93B5 /* DBPerformanceWidgetView.xib */,
 				667228F01E380A8F00BFFA65 /* DBRequestTableViewCell.xib */,
+				666E74F01E3E9BB5009348BE /* DBNetworkSettingsTableViewController.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -696,6 +703,8 @@
 				17B44AF55143B3C8A0089D130565F36E /* RequestModel */,
 				66DC386E1E2EC5750093204C /* DBNetworkViewController.h */,
 				66DC386F1E2EC5750093204C /* DBNetworkViewController.m */,
+				666E74EC1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.h */,
+				666E74ED1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1005,6 +1014,7 @@
 				ADAB26EABE2247E95CC16A244B0D1324 /* DBChartView.h in Headers */,
 				3C49BCB5539E9349AB78D435FF68B0D2 /* DBConsoleOutputCaptor.h in Headers */,
 				5CBB522AC2A750280EC9DE9A6EE326F7 /* DBConsoleViewController.h in Headers */,
+				666E74EE1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.h in Headers */,
 				BBD55A132FEF6EE6D5416DCA1B9E349F /* DBDebugToolkit-umbrella.h in Headers */,
 				B0E2E333093864115F030389CEA776E0 /* DBDebugToolkit.h in Headers */,
 				C9F3079FF0717FABCE1FF4B70D0704D7 /* DBDebugToolkitTrigger.h in Headers */,
@@ -1275,6 +1285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3188786DFBD8EA14139D7CAD038211C8 /* DBDebugToolkit.bundle in Resources */,
+				666E74F11E3E9BB5009348BE /* DBNetworkSettingsTableViewController.storyboard in Resources */,
 				667228F11E380A8F00BFFA65 /* DBRequestTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1347,6 +1358,7 @@
 				77F17B98A63A47293B856A196BA79E8C /* DBPerformanceToolkit.m in Sources */,
 				0BE863A2AED68AB3F436036F4A52B375 /* DBPerformanceWidgetView.m in Sources */,
 				743F906D0CBCC0EDD8B9EFBE7537E2EB /* DBRequestDataHandler.m in Sources */,
+				666E74EF1E3E9B6E009348BE /* DBNetworkSettingsTableViewController.m in Sources */,
 				3781327657F9A8D4905A78C8BA236947 /* DBRequestModel.m in Sources */,
 				306FC326E952E78DF5431E00656C462C /* DBRequestOutcome.m in Sources */,
 				6B0B60653D9D777E10CD65503E9C92DA /* DBShakeTrigger.m in Sources */,
