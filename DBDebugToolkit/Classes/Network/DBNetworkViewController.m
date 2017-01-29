@@ -36,6 +36,63 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     self.tableView.tableFooterView = [UIView new];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
+- (void)updateRequests {
+    NSString *searchBarText = self.searchBar.text;
+    if (searchBarText.length > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.url.relativePath contains[cd] %@) OR (SELF.url.host contains[cd] %@)", searchBarText, searchBarText];
+        self.filteredRequests = [self.networkToolkit.savedRequests filteredArrayUsingPredicate:predicate];
+        for (DBRequestModel *model in self.filteredRequests) {
+            NSLog(@"Got path: %@", model.url.absoluteString);
+        }
+        NSLog(@"Thats it");
+    } else {
+        self.filteredRequests = self.networkToolkit.savedRequests;
+    }
+}
+
+- (void)reloadData {
+    [self updateRequests];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Keyboard notifications
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets newContentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+    self.tableView.contentInset = newContentInsets;
+    self.tableView.scrollIndicatorInsets = newContentInsets;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    self.tableView.contentInset = UIEdgeInsetsZero;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsZero;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -64,7 +121,15 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     [searchBar setShowsCancelButton:YES animated:YES];
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self reloadData];
+}
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    if (searchBar.text.length > 0) {
+        [searchBar setText:@""];
+        [self reloadData];
+    }
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
 }
@@ -73,16 +138,19 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 
 - (void)networkDebugToolkitDidUpdateRequestsList:(DBNetworkToolkit *)networkToolkit {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.filteredRequests = networkToolkit.savedRequests;
-        [self.tableView reloadData];
+        [self reloadData];
     });
 }
 
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didUpdateRequestAtIndex:(NSInteger)index {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.filteredRequests = networkToolkit.savedRequests;
-        [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:self.filteredRequests.count - 1 - index inSection:0] ]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
+        DBRequestModel *requestModel = self.networkToolkit.savedRequests[index];
+        [self updateRequests];
+        NSInteger updatedRequestIndex = [self.filteredRequests indexOfObject:requestModel];
+        if (updatedRequestIndex != NSNotFound) {
+            [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:self.filteredRequests.count - 1 - updatedRequestIndex inSection:0] ]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     });
 }
 

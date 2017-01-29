@@ -27,24 +27,29 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0Yc-DO-OxS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="V8R-cW-2sz"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f48-Qm-HRd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="0Yc-DO-OxS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Va7-rj-ZAx" firstAttribute="centerY" secondItem="G7w-9S-MOF" secondAttribute="centerY" id="1fL-0Y-zLm"/>
+                            <constraint firstItem="0Yc-DO-OxS" firstAttribute="leading" secondItem="G7w-9S-MOF" secondAttribute="leading" id="F7R-6W-DLi"/>
+                            <constraint firstItem="0Yc-DO-OxS" firstAttribute="top" secondItem="0Q8-6Z-p62" secondAttribute="bottom" id="FaG-RW-ZyX"/>
                             <constraint firstAttribute="bottom" secondItem="f48-Qm-HRd" secondAttribute="bottom" id="Kyz-cO-o0t"/>
+                            <constraint firstItem="f48-Qm-HRd" firstAttribute="top" secondItem="0Yc-DO-OxS" secondAttribute="bottom" id="Mj4-0T-8Pi"/>
                             <constraint firstAttribute="trailing" secondItem="f48-Qm-HRd" secondAttribute="trailing" id="NzJ-36-A8Q"/>
                             <constraint firstItem="f48-Qm-HRd" firstAttribute="leading" secondItem="G7w-9S-MOF" secondAttribute="leading" id="UQY-ot-64f"/>
-                            <constraint firstItem="f48-Qm-HRd" firstAttribute="top" secondItem="G7w-9S-MOF" secondAttribute="top" id="Uok-5D-9WV"/>
                             <constraint firstItem="Va7-rj-ZAx" firstAttribute="centerX" secondItem="G7w-9S-MOF" secondAttribute="centerX" id="jfF-8f-gCP"/>
+                            <constraint firstAttribute="trailing" secondItem="0Yc-DO-OxS" secondAttribute="trailing" id="mlA-8h-V80"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -68,7 +73,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="556" y="-239"/>
+            <point key="canvasLocation" x="556" y="-239.73013493253376"/>
         </scene>
     </scenes>
 </document>
