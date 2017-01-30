@@ -72,7 +72,10 @@
 
 - (void)configureResponseLabelWithRequestModel:(DBRequestModel *)requestModel {
     if (!requestModel.finished) {
-        self.responseDetailsLabel.text = [NSString stringWithFormat:@"Sent at %@...", requestModel.sendingDate];
+        NSString *dateString = [NSDateFormatter localizedStringFromDate:requestModel.sendingDate
+                                                              dateStyle:NSDateFormatterMediumStyle
+                                                              timeStyle:NSDateFormatterMediumStyle];
+        self.responseDetailsLabel.text = [NSString stringWithFormat:@"Sent at %@...", dateString];
     } else if (requestModel.didFinishWithError) {
         self.responseDetailsLabel.text = [NSString stringWithFormat:@"Error %ld: %@", requestModel.errorCode, requestModel.localizedErrorDescription];
     } else {
