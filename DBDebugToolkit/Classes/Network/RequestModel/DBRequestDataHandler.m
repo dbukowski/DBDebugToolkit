@@ -133,6 +133,7 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
     } else {
         self.dataType = DBRequestModelBodyTypeOther;
         self.synchronizationStatus = DBRequestModelBodySynchronizationStatusFinished;
+        [self.delegate requestDataHandlerDidFinishSynchronization:self];
         if (self.readingCompletion) {
             self.readingCompletion(nil);
             self.readingCompletion = nil;

@@ -10,15 +10,18 @@
 #import "DBRequestTableViewCell.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBNetworkSettingsTableViewController.h"
+#import "DBRequestDetailsViewController.h"
 
 static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBRequestTableViewCell";
 
-@interface DBNetworkViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, DBNetworkToolkitDelegate>
+@interface DBNetworkViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, DBNetworkToolkitDelegate, DBRequestDetailsViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *loggingRequestsDisabledLabel;
 @property (nonatomic, strong) NSArray *filteredRequests;
+@property (nonatomic, strong) DBRequestDetailsViewController *requestDetailsViewController;
+@property (nonatomic, strong) DBRequestModel *openedRequest;
 
 @end
 
@@ -131,6 +134,25 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     return 60.0;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.openedRequest) {
+        DBRequestModel *requestModel = self.filteredRequests[self.filteredRequests.count - 1 - indexPath.row];
+        self.openedRequest = requestModel;
+        [self.requestDetailsViewController updateRequestModel:requestModel];
+        [self.navigationController pushViewController:self.requestDetailsViewController animated:YES];
+    }
+}
+
+- (DBRequestDetailsViewController *)requestDetailsViewController {
+    if (!_requestDetailsViewController) {
+        NSBundle *bundle = [NSBundle debugToolkitBundle];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBRequestDetailsViewController" bundle:bundle];
+        _requestDetailsViewController = [storyboard instantiateInitialViewController];
+        _requestDetailsViewController.delegate = self;
+    }
+    return _requestDetailsViewController;
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -161,6 +183,9 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didUpdateRequestAtIndex:(NSInteger)index {
     dispatch_async(dispatch_get_main_queue(), ^{
         DBRequestModel *requestModel = self.networkToolkit.savedRequests[index];
+        if (requestModel == self.openedRequest) {
+            [self.requestDetailsViewController updateRequestModel:requestModel];
+        }
         [self updateRequests];
         NSInteger updatedRequestIndex = [self.filteredRequests indexOfObject:requestModel];
         if (updatedRequestIndex != NSNotFound) {
@@ -172,6 +197,12 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didSetEnabled:(BOOL)enabled {
     [self configureViewWithLoggingRequestsEnabled:enabled];
+}
+
+#pragma mark - DBRequestDetailsViewControllerDelegate
+
+- (void)requestDetailsViewControllerDidDismiss:(DBRequestDetailsViewController *)requestDetailsViewController {
+    self.openedRequest = nil;
 }
 
 @end

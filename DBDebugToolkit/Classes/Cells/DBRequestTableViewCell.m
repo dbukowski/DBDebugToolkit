@@ -44,7 +44,7 @@
     if (requestModel.didFinishWithError) {
         self.responseTypeLabel.text = @"ERROR";
         self.responseTypeLabel.alpha = 1.0;
-    } else if (requestModel.responseBodyType == DBRequestModelBodyTypeNotDetermined) {
+    } else if (requestModel.responseBodySynchronizationStatus != DBRequestModelBodySynchronizationStatusFinished) {
         [self.activityIndicator startAnimating];
         self.activityIndicator.alpha = 1.0;
     } else {

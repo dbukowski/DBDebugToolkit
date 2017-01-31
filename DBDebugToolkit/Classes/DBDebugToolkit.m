@@ -187,6 +187,9 @@
         return [self topmostViewControllerWithRootViewController:tabBarController.selectedViewController];
     } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navigationController = (UINavigationController *)rootViewController;
+        if (navigationController.visibleViewController == nil) {
+            return navigationController;
+        }
         return [self topmostViewControllerWithRootViewController:navigationController.visibleViewController];
     } else if (rootViewController.presentedViewController) {
         UIViewController* presentedViewController = rootViewController.presentedViewController;

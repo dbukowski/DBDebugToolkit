@@ -24,16 +24,15 @@
 #import "DBRequestOutcome.h"
 
 typedef NS_ENUM(NSUInteger, DBRequestModelBodyType) {
-    DBRequestModelBodyTypeNotDetermined,
     DBRequestModelBodyTypeJSON,
     DBRequestModelBodyTypeImage,
-    DBRequestModelBodyTypeOther,
+    DBRequestModelBodyTypeOther
 };
 
 typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
     DBRequestModelBodySynchronizationStatusNotStarted,
     DBRequestModelBodySynchronizationStatusStarted,
-    DBRequestModelBodySynchronizationStatusFinished,
+    DBRequestModelBodySynchronizationStatusFinished
 };
 
 @class DBRequestModel;
@@ -72,6 +71,8 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 
 @property (nonatomic, readonly) DBRequestModelBodyType requestBodyType;
 
+@property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus requestBodySynchronizationStatus;
+
 - (void)readRequestBodyWithCompletion:(void(^)(NSData *))completion;
 
 ///--------------------------
@@ -97,6 +98,8 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 @property (nonatomic, readonly) NSInteger responseBodyLength;
 
 @property (nonatomic, readonly) DBRequestModelBodyType responseBodyType;
+
+@property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus responseBodySynchronizationStatus;
 
 - (void)readResponseBodyWithCompletion:(void(^)(NSData *))completion;
 

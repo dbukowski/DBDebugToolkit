@@ -108,6 +108,7 @@
 
 - (void)saveRequestBody:(NSData *)data {
     self.requestDataHandler = [DBRequestDataHandler dataHandlerWithFilename:[self requestBodyFilename] data:data shouldGenerateThumbnail:NO];
+    self.requestDataHandler.delegate = self;
 }
 
 - (void)saveResponseBody:(NSData *)data {
@@ -133,6 +134,10 @@
 
 - (DBRequestModelBodyType)requestBodyType {
     return self.requestDataHandler.dataType;
+}
+
+- (DBRequestModelBodySynchronizationStatus)requestBodySynchronizationStatus {
+    return self.requestDataHandler.synchronizationStatus;
 }
 
 #pragma mark - Response properties
@@ -175,6 +180,10 @@
 
 - (UIImage *)thumbnail {
     return self.responseDataHandler.thumbnail;
+}
+
+- (DBRequestModelBodySynchronizationStatus)responseBodySynchronizationStatus {
+    return self.responseDataHandler.synchronizationStatus;
 }
 
 #pragma mark - Error properties
