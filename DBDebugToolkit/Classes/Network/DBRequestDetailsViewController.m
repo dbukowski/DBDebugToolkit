@@ -10,6 +10,7 @@
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBMenuSegmentedControlTableViewCell.h"
 #import "DBTitleValueTableViewCell.h"
+#import "DBBodyPreviewViewController.h"
 
 typedef NS_ENUM(NSInteger, DBRequestDetailsViewControllerTab) {
     DBRequestDetailsViewControllerTabRequest,
@@ -62,10 +63,24 @@ static NSString *const DBRequestDetailsViewControllerPrototypeSimpleCellIdentifi
     [self.tableView reloadData];
 }
 
-#pragma mark - UITableViewDelegate 
+#pragma mark - Opening body preview
+
+- (void)openBodyPreview {
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBBodyPreviewViewController" bundle:bundle];
+    DBBodyPreviewViewController *bodyPreviewViewController = [storyboard instantiateInitialViewController];
+    DBBodyPreviewViewControllerMode mode = self.selectedTab == DBRequestDetailsViewControllerTabRequest ? DBBodyPreviewViewControllerModeRequest : DBBodyPreviewViewControllerModeResponse;
+    [bodyPreviewViewController configureWithRequestModel:self.requestModel mode:mode];
+    [self.navigationController pushViewController:bodyPreviewViewController animated:true];
+}
+
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.section == 3 && indexPath.row == 1) {
+        [self openBodyPreview];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -111,6 +126,8 @@ static NSString *const DBRequestDetailsViewControllerPrototypeSimpleCellIdentifi
         case 3:
             return [self numberOfRowsInBodySection];
     }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -145,6 +162,8 @@ static NSString *const DBRequestDetailsViewControllerPrototypeSimpleCellIdentifi
         case 3:
             return @"Body";
     }
+    
+    return nil;
 }
 
 #pragma mark - DBMenuSegmentedControlTableViewCellDelegate
@@ -184,6 +203,7 @@ static NSString *const DBRequestDetailsViewControllerPrototypeSimpleCellIdentifi
         case 3:
             return [self titleValueBodyCellDataSourceForRow:indexPath.row];
     }
+    return nil;
 }
 
 - (DBTitleValueTableViewCellDataSource *)titleValueDetailsCellDataSourceForRow:(NSInteger)row {

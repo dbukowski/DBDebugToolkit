@@ -202,6 +202,7 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 #pragma mark - DBRequestDetailsViewControllerDelegate
 
 - (void)requestDetailsViewControllerDidDismiss:(DBRequestDetailsViewController *)requestDetailsViewController {
+    self.requestDetailsViewController = nil;
     self.openedRequest = nil;
 }
 
