@@ -45,6 +45,10 @@ static NSString *const DBNetworkSettingsTableViewControllerSwitchCellIdentifier 
     return switchTableViewCell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return @"Logging requests may affect the memory usage.";
+}
+
 #pragma mark - DBMenuSwitchTableViewCellDelegate
 
 - (void)menuSwitchTableViewCell:(DBMenuSwitchTableViewCell *)menuSwitchTableViewCell didSetOn:(BOOL)isOn {
