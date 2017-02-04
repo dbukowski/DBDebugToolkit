@@ -22,6 +22,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ `NSURLSessionConfiguration` category adding `DBURLProtocol` to `NSURLSessionConfiguration` instances.
+ */
 @interface NSURLSessionConfiguration (DBDebugToolkit)
 
 @end

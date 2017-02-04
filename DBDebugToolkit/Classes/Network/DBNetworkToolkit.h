@@ -25,28 +25,79 @@
 
 @class DBNetworkToolkit;
 
+/**
+ A protocol used for informing about changes in logging settings or in logged requests list.
+ */
 @protocol DBNetworkToolkitDelegate <NSObject>
 
+/**
+ Informs the delegate that the logged requests list has changed.
+ 
+ @param networkToolkit The `DBNetworkToolkit` instance that changed the logged requests list.
+ */
 - (void)networkDebugToolkitDidUpdateRequestsList:(DBNetworkToolkit *)networkToolkit;
+
+/**
+ Informs the delegate that the object at the given index on the logged requests list has changed.
+ 
+ @param networkToolkit The `DBNetworkToolkit` instance that changed the logged request.
+ @param index The index of the logged request that has changed.
+ */
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didUpdateRequestAtIndex:(NSInteger)index;
+
+/**
+ Informs the delegate that the logging setting have changed.
+ 
+ @param networkToolkit The `DBNetworkToolkit` instance that changed the logging settings.
+ @param enabled The new value of the flag determining whether the requests logging is enabled or not.
+ */
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didSetEnabled:(BOOL)enabled;
 
 @end
 
+/**
+ `DBNetworkToolkit` is a class responsible for logging all the requests sent by the application.
+ */
 @interface DBNetworkToolkit : NSObject
 
+/**
+ Returns the singleton instance.
+ */
 + (instancetype)sharedInstance;
 
+/**
+ Returns a string containing the path to the directory where the requests data is stored.
+ */
 - (NSString *)savedRequestsPath;
 
+/**
+ Saves the given request.
+ 
+ @param request The request that should be saved by `DBNetworkToolkit` instance.
+ */
 - (void)saveRequest:(NSURLRequest *)request;
 
+/**
+ Saves the response for a given request.
+ 
+ @param requestOutcome The `DBRequestOutcome` instance containing all the information about the request outcome.
+ @param request The request that finished with the given outcome.
+ */
 - (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request;
 
+/**
+ Boolean variable determining whether the requests logging is enabled or not. It is true by default.
+ */
 @property (nonatomic, assign) BOOL loggingEnabled;
 
+/**
+ Delegate that will be informed about changes in the logged requests list or in the enabled flag value. It needs to conform to `DBNetworkToolkitDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBNetworkToolkitDelegate> delegate;
 
+/**
+ An array containing all the logged requests.
+ */
 @property (nonatomic, readonly) NSArray *savedRequests;
 
 @end

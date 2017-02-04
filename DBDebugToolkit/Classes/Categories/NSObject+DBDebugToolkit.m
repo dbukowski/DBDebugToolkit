@@ -20,17 +20,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "DBNetworkToolkit.h"
+#import "NSObject+DBDebugToolkit.h"
+#import <objc/runtime.h>
 
-/**
- `DBNetworkSettingsTableViewController` is a simple view controller displaying a switch controlling the requests logging.
- */
-@interface DBNetworkSettingsTableViewController : UITableViewController
+@implementation NSObject (DBDebugToolkit)
 
-/**
- `DBNetworkToolkit` object, which is is configured by the settings presented on the view controller.
- */
-@property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
++ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector {
+    Class class = object_getClass((id)self);
+    Method originalMethod = class_getClassMethod(class, originalSelector);
+    Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
+    
+    BOOL didAddMethod = class_addMethod(class,
+                                        originalSelector,
+                                        method_getImplementation(swizzledMethod),
+                                        method_getTypeEncoding(swizzledMethod));
+    
+    if (didAddMethod) {
+        class_replaceMethod(class,
+                            swizzledSelector,
+                            method_getImplementation(originalMethod),
+                            method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
+}
 
 @end

@@ -22,16 +22,39 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ `DBRequestOutcome` is a class wrapping all the information about the request result.
+ */
 @interface DBRequestOutcome : NSObject
 
+/**
+ Creates and returns a new instance wrapping the information about a request that received a proper response.
+ 
+ @param response The received response.
+ @param data The data received with the response.
+ */
 + (instancetype)outcomeWithResponse:(NSURLResponse *)response data:(NSData *)data;
 
+/**
+ Creates and returns a new instance wrapping the information about a request that failed on the client side.
+ 
+ @param error The client side error.
+ */
 + (instancetype)outcomeWithError:(NSError *)error;
 
+/**
+ `NSURLResponse` instance that was received. Read-only.
+ */
 @property (nonatomic, readonly) NSURLResponse *response;
 
+/**
+ `NSData` instance that was received. Read-only.
+ */
 @property (nonatomic, readonly) NSData *data;
 
+/**
+ `NSError` instance that was received. Read-only.
+ */
 @property (nonatomic, readonly) NSError *error;
 
 @end

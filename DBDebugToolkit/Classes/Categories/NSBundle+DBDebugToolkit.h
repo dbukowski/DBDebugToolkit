@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- NSBundle category providing methods for easier access to the library bundle.
+ `NSBundle` category providing methods for easier access to the library bundle.
  */
 @interface NSBundle (DBDebugToolkit)
 

@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <objc/runtime.h>
 #import "NSURLSessionConfiguration+DBDebugToolkit.h"
 #import "DBURLProtocol.h"
+#import "NSObject+DBDebugToolkit.h"
 
 @implementation NSURLSessionConfiguration (DBDebugToolkit)
 
@@ -36,26 +36,6 @@
         [self exchangeMethodsWithOriginalSelector:@selector(ephemeralSessionConfiguration)
                               andSwizzledSelector:@selector(db_ephemeralSessionConfiguration)];
     });
-}
-
-+ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector {
-    Class class = object_getClass((id)self);
-    Method originalMethod = class_getClassMethod(class, originalSelector);
-    Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
-    
-    BOOL didAddMethod = class_addMethod(class,
-                                        originalSelector,
-                                        method_getImplementation(swizzledMethod),
-                                        method_getTypeEncoding(swizzledMethod));
-    
-    if (didAddMethod) {
-        class_replaceMethod(class,
-                            swizzledSelector,
-                            method_getImplementation(originalMethod),
-                            method_getTypeEncoding(originalMethod));
-    } else {
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
 }
 
 + (instancetype)db_defaultSessionConfiguration {

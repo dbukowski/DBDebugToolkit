@@ -25,26 +25,64 @@
 
 @class DBRequestDataHandler;
 
+/**
+ A protocol used for informing about finishing of the data synchronization.
+ */
 @protocol DBRequestDataHandlerDelegate <NSObject>
 
+/**
+ Informs the delegate that the data has finished the synchronization.
+ 
+ @param requestDataHandler The `DBRequestDataHandler` instance that finished the data synchronization.
+ */
 - (void)requestDataHandlerDidFinishSynchronization:(DBRequestDataHandler *)requestDataHandler;
 
 @end
 
+/**
+ `DBRequestDataHandler` is a class handling the request and response body synchronization (saving it to a file).
+ */
 @interface DBRequestDataHandler : NSObject
 
+/**
+ Creates and returns a new instance.
+ 
+ @param filename The string containing the name of the file that will contain the saved data.
+ @param data The data that needs to be saved.
+ @param shouldGenerateThumbnail The boolean flag determining if the thumbnail generation is needed for this data.
+ */
 + (instancetype)dataHandlerWithFilename:(NSString *)filename data:(NSData *)data shouldGenerateThumbnail:(BOOL)shouldGenerateThumbnail;
 
+/**
+ Reads the saved data.
+ 
+ @param completion The block that will be called with the read data.
+ */
+- (void)readWithCompletion:(void(^)(NSData *))completion;
+
+/**
+ Recognized type of the data.
+ */
 @property (nonatomic, readonly) DBRequestModelBodyType dataType;
 
+/**
+ Current data synchronization status.
+ */
 @property (nonatomic, readonly) DBRequestModelBodySynchronizationStatus synchronizationStatus;
 
+/**
+ `NSInteger` containing the data length. Should be accessed after finishing the data synchronization.
+ */
 @property (nonatomic, readonly) NSInteger dataLength;
 
+/**
+ `UIImage` instance containing the thumbnail. It is `nil` if the data is not yet synchronized or if the data is not describing an image.
+ */
 @property (nonatomic, strong) UIImage *thumbnail;
 
+/**
+ Delegate that will be informed about finishing the data synchronization. It needs to conform to `DBRequestDataHandlerDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBRequestDataHandlerDelegate> delegate;
-
-- (void)readWithCompletion:(void(^)(NSData *))completion;
 
 @end

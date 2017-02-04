@@ -22,6 +22,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ `DBURLProtocol` is a `NSURLProtocol` subclass that is used for logging all the requests sent by the application.
+ */
 @interface DBURLProtocol : NSURLProtocol
 
 @end

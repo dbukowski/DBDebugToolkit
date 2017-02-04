@@ -87,7 +87,7 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
 }
 
 - (void)stopLoading {
-    
+    // Do nothing
 }
 
 - (void)finishWithOutcome:(DBRequestOutcome *)requestOutcome {

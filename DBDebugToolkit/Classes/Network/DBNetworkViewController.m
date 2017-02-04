@@ -1,10 +1,24 @@
+// The MIT License
 //
-//  DBNetworkViewController.m
-//  Pods
+// Copyright (c) 2016 Dariusz Bukowski
 //
-//  Created by Dariusz Bukowski on 17.01.2017.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #import "DBNetworkViewController.h"
 #import "DBRequestTableViewCell.h"
@@ -32,7 +46,6 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     self.searchBar.delegate = self;
     self.networkToolkit.delegate = self;
     self.filteredRequests = self.networkToolkit.savedRequests;
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     NSBundle *bundle = [NSBundle debugToolkitBundle];
@@ -48,7 +61,6 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
@@ -138,7 +150,7 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     if (!self.openedRequest) {
         DBRequestModel *requestModel = self.filteredRequests[self.filteredRequests.count - 1 - indexPath.row];
         self.openedRequest = requestModel;
-        [self.requestDetailsViewController updateRequestModel:requestModel];
+        [self.requestDetailsViewController configureWithRequestModel:requestModel];
         [self.navigationController pushViewController:self.requestDetailsViewController animated:YES];
     }
 }
@@ -184,7 +196,7 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     dispatch_async(dispatch_get_main_queue(), ^{
         DBRequestModel *requestModel = self.networkToolkit.savedRequests[index];
         if (requestModel == self.openedRequest) {
-            [self.requestDetailsViewController updateRequestModel:requestModel];
+            [self.requestDetailsViewController configureWithRequestModel:requestModel];
         }
         [self updateRequests];
         NSInteger updatedRequestIndex = [self.filteredRequests indexOfObject:requestModel];

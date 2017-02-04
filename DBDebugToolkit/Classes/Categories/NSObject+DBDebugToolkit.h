@@ -20,17 +20,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "DBNetworkToolkit.h"
+#import <Foundation/Foundation.h>
 
 /**
- `DBNetworkSettingsTableViewController` is a simple view controller displaying a switch controlling the requests logging.
+ `NSObject` category adding helper methods for swizzling.
  */
-@interface DBNetworkSettingsTableViewController : UITableViewController
+@interface NSObject (DBDebugToolkit)
 
 /**
- `DBNetworkToolkit` object, which is is configured by the settings presented on the view controller.
+ Exchanges methods between two selectors using method swizzling.
+ 
+ @param originalSelector The original selector, which is supposed to have its implementation replaced.
+ @param swizzledSelector The swizzled selector, providing the new implementation.
  */
-@property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
++ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
 
 @end
