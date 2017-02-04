@@ -69,6 +69,10 @@
     return [self.buildInfoProvider buildInfoString];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return [self.deviceInfoProvider deviceInfoString];
+}
+
 
 #pragma mark - Navigation
 

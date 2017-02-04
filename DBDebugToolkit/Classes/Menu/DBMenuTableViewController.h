@@ -74,7 +74,7 @@
 @property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
 /**
- `DBDeviceInfoProvider` instance that will be passed on.
+ `DBDeviceInfoProvider` instance that will provide data for section footer.
  */
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
 

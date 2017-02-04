@@ -37,4 +37,9 @@
  */
 - (NSString *)systemVersion;
 
+/**
+ Returns device information in format: "<device model>, <system version>"
+ */
+- (NSString *)deviceInfoString;
+
 @end

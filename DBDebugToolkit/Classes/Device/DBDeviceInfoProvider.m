@@ -91,4 +91,8 @@
     return [NSString stringWithFormat:@"%@ %@", [device systemName], [device systemVersion]];
 }
 
+- (NSString *)deviceInfoString {
+    return [NSString stringWithFormat:@"%@, %@", [self deviceModel], [self systemVersion]];
+}
+
 @end
