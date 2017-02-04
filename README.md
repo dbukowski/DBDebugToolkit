@@ -18,13 +18,17 @@ DBDebugToolkit is a debugging library written in Objective-C.
 
 ## Features
 
-- [x] CPU usage (current, max, chart)
-- [x] Memory usage (current, max, chart)
-- [x] FPS (current, min, chart)
-- [x] Widget displaying current CPU usage, memory usage and FPS that stays on top of the screen
-- [x] Displaying console output in text view
-- [x] Sending console output by email with device and system information
-- [x] Simulating memory warning
+- [x] Performance
+  - [x] CPU usage (current, max, chart)
+  - [x] Memory usage (current, max, chart)
+  - [x] FPS (current, min, chart)
+  - [x] Widget displaying current CPU usage, memory usage and FPS that stays on top of the screen
+  - [x] Simulating memory warning
+- [x] Network
+  - [x] List of all the requests sent by the application.
+- [x] Console
+  - [x] Displaying console output in text view
+  - [x] Sending console output by email with device and system information
 - [x] Opening application settings
 - [x] Showing version & build number
 
@@ -112,6 +116,18 @@ Tapping on the widget opens the performance submenu with tapped section (CPU, me
 #### Simulating memory warning
 
 In the memory section you can also find the "Simulate memory warning" button. Use it to check if you handle the warning properly.
+
+### Network
+
+In the network submenu you can find a list of all the requests send by your application during the current launch. There is also a search bar that allows you to filter the requests.
+
+[//]: # (Insert requests list gif)
+
+Tap on any request on the list to see its details. From the request details screen you can also access the request and response body preview, that handles image, text and JSON data.
+
+[//]: # (Insert request details gif)
+
+The request and response body data is saved to the files to minimize the memory usage caused by the requests logging. If it happens to be too big anyway, you can disable the logging in the network submenu.
 
 ### Console
 
