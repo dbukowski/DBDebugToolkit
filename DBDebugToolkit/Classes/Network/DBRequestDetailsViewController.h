@@ -26,14 +26,14 @@
 @class DBRequestDetailsViewController;
 
 /**
- A protocol used for informing the presenting view controller about the need of dismissing the `DBRequestDetailsViewController` instance.
+ A protocol used for informing the presenting view controller about the dismissing of the `DBRequestDetailsViewController` instance.
  */
 @protocol DBRequestDetailsViewControllerDelegate <NSObject>
 
 /**
- Informs the delegate that it should dismiss the presented view controller.
+ Informs the delegate that it will be dismissed.
  
- @param requestDetailsViewController The `DBRequestDetailsViewController` instance that needs to be dismissed.
+ @param requestDetailsViewController The `DBRequestDetailsViewController` that is being dismissed.
  */
 - (void)requestDetailsViewControllerDidDismiss:(DBRequestDetailsViewController *)requestDetailsViewController;
 
@@ -45,7 +45,7 @@
 @interface DBRequestDetailsViewController : UIViewController
 
 /**
- Delegate that will be informed about the need of dismissing the view controller. It needs to conform to `DBRequestDetailsViewControllerDelegate` protocol.
+ Delegate that will be informed about the dismissing of the view controller. It needs to conform to `DBRequestDetailsViewControllerDelegate` protocol.
  */
 @property (nonatomic, weak) id <DBRequestDetailsViewControllerDelegate> delegate;
 

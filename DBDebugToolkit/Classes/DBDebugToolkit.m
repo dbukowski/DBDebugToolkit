@@ -152,13 +152,13 @@
 #pragma mark - Showing menu
 
 - (void)showMenu {
-    self.showsMenu = true;
+    self.showsMenu = YES;
     UIViewController *presentingViewController = [self topmostViewController];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuViewController];
     navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     navigationController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     navigationController.modalPresentationCapturesStatusBarAppearance = YES;
-    [presentingViewController presentViewController:navigationController animated:YES completion: nil];
+    [presentingViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (DBMenuTableViewController *)menuViewController {
@@ -210,8 +210,8 @@
 
 - (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController {
     UIViewController *presentingViewController = self.menuViewController.navigationController.presentingViewController;
-    [presentingViewController dismissViewControllerAnimated:true completion:^{
-        self.showsMenu = false;
+    [presentingViewController dismissViewControllerAnimated:YES completion:^{
+        self.showsMenu = NO;
     }];
 }
 
