@@ -37,11 +37,16 @@ typedef NS_ENUM(NSUInteger, DBBodyPreviewViewControllerViewState) {
             self.imageView.image = [UIImage imageWithData:data];
             [self setViewState:DBBodyPreviewViewControllerViewStateShowingImage animated:YES];
         } else {
+            NSString *dataString;
             if (bodyType == DBRequestModelBodyTypeJSON) {
-                NSJSONSerialization *jsonSerialization = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                NSJSONSerialization *jsonSerialization = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
                 data = [NSJSONSerialization dataWithJSONObject:jsonSerialization options:NSJSONWritingPrettyPrinted error:nil];
+                dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                dataString = [dataString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+            } else {
+                dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             }
-            self.textView.text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            self.textView.text = dataString;
             [self setViewState:DBBodyPreviewViewControllerViewStateShowingText animated:YES];
         }
     };

@@ -58,6 +58,7 @@
 }
 
 - (void)getImageWithURLString:(NSString *)urlString completion:(void (^)(UIImage *))completion {
+    NSLog(@"Logging example: getting image from %@...", urlString);
     NSCache *cache = [DBRequestsExampleViewController imagesCache];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         UIImage *image = [cache objectForKey:urlString];

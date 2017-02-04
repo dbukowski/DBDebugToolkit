@@ -77,7 +77,7 @@
                                                               timeStyle:NSDateFormatterMediumStyle];
         self.responseDetailsLabel.text = [NSString stringWithFormat:@"Sent at %@...", dateString];
     } else if (requestModel.didFinishWithError) {
-        self.responseDetailsLabel.text = [NSString stringWithFormat:@"Error %ld: %@", requestModel.errorCode, requestModel.localizedErrorDescription];
+        self.responseDetailsLabel.text = [NSString stringWithFormat:@"Error %ld: %@", (long)requestModel.errorCode, requestModel.localizedErrorDescription];
     } else {
         NSMutableString *responseString = [NSMutableString stringWithFormat:@"%.2lfs", requestModel.duration];
         if (requestModel.statusCode) {
