@@ -31,6 +31,7 @@ DBDebugToolkit is a debugging library written in Objective-C.
   - [x] Sending console output by email with device and system information
 - [x] Opening application settings
 - [x] Showing version & build number
+- [x] Showing device model & iOS version
 
 ## Example
 
