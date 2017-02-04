@@ -17,7 +17,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [DBDebugToolkit setupWithTriggers: @[ [DBShakeTrigger trigger], [DBTapTrigger trigger], [DBLongPressTrigger trigger]]];
-//    [DBDebugToolkit setCapturingConsoleOutputEnabled:NO];
     return YES;
 }
 

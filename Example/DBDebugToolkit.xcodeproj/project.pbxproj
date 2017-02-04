@@ -13,13 +13,15 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* DBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* DBAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* DBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* DBViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6627B21A1E45E8070020618C /* DBRequestsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6627B2191E45E8070020618C /* DBRequestsExampleViewController.m */; };
+		6627B2211E460AF60020618C /* DBRequestExampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6627B21F1E460AF60020618C /* DBRequestExampleTableViewCell.m */; };
+		6627B2221E460AF60020618C /* DBRequestExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6627B2201E460AF60020618C /* DBRequestExampleTableViewCell.xib */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		BF0AAF78D26BBE364C17AD3F /* Pods_DBDebugToolkit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */; };
 		E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */; };
@@ -50,8 +52,6 @@
 		6003F59B195388D20070C39A /* DBDebugToolkit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBDebugToolkit-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* DBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* DBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* DBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* DBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* DBDebugToolkit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBDebugToolkit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -59,6 +59,11 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6627B2181E45E8070020618C /* DBRequestsExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestsExampleViewController.h; sourceTree = "<group>"; };
+		6627B2191E45E8070020618C /* DBRequestsExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestsExampleViewController.m; sourceTree = "<group>"; };
+		6627B21E1E460AF60020618C /* DBRequestExampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestExampleTableViewCell.h; sourceTree = "<group>"; };
+		6627B21F1E460AF60020618C /* DBRequestExampleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestExampleTableViewCell.m; sourceTree = "<group>"; };
+		6627B2201E460AF60020618C /* DBRequestExampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBRequestExampleTableViewCell.xib; sourceTree = "<group>"; };
 		6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		91D180BC1820F8DE5D1FCBFA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -136,10 +141,13 @@
 				6003F59D195388D20070C39A /* DBAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */,
-				6003F5A5195388D20070C39A /* DBViewController.h */,
-				6003F5A6195388D20070C39A /* DBViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				6627B2181E45E8070020618C /* DBRequestsExampleViewController.h */,
+				6627B2191E45E8070020618C /* DBRequestsExampleViewController.m */,
+				6627B21E1E460AF60020618C /* DBRequestExampleTableViewCell.h */,
+				6627B21F1E460AF60020618C /* DBRequestExampleTableViewCell.m */,
+				6627B2201E460AF60020618C /* DBRequestExampleTableViewCell.xib */,
 			);
 			name = "Example for DBDebugToolkit";
 			path = DBDebugToolkit;
@@ -250,9 +258,6 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Dariusz Bukowski";
 				TargetAttributes = {
-					6003F589195388D20070C39A = {
-						DevelopmentTeam = 96TAXNSJBC;
-					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -286,6 +291,7 @@
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */,
+				6627B2221E460AF60020618C /* DBRequestExampleTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,8 +403,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6627B2211E460AF60020618C /* DBRequestExampleTableViewCell.m in Sources */,
+				6627B21A1E45E8070020618C /* DBRequestsExampleViewController.m in Sources */,
 				6003F59E195388D20070C39A /* DBAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* DBViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,7 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = 96TAXNSJBC;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBDebugToolkit/DBDebugToolkit-Prefix.pch";
 				INFOPLIST_FILE = "DBDebugToolkit/DBDebugToolkit-Info.plist";
@@ -547,7 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = 96TAXNSJBC;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBDebugToolkit/DBDebugToolkit-Prefix.pch";
 				INFOPLIST_FILE = "DBDebugToolkit/DBDebugToolkit-Info.plist";
