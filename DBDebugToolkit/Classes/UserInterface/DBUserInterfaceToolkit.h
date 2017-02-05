@@ -22,9 +22,24 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- `NSURLSessionConfiguration` category adding `DBURLProtocol` to `NSURLSessionConfiguration` instances.
- */
-@interface NSURLSessionConfiguration (DBDebugToolkit)
+extern NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification;
+
+@interface DBUserInterfaceToolkit : NSObject
+
++ (instancetype)sharedInstance;
+
+@property (nonatomic, assign) BOOL colorizedViewBordersEnabled;
+
+@property (nonatomic, assign) BOOL slowAnimationsEnabled;
+
+@property (nonatomic, assign) BOOL showingTouchesEnabled;
+
+- (NSString *)autolayoutTrace;
+
+- (NSString *)viewDescription:(UIView *)view;
+
+- (NSString *)viewControllerHierarchy;
+
+- (NSString *)fontFamilies;
 
 @end

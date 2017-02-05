@@ -25,6 +25,7 @@
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBConsoleViewController.h"
 #import "DBNetworkViewController.h"
+#import "DBUserInterfaceTableViewController.h"
 
 @interface DBMenuTableViewController ()
 
@@ -56,7 +57,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 3) {
+    if (indexPath.row == 4) {
         // Open application settings.
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -73,7 +74,6 @@
     return [self.deviceInfoProvider deviceInfoString];
 }
 
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -89,6 +89,9 @@
     } else if ([destinationViewController isKindOfClass:[DBNetworkViewController class]]) {
         DBNetworkViewController *networkViewController = (DBNetworkViewController *)destinationViewController;
         networkViewController.networkToolkit = self.networkToolkit;
+    } else if ([destinationViewController isKindOfClass:[DBUserInterfaceTableViewController class]]) {
+        DBUserInterfaceTableViewController *userInterfaceTableViewController = (DBUserInterfaceTableViewController *)destinationViewController;
+        userInterfaceTableViewController.userInterfaceToolkit = self.userInterfaceToolkit;
     }
 }
 

@@ -26,6 +26,7 @@
 #import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
 #import "DBNetworkToolkit.h"
+#import "DBUserInterfaceToolkit.h"
 
 @class DBMenuTableViewController;
 
@@ -67,6 +68,11 @@
  `DBNetworkToolkit` instance that will be passed on.
  */
 @property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
+
+/**
+ `DBUserInterfaceToolkit` instance that will be passed on.
+ */
+@property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
 
 /**
  `DBBuildInfoProvider` instance that will provide data for section header.

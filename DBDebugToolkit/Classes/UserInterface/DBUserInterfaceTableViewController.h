@@ -20,21 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "DBUserInterfaceToolkit.h"
 
-/**
- `NSObject` category adding helper methods for swizzling.
- */
-@interface NSObject (DBDebugToolkit)
+@interface DBUserInterfaceTableViewController : UITableViewController
 
-/**
- Exchanges methods between two selectors using method swizzling.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param swizzledSelector The swizzled selector, providing the new implementation.
- */
-+ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
-
-+ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block;
+@property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
 
 @end

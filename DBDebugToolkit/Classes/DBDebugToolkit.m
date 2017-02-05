@@ -29,6 +29,7 @@
 #import "DBPerformanceTableViewController.h"
 #import "DBConsoleOutputCaptor.h"
 #import "DBNetworkToolkit.h"
+#import "DBUserInterfaceToolkit.h"
 
 @interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
@@ -38,6 +39,7 @@
 @property (nonatomic, strong) DBPerformanceToolkit *performanceToolkit;
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
 @property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
+@property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
 
 @end
 
@@ -68,6 +70,7 @@
         [sharedInstance setupPerformanceToolkit];
         [sharedInstance setupConsoleOutputCaptor];
         [sharedInstance setupNetworkToolkit];
+        [sharedInstance setupUserInterfaceToolkit];
     });
     return sharedInstance;
 }
@@ -149,6 +152,15 @@
     self.networkToolkit.loggingEnabled = YES;
 }
 
+#pragma mark - User interface toolkit
+
+- (void)setupUserInterfaceToolkit {
+    self.userInterfaceToolkit = [DBUserInterfaceToolkit sharedInstance];
+    self.userInterfaceToolkit.colorizedViewBordersEnabled = NO;
+    self.userInterfaceToolkit.slowAnimationsEnabled = NO;
+    self.userInterfaceToolkit.showingTouchesEnabled = NO;
+}
+
 #pragma mark - Showing menu
 
 - (void)showMenu {
@@ -169,6 +181,7 @@
         _menuViewController.performanceToolkit = self.performanceToolkit;
         _menuViewController.consoleOutputCaptor = self.consoleOutputCaptor;
         _menuViewController.networkToolkit = self.networkToolkit;
+        _menuViewController.userInterfaceToolkit = self.userInterfaceToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;

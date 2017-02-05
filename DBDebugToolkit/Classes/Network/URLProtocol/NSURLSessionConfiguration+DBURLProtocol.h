@@ -23,18 +23,8 @@
 #import <Foundation/Foundation.h>
 
 /**
- `NSObject` category adding helper methods for swizzling.
+ `NSURLSessionConfiguration` category adding `DBURLProtocol` to `NSURLSessionConfiguration` instances.
  */
-@interface NSObject (DBDebugToolkit)
-
-/**
- Exchanges methods between two selectors using method swizzling.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param swizzledSelector The swizzled selector, providing the new implementation.
- */
-+ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
-
-+ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block;
+@interface NSURLSessionConfiguration (DBURLProtocol)
 
 @end

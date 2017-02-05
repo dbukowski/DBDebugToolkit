@@ -22,6 +22,7 @@
 
 #import <objc/runtime.h>
 #import "UIWindow+DBShakeTrigger.h"
+#import "NSObject+DBDebugToolkit.h"
 
 static NSString *const UIWindowShakeDelegatesKey = @"DBDebugToolkit_shakeDelegates";
 
@@ -80,22 +81,6 @@ static NSString *const UIWindowShakeDelegatesKey = @"DBDebugToolkit_shakeDelegat
                                                                 ((void (*)(id, SEL, UIEventSubtype, UIEvent *))originalIMP)(blockSelf, @selector(motionEnded:withEvent:), motion, event);
                                                             }];
     });
-}
-
-+ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block {
-    NSCParameterAssert(block);
-    
-    Class class = [self class];
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
-    NSCParameterAssert(originalMethod);
-    
-    IMP newIMP = imp_implementationWithBlock(block);
-    
-    if (!class_addMethod(class, originalSelector, newIMP, method_getTypeEncoding(originalMethod))) {
-        return method_setImplementation(originalMethod, newIMP);
-    } else {
-        return method_getImplementation(originalMethod);
-    }
 }
 
 @end
