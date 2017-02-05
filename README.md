@@ -24,13 +24,23 @@ DBDebugToolkit is a debugging library written in Objective-C.
   - [x] FPS (current, min, chart)
   - [x] Widget displaying current CPU usage, memory usage and FPS that stays on top of the screen
   - [x] Simulating memory warning
+- [x] User interface
+  - [x] Showing all view frames
+  - [x] Slowing down animations
+  - [x] Showing touches on screen (useful for recording and screen sharing)
+  - [x] Autolayout trace
+  - [x] Current view description
+  - [x] View controllers hierarchy
+  - [x] List of available fonts
 - [x] Network
-  - [x] List of all the requests sent by the application.
+  - [x] List of all the requests sent by the application
+  - [x] Request and response preview
 - [x] Console
   - [x] Displaying console output in text view
   - [x] Sending console output by email with device and system information
 - [x] Opening application settings
 - [x] Showing version & build number
+- [x] Showing device model & iOS version
 
 ## Example
 
@@ -116,6 +126,19 @@ Tapping on the widget opens the performance submenu with tapped section (CPU, me
 #### Simulating memory warning
 
 In the memory section you can also find the "Simulate memory warning" button. Use it to check if you handle the warning properly.
+
+### User interface
+
+DBDebugToolkit provides many useful tools for UI debugging:
+
+* Showing view frames
+[//]: # (Insert view frames gif)
+* Slow animations
+[//]: # (Insert slow animations gif)
+* Showing touches (for screen sharing and recording)
+[//]: # (Insert showing touches gif)
+* Various debug logs
+[//]: # (Insert images with 4 logs)
 
 ### Network
 
