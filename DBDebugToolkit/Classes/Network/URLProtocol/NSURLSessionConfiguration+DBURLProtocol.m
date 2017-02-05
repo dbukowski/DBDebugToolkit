@@ -20,11 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "NSURLSessionConfiguration+DBDebugToolkit.h"
+#import "NSURLSessionConfiguration+DBURLProtocol.h"
 #import "DBURLProtocol.h"
 #import "NSObject+DBDebugToolkit.h"
 
-@implementation NSURLSessionConfiguration (DBDebugToolkit)
+@implementation NSURLSessionConfiguration (DBURLProtocol)
 
 #pragma mark - Method Swizzling
 

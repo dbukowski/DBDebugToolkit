@@ -4,7 +4,7 @@
 
 #import "DBBuildInfoProvider.h"
 #import "NSBundle+DBDebugToolkit.h"
-#import "NSURLSessionConfiguration+DBDebugToolkit.h"
+#import "NSObject+DBDebugToolkit.h"
 #import "DBMenuChartTableViewCell.h"
 #import "DBMenuSegmentedControlTableViewCell.h"
 #import "DBMenuSwitchTableViewCell.h"
@@ -22,10 +22,11 @@
 #import "DBNetworkToolkit.h"
 #import "DBNetworkViewController.h"
 #import "DBRequestDetailsViewController.h"
-#import "DBURLProtocol.h"
 #import "DBRequestDataHandler.h"
 #import "DBRequestModel.h"
 #import "DBRequestOutcome.h"
+#import "DBURLProtocol.h"
+#import "NSURLSessionConfiguration+DBURLProtocol.h"
 #import "DBFPSCalculator.h"
 #import "DBPerformanceSection.h"
 #import "DBPerformanceTableViewController.h"
@@ -37,6 +38,11 @@
 #import "DBShakeTrigger.h"
 #import "UIWindow+DBShakeTrigger.h"
 #import "DBTapTrigger.h"
+#import "UIColor+DBUserInterfaceToolkit.h"
+#import "UIView+DBUserInterfaceToolkit.h"
+#import "DBTextViewViewController.h"
+#import "DBUserInterfaceTableViewController.h"
+#import "DBUserInterfaceToolkit.h"
 
 FOUNDATION_EXPORT double DBDebugToolkitVersionNumber;
 FOUNDATION_EXPORT const unsigned char DBDebugToolkitVersionString[];

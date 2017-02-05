@@ -20,27 +20,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
- `NSObject` category adding helper methods for swizzling.
+ `DBTextViewViewController` is a view controller containing a single `UITextView` instance.
  */
-@interface NSObject (DBDebugToolkit)
+@interface DBTextViewViewController : UIViewController
 
 /**
- Exchanges methods between two selectors using method swizzling.
+ Configures the view controller with a text and title.
  
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param swizzledSelector The swizzled selector, providing the new implementation.
+ @param title String containing a title for the view controller.
+ @param text String with content of the text view.
  */
-+ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
-
-/**
- Replaces method implementation with a block.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param block The block containing new implementation.
- */
-+ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block;
+- (void)configureWithTitle:(NSString *)title text:(NSString *)text;
 
 @end

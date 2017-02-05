@@ -20,11 +20,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "DBTextViewViewController.h"
 
-/**
- `NSURLSessionConfiguration` category adding `DBURLProtocol` to `NSURLSessionConfiguration` instances.
- */
-@interface NSURLSessionConfiguration (DBDebugToolkit)
+@interface DBTextViewViewController ()
+
+@property (nonatomic, weak) IBOutlet UITextView *textView;
+@property (nonatomic, copy) NSString *text;
+
+@end
+
+@implementation DBTextViewViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.textView.layoutManager.allowsNonContiguousLayout = NO;
+    [self updateText:self.text];
+}
+
+- (void)configureWithTitle:(NSString *)title text:(NSString *)text {
+    self.title = title;
+    [self updateText:text];
+}
+
+#pragma mark - Private methods
+
+- (void)updateText:(NSString *)text {
+    self.text = text;
+    self.textView.text = text;
+}
 
 @end

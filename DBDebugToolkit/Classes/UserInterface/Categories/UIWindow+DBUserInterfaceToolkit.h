@@ -20,27 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
- `NSObject` category adding helper methods for swizzling.
+ `UIWindow` category responsible for showing touches on screen.
  */
-@interface NSObject (DBDebugToolkit)
+@interface UIWindow (DBUserInterfaceToolkit)
 
 /**
- Exchanges methods between two selectors using method swizzling.
+ Informs the window about a change in showing touches settings.
  
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param swizzledSelector The swizzled selector, providing the new implementation.
+ @param enabled Boolean flag determining whether the touches should be shown or not.
  */
-+ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
-
-/**
- Replaces method implementation with a block.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param block The block containing new implementation.
- */
-+ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block;
+- (void)setShowingTouchesEnabled:(BOOL)enabled;
 
 @end

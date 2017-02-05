@@ -20,27 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "UIColor+DBUserInterfaceToolkit.h"
 
-/**
- `NSObject` category adding helper methods for swizzling.
- */
-@interface NSObject (DBDebugToolkit)
+@implementation UIColor (DBUserInterfaceToolkit)
 
-/**
- Exchanges methods between two selectors using method swizzling.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param swizzledSelector The swizzled selector, providing the new implementation.
- */
-+ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
-
-/**
- Replaces method implementation with a block.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param block The block containing new implementation.
- */
-+ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block;
++ (instancetype)randomColor {
+    CGFloat red = (arc4random() % 256) / 255.0;
+    CGFloat green = (arc4random() % 256) / 255.0;
+    CGFloat blue = (arc4random() % 256) / 255.0;
+    return [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.0];
+}
 
 @end

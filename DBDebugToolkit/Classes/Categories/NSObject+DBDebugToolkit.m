@@ -45,4 +45,20 @@
     }
 }
 
++ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block {
+    NSCParameterAssert(block);
+    
+    Class class = [self class];
+    Method originalMethod = class_getInstanceMethod(class, originalSelector);
+    NSCParameterAssert(originalMethod);
+    
+    IMP newIMP = imp_implementationWithBlock(block);
+    
+    if (!class_addMethod(class, originalSelector, newIMP, method_getTypeEncoding(originalMethod))) {
+        return method_setImplementation(originalMethod, newIMP);
+    } else {
+        return method_getImplementation(originalMethod);
+    }
+}
+
 @end
