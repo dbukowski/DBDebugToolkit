@@ -22,24 +22,54 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ String containing the name of notifications send to inform about change in colorized view borders settings.
+ */
 extern NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification;
 
+/**
+ `DBUserInterfaceToolkit` is a class responsible for managing the user interface debugging settings and generating a debug description strings.
+ */
 @interface DBUserInterfaceToolkit : NSObject
 
+/**
+ Returns the singleton instance.
+ */
 + (instancetype)sharedInstance;
 
+/**
+ Boolean flag determining whether colorized view borders are enabled or not.
+ */
 @property (nonatomic, assign) BOOL colorizedViewBordersEnabled;
 
+/**
+ Boolean flag determining whether slow animations are enabled or not.
+ */
 @property (nonatomic, assign) BOOL slowAnimationsEnabled;
 
+/**
+ Boolean flag determining whether showing touches is enabled or not.
+ */
 @property (nonatomic, assign) BOOL showingTouchesEnabled;
 
+/**
+ Returns the autolayout trace for the key window.
+ */
 - (NSString *)autolayoutTrace;
 
+/**
+ Returns the description of the current screen (below the `DBMenuTableViewController`).
+ */
 - (NSString *)viewDescription:(UIView *)view;
 
+/**
+ Returns the hierarchy of view controllers in key window.
+ */
 - (NSString *)viewControllerHierarchy;
 
+/**
+ Returns the text containing all the available fonts.
+ */
 - (NSString *)fontFamilies;
 
 @end

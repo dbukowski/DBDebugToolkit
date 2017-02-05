@@ -23,8 +23,14 @@
 #import <UIKit/UIKit.h>
 #import "DBUserInterfaceToolkit.h"
 
+/**
+ `DBUserInterfaceTableViewController` is a view controller presenting options related to user interface.
+ */
 @interface DBUserInterfaceTableViewController : UITableViewController
 
+/**
+ `DBUserInterfaceToolkit` instance serving as a data source for the table view controller. It is also informed about switch state changes.
+ */
 @property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
 
 @end
