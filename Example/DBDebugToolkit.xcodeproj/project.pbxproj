@@ -22,6 +22,9 @@
 		6627B21A1E45E8070020618C /* DBRequestsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6627B2191E45E8070020618C /* DBRequestsExampleViewController.m */; };
 		6627B2211E460AF60020618C /* DBRequestExampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6627B21F1E460AF60020618C /* DBRequestExampleTableViewCell.m */; };
 		6627B2221E460AF60020618C /* DBRequestExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6627B2201E460AF60020618C /* DBRequestExampleTableViewCell.xib */; };
+		662F49961E49301800D98E31 /* DBLocationExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F49951E49301800D98E31 /* DBLocationExampleViewController.m */; };
+		662F49981E49321200D98E31 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F49971E49321200D98E31 /* MapKit.framework */; };
+		663E02B51E49413B0069FDCB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663E02B41E49413B0069FDCB /* CoreLocation.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		BF0AAF78D26BBE364C17AD3F /* Pods_DBDebugToolkit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */; };
 		E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */; };
@@ -64,6 +67,10 @@
 		6627B21E1E460AF60020618C /* DBRequestExampleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBRequestExampleTableViewCell.h; sourceTree = "<group>"; };
 		6627B21F1E460AF60020618C /* DBRequestExampleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBRequestExampleTableViewCell.m; sourceTree = "<group>"; };
 		6627B2201E460AF60020618C /* DBRequestExampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBRequestExampleTableViewCell.xib; sourceTree = "<group>"; };
+		662F49941E49301800D98E31 /* DBLocationExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLocationExampleViewController.h; sourceTree = "<group>"; };
+		662F49951E49301800D98E31 /* DBLocationExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLocationExampleViewController.m; sourceTree = "<group>"; };
+		662F49971E49321200D98E31 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		663E02B41E49413B0069FDCB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		91D180BC1820F8DE5D1FCBFA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -79,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				663E02B51E49413B0069FDCB /* CoreLocation.framework in Frameworks */,
+				662F49981E49321200D98E31 /* MapKit.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -124,6 +133,8 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				663E02B41E49413B0069FDCB /* CoreLocation.framework */,
+				662F49971E49321200D98E31 /* MapKit.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
@@ -148,6 +159,8 @@
 				6627B21E1E460AF60020618C /* DBRequestExampleTableViewCell.h */,
 				6627B21F1E460AF60020618C /* DBRequestExampleTableViewCell.m */,
 				6627B2201E460AF60020618C /* DBRequestExampleTableViewCell.xib */,
+				662F49941E49301800D98E31 /* DBLocationExampleViewController.h */,
+				662F49951E49301800D98E31 /* DBLocationExampleViewController.m */,
 			);
 			name = "Example for DBDebugToolkit";
 			path = DBDebugToolkit;
@@ -406,6 +419,7 @@
 				6627B2211E460AF60020618C /* DBRequestExampleTableViewCell.m in Sources */,
 				6627B21A1E45E8070020618C /* DBRequestsExampleViewController.m in Sources */,
 				6003F59E195388D20070C39A /* DBAppDelegate.m in Sources */,
+				662F49961E49301800D98E31 /* DBLocationExampleViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

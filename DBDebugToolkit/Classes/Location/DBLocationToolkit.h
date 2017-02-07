@@ -21,34 +21,15 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+
+@interface DBLocationToolkit : NSObject
 
 /**
- `NSObject` category adding helper methods for swizzling.
+ Returns the singleton instance.
  */
-@interface NSObject (DBDebugToolkit)
++ (instancetype)sharedInstance;
 
-/**
- Exchanges class methods between two selectors using method swizzling.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param swizzledSelector The swizzled selector, providing the new implementation.
- */
-+ (void)exchangeClassMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
-
-/**
- Exchanges instance methods between two selectors using method swizzling.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param swizzledSelector The swizzled selector, providing the new implementation.
- */
-+ (void)exchangeInstanceMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector;
-
-/**
- Replaces instance method implementation with a block.
- 
- @param originalSelector The original selector, which is supposed to have its implementation replaced.
- @param block The block containing new implementation.
- */
-+ (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block;
+@property (nonatomic, strong) CLLocation *simulatedLocation;
 
 @end

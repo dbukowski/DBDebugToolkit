@@ -98,6 +98,10 @@
 		66215CEC1E47710A007B8989 /* UIWindow+DBUserInterfaceToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66215CEA1E47710A007B8989 /* UIWindow+DBUserInterfaceToolkit.m */; };
 		66215CEF1E4772A8007B8989 /* DBTouchIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 66215CED1E4772A8007B8989 /* DBTouchIndicatorView.h */; };
 		66215CF01E4772A8007B8989 /* DBTouchIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66215CEE1E4772A8007B8989 /* DBTouchIndicatorView.m */; };
+		662F499C1E49373100D98E31 /* DBLocationToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 662F499A1E49373100D98E31 /* DBLocationToolkit.h */; };
+		662F499D1E49373100D98E31 /* DBLocationToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F499B1E49373100D98E31 /* DBLocationToolkit.m */; };
+		662F49A01E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 662F499E1E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.h */; };
+		662F49A11E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F499F1E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.m */; };
 		6D38897ECC86522EE950EDE250FDEE6D /* DBMenuTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 129F22F171E200B01C7803265F46F3DE /* DBMenuTableViewController.storyboard */; };
 		6E2CDD8A89D860D2B30FE330CA166328 /* DBRequestOutcome.m in Sources */ = {isa = PBXBuildFile; fileRef = 468AFB8FF176ECF6B7337EB4B1B8DF68 /* DBRequestOutcome.m */; };
 		6F09FEA186CD8C27E2F1DDD66A56BADC /* SPTGlobalBeforeAfterEach.h in Headers */ = {isa = PBXBuildFile; fileRef = D6CF3903D943792CF71D2E59A5FE6602 /* SPTGlobalBeforeAfterEach.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -349,6 +353,10 @@
 		66215CEA1E47710A007B8989 /* UIWindow+DBUserInterfaceToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+DBUserInterfaceToolkit.m"; sourceTree = "<group>"; };
 		66215CED1E4772A8007B8989 /* DBTouchIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTouchIndicatorView.h; sourceTree = "<group>"; };
 		66215CEE1E4772A8007B8989 /* DBTouchIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTouchIndicatorView.m; sourceTree = "<group>"; };
+		662F499A1E49373100D98E31 /* DBLocationToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLocationToolkit.h; sourceTree = "<group>"; };
+		662F499B1E49373100D98E31 /* DBLocationToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLocationToolkit.m; sourceTree = "<group>"; };
+		662F499E1E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+DBLocationToolkit.h"; sourceTree = "<group>"; };
+		662F499F1E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+DBLocationToolkit.m"; sourceTree = "<group>"; };
 		67324AA26715C0742B62E59D0AAB374C /* EXPMatchers+beTruthy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beTruthy.h"; path = "Expecta/Matchers/EXPMatchers+beTruthy.h"; sourceTree = "<group>"; };
 		67473F09A0FADF52D476EA88F48CFA54 /* EXPExpect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPExpect.h; path = Expecta/EXPExpect.h; sourceTree = "<group>"; };
 		68F820C46D336F1E6EB733BFC4374C51 /* SPTExample.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTExample.h; path = Specta/Specta/SPTExample.h; sourceTree = "<group>"; };
@@ -805,6 +813,17 @@
 			path = Expecta;
 			sourceTree = "<group>";
 		};
+		662F49991E49371200D98E31 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				662F499A1E49373100D98E31 /* DBLocationToolkit.h */,
+				662F499B1E49373100D98E31 /* DBLocationToolkit.m */,
+				662F499E1E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.h */,
+				662F499F1E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		6C83959EF81AC5B6C578A11285B9C973 /* TitleValue */ = {
 			isa = PBXGroup;
 			children = (
@@ -1068,6 +1087,7 @@
 		EB3AD17E5D7666B131DE6F24F42C74C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				662F49991E49371200D98E31 /* Location */,
 				6EF0AAECBED06C9801017475737E550E /* DBDebugToolkit.h */,
 				77BB9AE3727B5EE0D3169762F168326B /* DBDebugToolkit.m */,
 				F1BD8B412988B68B3677E9B73BDEDE6A /* BuildInfo */,
@@ -1137,6 +1157,7 @@
 				C01B8EAAE23AB23E7CB314659941AA53 /* DBDebugToolkit-umbrella.h in Headers */,
 				62F195D4757938AF2903BD3FAC5599F8 /* DBDebugToolkit.h in Headers */,
 				425E740BAFAD9F671A54D15A629ABD47 /* DBDebugToolkitTrigger.h in Headers */,
+				662F49A01E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.h in Headers */,
 				64246C8412E59C58CEBF4D9321B3EB8F /* DBDebugToolkitTriggerDelegate.h in Headers */,
 				66215CEF1E4772A8007B8989 /* DBTouchIndicatorView.h in Headers */,
 				37FC743C2090672703C917F45C6F5836 /* DBDeviceInfoProvider.h in Headers */,
@@ -1160,6 +1181,7 @@
 				27316141A36DFDAE017F82A722C65D1A /* DBRequestOutcome.h in Headers */,
 				77499F153FD1BF115D53121B52057F7D /* DBRequestTableViewCell.h in Headers */,
 				FE8850275DD35152A599F24A84FF1BA8 /* DBShakeTrigger.h in Headers */,
+				662F499C1E49373100D98E31 /* DBLocationToolkit.h in Headers */,
 				AFC1F67290CC3D01F37B80938280C502 /* DBTapTrigger.h in Headers */,
 				FB7E7CD7EDCC16EA217892D68FECB830 /* DBTextViewViewController.h in Headers */,
 				83FCA4A899E30403EEAB99A13686B81C /* DBTitleValueTableViewCell.h in Headers */,
@@ -1473,6 +1495,7 @@
 				57135441336D4D1DF595187528D73CA0 /* DBConsoleOutputCaptor.m in Sources */,
 				9FC7C200B57B0DEE707D8C10337820DE /* DBConsoleViewController.m in Sources */,
 				10D576F3745C1DC53A5089FDB4A01EE6 /* DBDebugToolkit-dummy.m in Sources */,
+				662F49A11E49391F00D98E31 /* CLLocationManager+DBLocationToolkit.m in Sources */,
 				A0D159090FBA034166884FC699E00CC8 /* DBDebugToolkit.m in Sources */,
 				1B6B405DC4DA56F4DE02F212175C527D /* DBDeviceInfoProvider.m in Sources */,
 				86DCC522DED4B851EF732300790A4F83 /* DBFPSCalculator.m in Sources */,
@@ -1492,6 +1515,7 @@
 				F8CF9C1B11702328A3995DB909F6405E /* DBRequestDataHandler.m in Sources */,
 				EDB473D515B416F43B31953E82042B57 /* DBRequestDetailsViewController.m in Sources */,
 				3E79D7EDADED5AEE37077F25F94D255F /* DBRequestModel.m in Sources */,
+				662F499D1E49373100D98E31 /* DBLocationToolkit.m in Sources */,
 				6E2CDD8A89D860D2B30FE330CA166328 /* DBRequestOutcome.m in Sources */,
 				5BBB5A94DC32717188B4C25F4E8D3421 /* DBRequestTableViewCell.m in Sources */,
 				740DFA992218E296EC594274EF9F1E06 /* DBShakeTrigger.m in Sources */,

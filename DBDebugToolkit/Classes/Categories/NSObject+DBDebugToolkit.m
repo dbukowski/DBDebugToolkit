@@ -25,24 +25,16 @@
 
 @implementation NSObject (DBDebugToolkit)
 
-+ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector {
-    Class class = object_getClass((id)self);
-    Method originalMethod = class_getClassMethod(class, originalSelector);
-    Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
-    
-    BOOL didAddMethod = class_addMethod(class,
-                                        originalSelector,
-                                        method_getImplementation(swizzledMethod),
-                                        method_getTypeEncoding(swizzledMethod));
-    
-    if (didAddMethod) {
-        class_replaceMethod(class,
-                            swizzledSelector,
-                            method_getImplementation(originalMethod),
-                            method_getTypeEncoding(originalMethod));
-    } else {
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
++ (void)exchangeClassMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector {
+    [self exchangeMethodsWithOriginalSelector:originalSelector
+                             swizzledSelector:swizzledSelector
+                                 classMethods:YES];
+}
+
++ (void)exchangeInstanceMethodsWithOriginalSelector:(SEL)originalSelector andSwizzledSelector:(SEL)swizzledSelector {
+    [self exchangeMethodsWithOriginalSelector:originalSelector
+                             swizzledSelector:swizzledSelector
+                                 classMethods:NO];
 }
 
 + (IMP)replaceMethodWithSelector:(SEL)originalSelector block:(id)block {
@@ -58,6 +50,30 @@
         return method_setImplementation(originalMethod, newIMP);
     } else {
         return method_getImplementation(originalMethod);
+    }
+}
+
+#pragma mark - Private
+
++ (void)exchangeMethodsWithOriginalSelector:(SEL)originalSelector
+                           swizzledSelector:(SEL)swizzledSelector
+                               classMethods:(BOOL)classMethods {
+    Class class = classMethods ? object_getClass((id)self) : [self class];
+    Method originalMethod = classMethods ? class_getClassMethod(class, originalSelector) : class_getInstanceMethod(class, originalSelector);
+    Method swizzledMethod = classMethods ? class_getClassMethod(class, swizzledSelector) : class_getInstanceMethod(class, swizzledSelector);
+    
+    BOOL didAddMethod = class_addMethod(class,
+                                        originalSelector,
+                                        method_getImplementation(swizzledMethod),
+                                        method_getTypeEncoding(swizzledMethod));
+    
+    if (didAddMethod) {
+        class_replaceMethod(class,
+                            swizzledSelector,
+                            method_getImplementation(originalMethod),
+                            method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
 

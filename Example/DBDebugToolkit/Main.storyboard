@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,17 +23,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6W-iA-Rmw">
-                                <rect key="frame" x="155" y="318.5" width="64" height="30"/>
+                                <rect key="frame" x="155" y="207.5" width="64" height="30"/>
                                 <state key="normal" title="Requests"/>
                                 <connections>
                                     <segue destination="Fvj-FL-Kb5" kind="show" id="N7T-KD-wSM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZ6-4d-FUk">
+                                <rect key="frame" x="158" y="489.5" width="59" height="30"/>
+                                <state key="normal" title="Location"/>
+                                <connections>
+                                    <segue destination="EQg-QG-5DG" kind="show" id="3yg-xc-1W9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g6W-iA-Rmw" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="B20-Re-3h6"/>
-                            <constraint firstItem="g6W-iA-Rmw" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="JXR-fy-YV3"/>
+                            <constraint firstItem="g6W-iA-Rmw" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" multiplier="2/3" id="JXR-fy-YV3"/>
+                            <constraint firstItem="aZ6-4d-FUk" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="SmK-Pa-6SS"/>
+                            <constraint firstItem="aZ6-4d-FUk" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" multiplier="3/2" constant="4" id="q5R-l8-IZt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="DBDebugToolkit Example" id="AAE-hS-HB5"/>
@@ -73,6 +83,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2f-Vd-bRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2232.8000000000002" y="277.51124437781112"/>
+        </scene>
+        <!--Location-->
+        <scene sceneID="FTw-z4-3bn">
+            <objects>
+                <viewController title="Location" id="EQg-QG-5DG" customClass="DBLocationExampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v9R-Kp-JRl"/>
+                        <viewControllerLayoutGuide type="bottom" id="X3N-wj-Ah5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EbX-nR-ZBi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSA-GJ-cY2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EQg-QG-5DG" id="gCz-Cn-jN6"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heg-7J-imw">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVf-16-IVa">
+                                        <rect key="frame" x="187" y="30.5" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="DVf-16-IVa" firstAttribute="centerX" secondItem="heg-7J-imw" secondAttribute="centerX" id="ds8-pJ-Vjj"/>
+                                    <constraint firstItem="DVf-16-IVa" firstAttribute="centerY" secondItem="heg-7J-imw" secondAttribute="centerY" id="gcB-i8-b3d"/>
+                                    <constraint firstAttribute="height" constant="60" id="mtz-82-1Nh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="heg-7J-imw" firstAttribute="leading" secondItem="EbX-nR-ZBi" secondAttribute="leading" id="0Zi-jw-nDh"/>
+                            <constraint firstAttribute="trailing" secondItem="wSA-GJ-cY2" secondAttribute="trailing" id="4t2-wD-9qn"/>
+                            <constraint firstItem="wSA-GJ-cY2" firstAttribute="top" secondItem="EbX-nR-ZBi" secondAttribute="top" id="Gau-Mb-bwb"/>
+                            <constraint firstAttribute="trailing" secondItem="heg-7J-imw" secondAttribute="trailing" id="MyS-XR-Buc"/>
+                            <constraint firstItem="wSA-GJ-cY2" firstAttribute="leading" secondItem="EbX-nR-ZBi" secondAttribute="leading" id="RDs-2y-ydf"/>
+                            <constraint firstAttribute="bottom" secondItem="heg-7J-imw" secondAttribute="bottom" id="Uqd-D3-c7N"/>
+                            <constraint firstItem="heg-7J-imw" firstAttribute="top" secondItem="wSA-GJ-cY2" secondAttribute="bottom" constant="8" id="bh1-yQ-wj7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="DVf-16-IVa" id="GiC-KX-YtE"/>
+                        <outlet property="mapView" destination="wSA-GJ-cY2" id="4rC-f3-njN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EHJ-f3-DJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2232.8000000000002" y="1013.3433283358322"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rhW-tm-WbY">

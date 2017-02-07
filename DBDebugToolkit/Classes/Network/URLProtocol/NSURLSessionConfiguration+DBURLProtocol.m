@@ -31,10 +31,10 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self exchangeMethodsWithOriginalSelector:@selector(defaultSessionConfiguration)
-                              andSwizzledSelector:@selector(db_defaultSessionConfiguration)];
-        [self exchangeMethodsWithOriginalSelector:@selector(ephemeralSessionConfiguration)
-                              andSwizzledSelector:@selector(db_ephemeralSessionConfiguration)];
+        [self exchangeClassMethodsWithOriginalSelector:@selector(defaultSessionConfiguration)
+                                   andSwizzledSelector:@selector(db_defaultSessionConfiguration)];
+        [self exchangeClassMethodsWithOriginalSelector:@selector(ephemeralSessionConfiguration)
+                                   andSwizzledSelector:@selector(db_ephemeralSessionConfiguration)];
     });
 }
 
