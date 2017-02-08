@@ -39,7 +39,17 @@
     [geoCoder reverseGeocodeLocation:location
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        CLPlacemark *placemark = placemarks.firstObject;
-                       self.label.text = [NSString stringWithFormat:@"%@, %@", placemark.country, placemark.locality];
+                       NSMutableArray *placemarkDescriptions = [NSMutableArray array];
+                       if (placemark.country) {
+                           [placemarkDescriptions addObject:placemark.country];
+                       }
+                       if (placemark.administrativeArea) {
+                           [placemarkDescriptions addObject:placemark.administrativeArea];
+                       }
+                       if (placemark.locality) {
+                           [placemarkDescriptions addObject:placemark.locality];
+                       }
+                       self.label.text = [placemarkDescriptions componentsJoinedByString:@", "];
                    }];
 }
 

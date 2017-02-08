@@ -26,6 +26,7 @@
 #import "DBConsoleViewController.h"
 #import "DBNetworkViewController.h"
 #import "DBUserInterfaceTableViewController.h"
+#import "DBLocationTableViewController.h"
 
 @interface DBMenuTableViewController ()
 
@@ -57,7 +58,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 4) {
+    if (indexPath.row == 5) {
         // Open application settings.
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -92,6 +93,9 @@
     } else if ([destinationViewController isKindOfClass:[DBUserInterfaceTableViewController class]]) {
         DBUserInterfaceTableViewController *userInterfaceTableViewController = (DBUserInterfaceTableViewController *)destinationViewController;
         userInterfaceTableViewController.userInterfaceToolkit = self.userInterfaceToolkit;
+    } else if ([destinationViewController isKindOfClass:[DBLocationTableViewController class]]) {
+        DBLocationTableViewController *locationTableViewController = (DBLocationTableViewController *)destinationViewController;
+        locationTableViewController.locationToolkit = self.locationToolkit;
     }
 }
 

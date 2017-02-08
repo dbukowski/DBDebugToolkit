@@ -30,6 +30,7 @@
 #import "DBConsoleOutputCaptor.h"
 #import "DBNetworkToolkit.h"
 #import "DBUserInterfaceToolkit.h"
+#import "DBLocationToolkit.h"
 
 @interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
 @property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
 @property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
+@property (nonatomic, strong) DBLocationToolkit *locationToolkit;
 
 @end
 
@@ -71,6 +73,7 @@
         [sharedInstance setupConsoleOutputCaptor];
         [sharedInstance setupNetworkToolkit];
         [sharedInstance setupUserInterfaceToolkit];
+        [sharedInstance setupLocationToolkit];
     });
     return sharedInstance;
 }
@@ -161,6 +164,12 @@
     self.userInterfaceToolkit.showingTouchesEnabled = NO;
 }
 
+#pragma mark - Location toolkit
+
+- (void)setupLocationToolkit {
+    self.locationToolkit = [DBLocationToolkit sharedInstance];
+}
+
 #pragma mark - Showing menu
 
 - (void)showMenu {
@@ -182,6 +191,7 @@
         _menuViewController.consoleOutputCaptor = self.consoleOutputCaptor;
         _menuViewController.networkToolkit = self.networkToolkit;
         _menuViewController.userInterfaceToolkit = self.userInterfaceToolkit;
+        _menuViewController.locationToolkit = self.locationToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;

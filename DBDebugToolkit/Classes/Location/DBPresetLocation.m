@@ -20,19 +20,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import "DBPresetLocation.h"
 
-@interface DBLocationToolkit : NSObject
+@implementation DBPresetLocation
 
-/**
- Returns the singleton instance.
- */
-+ (instancetype)sharedInstance;
+#pragma mark - Initialization
 
-@property (nonatomic, strong) CLLocation *simulatedLocation;
+- (instancetype)initWithTitle:(NSString *)title latitude:(CGFloat)latitude longitude:(CGFloat)longitude {
+    self = [super init];
+    if (self) {
+        _title = title;
+        _latitude = latitude;
+        _longitude = longitude;
+    }
+    
+    return self;
+}
 
-@property (nonatomic, readonly) NSArray <DBPresetLocation *> *presetLocations;
++ (instancetype)presetLocationWithTitle:(NSString *)title latitude:(CGFloat)latitude longitude:(CGFloat)longitude {
+    return [[self alloc] initWithTitle:title latitude:latitude longitude:longitude];
+}
 
 @end

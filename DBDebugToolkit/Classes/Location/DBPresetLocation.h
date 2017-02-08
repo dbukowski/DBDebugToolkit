@@ -21,18 +21,15 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
-#import "DBPresetLocation.h"
 
-@interface DBLocationToolkit : NSObject
+@interface DBPresetLocation : NSObject
 
-/**
- Returns the singleton instance.
- */
-+ (instancetype)sharedInstance;
++ (instancetype)presetLocationWithTitle:(NSString *)title latitude:(CGFloat)latitude longitude:(CGFloat)longitude;
 
-@property (nonatomic, strong) CLLocation *simulatedLocation;
+@property (nonatomic, readonly) NSString *title;
 
-@property (nonatomic, readonly) NSArray <DBPresetLocation *> *presetLocations;
+@property (nonatomic, readonly) CGFloat latitude;
+
+@property (nonatomic, readonly) CGFloat longitude;
 
 @end

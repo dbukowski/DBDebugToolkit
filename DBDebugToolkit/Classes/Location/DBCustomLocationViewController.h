@@ -20,19 +20,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "DBPresetLocation.h"
 
-@interface DBLocationToolkit : NSObject
+@class DBCustomLocationViewController;
 
-/**
- Returns the singleton instance.
- */
-+ (instancetype)sharedInstance;
+@protocol DBCustomLocationViewControllerDelegate <NSObject>
 
-@property (nonatomic, strong) CLLocation *simulatedLocation;
+- (void)customLocationViewController:(DBCustomLocationViewController *)customLocationViewController
+                   didSelectLocation:(CLLocation *)location;
 
-@property (nonatomic, readonly) NSArray <DBPresetLocation *> *presetLocations;
+- (void)customLocationViewControllerDidTapCancelButton:(DBCustomLocationViewController *)customLocationViewController;
+
+@end
+
+@interface DBCustomLocationViewController : UIViewController
+
+@property (nonatomic, strong) CLLocation *selectedLocation;
+
+@property (nonatomic, weak) id <DBCustomLocationViewControllerDelegate> delegate;
 
 @end

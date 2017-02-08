@@ -20,19 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
-#import "DBPresetLocation.h"
+#ifndef DBDebugToolkitUserDefaultsKeys_h
+#define DBDebugToolkitUserDefaultsKeys_h
 
-@interface DBLocationToolkit : NSObject
+static NSString *const DBDebugToolkitUserDefaultsSimulatedLocationKey = @"DBDebugToolkit_simulatedLocation";
 
-/**
- Returns the singleton instance.
- */
-+ (instancetype)sharedInstance;
-
-@property (nonatomic, strong) CLLocation *simulatedLocation;
-
-@property (nonatomic, readonly) NSArray <DBPresetLocation *> *presetLocations;
-
-@end
+#endif /* DBDebugToolkitUserDefaultsKeys_h */

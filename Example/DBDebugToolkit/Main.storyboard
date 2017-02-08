@@ -105,8 +105,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heg-7J-imw">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVf-16-IVa">
-                                        <rect key="frame" x="187" y="30.5" width="0.0" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DVf-16-IVa">
+                                        <rect key="frame" x="16" y="4" width="343" height="52"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -114,9 +114,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="DVf-16-IVa" firstAttribute="leading" secondItem="heg-7J-imw" secondAttribute="leading" constant="16" id="2Qo-u4-Jh4"/>
+                                    <constraint firstItem="DVf-16-IVa" firstAttribute="top" secondItem="heg-7J-imw" secondAttribute="top" constant="4" id="IML-97-dg9"/>
+                                    <constraint firstAttribute="bottom" secondItem="DVf-16-IVa" secondAttribute="bottom" constant="4" id="Jbp-us-4wy"/>
                                     <constraint firstItem="DVf-16-IVa" firstAttribute="centerX" secondItem="heg-7J-imw" secondAttribute="centerX" id="ds8-pJ-Vjj"/>
                                     <constraint firstItem="DVf-16-IVa" firstAttribute="centerY" secondItem="heg-7J-imw" secondAttribute="centerY" id="gcB-i8-b3d"/>
                                     <constraint firstAttribute="height" constant="60" id="mtz-82-1Nh"/>
+                                    <constraint firstAttribute="trailing" secondItem="DVf-16-IVa" secondAttribute="trailing" constant="16" id="uTo-iq-kbf"/>
                                 </constraints>
                             </view>
                         </subviews>

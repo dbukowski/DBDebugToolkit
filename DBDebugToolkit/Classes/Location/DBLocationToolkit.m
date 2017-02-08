@@ -21,8 +21,17 @@
 // THE SOFTWARE.
 
 #import "DBLocationToolkit.h"
+#import "DBDebugToolkitUserDefaultsKeys.h"
+
+@interface DBLocationToolkit ()
+
+@property (nonatomic, strong) NSArray <DBPresetLocation *> *presetLocations;
+
+@end
 
 @implementation DBLocationToolkit
+
+@synthesize simulatedLocation;
 
 #pragma mark - Initialization
 
@@ -31,9 +40,81 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DBLocationToolkit alloc] init];
-        sharedInstance.simulatedLocation = [[CLLocation alloc] initWithLatitude:51.0 longitude:17.0];
     });
     return sharedInstance;
+}
+
+#pragma mark - Simulated location
+
+- (void)setSimulatedLocation:(CLLocation *)aSimulatedLocation {
+    if (aSimulatedLocation != simulatedLocation) {
+        simulatedLocation = aSimulatedLocation;
+        if (simulatedLocation) {
+            NSData *locationData = [NSKeyedArchiver archivedDataWithRootObject:simulatedLocation];
+            [[NSUserDefaults standardUserDefaults] setObject:locationData forKey:DBDebugToolkitUserDefaultsSimulatedLocationKey];
+        } else {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:DBDebugToolkitUserDefaultsSimulatedLocationKey];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (CLLocation *)simulatedLocation {
+    if (!simulatedLocation) {
+        NSData *locationData = [[NSUserDefaults standardUserDefaults] objectForKey:DBDebugToolkitUserDefaultsSimulatedLocationKey];
+        if (locationData) {
+            simulatedLocation = (CLLocation *)[NSKeyedUnarchiver unarchiveObjectWithData:locationData];
+        }
+    }
+    
+    return simulatedLocation;
+}
+
+#pragma mark - Preset locations
+
+- (NSArray <DBPresetLocation *> *)presetLocations {
+    if (!_presetLocations) {
+        NSMutableArray *presetLocations = [NSMutableArray array];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"London, England"
+                                                                    latitude:51.509980
+                                                                   longitude:-0.133700]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Johannesburg, South Africa"
+                                                                    latitude:-26.204103
+                                                                   longitude:28.047305]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Moscow, Russia"
+                                                                    latitude:55.755786
+                                                                   longitude:37.617633]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Mumbai, India"
+                                                                    latitude:19.017615
+                                                                   longitude:72.856164]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Tokyo, Japan"
+                                                                    latitude:35.702069
+                                                                   longitude:139.775327]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Sydney, Australia"
+                                                                    latitude:-33.863400
+                                                                   longitude:151.211000]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Hong Kong, China"
+                                                                    latitude:22.284681
+                                                                   longitude:114.158177]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Honolulu, HI, USA"
+                                                                    latitude:21.282778
+                                                                   longitude:-157.829444]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"San Francisco, CA, USA"
+                                                                    latitude:37.787359
+                                                                   longitude:-122.408227]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Mexico City, Mexico"
+                                                                    latitude:19.435478
+                                                                   longitude:-99.136479]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"New York, NY, USA"
+                                                                    latitude:40.759211
+                                                                   longitude:-73.984638]];
+        [presetLocations addObject:[DBPresetLocation presetLocationWithTitle:@"Rio de Janeiro, Brazil"
+                                                                    latitude:-22.903539
+                                                                   longitude:-43.209587]];
+        _presetLocations = [presetLocations copy];
+    }
+    
+    return _presetLocations;
 }
 
 @end

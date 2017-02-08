@@ -20,19 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
-#import "DBPresetLocation.h"
+#import <UIKit/UIKit.h>
+#import "DBLocationToolkit.h"
 
-@interface DBLocationToolkit : NSObject
+@interface DBLocationTableViewController : UITableViewController
 
-/**
- Returns the singleton instance.
- */
-+ (instancetype)sharedInstance;
-
-@property (nonatomic, strong) CLLocation *simulatedLocation;
-
-@property (nonatomic, readonly) NSArray <DBPresetLocation *> *presetLocations;
+@property (nonatomic, strong) DBLocationToolkit *locationToolkit;
 
 @end
