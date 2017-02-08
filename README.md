@@ -38,6 +38,7 @@ DBDebugToolkit is a debugging library written in Objective-C.
 - [x] Console
   - [x] Displaying console output in text view
   - [x] Sending console output by email with device and system information
+- [x] Simulating location
 - [x] Opening application settings
 - [x] Showing version & build number
 - [x] Showing device model & iOS version
@@ -173,6 +174,13 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     return true
 }
 ```
+
+
+### Simulating location
+
+Simulating location with DBDebugToolkit is really straightforward. You can either select a location from the predefined list (the same as on iOS simulator) or choose any point on a map. This choice is remembered even after you relaunch the application, which should be really helpful when you work on a feature that depends on the user location.
+
+[//]: # (Insert location simulation gif)
 
 ## Author
 
