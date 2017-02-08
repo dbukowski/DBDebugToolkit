@@ -25,19 +25,42 @@
 
 @class DBCustomLocationViewController;
 
+/**
+ A protocol used for informing the presenting view controller about the new selected location and about the need to dismiss the `DBCustomLocationViewController` instance.
+ */
 @protocol DBCustomLocationViewControllerDelegate <NSObject>
 
+/**
+ Informs the delegate that the user finished selecting a new location.
+ 
+ @param customLocationViewController The `DBCustomLocationViewController` that has a new location and needs to be dismissed.
+ @param location The selected location.
+ */
 - (void)customLocationViewController:(DBCustomLocationViewController *)customLocationViewController
                    didSelectLocation:(CLLocation *)location;
 
+/**
+ Informs the delegate that the user cancelled selecting a new location.
+ 
+ @param customLocationViewController The `DBCustomLocationViewController` that needs to be dismissed.
+ */
 - (void)customLocationViewControllerDidTapCancelButton:(DBCustomLocationViewController *)customLocationViewController;
 
 @end
 
+/**
+ `DBCustomLocationViewController` is a simple view controller allowing the user to select a location on a map.
+ */
 @interface DBCustomLocationViewController : UIViewController
 
+/**
+ The currently selected location. Can be used to provide the location before showing `DBCustomLocationViewController` instance.
+ */
 @property (nonatomic, strong) CLLocation *selectedLocation;
 
+/**
+ Delegate that will be informed about the new selected location and about the need to dismiss the presented view controller. It needs to conform to `DBCustomLocationViewControllerDelegate` protocol.
+ */
 @property (nonatomic, weak) id <DBCustomLocationViewControllerDelegate> delegate;
 
 @end

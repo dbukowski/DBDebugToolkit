@@ -22,6 +22,9 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+/**
+ `CLLocationManager` category that replaces private methods to simulate location.
+ */
 @interface CLLocationManager (DBLocationToolkit)
 
 @end

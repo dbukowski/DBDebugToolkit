@@ -23,8 +23,14 @@
 #import <UIKit/UIKit.h>
 #import "DBLocationToolkit.h"
 
+/**
+ `DBLocationTableViewController` is a view controller allowing the user to select a simulated location.
+ */
 @interface DBLocationTableViewController : UITableViewController
 
+/**
+ `DBLocationToolkit` object that handles the location simulation. It also provides the list of preset locations.
+ */
 @property (nonatomic, strong) DBLocationToolkit *locationToolkit;
 
 @end

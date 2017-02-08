@@ -30,10 +30,13 @@ static NSString *const CLLocationManagerLocationsKey = @"Locations";
 @implementation CLLocationManager (DBLocationToolkit)
 
 + (void)load {
-    [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(@"onClientEventLocation:")
-                                  andSwizzledSelector:@selector(db_onClientEventLocation:)];
-    [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(@"onClientEventLocation:forceMapMatching:type:")
-                                  andSwizzledSelector:@selector(db_onClientEventLocation:forceMapMatching:type:)];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(@"onClientEventLocation:")
+                                      andSwizzledSelector:@selector(db_onClientEventLocation:)];
+        [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(@"onClientEventLocation:forceMapMatching:type:")
+                                      andSwizzledSelector:@selector(db_onClientEventLocation:forceMapMatching:type:)];
+    });
 }
 
 - (void)db_onClientEventLocation:(NSDictionary *)dictionary {

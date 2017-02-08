@@ -24,6 +24,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import "DBPresetLocation.h"
 
+/**
+ `DBLocationToolkit` is a class responsible for simulating location and providing a list of preset locations.
+ */
 @interface DBLocationToolkit : NSObject
 
 /**
@@ -31,8 +34,14 @@
  */
 + (instancetype)sharedInstance;
 
+/**
+ Current simulated location.
+ */
 @property (nonatomic, strong) CLLocation *simulatedLocation;
 
+/**
+ A list of preset locations. Read-only.
+ */
 @property (nonatomic, readonly) NSArray <DBPresetLocation *> *presetLocations;
 
 @end
