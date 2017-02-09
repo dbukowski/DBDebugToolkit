@@ -175,7 +175,7 @@ static NSString *const DBLocationTableViewControllerSimpleCellIdentifier = @"DBD
     seconds = ABS(seconds % 3600);
     NSInteger minutes = seconds / 60;
     seconds %= 60;
-    return [NSString stringWithFormat:@"%ld°%ld'%ld\"", ABS(degrees), (long)minutes, (long)seconds];
+    return [NSString stringWithFormat:@"%ld°%ld'%ld\"", ABS((long)degrees), (long)minutes, (long)seconds];
 }
 
 @end
