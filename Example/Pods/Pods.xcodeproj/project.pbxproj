@@ -86,7 +86,7 @@
 		633A7CADA07B269F8F990CAA8645C2B6 /* DBTouchIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 908BDD4D1333F743833C1DA7C0DA3DE0 /* DBTouchIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		642E4822CA134822B5BA671BF6188A0F /* DBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 205F1F1C901F944555C222242D35007D /* DBChartView.m */; };
 		64C46AF200F2347115A0DF2799D6E403 /* EXPMatchers+beNil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A19FC30FAE97EDA655018A6AD2D54F /* EXPMatchers+beNil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		66D8AA891E4F20FD006EE205 /* DBDebugToolkitUserDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 66D8AA881E4F20FD006EE205 /* DBDebugToolkitUserDefaultsKeys.h */; };
+		66D8AA891E4F20FD006EE205 /* DBDebugToolkitUserDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 66D8AA881E4F20FD006EE205 /* DBDebugToolkitUserDefaultsKeys.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		683C1F468C5DBEB4B19313021DDBCC34 /* DBNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C89ED53A790D8FBCEA0ACD63E5AF9BA /* DBNetworkViewController.m */; };
 		68784AA8BAC8B11DA6175E08BDA7CAA9 /* DBBodyPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B19121613C33EEB115442D532AC2EC78 /* DBBodyPreviewViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		695F56DB0D0FB34B7DF8E6F4F65B5187 /* DBConsoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 85088F3289BA3F1B9B1F90713BBFEC41 /* DBConsoleViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
