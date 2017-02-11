@@ -50,10 +50,13 @@
     if (aSimulatedLocation != simulatedLocation) {
         simulatedLocation = aSimulatedLocation;
         if (simulatedLocation) {
-            NSData *locationData = [NSKeyedArchiver archivedDataWithRootObject:simulatedLocation];
-            [[NSUserDefaults standardUserDefaults] setObject:locationData forKey:DBDebugToolkitUserDefaultsSimulatedLocationKey];
+            [[NSUserDefaults standardUserDefaults] setObject:@(simulatedLocation.coordinate.latitude)
+                                                      forKey:DBDebugToolkitUserDefaultsSimulatedLocationLatitudeKey];
+            [[NSUserDefaults standardUserDefaults] setObject:@(simulatedLocation.coordinate.longitude)
+                                                      forKey:DBDebugToolkitUserDefaultsSimulatedLocationLongitudeKey];
         } else {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:DBDebugToolkitUserDefaultsSimulatedLocationKey];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:DBDebugToolkitUserDefaultsSimulatedLocationLatitudeKey];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:DBDebugToolkitUserDefaultsSimulatedLocationLongitudeKey];
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -61,9 +64,11 @@
 
 - (CLLocation *)simulatedLocation {
     if (!simulatedLocation) {
-        NSData *locationData = [[NSUserDefaults standardUserDefaults] objectForKey:DBDebugToolkitUserDefaultsSimulatedLocationKey];
-        if (locationData) {
-            simulatedLocation = (CLLocation *)[NSKeyedUnarchiver unarchiveObjectWithData:locationData];
+        NSNumber *latitude = [[NSUserDefaults standardUserDefaults] objectForKey:DBDebugToolkitUserDefaultsSimulatedLocationLatitudeKey];
+        NSNumber *longitude = [[NSUserDefaults standardUserDefaults] objectForKey:DBDebugToolkitUserDefaultsSimulatedLocationLongitudeKey];
+        if (latitude != nil && longitude != nil) {
+            simulatedLocation = [[CLLocation alloc] initWithLatitude:[latitude doubleValue]
+                                                           longitude:[longitude doubleValue]];
         }
     }
     

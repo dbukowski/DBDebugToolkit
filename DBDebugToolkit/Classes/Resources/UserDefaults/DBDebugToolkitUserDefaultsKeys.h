@@ -23,6 +23,7 @@
 #ifndef DBDebugToolkitUserDefaultsKeys_h
 #define DBDebugToolkitUserDefaultsKeys_h
 
-static NSString *const DBDebugToolkitUserDefaultsSimulatedLocationKey = @"DBDebugToolkit_simulatedLocation";
+static NSString *const DBDebugToolkitUserDefaultsSimulatedLocationLatitudeKey = @"DBDebugToolkit_simulatedLocationLatitude";
+static NSString *const DBDebugToolkitUserDefaultsSimulatedLocationLongitudeKey = @"DBDebugToolkit_simulatedLocationLongitude";
 
 #endif /* DBDebugToolkitUserDefaultsKeys_h */
