@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "DBTitleValueListViewModel.h"
 
-@interface DBKeychainListViewModel : NSObject <DBTitleValueListViewModel>
+@interface DBKeychainToolkit : NSObject <DBTitleValueListViewModel>
 
 @end

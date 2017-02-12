@@ -70,7 +70,7 @@
 }
 
 - (NSString *)emptyListDescriptionString {
-    return @"There are no entries in user defaults.";
+    return @"There are no entries in the user defaults.";
 }
 
 @end
