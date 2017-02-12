@@ -1,7 +1,7 @@
 {
   "name": "DBDebugToolkit",
   "version": "0.1.0",
-  "summary": "Set of easy to use debugging tools for developers & QA.",
+  "summary": "Set of easy to use debugging tools for iOS developers & QA engineers.",
   "description": "TODO: Add long description of the pod here.\nSet of easy to use debugging tools for developers & QA",
   "homepage": "https://github.com/dbukowski/DBDebugToolkit",
   "license": {
@@ -22,7 +22,7 @@
   "source_files": "DBDebugToolkit/Classes/**/*",
   "resource_bundles": {
     "DBDebugToolkit": [
-      "DBDebugToolkit/Resources/*.{storyboard,xib}"
+      "DBDebugToolkit/Resources/*.{storyboard,xib,bundle}"
     ]
   }
 }
