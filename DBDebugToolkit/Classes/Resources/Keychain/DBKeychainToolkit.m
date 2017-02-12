@@ -45,7 +45,12 @@
                 NSString *account = dictionary[(__bridge id)kSecAttrAccount];
                 NSData *data = dictionary[(__bridge id)kSecValueData];
                 if (data.length > 0 && account.length > 0) {
-                    id unarchivedObject = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                    id unarchivedObject = nil;
+                    @try { // Needed on iOS 8.0, where unarchiveObjectWithData: throws exception.
+                        unarchivedObject = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                    } @catch (NSException *) {
+                        // Do nothing.
+                    }
                     NSString *decodedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                     self.keychainValues[account] = unarchivedObject ? unarchivedObject : (decodedString ? decodedString : data);
                 }

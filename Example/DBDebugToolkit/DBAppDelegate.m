@@ -80,7 +80,7 @@
                                   data, (__bridge id)kSecValueData,
                                   nil];
     SecItemDelete((__bridge CFDictionaryRef)query);
-    OSStatus status = SecItemAdd((__bridge CFDictionaryRef)query, nil);
+    SecItemAdd((__bridge CFDictionaryRef)query, nil);
 }
 
 @end
