@@ -31,6 +31,8 @@
 #import "DBNetworkToolkit.h"
 #import "DBUserInterfaceToolkit.h"
 #import "DBLocationToolkit.h"
+#import "DBKeychainToolkit.h"
+#import "DBUserDefaultsToolkit.h"
 
 @interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
@@ -168,6 +170,18 @@
 
 - (void)setupLocationToolkit {
     self.locationToolkit = [DBLocationToolkit sharedInstance];
+}
+
+#pragma mark - Resources 
+
++ (void)clearKeychain {
+    DBKeychainToolkit *keychainToolkit = [DBKeychainToolkit new];
+    [keychainToolkit handleClearAction];
+}
+
++ (void)clearUserDefaults {
+    DBUserDefaultsToolkit *userDefaultsToolkit = [DBUserDefaultsToolkit new];
+    [userDefaultsToolkit handleClearAction];
 }
 
 #pragma mark - Showing menu

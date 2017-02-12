@@ -7,8 +7,8 @@
 //
 
 #import "DBResourcesTableViewController.h"
-#import "DBKeychainListViewModel.h"
-#import "DBUserDefaultsListViewModel.h"
+#import "DBKeychainToolkit.h"
+#import "DBUserDefaultsToolkit.h"
 #import "DBTitleValueListTableViewController.h"
 
 static NSString *const DBResourcesTableViewControllerUserDefaultsSegueIdentifier = @"UserDefaultsSegue";
@@ -25,10 +25,10 @@ static NSString *const DBResourcesTableViewControllerKeychainSegueIdentifier = @
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:DBResourcesTableViewControllerUserDefaultsSegueIdentifier]) {
         DBTitleValueListTableViewController *titleValueListTableViewController = (DBTitleValueListTableViewController *)segue.destinationViewController;
-        titleValueListTableViewController.viewModel = [DBUserDefaultsListViewModel new];
+        titleValueListTableViewController.viewModel = [DBUserDefaultsToolkit new];
     } else if ([segue.identifier isEqualToString:DBResourcesTableViewControllerKeychainSegueIdentifier]) {
         DBTitleValueListTableViewController *titleValueListTableViewController = (DBTitleValueListTableViewController *)segue.destinationViewController;
-        titleValueListTableViewController.viewModel = [DBKeychainListViewModel new];
+        titleValueListTableViewController.viewModel = [DBKeychainToolkit new];
     }
 }
 

@@ -6,16 +6,16 @@
 //
 //
 
-#import "DBKeychainListViewModel.h"
+#import "DBKeychainToolkit.h"
 
-@interface DBKeychainListViewModel ()
+@interface DBKeychainToolkit ()
 
 @property (nonatomic, strong) NSMutableDictionary <NSString *, id> *keychainValues;
 @property (nonatomic, strong) NSMutableArray *keychainKeys;
 
 @end
 
-@implementation DBKeychainListViewModel
+@implementation DBKeychainToolkit
 
 #pragma mark - Initialization
 
@@ -40,18 +40,22 @@
         [query setObject:secItemClass forKey:(__bridge id)kSecClass];
         CFTypeRef result = NULL;
         if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &result) != errSecItemNotFound) {
-            NSDictionary *dict = [(__bridge id)result firstObject];
-            NSString *account = dict[(__bridge id)kSecAttrAccount];
-            NSData *data = dict[(__bridge id)kSecValueData];
-            if (data.length > 0 && account.length > 0) {
-                self.keychainValues[account] = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            NSArray *dictionaries = (__bridge NSArray *)result;
+            for (NSDictionary *dictionary in dictionaries) {
+                NSString *account = dictionary[(__bridge id)kSecAttrAccount];
+                NSData *data = dictionary[(__bridge id)kSecValueData];
+                if (data.length > 0 && account.length > 0) {
+                    id unarchivedObject = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                    NSString *decodedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    self.keychainValues[account] = unarchivedObject ? unarchivedObject : (decodedString ? decodedString : data);
+                }
             }
         }
         if (result != NULL) {
             CFRelease(result);
         }
     }
-    self.keychainKeys = [NSMutableArray arrayWithArray:self.keychainValues.allKeys];
+    self.keychainKeys = [NSMutableArray arrayWithArray:[self.keychainValues.allKeys sortedArrayUsingSelector:@selector(compare:)]];
 }
 
 #pragma mark - DBTitleValueListViewModel

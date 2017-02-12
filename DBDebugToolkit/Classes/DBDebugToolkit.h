@@ -51,4 +51,8 @@
  */
 + (void)setCapturingConsoleOutputEnabled:(BOOL)enabled;
 
++ (void)clearKeychain;
+
++ (void)clearUserDefaults;
+
 @end

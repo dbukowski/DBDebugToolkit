@@ -10,4 +10,13 @@
 
 @implementation UILabel (DBDebugToolkit)
 
++ (instancetype)tableViewBackgroundLabel {
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    label.textColor = [UIColor darkGrayColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    return label;
+}
+
 @end

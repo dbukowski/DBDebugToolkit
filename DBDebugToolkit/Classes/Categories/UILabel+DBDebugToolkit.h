@@ -10,4 +10,6 @@
 
 @interface UILabel (DBDebugToolkit)
 
++ (instancetype)tableViewBackgroundLabel;
+
 @end

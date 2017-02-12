@@ -9,6 +9,7 @@
 #import "DBTitleValueListTableViewController.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBTitleValueTableViewCell.h"
+#import "UILabel+DBDebugToolkit.h"
 
 static NSString *const DBTitleValueListTableViewControllerTitleValueCellIdentifier = @"DBTitleValueTableViewCell";
 
@@ -34,9 +35,7 @@ static NSString *const DBTitleValueListTableViewControllerTitleValueCellIdentifi
 }
 
 - (void)setupBackgroundLabel {
-    self.backgroundLabel = [[UILabel alloc] init];
-    self.backgroundLabel.textColor = [UIColor darkGrayColor];
-    self.backgroundLabel.textAlignment = NSTextAlignmentCenter;
+    self.backgroundLabel = [UILabel tableViewBackgroundLabel];
     self.tableView.backgroundView = self.backgroundLabel;
 }
 

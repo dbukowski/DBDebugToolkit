@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "DBTitleValueListViewModel.h"
 
-@interface DBUserDefaultsListViewModel : NSObject <DBTitleValueListViewModel>
+@interface DBUserDefaultsToolkit : NSObject <DBTitleValueListViewModel>
 
 @end

@@ -6,16 +6,16 @@
 //
 //
 
-#import "DBUserDefaultsListViewModel.h"
+#import "DBUserDefaultsToolkit.h"
 #import "DBDebugToolkitUserDefaultsKeys.h"
 
-@interface DBUserDefaultsListViewModel ()
+@interface DBUserDefaultsToolkit ()
 
 @property (nonatomic, strong) NSMutableArray *keys;
 
 @end
 
-@implementation DBUserDefaultsListViewModel
+@implementation DBUserDefaultsToolkit
 
 #pragma mark - Initialization
 

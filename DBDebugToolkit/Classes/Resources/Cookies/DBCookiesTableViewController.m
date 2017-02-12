@@ -7,8 +7,18 @@
 //
 
 #import "DBCookiesTableViewController.h"
+#import "NSBundle+DBDebugToolkit.h"
+#import "UILabel+DBDebugToolkit.h"
+#import "DBCookieTableViewCell.h"
+#import "DBCookieDetailsTableViewController.h"
 
-@interface DBCookiesTableViewController ()
+static NSString *const DBCookiesTableViewControllerCookieCellIdentifier = @"DBCookieTableViewCell";
+
+@interface DBCookiesTableViewController () <DBCookieDetailsTableViewControllerDelegate>
+
+@property (nonatomic, strong) UILabel *backgroundLabel;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *clearButton;
+@property (nonatomic, strong) NSMutableArray *cookies;
 
 @end
 
@@ -16,83 +26,80 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage].cookies mutableCopy];
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    [self.tableView registerNib:[UINib nibWithNibName:@"DBCookieTableViewCell" bundle:bundle]
+         forCellReuseIdentifier:DBCookiesTableViewControllerCookieCellIdentifier];
+    self.tableView.tableFooterView = [UIView new];
+    [self setupBackgroundLabel];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupBackgroundLabel {
+    self.backgroundLabel = [UILabel tableViewBackgroundLabel];
+    self.tableView.backgroundView = self.backgroundLabel;
 }
 
-#pragma mark - Table view data source
+#pragma mark - Clear button
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+- (IBAction)clearButtonAction:(id)sender {
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in self.cookies) {
+        [storage deleteCookie:cookie];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.cookies removeAllObjects];
+    [self.tableView reloadData];
 }
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    NSInteger numberOfRows = self.cookies.count;
+    self.backgroundLabel.text = numberOfRows == 0 ? @"There are no HTTP cookies." : @"";
+    self.clearButton.enabled = numberOfRows > 0;
+    return numberOfRows;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    DBCookieTableViewCell *cookieTableViewCell = [self.tableView dequeueReusableCellWithIdentifier:DBCookiesTableViewControllerCookieCellIdentifier];
+    NSHTTPCookie *cookie = self.cookies[indexPath.row];
+    cookieTableViewCell.nameLabel.text = cookie.name;
+    cookieTableViewCell.domainLabel.text = cookie.domain;
+    return cookieTableViewCell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        NSHTTPCookie *cookie = self.cookies[indexPath.row];
+        [cookieStorage deleteCookie:cookie];
+        [self.cookies removeObject:cookie];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+#pragma mark - UITableViewDelegate 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSHTTPCookie *cookie = self.cookies[indexPath.row];
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBCookieDetailsTableViewController" bundle:bundle];
+    DBCookieDetailsTableViewController *cookieDetailsTableViewController = [storyboard instantiateInitialViewController];
+    cookieDetailsTableViewController.cookie = cookie;
+    cookieDetailsTableViewController.delegate = self;
+    [self.navigationController pushViewController:cookieDetailsTableViewController animated:YES];
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+#pragma mark - DBCookieDetailsTableViewControllerDelegate
+
+- (void)cookieDetailsTableViewController:(DBCookieDetailsTableViewController *)cookieDetailsTableViewController didTapDeleteWithCookie:(NSHTTPCookie *)cookie {
+    [self.cookies removeObject:cookie];
+    [self.tableView reloadData];
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

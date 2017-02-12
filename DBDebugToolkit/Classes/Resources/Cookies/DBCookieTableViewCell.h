@@ -10,4 +10,8 @@
 
 @interface DBCookieTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+
+@property (nonatomic, weak) IBOutlet UILabel *domainLabel;
+
 @end

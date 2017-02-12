@@ -7,8 +7,14 @@
 //
 
 #import "DBCookieDetailsTableViewController.h"
+#import "NSBundle+DBDebugToolkit.h"
+#import "DBTitleValueTableViewCell.h"
+
+static NSString *const DBCookieDetailsTableViewControllerTitleValueCellIdentifier = @"DBTitleValueTableViewCell";
 
 @interface DBCookieDetailsTableViewController ()
+
+@property (nonatomic, strong) NSArray *cellDataSources;
 
 @end
 
@@ -16,83 +22,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    [self.tableView registerNib:[UINib nibWithNibName:@"DBTitleValueTableViewCell" bundle:bundle]
+         forCellReuseIdentifier:DBCookieDetailsTableViewControllerTitleValueCellIdentifier];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;
+    self.tableView.tableFooterView = [UIView new];
+    [self setupCellDataSources];
+}
+
+- (IBAction)deleteButtonAction:(id)sender {
+    [self.delegate cookieDetailsTableViewController:self didTapDeleteWithCookie:self.cookie];
+}
+
+#pragma mark - Cell data sources
+
+- (void)setupCellDataSources {
+    NSMutableArray *cellDataSources = [NSMutableArray array];
+    NSDictionary *cookieProperties = [self.cookie properties];
+    for (NSString *key in cookieProperties.allKeys) {
+        NSString *value = [NSString stringWithFormat:@"%@", cookieProperties[key]];
+        [cellDataSources addObject:[DBTitleValueTableViewCellDataSource dataSourceWithTitle:key
+                                                                                      value:value]];
+    }
+    [cellDataSources addObject:[DBTitleValueTableViewCellDataSource dataSourceWithTitle:@"Session only"
+                                                                                  value:self.cookie.sessionOnly ? @"TRUE" : @"FALSE"]];
+    [cellDataSources sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [[obj1 title] compare:[obj2 title]];
+    }];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.cellDataSources = [cellDataSources copy];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.cellDataSources.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    DBTitleValueTableViewCell *titleValueCell = [self.tableView dequeueReusableCellWithIdentifier:DBCookieDetailsTableViewControllerTitleValueCellIdentifier];
+    DBTitleValueTableViewCellDataSource *dataSource = self.cellDataSources[indexPath.row];
+    [titleValueCell configureWithDataSource:dataSource];
+    [titleValueCell setSeparatorInset:UIEdgeInsetsZero];
+    return titleValueCell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
