@@ -64,7 +64,7 @@ static NSString *const DBCookieDetailsTableViewControllerTitleValueCellIdentifie
     DBTitleValueTableViewCell *titleValueCell = [self.tableView dequeueReusableCellWithIdentifier:DBCookieDetailsTableViewControllerTitleValueCellIdentifier];
     DBTitleValueTableViewCellDataSource *dataSource = self.cellDataSources[indexPath.row];
     [titleValueCell configureWithDataSource:dataSource];
-    [titleValueCell setSeparatorInset:UIEdgeInsetsZero];
+    
     return titleValueCell;
 }
 

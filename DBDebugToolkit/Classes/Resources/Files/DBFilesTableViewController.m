@@ -21,6 +21,7 @@ static const NSInteger DBFilesTableViewControllerNextSizeAbbreviationThreshold =
 @property (nonatomic, strong) NSMutableArray *subdirectories;
 @property (nonatomic, strong) NSMutableArray *files;
 @property (nonatomic, strong) UILabel *backgroundLabel;
+@property (nonatomic, weak) IBOutlet UILabel *pathLabel;
 
 @end
 
@@ -37,6 +38,7 @@ static const NSInteger DBFilesTableViewControllerNextSizeAbbreviationThreshold =
 }
 
 - (void)setupContents {
+    self.pathLabel.text = self.path ? [self.path stringByReplacingOccurrencesOfString:NSHomeDirectory() withString:@""] : @"/";
     if (self.path == nil) {
         self.path = NSHomeDirectory();
     }
