@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBCoreDataToolkit.h"
 
 @interface DBResourcesTableViewController : UITableViewController
+
+@property (nonatomic, strong) DBCoreDataToolkit *coreDataToolkit;
 
 @end

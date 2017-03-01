@@ -33,6 +33,7 @@
 #import "DBLocationToolkit.h"
 #import "DBKeychainToolkit.h"
 #import "DBUserDefaultsToolkit.h"
+#import "DBCoreDataToolkit.h"
 
 @interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
@@ -44,6 +45,7 @@
 @property (nonatomic, strong) DBNetworkToolkit *networkToolkit;
 @property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
 @property (nonatomic, strong) DBLocationToolkit *locationToolkit;
+@property (nonatomic, strong) DBCoreDataToolkit *coreDataToolkit;
 
 @end
 
@@ -76,6 +78,7 @@
         [sharedInstance setupNetworkToolkit];
         [sharedInstance setupUserInterfaceToolkit];
         [sharedInstance setupLocationToolkit];
+        [sharedInstance setupCoreDataToolkit];
     });
     return sharedInstance;
 }
@@ -172,6 +175,12 @@
     self.locationToolkit = [DBLocationToolkit sharedInstance];
 }
 
+#pragma mark - Core Data toolkit
+
+- (void)setupCoreDataToolkit {
+    self.coreDataToolkit = [DBCoreDataToolkit sharedInstance];
+}
+
 #pragma mark - Resources 
 
 + (void)clearKeychain {
@@ -206,6 +215,7 @@
         _menuViewController.networkToolkit = self.networkToolkit;
         _menuViewController.userInterfaceToolkit = self.userInterfaceToolkit;
         _menuViewController.locationToolkit = self.locationToolkit;
+        _menuViewController.coreDataToolkit = self.coreDataToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;

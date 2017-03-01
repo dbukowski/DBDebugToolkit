@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 Dariusz Bukowski. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 @interface DBAppDelegate : UIResponder <UIApplicationDelegate>
 

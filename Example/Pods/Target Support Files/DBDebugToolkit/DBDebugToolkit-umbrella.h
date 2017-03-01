@@ -1,5 +1,13 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
 #endif
 
 #import "DBBuildInfoProvider.h"
@@ -41,6 +49,12 @@
 #import "DBCookieDetailsTableViewController.h"
 #import "DBCookiesTableViewController.h"
 #import "DBCookieTableViewCell.h"
+#import "DBCoreDataToolkit.h"
+#import "DBEntitiesTableViewController.h"
+#import "DBManagedObjectsListTableViewController.h"
+#import "DBManagedObjectTableViewCell.h"
+#import "DBPersistentStoreCoordinatorsTableViewController.h"
+#import "NSPersistentStoreCoordinator+DBCoreDataToolkit.h"
 #import "DBResourcesTableViewController.h"
 #import "DBTitleValueListTableViewController.h"
 #import "DBTitleValueListViewModel.h"

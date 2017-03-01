@@ -27,6 +27,7 @@
 #import "DBNetworkViewController.h"
 #import "DBUserInterfaceTableViewController.h"
 #import "DBLocationTableViewController.h"
+#import "DBResourcesTableViewController.h"
 
 @interface DBMenuTableViewController ()
 
@@ -96,6 +97,9 @@
     } else if ([destinationViewController isKindOfClass:[DBLocationTableViewController class]]) {
         DBLocationTableViewController *locationTableViewController = (DBLocationTableViewController *)destinationViewController;
         locationTableViewController.locationToolkit = self.locationToolkit;
+    } else if ([destinationViewController isKindOfClass:[DBResourcesTableViewController class]]) {
+        DBResourcesTableViewController *resourcesTableViewController = (DBResourcesTableViewController *)destinationViewController;
+        resourcesTableViewController.coreDataToolkit = self.coreDataToolkit;
     }
 }
 

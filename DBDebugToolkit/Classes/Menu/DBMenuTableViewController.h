@@ -28,6 +28,7 @@
 #import "DBNetworkToolkit.h"
 #import "DBUserInterfaceToolkit.h"
 #import "DBLocationToolkit.h"
+#import "DBCoreDataToolkit.h"
 
 @class DBMenuTableViewController;
 
@@ -79,6 +80,11 @@
  `DBLocationToolkit` instance that will be passed on.
  */
 @property (nonatomic, strong) DBLocationToolkit *locationToolkit;
+
+/**
+ `DBCoreDataToolkit` instance that will be passed on.
+ */
+@property (nonatomic, strong) DBCoreDataToolkit *coreDataToolkit;
 
 /**
  `DBBuildInfoProvider` instance that will provide data for section header.
