@@ -12,6 +12,7 @@ static NSString *const DBManagedObjectTableViewCellTitleValueCellIdentifier = @"
 
 @interface DBManagedObjectTableViewCell () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 @property (nonatomic, strong) NSManagedObject *managedObject;
@@ -28,6 +29,7 @@ static NSString *const DBManagedObjectTableViewCellTitleValueCellIdentifier = @"
 }
 
 - (void)configureWithManagedObject:(NSManagedObject *)managedObject {
+    self.titleLabel.text = managedObject.entity.name;
     self.managedObject = managedObject;
     self.attributeNames = managedObject.entity.attributesByName.allKeys;
     [self.tableView reloadData];

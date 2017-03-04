@@ -10,6 +10,7 @@
 #import "UILabel+DBDebugToolkit.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBManagedObjectTableViewCell.h"
+#import "DBManagedObjectTableViewController.h"
 
 static NSString *const DBManagedObjectsListTableViewControllerManagedObjectCellIdentifier = @"DBManagedObjectTableViewCell";
 
@@ -24,10 +25,9 @@ static NSString *const DBManagedObjectsListTableViewControllerManagedObjectCellI
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:self.entityName];
-    self.managedObjects = [self.managedObjectContext executeFetchRequest:request error:nil];
+    if (self.managedObjects == nil && self.persistentStoreCoordinator != nil) {
+        [self setupManagedObjects];
+    }
     NSBundle *bundle = [NSBundle debugToolkitBundle];
     [self.tableView registerNib:[UINib nibWithNibName:@"DBManagedObjectTableViewCell" bundle:bundle]
          forCellReuseIdentifier:DBManagedObjectsListTableViewControllerManagedObjectCellIdentifier];
@@ -40,6 +40,13 @@ static NSString *const DBManagedObjectsListTableViewControllerManagedObjectCellI
 - (void)setupBackgroundLabel {
     self.backgroundLabel = [UILabel tableViewBackgroundLabel];
     self.tableView.backgroundView = self.backgroundLabel;
+}
+
+- (void)setupManagedObjects {
+    self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:self.entityName];
+    self.managedObjects = [self.managedObjectContext executeFetchRequest:request error:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -56,6 +63,17 @@ static NSString *const DBManagedObjectsListTableViewControllerManagedObjectCellI
     NSManagedObject *managedObject = self.managedObjects[indexPath.row];
     [managedObjectTableViewCell configureWithManagedObject:managedObject];
     return managedObjectTableViewCell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSManagedObject *managedObject = self.managedObjects[indexPath.row];
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBManagedObjectTableViewController" bundle:bundle];
+    DBManagedObjectTableViewController *managedObjectTableViewController = [storyboard instantiateInitialViewController];
+    managedObjectTableViewController.managedObject = managedObject;
+    [self.navigationController pushViewController:managedObjectTableViewController animated:YES];
 }
 
 @end
