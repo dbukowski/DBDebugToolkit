@@ -12,6 +12,13 @@
 #import <DBDebugToolkit/DBShakeTrigger.h>
 #import <DBDebugToolkit/DBTapTrigger.h>
 #import <DBDebugToolkit/DBLongPressTrigger.h>
+#import "DBCoreDataRandomDataGenerator.h"
+
+@interface DBAppDelegate ()
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+@end
 
 @implementation DBAppDelegate
 
@@ -99,6 +106,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentsURL = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *storeURL = [documentsURL URLByAppendingPathComponent:@"DataModel.sqlite"];
+    BOOL shouldPrepopulateData = ![fileManager fileExistsAtPath:storeURL.path];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         NSError *error = nil;
@@ -107,8 +115,18 @@
                                                             forKeys:@[NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption]];
         NSPersistentStore *store = [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];
         NSAssert(store != nil, @"Error initializing PSC: %@\n%@", [error localizedDescription], [error userInfo]);
+        self.managedObjectContext = moc;
+        if (shouldPrepopulateData) {
+            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                [self prepopulateCoreData];
+            });
+        }
     });
-    
+}
+
+- (void)prepopulateCoreData {
+    // Adds 100 new random people to the database with their addresses, cars and passports.
+    [DBCoreDataRandomDataGenerator addNewRandomDataWithManagedObjectContext:self.managedObjectContext peopleCount:100];
 }
 
 @end

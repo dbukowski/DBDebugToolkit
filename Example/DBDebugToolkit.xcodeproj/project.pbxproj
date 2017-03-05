@@ -26,6 +26,15 @@
 		662F49981E49321200D98E31 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F49971E49321200D98E31 /* MapKit.framework */; };
 		663E02B51E49413B0069FDCB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663E02B41E49413B0069FDCB /* CoreLocation.framework */; };
 		66571C031E631EF10047D5BA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66571C001E631E590047D5BA /* DataModel.xcdatamodeld */; };
+		66739E651E6C4C180090838D /* DBCoreDataRandomDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 66739E641E6C4C180090838D /* DBCoreDataRandomDataGenerator.m */; };
+		66D99DE51E6C608700ED8119 /* CarMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DD61E6C608700ED8119 /* CarMO+CoreDataClass.m */; };
+		66D99DE61E6C608700ED8119 /* CarMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DD81E6C608700ED8119 /* CarMO+CoreDataProperties.m */; };
+		66D99DE71E6C608700ED8119 /* AddressMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DDA1E6C608700ED8119 /* AddressMO+CoreDataClass.m */; };
+		66D99DE81E6C608700ED8119 /* AddressMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DDC1E6C608700ED8119 /* AddressMO+CoreDataProperties.m */; };
+		66D99DE91E6C608700ED8119 /* PassportMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DDE1E6C608700ED8119 /* PassportMO+CoreDataClass.m */; };
+		66D99DEA1E6C608700ED8119 /* PassportMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DE01E6C608700ED8119 /* PassportMO+CoreDataProperties.m */; };
+		66D99DEB1E6C608700ED8119 /* PersonMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DE21E6C608700ED8119 /* PersonMO+CoreDataClass.m */; };
+		66D99DEC1E6C608700ED8119 /* PersonMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DE41E6C608700ED8119 /* PersonMO+CoreDataProperties.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		BF0AAF78D26BBE364C17AD3F /* Pods_DBDebugToolkit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */; };
 		E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */; };
@@ -73,6 +82,24 @@
 		662F49971E49321200D98E31 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		663E02B41E49413B0069FDCB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		66571C011E631E590047D5BA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		66739E631E6C4C180090838D /* DBCoreDataRandomDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCoreDataRandomDataGenerator.h; sourceTree = "<group>"; };
+		66739E641E6C4C180090838D /* DBCoreDataRandomDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCoreDataRandomDataGenerator.m; sourceTree = "<group>"; };
+		66D99DD51E6C608700ED8119 /* CarMO+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CarMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		66D99DD61E6C608700ED8119 /* CarMO+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CarMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		66D99DD71E6C608700ED8119 /* CarMO+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CarMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		66D99DD81E6C608700ED8119 /* CarMO+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CarMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		66D99DD91E6C608700ED8119 /* AddressMO+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AddressMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		66D99DDA1E6C608700ED8119 /* AddressMO+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddressMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		66D99DDB1E6C608700ED8119 /* AddressMO+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AddressMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		66D99DDC1E6C608700ED8119 /* AddressMO+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddressMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		66D99DDD1E6C608700ED8119 /* PassportMO+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PassportMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		66D99DDE1E6C608700ED8119 /* PassportMO+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PassportMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		66D99DDF1E6C608700ED8119 /* PassportMO+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PassportMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		66D99DE01E6C608700ED8119 /* PassportMO+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PassportMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		66D99DE11E6C608700ED8119 /* PersonMO+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PersonMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		66D99DE21E6C608700ED8119 /* PersonMO+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PersonMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		66D99DE31E6C608700ED8119 /* PersonMO+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PersonMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		66D99DE41E6C608700ED8119 /* PersonMO+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PersonMO+CoreDataProperties.m"; sourceTree = "<group>"; };
 		6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		91D180BC1820F8DE5D1FCBFA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -150,6 +177,7 @@
 		6003F593195388D20070C39A /* Example for DBDebugToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				66739E4A1E6C48DD0090838D /* CoreData */,
 				6003F59C195388D20070C39A /* DBAppDelegate.h */,
 				6003F59D195388D20070C39A /* DBAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -218,6 +246,31 @@
 				B86DD624B9EBCDC139C5CD07 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		66739E4A1E6C48DD0090838D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				66D99DD51E6C608700ED8119 /* CarMO+CoreDataClass.h */,
+				66D99DD61E6C608700ED8119 /* CarMO+CoreDataClass.m */,
+				66D99DD71E6C608700ED8119 /* CarMO+CoreDataProperties.h */,
+				66D99DD81E6C608700ED8119 /* CarMO+CoreDataProperties.m */,
+				66D99DD91E6C608700ED8119 /* AddressMO+CoreDataClass.h */,
+				66D99DDA1E6C608700ED8119 /* AddressMO+CoreDataClass.m */,
+				66D99DDB1E6C608700ED8119 /* AddressMO+CoreDataProperties.h */,
+				66D99DDC1E6C608700ED8119 /* AddressMO+CoreDataProperties.m */,
+				66D99DDD1E6C608700ED8119 /* PassportMO+CoreDataClass.h */,
+				66D99DDE1E6C608700ED8119 /* PassportMO+CoreDataClass.m */,
+				66D99DDF1E6C608700ED8119 /* PassportMO+CoreDataProperties.h */,
+				66D99DE01E6C608700ED8119 /* PassportMO+CoreDataProperties.m */,
+				66D99DE11E6C608700ED8119 /* PersonMO+CoreDataClass.h */,
+				66D99DE21E6C608700ED8119 /* PersonMO+CoreDataClass.m */,
+				66D99DE31E6C608700ED8119 /* PersonMO+CoreDataProperties.h */,
+				66D99DE41E6C608700ED8119 /* PersonMO+CoreDataProperties.m */,
+				66739E631E6C4C180090838D /* DBCoreDataRandomDataGenerator.h */,
+				66739E641E6C4C180090838D /* DBCoreDataRandomDataGenerator.m */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,11 +476,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6627B2211E460AF60020618C /* DBRequestExampleTableViewCell.m in Sources */,
+				66D99DE91E6C608700ED8119 /* PassportMO+CoreDataClass.m in Sources */,
 				6627B21A1E45E8070020618C /* DBRequestsExampleViewController.m in Sources */,
+				66D99DE71E6C608700ED8119 /* AddressMO+CoreDataClass.m in Sources */,
 				6003F59E195388D20070C39A /* DBAppDelegate.m in Sources */,
+				66739E651E6C4C180090838D /* DBCoreDataRandomDataGenerator.m in Sources */,
+				66D99DE61E6C608700ED8119 /* CarMO+CoreDataProperties.m in Sources */,
 				66571C031E631EF10047D5BA /* DataModel.xcdatamodeld in Sources */,
+				66D99DE81E6C608700ED8119 /* AddressMO+CoreDataProperties.m in Sources */,
 				662F49961E49301800D98E31 /* DBLocationExampleViewController.m in Sources */,
+				66D99DEB1E6C608700ED8119 /* PersonMO+CoreDataClass.m in Sources */,
+				66D99DE51E6C608700ED8119 /* CarMO+CoreDataClass.m in Sources */,
+				66D99DEC1E6C608700ED8119 /* PersonMO+CoreDataProperties.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				66D99DEA1E6C608700ED8119 /* PassportMO+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
