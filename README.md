@@ -35,6 +35,12 @@ DBDebugToolkit is a debugging library written in Objective-C.
 - [x] Network
   - [x] List of all the requests sent by the application
   - [x] Request and response preview
+- [x] Resources
+  - [x] File system: browsing and removing selected files
+  - [x] User defaults: browsing, removing selected item and clearing all the data
+  - [x] Keychain: browsing, removing selected item and clearing all the data
+  - [x] Core Data: browsing all the managed objects and their relationships with sorting and filtering options
+  - [x] Cookies: browsing, removing selected cookie and clearing all the data
 - [x] Console
   - [x] Displaying console output in text view
   - [x] Sending console output by email with device and system information
@@ -152,6 +158,59 @@ Tap on any request on the list to see its details. From the request details scre
 [//]: # (Insert request details gif)
 
 The request and response body data is saved to the files to minimize the memory usage caused by the requests logging. If it happens to be too big anyway, you can disable the logging in the network submenu.
+
+### Resources
+
+DBDebugToolkit allows you to browse and manage five data sources: file system, user defaults, keychain, Core Data and cookies.
+
+#### File system
+
+Browsing file system is really straightforward. You start in your application's directory. On top of the screen you see the label with the current path. Below are the directory contents: subdirectories and files. You can select a subdirectory to move deeper in the file system hierarchy. You can swipe a file cell to delete the file (but only if you have the needed permissions). You can also see the size of every file next to their names.
+
+[//]: # (Insert file system gif)
+
+#### User defaults and keychain
+
+Browsing the user defaults and the keychain is very similar. For both of those data sources you can see a list of all the stored key-value pairs. Every pair can be removed by swiping the cell left and tapping the delete button. On the right of the navigation bar there is also a clear button that allows you to remove all the values stored in the currently browsed data source.
+
+[//]: # (Insert user defaults gif next to keychain gif)
+
+Apart from that, DBDebugToolkit provides the methods that allow you to clear the user defaults or the keychain programmatically:
+
+```swift
+import DBDebugToolkit
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    DBDebugToolkit.clearKeychain()
+    DBDebugToolkit.clearUserDefaults()
+    return true
+}
+```
+
+#### Core Data
+
+DBDebugToolkit allows you to see all the objects stored in Core Data. Thanks to displaying related objects and filtering and sorting options it should be really helpful if your application uses Core Data. First, if your application uses more instances of `NSPersistentStoreCoordinator` class, you will see a list where you will need to choose one of them. This step is omitted when your application uses only one such an instance. The next screen allows you to choose one of the entities. Select an entity to see the list of all its instances:
+
+[//]: # (Insert entity to list gif)
+
+It's difficult to see all the managed object's attributes in a table view cell, so you can tap one of them to present a new view with all the details about the selected managed object. In the first section you can see all the attributes and their values. The second section has all the relationships. You can tap any of them to see the related objects.
+In case of to-one relationships you will be redirected to the same view, but this time it will display the details of the related object:
+
+[//]: # (Insert list to one to to-one relationship gif)
+
+In case of to-many relationship you will see a view with a list of the related objects:
+
+[//]: # (Insert details to to-many relationship gif)
+
+On top of the view presenting the managed objects list you can see a filter button that allows you to filter the objects by their attributes and sort the results.
+
+[//]: # (Insert list to filtering and sorting back to list gif)
+
+#### Cookies
+
+Browsing cookies is similar to browsing user defaults and keychain, but this time the stored data are not key-value pairs anymore. First screen displays the list of all the cookies, but only the most important data are shown: names and domains of the cookies. You can select a cookie cell to see its details on a new view. You can delete one cookie by swiping left on its cell and tapping delete button or by opening the details screen and using the navigation bar button. You can also clear all the cookies by using the clear button on the right of the navigation bar in the cookies list view.
+
+[//]: # (Insert cookies with deletion gif)
 
 ### Console
 
