@@ -11,6 +11,7 @@
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBOptionsListTableViewController.h"
 #import "DBCoreDataFilterTableViewController.h"
+#import "UILabel+DBDebugToolkit.h"
 
 typedef NS_ENUM(NSUInteger, DBCoreDataFilterSettingsTableViewControllerSection) {
     DBCoreDataFilterSettingsTableViewControllerSectionSorting,
@@ -25,6 +26,7 @@ static NSString *const DBCoreDataFilterSettingsTableViewControllerSortingAttribu
 @interface DBCoreDataFilterSettingsTableViewController () <DBMenuSwitchTableViewCellDelegate, DBOptionsListTableViewControllerDelegate, DBOptionsListTableViewControllerDataSource, DBCoreDataFilterTableViewControllerDelegate>
 
 @property (nonatomic, strong) NSNumber *editedFilterIndex;
+@property (nonatomic, strong) UILabel *backgroundLabel;
 
 @end
 
@@ -37,6 +39,14 @@ static NSString *const DBCoreDataFilterSettingsTableViewControllerSortingAttribu
          forCellReuseIdentifier:DBCoreDataFilterSettingsTableViewControllerSwitchCellIdentifier];
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self setupBackgroundLabel];
+}
+
+- (void)setupBackgroundLabel {
+    self.backgroundLabel = [UILabel tableViewBackgroundLabel];
+    self.tableView.backgroundView = self.backgroundLabel;
+    BOOL isTableViewEmpty = self.filterSettings.attributesForSorting.count == 0 && self.filterSettings.attributesForFiltering.count == 0;
+    self.backgroundLabel.text = isTableViewEmpty ? @"There are no filter settings for this entity." : @"";
 }
 
 #pragma mark - UITableViewDelegate
