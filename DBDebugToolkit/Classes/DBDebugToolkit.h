@@ -51,8 +51,14 @@
  */
 + (void)setCapturingConsoleOutputEnabled:(BOOL)enabled;
 
+/**
+ Removes all your application's entries from the keychain.
+ */
 + (void)clearKeychain;
 
+/**
+ Removes all your application's entries from the `NSUserDefaults`.
+ */
 + (void)clearUserDefaults;
 
 @end

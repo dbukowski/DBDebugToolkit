@@ -23,7 +23,14 @@
 #ifndef DBDebugToolkitUserDefaultsKeys_h
 #define DBDebugToolkitUserDefaultsKeys_h
 
+/**
+ Constant representing the key used for storing the simulated location's latitude in the user defaults.
+ */
 static NSString *const DBDebugToolkitUserDefaultsSimulatedLocationLatitudeKey = @"DBDebugToolkit_simulatedLocationLatitude";
+
+/**
+ Constant representing the key used for storing the simulated location's longitude in the user defaults.
+ */
 static NSString *const DBDebugToolkitUserDefaultsSimulatedLocationLongitudeKey = @"DBDebugToolkit_simulatedLocationLongitude";
 
 #endif /* DBDebugToolkitUserDefaultsKeys_h */
