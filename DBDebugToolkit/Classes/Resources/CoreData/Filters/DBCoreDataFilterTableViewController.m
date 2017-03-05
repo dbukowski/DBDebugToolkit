@@ -60,7 +60,7 @@ static NSString *const DBCoreDataFilterTableViewControllerTextViewCellIdentifier
 }
 
 - (void)refreshSaveButton {
-    BOOL isAttributeNumeric = self.filter.attribute != NSStringAttributeType;
+    BOOL isAttributeNumeric = self.filter.attribute.attributeType != NSStringAttributeType;
     BOOL isInputProper = isAttributeNumeric ? [self isValueAProperNumber] : self.filter.value.length > 0;
     self.saveButton.enabled = isInputProper;
 }
