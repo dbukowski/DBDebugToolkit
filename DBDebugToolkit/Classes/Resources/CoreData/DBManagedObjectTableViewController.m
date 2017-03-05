@@ -164,6 +164,7 @@ static NSString *const DBManagedObjectTableViewControllerRelationshipCellIdentif
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBManagedObjectsListTableViewController" bundle:bundle];
     DBManagedObjectsListTableViewController *managedObjectsListViewController = [storyboard instantiateInitialViewController];
     managedObjectsListViewController.managedObjects = [[self.managedObject valueForKey:relationshipName] allObjects];
+    managedObjectsListViewController.entity = relationship.destinationEntity;
     [self.navigationController pushViewController:managedObjectsListViewController animated:YES];
 }
 

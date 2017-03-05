@@ -11,7 +11,7 @@
 
 @interface DBManagedObjectsListTableViewController : UITableViewController
 
-@property (nonatomic, strong) NSString *entityName;
+@property (nonatomic, strong) NSEntityDescription *entity;
 
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 

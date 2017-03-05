@@ -45,7 +45,7 @@ static NSString *const DBEntitiesTableViewControllerCellIdentifier = @"EntityCel
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBManagedObjectsListTableViewController" bundle:bundle];
     DBManagedObjectsListTableViewController *managedObjectsListViewController = [storyboard instantiateInitialViewController];
     managedObjectsListViewController.persistentStoreCoordinator = self.persistentStoreCoordinator;
-    managedObjectsListViewController.entityName = entityDescription.name;
+    managedObjectsListViewController.entity = entityDescription;
     [self.navigationController pushViewController:managedObjectsListViewController animated:YES];
 }
 

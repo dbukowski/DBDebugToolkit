@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Op-rW-9fy">
-                        <rect key="frame" x="0.0" y="47.5" width="338" height="213"/>
+                        <rect key="frame" x="0.0" y="47" width="346" height="213"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="213" id="Kq9-9r-eSA"/>
@@ -39,7 +39,7 @@
                     <constraint firstItem="1Op-rW-9fy" firstAttribute="leading" secondItem="Dzc-Vn-rHx" secondAttribute="leading" id="de0-QI-lq1"/>
                     <constraint firstAttribute="bottom" secondItem="1Op-rW-9fy" secondAttribute="bottom" constant="8" id="kwC-zK-F5A"/>
                     <constraint firstItem="ot8-Iz-SLV" firstAttribute="top" secondItem="Dzc-Vn-rHx" secondAttribute="top" constant="8" id="mwB-y9-HaU"/>
-                    <constraint firstAttribute="trailing" secondItem="1Op-rW-9fy" secondAttribute="trailing" constant="8" id="prF-1u-Sg8"/>
+                    <constraint firstAttribute="trailing" secondItem="1Op-rW-9fy" secondAttribute="trailing" id="prF-1u-Sg8"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
