@@ -225,7 +225,7 @@ static const NSTimeInterval DBCoreDataRandomDataGeneratorSecondsInAYear = 60.0 *
 }
 
 + (NSString *)randomPostcode {
-    return [NSString stringWithFormat:@"%ld", [self randomNumberBetween:10000 and:99999]];
+    return [NSString stringWithFormat:@"%ld", (long)[self randomNumberBetween:10000 and:99999]];
 }
 
 + (NSString *)randomCity {
