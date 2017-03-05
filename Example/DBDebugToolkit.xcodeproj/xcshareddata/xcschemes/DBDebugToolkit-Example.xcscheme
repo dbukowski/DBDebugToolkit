@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92825C341AB9ACF485BD69D1AACF07AD"
+               BlueprintIdentifier = "1433944A5E7E748A7CEF224F92ACC232"
                BuildableName = "DBDebugToolkit.framework"
                BlueprintName = "DBDebugToolkit"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">

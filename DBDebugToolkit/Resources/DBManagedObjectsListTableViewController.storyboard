@@ -23,7 +23,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="gMo-Rs-bNF">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="XkN-uS-UPM">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="XkN-uS-UPM">
                             <connections>
                                 <segue destination="sDV-1e-ReZ" kind="show" id="1dB-Ro-6fH"/>
                             </connections>
