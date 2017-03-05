@@ -88,7 +88,7 @@ static NSString *const DBManagedObjectsListTableViewControllerManagedObjectCellI
     NSArray *filteredManagedObjects = predicate ? [self.managedObjects filteredArrayUsingPredicate:self.filterSettings.predicate] : self.managedObjects;
     NSSortDescriptor *sortDescriptor = self.filterSettings.sortDescriptor;
     self.filteredManagedObjects = sortDescriptor ? [filteredManagedObjects sortedArrayUsingDescriptors:@[ self.filterSettings.sortDescriptor ]] : filteredManagedObjects;
-    self.title = self.filteredManagedObjects.count == 1 ? @"1 object" : [NSString stringWithFormat:@"%ld objects", self.filteredManagedObjects.count];
+    self.title = self.filteredManagedObjects.count == 1 ? @"1 object" : [NSString stringWithFormat:@"%ld objects", (unsigned long)self.filteredManagedObjects.count];
     [self.tableView reloadData];
 }
 
