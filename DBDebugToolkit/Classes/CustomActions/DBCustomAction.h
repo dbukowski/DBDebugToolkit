@@ -44,7 +44,7 @@ typedef void(^DBCustomActionBody)();
  @param name The name of the action that will be presented in the menu.
  @param body The block containing the code that should be run when the user selects the created custom action.
  */
-+ (instancetype)customActionWithName:(NSString *)name body:(DBCustomActionBody)body;
++ (nonnull instancetype)customActionWithName:(NSString *)name body:(DBCustomActionBody)body;
 
 ///-----------------
 /// @name Performing

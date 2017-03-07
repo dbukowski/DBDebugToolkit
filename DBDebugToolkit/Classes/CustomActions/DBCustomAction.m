@@ -33,7 +33,7 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithName:(NSString *)name body:(DBCustomActionBody)body {
+- (nonnull instancetype)initWithName:(NSString *)name body:(DBCustomActionBody)body {
     self = [super init];
     if (self) {
         self.name = name;
