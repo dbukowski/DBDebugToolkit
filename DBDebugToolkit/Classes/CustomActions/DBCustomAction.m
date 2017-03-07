@@ -24,8 +24,8 @@
 
 @interface DBCustomAction ()
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, copy) DBCustomActionBody body;
+@property (nonatomic, strong, nullable) NSString *name;
+@property (nonatomic, copy, nullable) DBCustomActionBody body;
 
 @end
 
@@ -33,7 +33,7 @@
 
 #pragma mark - Initialization
 
-- (nonnull instancetype)initWithName:(NSString *)name body:(DBCustomActionBody)body {
+- (nonnull instancetype)initWithName:(nullable NSString *)name body:(nullable DBCustomActionBody)body {
     self = [super init];
     if (self) {
         self.name = name;
@@ -43,7 +43,7 @@
     return self;
 }
 
-+ (nonnull instancetype)customActionWithName:(NSString *)name body:(DBCustomActionBody)body {
++ (nonnull instancetype)customActionWithName:(nullable NSString *)name body:(nullable DBCustomActionBody)body {
     return [[self alloc] initWithName:name body:body];
 }
 

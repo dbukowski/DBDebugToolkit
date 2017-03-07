@@ -32,7 +32,7 @@ typedef void(^DBCustomActionBody)();
 /**
  Name of the action presented in the menu. Read-only.
  */
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly, nullable) NSString * name;
 
 ///---------------------
 /// @name Initialization
@@ -44,7 +44,7 @@ typedef void(^DBCustomActionBody)();
  @param name The name of the action that will be presented in the menu.
  @param body The block containing the code that should be run when the user selects the created custom action.
  */
-+ (nonnull instancetype)customActionWithName:(NSString *)name body:(DBCustomActionBody)body;
++ (nonnull instancetype)customActionWithName:(nullable NSString *)name body:(nullable DBCustomActionBody)body;
 
 ///-----------------
 /// @name Performing
