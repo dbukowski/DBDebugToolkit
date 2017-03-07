@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/DBDebugToolkit.svg?style=flat)](http://cocoapods.org/pods/DBDebugToolkit)
 [![Twitter: @darekbukowski](https://img.shields.io/badge/contact-@darekbukowski-blue.svg?style=flat)](https://twitter.com/darekbukowski)
 
-DBDebugToolkit is a debugging library written in Objective-C.
+DBDebugToolkit is a debugging library written in Objective-C. It is meant to provide as many easily accessible tools as possible while keeping the integration process seamless.
 
 - [Features](#features)
 - [Example](#example)
@@ -45,6 +45,7 @@ DBDebugToolkit is a debugging library written in Objective-C.
   - [x] Displaying console output in text view
   - [x] Sending console output by email with device and system information
 - [x] Simulating location
+- [x] Adding custom actions to the menu
 - [x] Opening application settings
 - [x] Showing version & build number
 - [x] Showing device model & iOS version
@@ -234,12 +235,35 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-
 ### Simulating location
 
 Simulating location with DBDebugToolkit is really straightforward. You can either select a location from the predefined list (the same as on iOS simulator) or choose any point on a map. This choice is remembered even after you relaunch the application, which should be really helpful when you work on a feature that depends on the user location.
 
 [//]: # (Insert location simulation gif)
+
+### Custom actions
+
+If you need an easy access to any action performed by your application, you can use the custom actions feature of DBDebugToolkit. After the setup you can add as many custom actions as you like:
+
+```swift
+import DBDebugToolkit
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    DBDebugToolkit.setup()
+    let sendReportAction = DBCustomAction(name: "Send report") {
+        // Your code responsible for sending the report.
+    }
+    let clearDatabaseAction = DBCustomAction(name: "Clear database") {
+        // Your code responsible for clearing the database.
+    }
+    DBDebugToolkit.add([sendReportAction, clearDatabaseAction])
+    return true
+}
+```
+
+To run these actions simply open the menu and go to custom actions section. You will see the list of all the actions. Tap on any of them to perform it.
+
+[//]: # (Insert menu -> tapping on those actions gif)
 
 ## Author
 
