@@ -28,6 +28,18 @@
 #import "DBUserInterfaceTableViewController.h"
 #import "DBLocationTableViewController.h"
 #import "DBResourcesTableViewController.h"
+#import "DBCustomActionsTableViewController.h"
+
+typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
+    DBMenuTableViewControllerRowPerformance,
+    DBMenuTableViewControllerRowUserInterface,
+    DBMenuTableViewControllerRowNetwork,
+    DBMenuTableViewControllerRowResources,
+    DBMenuTableViewControllerRowConsole,
+    DBMenuTableViewControllerRowLocation,
+    DBMenuTableViewControllerRowCustomActions,
+    DBMenuTableViewControllerRowApplicationSettings
+};
 
 @interface DBMenuTableViewController ()
 
@@ -59,7 +71,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 6) {
+    if (indexPath.row == DBMenuTableViewControllerRowApplicationSettings) {
         // Open application settings.
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -100,6 +112,9 @@
     } else if ([destinationViewController isKindOfClass:[DBResourcesTableViewController class]]) {
         DBResourcesTableViewController *resourcesTableViewController = (DBResourcesTableViewController *)destinationViewController;
         resourcesTableViewController.coreDataToolkit = self.coreDataToolkit;
+    } else if ([destinationViewController isKindOfClass:[DBCustomActionsTableViewController class]]) {
+        DBCustomActionsTableViewController *customActionsTableViewController = (DBCustomActionsTableViewController *)destinationViewController;
+        customActionsTableViewController.customActions = self.customActions;
     }
 }
 

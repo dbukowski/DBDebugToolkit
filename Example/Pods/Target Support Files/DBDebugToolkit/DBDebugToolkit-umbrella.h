@@ -24,6 +24,8 @@
 #import "DBChartView.h"
 #import "DBConsoleOutputCaptor.h"
 #import "DBConsoleViewController.h"
+#import "DBCustomAction.h"
+#import "DBCustomActionsTableViewController.h"
 #import "DBDebugToolkit.h"
 #import "DBDeviceInfoProvider.h"
 #import "CLLocationManager+DBLocationToolkit.h"

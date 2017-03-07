@@ -28,6 +28,11 @@
     [self setupUserDefaultsExample];
     [self setupKeychainExample];
     [self setupCoreData];
+    DBCustomAction *prepopulateCoreDataAction = [DBCustomAction customActionWithName:@"Add more core data instances"
+                                                                                body:^{
+                                                                                    [self prepopulateCoreData];
+                                                                                }];
+    [DBDebugToolkit addCustomAction:prepopulateCoreDataAction];
     return YES;
 }
 

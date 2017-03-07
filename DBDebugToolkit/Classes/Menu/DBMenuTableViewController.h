@@ -29,6 +29,7 @@
 #import "DBUserInterfaceToolkit.h"
 #import "DBLocationToolkit.h"
 #import "DBCoreDataToolkit.h"
+#import "DBCustomAction.h"
 
 @class DBMenuTableViewController;
 
@@ -95,6 +96,11 @@
  `DBDeviceInfoProvider` instance that will provide data for section footer.
  */
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
+
+/**
+ Array of `DBCustomAction` instances that will be passed on.
+ */
+@property (nonatomic, copy) NSArray <DBCustomAction *> *customActions;
 
 /**
  Pushes `DBPerformanceTableViewController` onto the current navigation controller with the preselected section. Optionally animated.

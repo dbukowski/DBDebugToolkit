@@ -22,6 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DBDebugToolkitTrigger.h"
+#import "DBCustomAction.h"
 
 /**
  `DBDebugToolkit` provides the interface that can be used to setup and customize the debugging tools.
@@ -60,5 +61,15 @@
  Removes all your application's entries from the `NSUserDefaults`.
  */
 + (void)clearUserDefaults;
+
+/**
+ Adds a single `DBCustomAction` instance to the array accessible in the menu.
+ */
++ (void)addCustomAction:(DBCustomAction *)customAction;
+
+/**
+ Adds multiple `DBCustomAction` instances to the array accessible in the menu.
+ */
++ (void)addCustomActions:(NSArray <DBCustomAction *> *)customActions;
 
 @end

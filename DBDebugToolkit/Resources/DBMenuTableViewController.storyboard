@@ -158,8 +158,31 @@
                                             <segue destination="hDw-87-hMk" kind="show" id="Ai5-JR-UWB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mm4-o7-8tn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="0Cf-k3-PSB">
                                         <rect key="frame" x="0.0" y="319.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Cf-k3-PSB" id="ho0-1C-i0m">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvt-bQ-WpB">
+                                                    <rect key="frame" x="16" y="11.5" width="119.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pvt-bQ-WpB" firstAttribute="leading" secondItem="ho0-1C-i0m" secondAttribute="leading" constant="16" id="3AQ-Rt-vSa"/>
+                                                <constraint firstItem="Pvt-bQ-WpB" firstAttribute="centerY" secondItem="ho0-1C-i0m" secondAttribute="centerY" id="tyH-pR-Jpd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iNC-jq-dRl" kind="show" id="a7w-8t-qGP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mm4-o7-8tn">
+                                        <rect key="frame" x="0.0" y="363.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mm4-o7-8tn" id="SaJ-UP-1oU">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -205,7 +228,7 @@
                 <viewControllerPlaceholder storyboardName="DBNetworkViewController" id="Oe2-8I-MkJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jV-E3-QRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="678" y="-329"/>
+            <point key="canvasLocation" x="655" y="-163"/>
         </scene>
         <!--DBPerformanceTableViewController-->
         <scene sceneID="0nB-bx-c9m">
@@ -213,7 +236,7 @@
                 <viewControllerPlaceholder storyboardName="DBPerformanceTableViewController" id="Qfj-jA-S2e" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azm-V7-rVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="-233"/>
+            <point key="canvasLocation" x="702" y="-245"/>
         </scene>
         <!--DBConsoleViewController-->
         <scene sceneID="I53-7x-TV5">
@@ -221,7 +244,15 @@
                 <viewControllerPlaceholder storyboardName="DBConsoleViewController" id="HUH-b2-D4F" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTX-5I-wae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693" y="-78"/>
+            <point key="canvasLocation" x="653" y="-85"/>
+        </scene>
+        <!--DBCustomActionsTableViewController-->
+        <scene sceneID="Hj9-qn-qzD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DBCustomActionsTableViewController" id="iNC-jq-dRl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zP1-Sf-CYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="713" y="-2"/>
         </scene>
         <!--DBUserInterfaceViewController-->
         <scene sceneID="Skq-BI-mcn">
@@ -229,7 +260,7 @@
                 <viewControllerPlaceholder storyboardName="DBUserInterfaceViewController" id="Ff5-h1-bTB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGL-Z8-lUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="654" y="32"/>
+            <point key="canvasLocation" x="681" y="-202"/>
         </scene>
         <!--DBLocationTableViewController-->
         <scene sceneID="CNS-gn-gnl">
@@ -237,7 +268,7 @@
                 <viewControllerPlaceholder storyboardName="DBLocationTableViewController" id="hDw-87-hMk" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaG-Pr-j4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="95"/>
+            <point key="canvasLocation" x="681" y="-45"/>
         </scene>
         <!--DBResourcesTableViewController-->
         <scene sceneID="HMw-wM-lSM">
@@ -245,7 +276,7 @@
                 <viewControllerPlaceholder storyboardName="DBResourcesTableViewController" id="Gay-a1-Lco" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugr-36-7RN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="180"/>
+            <point key="canvasLocation" x="690" y="-123"/>
         </scene>
     </scenes>
 </document>

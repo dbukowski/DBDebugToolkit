@@ -46,6 +46,7 @@
 @property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
 @property (nonatomic, strong) DBLocationToolkit *locationToolkit;
 @property (nonatomic, strong) DBCoreDataToolkit *coreDataToolkit;
+@property (nonatomic, strong) NSMutableArray <DBCustomAction *> *customActions;
 
 @end
 
@@ -79,6 +80,7 @@
         [sharedInstance setupUserInterfaceToolkit];
         [sharedInstance setupLocationToolkit];
         [sharedInstance setupCoreDataToolkit];
+        [sharedInstance setupCustomActions];
     });
     return sharedInstance;
 }
@@ -181,6 +183,22 @@
     self.coreDataToolkit = [DBCoreDataToolkit sharedInstance];
 }
 
+#pragma mark - Custom actions
+
+- (void)setupCustomActions {
+    self.customActions = [NSMutableArray array];
+}
+
++ (void)addCustomAction:(DBCustomAction *)customAction {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    [toolkit.customActions addObject:customAction];
+}
+
++ (void)addCustomActions:(NSArray<DBCustomAction *> *)customActions {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    [toolkit.customActions addObjectsFromArray:customActions];
+}
+
 #pragma mark - Resources 
 
 + (void)clearKeychain {
@@ -218,6 +236,7 @@
         _menuViewController.coreDataToolkit = self.coreDataToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
+        _menuViewController.customActions = self.customActions;
         _menuViewController.delegate = self;
     }
     return _menuViewController;
