@@ -128,11 +128,12 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
     self.fpsCalculator = [DBFPSCalculator new];
     self.minFPS = CGFLOAT_MAX;
     
-    self.measurementsTimer = [NSTimer scheduledTimerWithTimeInterval:DBPerformanceToolkitTimeBetweenMeasurements
-                                                              target:self
-                                                            selector:@selector(updateMeasurements)
-                                                            userInfo:nil
-                                                             repeats:YES];
+    self.measurementsTimer = [NSTimer timerWithTimeInterval:DBPerformanceToolkitTimeBetweenMeasurements
+                                                     target:self
+                                                   selector:@selector(updateMeasurements)
+                                                   userInfo:nil
+                                                    repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.measurementsTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)updateMeasurements {
