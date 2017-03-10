@@ -145,6 +145,7 @@ DBDebugToolkit provides many useful tools for UI debugging:
 [//]: # (Insert slow animations gif)
 * Showing touches (for screen sharing and recording)
 [//]: # (Insert showing touches gif)
+If your device supports 3D Touch, the touch indicator view's alpha value will depend on the touch force.
 * Various debug logs
 [//]: # (Insert images with 4 logs)
 
