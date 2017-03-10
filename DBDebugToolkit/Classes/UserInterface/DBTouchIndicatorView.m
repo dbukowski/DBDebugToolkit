@@ -54,7 +54,7 @@ static const CGSize DBTouchIndicatorViewDefaultSize = { 40.0, 40.0 };
     self.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.7];
     self.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.7].CGColor;
     self.layer.borderWidth = 1.0 / [UIScreen mainScreen].scale;
-    self.layer.zPosition = CGFLOAT_MAX;
+    self.layer.zPosition = FLT_MAX;
     [self.layer setShadowColor:[UIColor darkGrayColor].CGColor];
     [self.layer setShadowOpacity:0.7];
     [self.layer setShadowRadius:3.0];
