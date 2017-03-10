@@ -28,6 +28,7 @@
 
 static NSString *const UIWindowTouchIndicatorsKey = @"DBDebugToolkit_touchIndicators";
 static NSString *const UIWindowReusableTouchIndicatorsKey = @"DBDebugToolkit_reusableTouchIndicators";
+static const CGFloat UIWindowTouchIndicatorViewMinAlpha = 0.6;
 
 @interface UIWindow (DBUserInterfaceToolkitPrivate)
 
@@ -90,16 +91,14 @@ static NSString *const UIWindowReusableTouchIndicatorsKey = @"DBDebugToolkit_reu
 #pragma mark - Handling showing touches
 
 - (void)setShowingTouchesEnabled:(BOOL)enabled {
-    [UIView animateWithDuration:0.35 animations:^{
-        NSEnumerator *enumerator = [self.touchIndicators objectEnumerator];
-        DBTouchIndicatorView *touchIndicatorView;
-        while (touchIndicatorView = [enumerator nextObject]) {
-            touchIndicatorView.alpha = enabled ? 1.0 : 0.0;
-        }
-        for (DBTouchIndicatorView *touchIndicatorView in self.reusableTouchIndicators) {
-            touchIndicatorView.alpha = enabled ? 1.0 : 0.0;
-        }
-    }];
+    NSEnumerator *enumerator = [self.touchIndicators objectEnumerator];
+    DBTouchIndicatorView *touchIndicatorView;
+    while (touchIndicatorView = [enumerator nextObject]) {
+        touchIndicatorView.hidden = !enabled;
+    }
+    for (DBTouchIndicatorView *touchIndicatorView in self.reusableTouchIndicators) {
+        touchIndicatorView.hidden = !enabled;
+    }
 }
 
 - (void)db_handleTouches:(NSSet<UITouch *> *)touches {
@@ -126,10 +125,11 @@ static NSString *const UIWindowReusableTouchIndicatorsKey = @"DBDebugToolkit_reu
 
 - (void)db_addTouchIndicatorWithTouch:(UITouch *)touch {
     DBTouchIndicatorView *indicatorView = [self db_availableTouchIndicatorView];
-    indicatorView.alpha = [DBUserInterfaceToolkit sharedInstance].showingTouchesEnabled ? 1.0 : 0.0;
+    indicatorView.hidden = ![DBUserInterfaceToolkit sharedInstance].showingTouchesEnabled;
     [self.touchIndicators setObject:indicatorView forKey:touch];
     [self addSubview:indicatorView];
     indicatorView.center = [touch locationInView:self];
+    [self db_handleTouchForce:touch];
 }
 
 - (DBTouchIndicatorView *)db_availableTouchIndicatorView {
@@ -145,6 +145,7 @@ static NSString *const UIWindowReusableTouchIndicatorsKey = @"DBDebugToolkit_reu
 - (void)db_moveTouchIndicatorWithTouch:(UITouch *)touch {
     DBTouchIndicatorView *indicatorView = [self.touchIndicators objectForKey:touch];
     indicatorView.center = [touch locationInView:self];
+    [self db_handleTouchForce:touch];
 }
 
 - (void)db_removeTouchIndicatorWithTouch:(UITouch *)touch {
@@ -152,6 +153,15 @@ static NSString *const UIWindowReusableTouchIndicatorsKey = @"DBDebugToolkit_reu
     [indicatorView removeFromSuperview];
     [self.touchIndicators removeObjectForKey:touch];
     [self.reusableTouchIndicators addObject:indicatorView];
+}
+
+- (void)db_handleTouchForce:(UITouch *)touch {
+    DBTouchIndicatorView *indicatorView = [self.touchIndicators objectForKey:touch];
+    CGFloat indicatorViewAlpha = 1.0;
+    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)] && self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        indicatorViewAlpha = UIWindowTouchIndicatorViewMinAlpha + (1.0 - UIWindowTouchIndicatorViewMinAlpha) * touch.force / touch.maximumPossibleForce;
+    }
+    indicatorView.alpha = indicatorViewAlpha;
 }
 
 @end
