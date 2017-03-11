@@ -53,6 +53,13 @@
 + (void)setCapturingConsoleOutputEnabled:(BOOL)enabled;
 
 /**
+ Enables or disables network requests logging, which by default is enabled.
+ 
+ @param enabled Determines whether network requests logging should be enabled or disabled.
+ */
++ (void)setNetworkRequestsLoggingEnabled:(BOOL)enabled;
+
+/**
  Removes all your application's entries from the keychain.
  */
 + (void)clearKeychain;

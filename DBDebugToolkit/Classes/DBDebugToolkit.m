@@ -164,6 +164,11 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     self.networkToolkit.loggingEnabled = YES;
 }
 
++ (void)setNetworkRequestsLoggingEnabled:(BOOL)enabled {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    toolkit.networkToolkit.loggingEnabled = enabled;
+}
+
 #pragma mark - User interface toolkit
 
 - (void)setupUserInterfaceToolkit {

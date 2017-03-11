@@ -161,6 +161,18 @@ Tap on any request on the list to see its details. From the request details scre
 
 The request and response body data is saved to the files to minimize the memory usage caused by the requests logging. If it happens to be too big anyway, you can disable the logging in the network submenu.
 
+**Warning!** To provide the requests list, DBDebugToolkit uses custom `NSURLProtocol` subclass. However, this mechanism does not support informing about the request progress. If any of the requests send by your application is meant to inform about its progress (e.g. photo upload with a progress bar), you can disable the logging in the network submenu while testing it. If you need to perform more tests you can disable the logging programmatically to avoid browsing the menu too many times:
+
+```swift
+import DBDebugToolkit
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    DBDebugToolkit.setup()
+    DBDebugToolkit.setNetworkRequestsLoggingEnabled(false)
+    return true
+}
+```
+
 ### Resources
 
 DBDebugToolkit allows you to browse and manage five data sources: file system, user defaults, keychain, Core Data and cookies.
