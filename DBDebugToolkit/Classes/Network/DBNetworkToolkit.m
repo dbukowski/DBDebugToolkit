@@ -104,6 +104,7 @@
 - (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request {
     DBRequestModel *requestModel = [self.runningRequestsModels objectForKey:request];
     [requestModel saveOutcome:requestOutcome];
+    [requestModel saveBodyWithData:request.HTTPBody inputStream:request.HTTPBodyStream];
     [self.runningRequestsModels removeObjectForKey:request];
     [self didUpdateRequestModel:requestModel];
 }

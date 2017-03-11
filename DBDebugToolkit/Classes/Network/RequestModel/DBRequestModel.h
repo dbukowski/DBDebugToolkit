@@ -74,6 +74,14 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 - (void)saveOutcome:(DBRequestOutcome *)requestOutcome;
 
 /**
+ Saves the body of the request, contained either in an `NSData` instance or in `NSInputStream` instance.
+ 
+ @param body The `NSData` instance containing the body. If empty, the body is contained in the input stream.
+ @param bodyStream The `NSInputStream` instance containing the body in case of empty `NSData` instance.
+ */
+- (void)saveBodyWithData:(NSData *)body inputStream:(NSInputStream *)bodyStream;
+
+/**
  Delegate that will be informed about the finishing of the body data synchronization. It needs to conform to `DBRequestModelDelegate` protocol.
  */
 @property (nonatomic, weak) id <DBRequestModelDelegate> delegate;

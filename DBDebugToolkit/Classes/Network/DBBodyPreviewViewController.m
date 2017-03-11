@@ -58,7 +58,8 @@ typedef NS_ENUM(NSUInteger, DBBodyPreviewViewControllerViewState) {
                 dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 dataString = [dataString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
             } else {
-                dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSString *UTF8DecodedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                dataString = UTF8DecodedString ?: [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             }
             self.textView.text = dataString;
             [self setViewState:DBBodyPreviewViewControllerViewStateShowingText animated:YES];

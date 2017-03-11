@@ -23,6 +23,8 @@
 #import "DBRequestModel.h"
 #import "DBRequestDataHandler.h"
 
+static const NSInteger DBRequestModelBodyStreamBufferSize = 4096;
+
 @interface DBRequestModel () <DBRequestDataHandlerDelegate>
 
 @property (nonatomic, strong) NSURL *url;
@@ -54,7 +56,6 @@
         _httpMethod = request.HTTPMethod;
         _allRequestHTTPHeaderFields = request.allHTTPHeaderFields;
         _sendingDate = [NSDate date];
-        [self saveRequestBody:request.HTTPBody];
     }
     
     return self;
@@ -62,6 +63,28 @@
 
 + (instancetype)requestModelWithRequest:(NSURLRequest *)request {
     return [[self alloc] initWithRequest:request];
+}
+
+#pragma mark - Saving body
+
+- (void)saveBodyWithData:(NSData *)body inputStream:(NSInputStream *)bodyStream {
+    NSData *bodyData = body;
+    if ([bodyData length] == 0) {
+        bodyData = [self dataFromInputStream:bodyStream];
+    }
+    
+    [self saveRequestBody:bodyData];
+}
+
+- (NSData *)dataFromInputStream:(NSInputStream *)inputStream {
+    uint8_t byteBuffer[DBRequestModelBodyStreamBufferSize];
+    NSMutableData *mutableData = [NSMutableData data];
+    [inputStream open];
+    while (inputStream.hasBytesAvailable) {
+        NSInteger bytesRead = [inputStream read:byteBuffer maxLength:sizeof(byteBuffer)];
+        [mutableData appendBytes:byteBuffer length:bytesRead];
+    }
+    return [mutableData copy];
 }
 
 #pragma mark - Saving outcome
