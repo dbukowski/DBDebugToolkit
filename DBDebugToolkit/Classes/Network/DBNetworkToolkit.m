@@ -71,7 +71,7 @@
 
 - (void)resetLoggedData {
     _requests = [NSMutableArray array];
-    _runningRequestsModels = [NSMapTable weakToWeakObjectsMapTable];
+    _runningRequestsModels = [NSMapTable strongToWeakObjectsMapTable];
     [self removeOldSavedRequests];
 }
 
@@ -96,16 +96,16 @@
 - (void)saveRequest:(NSURLRequest *)request {
     DBRequestModel *requestModel = [DBRequestModel requestModelWithRequest:request];
     requestModel.delegate = self;
-    [self.runningRequestsModels setObject:requestModel forKey:request];
+    [self.runningRequestsModels setObject:requestModel forKey:request.description];
     [self.requests addObject:requestModel];
     [self.delegate networkDebugToolkitDidUpdateRequestsList:self];
 }
 
 - (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request {
-    DBRequestModel *requestModel = [self.runningRequestsModels objectForKey:request];
+    DBRequestModel *requestModel = [self.runningRequestsModels objectForKey:request.description];
     [requestModel saveOutcome:requestOutcome];
     [requestModel saveBodyWithData:request.HTTPBody inputStream:request.HTTPBodyStream];
-    [self.runningRequestsModels removeObjectForKey:request];
+    [self.runningRequestsModels removeObjectForKey:request.description];
     [self didUpdateRequestModel:requestModel];
 }
 
