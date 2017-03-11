@@ -35,6 +35,8 @@
 #import "DBUserDefaultsToolkit.h"
 #import "DBCoreDataToolkit.h"
 
+static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPath = @"containerView";
+
 @interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
 
 @property (nonatomic, copy) NSArray <id <DBDebugToolkitTrigger>> *triggers;
@@ -220,7 +222,24 @@
     navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     navigationController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     navigationController.modalPresentationCapturesStatusBarAppearance = YES;
-    [presentingViewController presentViewController:navigationController animated:YES completion:nil];
+    [presentingViewController presentViewController:navigationController animated:YES completion:^{
+        // We need this to properly handle a case of menu being dismissed because of dismissing of the view controller that presents it.
+        [navigationController.presentationController addObserver:self
+                                                      forKeyPath:DBDebugToolkitObserverPresentationControllerPropertyKeyPath
+                                                         options:0
+                                                         context:nil];
+    }];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([object isKindOfClass:[UIPresentationController class]]) {
+        UIPresentationController *presentationController = (UIPresentationController *)object;
+        if (presentationController.containerView == nil) {
+            // The menu was dismissed.
+            self.showsMenu = NO;
+            [presentationController removeObserver:self forKeyPath:DBDebugToolkitObserverPresentationControllerPropertyKeyPath];
+        }
+    }
 }
 
 - (DBMenuTableViewController *)menuViewController {

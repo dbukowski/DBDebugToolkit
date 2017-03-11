@@ -47,10 +47,6 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
 
 @implementation DBMenuTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 #pragma mark - Close button
 
 - (IBAction)closeButtonAction:(id)sender {
