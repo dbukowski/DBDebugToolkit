@@ -268,17 +268,17 @@ override func viewDidLoad() {
     // Creating custom variables
     let titleVariable = DBCustomVariable(name: "View title", value: "Custom variables")
     let numberOfColumnsVariable = DBCustomVariable(name: "Number of columns", value: 4)
-    let minimumInteritemStacingVariable = DBCustomVariable(name: "Minimum interitem spacing", value: 10.0)
+    let minimumInteritemSpacingVariable = DBCustomVariable(name: "Minimum interitem spacing", value: 10.0)
     let showsNumbersVariable = DBCustomVariable(name: "Shows cell numbers", value: true)
 
     // Registering actions that will be run when the values change.
     titleVariable.addTarget(self, action: #selector(YourViewController.didUpdateTitleVariable(titleVariable:)))
     numberOfColumnsVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
-    minimumInteritemStacingVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
+    minimumInteritemSpacingVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
     showsNumbersVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
 
     // Adding created variables to the menu
-    DBDebugToolkit.add([ titleVariable, numberOfColumnsVariable, minimumInteritemStacingVariable, showsNumbersVariable ])
+    DBDebugToolkit.add([ titleVariable, numberOfColumnsVariable, minimumInteritemSpacingVariable, showsNumbersVariable ])
 }
 
 // The actions that will be run when the custom variable values change.
@@ -290,7 +290,7 @@ func didUpdateTitleVariable(titleVariable: DBCustomVariable) {
 
 // The method you register can have no parameters if you don't need the new value in its body.
 func didUpdateCollectionViewVariable() {
-    self.searchResultsView.collectionView.reloadData()
+    self.collectionView.reloadData()
 }
 
 // Accessing the custom variable values
@@ -328,7 +328,7 @@ override func viewWillDisappear(_ animated: Bool) {
 }
 ```
 
-If those variables are only related to that one view controller it would be better to remove them completely:
+If those variables are only related to that one view controller, you can also remove them completely, so that the list of variables presented in the menu is always related to the current state of your application:
 
 ```swift
 import DBDebugToolkit
