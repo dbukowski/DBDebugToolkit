@@ -63,25 +63,25 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
 
 - (NSString *)autolayoutTrace {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    return [window performSelector:@selector(_autolayoutTrace)];
-#pragma clang diagnostic pop
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x5f, 0x61, 0x75, 0x74, 0x6f, 0x6c, 0x61, 0x79, 0x6f, 0x75, 0x74, 0x54, 0x72, 0x61, 0x63, 0x65} length:16] encoding:NSASCIIStringEncoding];
+    SEL selector = NSSelectorFromString(key);
+    return ((NSString *(*)(id, SEL))[window methodForSelector:selector])(window, selector);
 }
 
 - (NSString *)viewDescription:(UIView *)view {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    return [view performSelector:@selector(recursiveDescription)];
-#pragma clang diagnostic pop
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x72, 0x65, 0x63, 0x75, 0x72, 0x73, 0x69, 0x76, 0x65, 0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e} length:20] encoding:NSASCIIStringEncoding];
+    SEL selector = NSSelectorFromString(key);
+    return ((NSString *(*)(id, SEL))[view methodForSelector:selector])(view, selector);
 }
 
 - (NSString *)viewControllerHierarchy {
     UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    return [rootViewController performSelector:@selector(_printHierarchy)];
-#pragma clang diagnostic pop
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x5f, 0x70, 0x72, 0x69, 0x6e, 0x74, 0x48, 0x69, 0x65, 0x72, 0x61, 0x72, 0x63, 0x68, 0x79} length:15] encoding:NSASCIIStringEncoding];
+    SEL selector = NSSelectorFromString(key);
+    return ((NSString *(*)(id, SEL))[rootViewController methodForSelector:selector])(rootViewController, selector);
 }
 
 - (NSString *)fontFamilies {

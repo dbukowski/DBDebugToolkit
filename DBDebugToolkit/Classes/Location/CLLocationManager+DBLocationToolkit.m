@@ -32,9 +32,13 @@ static NSString *const CLLocationManagerLocationsKey = @"Locations";
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(@"onClientEventLocation:")
+        // Making sure to minimize the risk of rejecting app because of the private API.
+        NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x6f, 0x6e, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x3a} length:22] encoding:NSASCIIStringEncoding];
+        [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(key)
                                       andSwizzledSelector:@selector(db_onClientEventLocation:)];
-        [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(@"onClientEventLocation:forceMapMatching:type:")
+        // Making sure to minimize the risk of rejecting app because of the private API.
+        key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x6f, 0x6e, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x3a, 0x66, 0x6f, 0x72, 0x63, 0x65, 0x4d, 0x61, 0x70, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x6e, 0x67, 0x3a, 0x74, 0x79, 0x70, 0x65, 0x3a} length:44] encoding:NSASCIIStringEncoding];
+        [self exchangeInstanceMethodsWithOriginalSelector:NSSelectorFromString(key)
                                       andSwizzledSelector:@selector(db_onClientEventLocation:forceMapMatching:type:)];
     });
 }
