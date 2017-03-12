@@ -45,6 +45,7 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
   - [x] Displaying console output in text view
   - [x] Sending console output by email with device and system information
 - [x] Simulating location
+- [x] Modifying custom variable values from the menu
 - [x] Adding custom actions to the menu
 - [x] Opening application settings
 - [x] Showing version & build number
@@ -52,7 +53,7 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first. The example project is written in Objective-C. The Swift examples of using DBDebugToolkit are in this README.
+To run the example project, clone the repo, and run `pod install` from the Example directory first. The example project is written in Objective-C. The code examples in this README are written in Swift 3.0.
 
 ## Requirements
 
@@ -253,6 +254,90 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 Simulating location with DBDebugToolkit is really straightforward. You can either select a location from the predefined list (the same as on iOS simulator) or choose any point on a map. This choice is remembered even after you relaunch the application, which should be really helpful when you work on a feature that depends on the user location.
 
 [//]: # (Insert location simulation gif)
+
+### Custom variables
+
+DBDebugToolkit provides a powerful mechanism allowing you to change variable values during runtime. You can define string, integer, double and boolean variables that will be modifiable in the menu. For example, when you are working on a collection view, but you are not quite sure yet how to adjust the layout, you could define the variables that will let you see how the values affect the final look:
+
+```swift
+import DBDebugToolkit
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    // Creating custom variables
+    let titleVariable = DBCustomVariable(name: "View title", value: "Custom variables")
+    let numberOfColumnsVariable = DBCustomVariable(name: "Number of columns", value: 4)
+    let minimumInteritemStacingVariable = DBCustomVariable(name: "Minimum interitem spacing", value: 10.0)
+    let showsNumbersVariable = DBCustomVariable(name: "Shows cell numbers", value: true)
+
+    // Registering actions that will be run when the values change.
+    titleVariable.addTarget(self, action: #selector(YourViewController.didUpdateTitleVariable(titleVariable:)))
+    numberOfColumnsVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
+    minimumInteritemStacingVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
+    showsNumbersVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
+
+    // Adding created variables to the menu
+    DBDebugToolkit.add([ titleVariable, numberOfColumnsVariable, minimumInteritemStacingVariable, showsNumbersVariable ])
+}
+
+// The actions that will be run when the custom variable values change.
+// The method you register can have a parameter of type DBCustomVariable.
+// The method will be invoked with the custom variable that changed its value, so you can use it to access the new value.
+func didUpdateTitleVariable(titleVariable: DBCustomVariable) {
+    self.title = titleVariable.value as! String?
+}
+
+// The method you register can have no parameters if you don't need the new value in its body.
+func didUpdateCollectionViewVariable() {
+    self.searchResultsView.collectionView.reloadData()
+}
+
+// Accessing the custom variable values
+func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    // let cell = collectionView.dequeueReusableCell...
+    let showsNumbers = DBDebugToolkit.customVariable(withName: "Shows cell numbers").value as! Bool
+    // Your cell configuration
+}
+
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let numberOfColumns = DBDebugToolkit.customVariable(withName: "Number of columns").value as! Int
+    // Calculations based on numberOfColumns value.
+}
+
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    let interitemSpacing = DBDebugToolkit.customVariable(withName: "Minimum interitem spacing").value as! Double
+    return CGFloat(interitemSpacing)
+}
+```
+
+This setup allows you to modify the values in the menu and see the results immediately:
+
+[//]: # (Insert collectionView with variables gif)
+
+Please remember to remove the registered actions to avoid retaining the view controller by the variable objects:
+
+```swift
+import DBDebugToolkit
+
+override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    let titleVariable = DBDebugToolkit.customVariable(withName: "View title")
+    titleVariable?.removeTarget(self, action: nil)
+    // The same for the remaining variables.
+}
+```
+
+If those variables are only related to that one view controller it would be better to remove them completely:
+
+```swift
+import DBDebugToolkit
+
+override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    DBDebugToolkit.removeCustomVariables(withNames: ["View title", "Shows cell numbers", "Number of columns", "Minimum interitem spacing"])
+}
+```
 
 ### Custom actions
 
