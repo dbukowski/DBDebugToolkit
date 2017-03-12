@@ -14,6 +14,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *cellTitles;
 @property (nonatomic, strong) NSArray *cellImages;
+@property (nonatomic, strong) NSOperationQueue *imageOperationQueue;
 
 @end
 
@@ -25,6 +26,8 @@
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"DBRequestExampleTableViewCell" bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"ImageCell"];
+    self.imageOperationQueue = [[NSOperationQueue alloc] init];
+    self.imageOperationQueue.maxConcurrentOperationCount = 5;
     [self getExampleData];
 }
 
@@ -60,7 +63,7 @@
 - (void)getImageWithURLString:(NSString *)urlString completion:(void (^)(UIImage *))completion {
     NSLog(@"Logging example: getting image from %@...", urlString);
     NSCache *cache = [DBRequestsExampleViewController imagesCache];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    [self.imageOperationQueue addOperationWithBlock:^{
         UIImage *image = [cache objectForKey:urlString];
         if(!image){
             NSURL *url = [NSURL URLWithString:urlString];
@@ -75,7 +78,7 @@
                 completion(image);
             }
         });
-    });
+    }];
 }
 
 + (NSCache *)imagesCache {
@@ -111,6 +114,5 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.cellImages.count;
 }
-
 
 @end

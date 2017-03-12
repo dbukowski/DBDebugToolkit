@@ -21,14 +21,27 @@
 // THE SOFTWARE.
 
 #import "DBCustomActionsTableViewController.h"
+#import "UILabel+DBDebugToolkit.h"
 
 static NSString *const DBCustomActionsTableViewControllerButtonCellIdentifier = @"DBMenuButtonTableViewCell";
+
+@interface DBCustomActionsTableViewController ()
+
+@property (nonatomic, strong) UILabel *backgroundLabel;
+
+@end
 
 @implementation DBCustomActionsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
+    [self setupBackgroundLabel];
+}
+
+- (void)setupBackgroundLabel {
+    self.backgroundLabel = [UILabel tableViewBackgroundLabel];
+    self.tableView.backgroundView = self.backgroundLabel;
 }
 
 #pragma mark - UITableViewDelegate
@@ -42,7 +55,9 @@ static NSString *const DBCustomActionsTableViewControllerButtonCellIdentifier = 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.customActions.count;
+    NSInteger numberOfItems = self.customActions.count;
+    self.backgroundLabel.text = numberOfItems == 0 ? @"There are no custom actions." : @"";
+    return numberOfItems;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

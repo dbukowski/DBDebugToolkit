@@ -22,6 +22,30 @@
 
 #import <UIKit/UIKit.h>
 
+@class DBTextViewTableViewCell;
+
+/**
+ A protocol used for passing the text view delegate methods.
+ */
+@protocol DBTextViewTableViewCellDelegate <NSObject>
+
+/**
+ Informs the delegate that the text value was changed in the cell.
+ 
+ @param textViewCell The cell with a text view that changed its value.
+ */
+- (void)textViewTableViewCellDidChangeText:(DBTextViewTableViewCell *)textViewCell;
+
+/**
+ Asks the delegate if the text can be changed to the given value in the text view.
+ 
+ @param textViewCell The cell with a text view that requires new value validation.
+ @param text The new text value that requires validation.
+ */
+- (BOOL)textViewTableViewCell:(DBTextViewTableViewCell *)textViewCell shouldChangeTextTo:(NSString *)text;
+
+@end
+
 /**
  `DBTextViewTableViewCell` is a table view cell displaying a title and a text view allowing the user to input a multiline content.
  */
@@ -36,5 +60,10 @@
  An outlet to `UITextView` instance allowing the user to provide a multiline content.
  */
 @property (nonatomic, weak) IBOutlet UITextView *textView;
+
+/**
+ Delegate that will be responsible for handling some of the `UITextViewDelegate` methods. It needs to conform to `DBTextViewTableViewCellDelegate` protocol.
+ */
+@property (nonatomic, weak) id <DBTextViewTableViewCellDelegate> delegate;
 
 @end

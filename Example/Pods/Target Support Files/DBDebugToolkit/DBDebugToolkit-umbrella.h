@@ -26,6 +26,8 @@
 #import "DBConsoleViewController.h"
 #import "DBCustomAction.h"
 #import "DBCustomActionsTableViewController.h"
+#import "DBCustomVariable.h"
+#import "DBCustomVariablesTableViewController.h"
 #import "DBDebugToolkit.h"
 #import "DBDeviceInfoProvider.h"
 #import "CLLocationManager+DBLocationToolkit.h"

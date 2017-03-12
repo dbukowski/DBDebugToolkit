@@ -49,6 +49,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 @property (nonatomic, strong) DBLocationToolkit *locationToolkit;
 @property (nonatomic, strong) DBCoreDataToolkit *coreDataToolkit;
 @property (nonatomic, strong) NSMutableArray <DBCustomAction *> *customActions;
+@property (nonatomic, strong) NSMutableDictionary <NSString *, DBCustomVariable *> *customVariables;
 
 @end
 
@@ -83,6 +84,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
         [sharedInstance setupLocationToolkit];
         [sharedInstance setupCoreDataToolkit];
         [sharedInstance setupCustomActions];
+        [sharedInstance setupCustomVariables];
     });
     return sharedInstance;
 }
@@ -201,9 +203,45 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     [toolkit.customActions addObject:customAction];
 }
 
-+ (void)addCustomActions:(NSArray<DBCustomAction *> *)customActions {
++ (void)addCustomActions:(NSArray <DBCustomAction *> *)customActions {
     DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
     [toolkit.customActions addObjectsFromArray:customActions];
+}
+
+#pragma mark - Custom variables
+
+- (void)setupCustomVariables {
+    self.customVariables = [NSMutableDictionary dictionary];
+}
+
++ (void)addCustomVariable:(DBCustomVariable *)customVariable {
+    [self removeCustomVariableWithName:customVariable.name];
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    toolkit.customVariables[customVariable.name] = customVariable;
+}
+
++ (void)addCustomVariables:(NSArray <DBCustomVariable *> *)customVariables {
+    for (DBCustomVariable *customVariable in customVariables) {
+        [self addCustomVariable:customVariable];
+    }
+}
+
++ (void)removeCustomVariableWithName:(NSString *)variableName {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    DBCustomVariable *customVariable = toolkit.customVariables[variableName];
+    [customVariable removeTarget:nil action:nil];
+    toolkit.customVariables[variableName] = nil;
+}
+
++ (void)removeCustomVariablesWithNames:(NSArray <NSString *> *)variableNames {
+    for (NSString *variableName in variableNames) {
+        [self removeCustomVariableWithName:variableName];
+    }
+}
+
++ (DBCustomVariable *)customVariableWithName:(NSString *)variableName {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    return toolkit.customVariables[variableName];
 }
 
 #pragma mark - Resources 
@@ -260,9 +298,10 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
         _menuViewController.coreDataToolkit = self.coreDataToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
-        _menuViewController.customActions = self.customActions;
         _menuViewController.delegate = self;
     }
+    _menuViewController.customVariables = self.customVariables.allValues;
+    _menuViewController.customActions = self.customActions;
     return _menuViewController;
 }
 

@@ -20,30 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DBTextViewTableViewCell.h"
+#import <UIKit/UIKit.h>
+#import "DBCustomVariable.h"
 
-@interface DBTextViewTableViewCell () <UITextViewDelegate>
+/**
+ `DBCustomVariablesTableViewController` is a table view controller presenting the list of the defined custom variables.
+ */
+@interface DBCustomVariablesTableViewController : UITableViewController
 
-@end
-
-@implementation DBTextViewTableViewCell
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    self.textView.textContainer.lineFragmentPadding = 0;
-    self.textView.textContainerInset = UIEdgeInsetsZero;
-    self.textView.delegate = self;
-}
-
-#pragma mark - UITextViewDelegate
-
-- (void)textViewDidChange:(UITextView *)textView {
-    [self.delegate textViewTableViewCellDidChangeText:self];
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    NSString *resultText = [textView.text stringByReplacingCharactersInRange:range withString:text];
-    return [self.delegate textViewTableViewCell:self shouldChangeTextTo:resultText];
-}
+/**
+ Array of custom variables that should be displayed in the table view.
+ */
+- (void)setCustomVariables:(NSArray <DBCustomVariable *> *)customVariables;
 
 @end

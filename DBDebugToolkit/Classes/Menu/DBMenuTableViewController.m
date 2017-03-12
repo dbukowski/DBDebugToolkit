@@ -29,6 +29,7 @@
 #import "DBLocationTableViewController.h"
 #import "DBResourcesTableViewController.h"
 #import "DBCustomActionsTableViewController.h"
+#import "DBCustomVariablesTableViewController.h"
 
 typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowPerformance,
@@ -37,6 +38,7 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowResources,
     DBMenuTableViewControllerRowConsole,
     DBMenuTableViewControllerRowLocation,
+    DBMenuTableViewControllerRowCustomVariables,
     DBMenuTableViewControllerRowCustomActions,
     DBMenuTableViewControllerRowApplicationSettings
 };
@@ -108,6 +110,9 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     } else if ([destinationViewController isKindOfClass:[DBResourcesTableViewController class]]) {
         DBResourcesTableViewController *resourcesTableViewController = (DBResourcesTableViewController *)destinationViewController;
         resourcesTableViewController.coreDataToolkit = self.coreDataToolkit;
+    } else if ([destinationViewController isKindOfClass:[DBCustomVariablesTableViewController class]]) {
+        DBCustomVariablesTableViewController *customVariablesTableViewController = (DBCustomVariablesTableViewController *)destinationViewController;
+        customVariablesTableViewController.customVariables = self.customVariables;
     } else if ([destinationViewController isKindOfClass:[DBCustomActionsTableViewController class]]) {
         DBCustomActionsTableViewController *customActionsTableViewController = (DBCustomActionsTableViewController *)destinationViewController;
         customActionsTableViewController.customActions = self.customActions;

@@ -23,26 +23,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6W-iA-Rmw">
-                                <rect key="frame" x="155" y="207.5" width="64" height="30"/>
+                                <rect key="frame" x="155" y="152" width="64" height="30"/>
                                 <state key="normal" title="Requests"/>
                                 <connections>
                                     <segue destination="Fvj-FL-Kb5" kind="show" id="N7T-KD-wSM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZ6-4d-FUk">
-                                <rect key="frame" x="158" y="489.5" width="59" height="30"/>
+                                <rect key="frame" x="158" y="318.5" width="59" height="30"/>
                                 <state key="normal" title="Location"/>
                                 <connections>
                                     <segue destination="EQg-QG-5DG" kind="show" id="3yg-xc-1W9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llh-ez-zUh">
+                                <rect key="frame" x="128" y="485.5" width="119" height="30"/>
+                                <state key="normal" title="Custom variables"/>
+                                <connections>
+                                    <segue destination="ty9-TJ-SHp" kind="show" id="HmB-GO-xMW"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g6W-iA-Rmw" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="B20-Re-3h6"/>
-                            <constraint firstItem="g6W-iA-Rmw" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" multiplier="2/3" id="JXR-fy-YV3"/>
+                            <constraint firstItem="g6W-iA-Rmw" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" multiplier="1/2" id="JXR-fy-YV3"/>
                             <constraint firstItem="aZ6-4d-FUk" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="SmK-Pa-6SS"/>
-                            <constraint firstItem="aZ6-4d-FUk" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" multiplier="3/2" constant="4" id="q5R-l8-IZt"/>
+                            <constraint firstItem="llh-ez-zUh" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" multiplier="3/2" id="eUm-Bn-Dli"/>
+                            <constraint firstItem="aZ6-4d-FUk" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="q5R-l8-IZt"/>
+                            <constraint firstItem="llh-ez-zUh" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="sw9-xd-HS8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="DBDebugToolkit Example" id="AAE-hS-HB5"/>
@@ -82,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2f-Vd-bRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2232.8000000000002" y="277.51124437781112"/>
+            <point key="canvasLocation" x="2233" y="-380"/>
         </scene>
         <!--Location-->
         <scene sceneID="FTw-z4-3bn">
@@ -142,7 +151,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHJ-f3-DJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2232.8000000000002" y="1013.3433283358322"/>
+            <point key="canvasLocation" x="2233" y="432"/>
+        </scene>
+        <!--Custom variables-->
+        <scene sceneID="hud-KH-lKl">
+            <objects>
+                <viewController title="Custom variables" id="ty9-TJ-SHp" customClass="DBCustomVariablesExampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x8j-6d-7Rt"/>
+                        <viewControllerLayoutGuide type="bottom" id="sHv-HT-mvm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I91-KQ-aIt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6qw-r7-DZ4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dkH-W9-2wp">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6qw-r7-DZ4" firstAttribute="leading" secondItem="I91-KQ-aIt" secondAttribute="leading" id="8nQ-h4-U3p"/>
+                            <constraint firstItem="6qw-r7-DZ4" firstAttribute="top" secondItem="I91-KQ-aIt" secondAttribute="top" id="Ct6-5P-2g2"/>
+                            <constraint firstAttribute="trailing" secondItem="6qw-r7-DZ4" secondAttribute="trailing" id="jng-wd-Nxr"/>
+                            <constraint firstAttribute="bottom" secondItem="6qw-r7-DZ4" secondAttribute="bottom" id="nj6-cw-YSi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="6qw-r7-DZ4" id="Kk5-6M-8Bf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTC-B0-52A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2233" y="1194"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rhW-tm-WbY">

@@ -30,6 +30,7 @@
 #import "DBLocationToolkit.h"
 #import "DBCoreDataToolkit.h"
 #import "DBCustomAction.h"
+#import "DBCustomVariable.h"
 
 @class DBMenuTableViewController;
 
@@ -101,6 +102,11 @@
  Array of `DBCustomAction` instances that will be passed on.
  */
 @property (nonatomic, copy) NSArray <DBCustomAction *> *customActions;
+
+/**
+ Array of `DBCustomVariable` instances that will be passed on.
+ */
+@property (nonatomic, copy) NSArray <DBCustomVariable *> *customVariables;
 
 /**
  Pushes `DBPerformanceTableViewController` onto the current navigation controller with the preselected section. Optionally animated.

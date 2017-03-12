@@ -27,6 +27,9 @@
 		663E02B51E49413B0069FDCB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663E02B41E49413B0069FDCB /* CoreLocation.framework */; };
 		66571C031E631EF10047D5BA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66571C001E631E590047D5BA /* DataModel.xcdatamodeld */; };
 		66739E651E6C4C180090838D /* DBCoreDataRandomDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 66739E641E6C4C180090838D /* DBCoreDataRandomDataGenerator.m */; };
+		668EDCA81E748EAD00730A8F /* DBCustomVariablesExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668EDCA71E748EAD00730A8F /* DBCustomVariablesExampleViewController.m */; };
+		668EDCAC1E748FDB00730A8F /* DBExampleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 668EDCAA1E748FDB00730A8F /* DBExampleCollectionViewCell.m */; };
+		668EDCAD1E748FDB00730A8F /* DBExampleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 668EDCAB1E748FDB00730A8F /* DBExampleCollectionViewCell.xib */; };
 		66D99DE51E6C608700ED8119 /* CarMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DD61E6C608700ED8119 /* CarMO+CoreDataClass.m */; };
 		66D99DE61E6C608700ED8119 /* CarMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DD81E6C608700ED8119 /* CarMO+CoreDataProperties.m */; };
 		66D99DE71E6C608700ED8119 /* AddressMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D99DDA1E6C608700ED8119 /* AddressMO+CoreDataClass.m */; };
@@ -84,6 +87,11 @@
 		66571C011E631E590047D5BA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		66739E631E6C4C180090838D /* DBCoreDataRandomDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCoreDataRandomDataGenerator.h; sourceTree = "<group>"; };
 		66739E641E6C4C180090838D /* DBCoreDataRandomDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCoreDataRandomDataGenerator.m; sourceTree = "<group>"; };
+		668EDCA61E748EAD00730A8F /* DBCustomVariablesExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCustomVariablesExampleViewController.h; sourceTree = "<group>"; };
+		668EDCA71E748EAD00730A8F /* DBCustomVariablesExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCustomVariablesExampleViewController.m; sourceTree = "<group>"; };
+		668EDCA91E748FDB00730A8F /* DBExampleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBExampleCollectionViewCell.h; sourceTree = "<group>"; };
+		668EDCAA1E748FDB00730A8F /* DBExampleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBExampleCollectionViewCell.m; sourceTree = "<group>"; };
+		668EDCAB1E748FDB00730A8F /* DBExampleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBExampleCollectionViewCell.xib; sourceTree = "<group>"; };
 		66D99DD51E6C608700ED8119 /* CarMO+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CarMO+CoreDataClass.h"; sourceTree = "<group>"; };
 		66D99DD61E6C608700ED8119 /* CarMO+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CarMO+CoreDataClass.m"; sourceTree = "<group>"; };
 		66D99DD71E6C608700ED8119 /* CarMO+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CarMO+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 		6003F593195388D20070C39A /* Example for DBDebugToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				668EDC9F1E748C5300730A8F /* CustomVariables */,
 				66739E4A1E6C48DD0090838D /* CoreData */,
 				6003F59C195388D20070C39A /* DBAppDelegate.h */,
 				6003F59D195388D20070C39A /* DBAppDelegate.m */,
@@ -273,6 +282,18 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		668EDC9F1E748C5300730A8F /* CustomVariables */ = {
+			isa = PBXGroup;
+			children = (
+				668EDCA61E748EAD00730A8F /* DBCustomVariablesExampleViewController.h */,
+				668EDCA71E748EAD00730A8F /* DBCustomVariablesExampleViewController.m */,
+				668EDCA91E748FDB00730A8F /* DBExampleCollectionViewCell.h */,
+				668EDCAA1E748FDB00730A8F /* DBExampleCollectionViewCell.m */,
+				668EDCAB1E748FDB00730A8F /* DBExampleCollectionViewCell.xib */,
+			);
+			path = CustomVariables;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -327,6 +348,9 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Dariusz Bukowski";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 96TAXNSJBC;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -361,6 +385,7 @@
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */,
 				6627B2221E460AF60020618C /* DBRequestExampleTableViewCell.xib in Resources */,
+				668EDCAD1E748FDB00730A8F /* DBExampleCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,9 +502,11 @@
 				6627B21A1E45E8070020618C /* DBRequestsExampleViewController.m in Sources */,
 				66D99DE71E6C608700ED8119 /* AddressMO+CoreDataClass.m in Sources */,
 				6003F59E195388D20070C39A /* DBAppDelegate.m in Sources */,
+				668EDCAC1E748FDB00730A8F /* DBExampleCollectionViewCell.m in Sources */,
 				66739E651E6C4C180090838D /* DBCoreDataRandomDataGenerator.m in Sources */,
 				66D99DE61E6C608700ED8119 /* CarMO+CoreDataProperties.m in Sources */,
 				66571C031E631EF10047D5BA /* DataModel.xcdatamodeld in Sources */,
+				668EDCA81E748EAD00730A8F /* DBCustomVariablesExampleViewController.m in Sources */,
 				66D99DE81E6C608700ED8119 /* AddressMO+CoreDataProperties.m in Sources */,
 				662F49961E49301800D98E31 /* DBLocationExampleViewController.m in Sources */,
 				66D99DEB1E6C608700ED8119 /* PersonMO+CoreDataClass.m in Sources */,
@@ -617,7 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 96TAXNSJBC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBDebugToolkit/DBDebugToolkit-Prefix.pch";
 				INFOPLIST_FILE = "DBDebugToolkit/DBDebugToolkit-Info.plist";
@@ -634,7 +661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 96TAXNSJBC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBDebugToolkit/DBDebugToolkit-Prefix.pch";
 				INFOPLIST_FILE = "DBDebugToolkit/DBDebugToolkit-Info.plist";

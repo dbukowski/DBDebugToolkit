@@ -23,6 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "DBDebugToolkitTrigger.h"
 #import "DBCustomAction.h"
+#import "DBCustomVariable.h"
 
 /**
  `DBDebugToolkit` provides the interface that can be used to setup and customize the debugging tools.
@@ -44,6 +45,11 @@
  @param triggers Array of triggers that should be used to open the `DBDebugToolkit` menu. The objects it contains should adopt the protocol `DBDebugToolkitTrigger`.
  */
 + (void)setupWithTriggers:(NSArray <id <DBDebugToolkitTrigger>> *)triggers;
+
+
+///--------------------------
+/// @name Convenience methods
+///--------------------------
 
 /**
  Enables or disables console output capturing, which by default is enabled.
@@ -69,14 +75,61 @@
  */
 + (void)clearUserDefaults;
 
+///---------------------
+/// @name Custom actions
+///---------------------
+
 /**
  Adds a single `DBCustomAction` instance to the array accessible in the menu.
+ 
+ @param customAction The `DBCustomAction` instance that should be accessible in the menu.
  */
 + (void)addCustomAction:(DBCustomAction *)customAction;
 
 /**
  Adds multiple `DBCustomAction` instances to the array accessible in the menu.
+ 
+ @param customActions An array of `DBCustomAction` instances that should be accessible in the menu.
  */
 + (void)addCustomActions:(NSArray <DBCustomAction *> *)customActions;
+
+///-----------------------
+/// @name Custom variables
+///-----------------------
+
+/**
+ Adds a single `DBCustomVariable` instance to the array accessible in the menu.
+ 
+ @param customVariable The `DBCustomVariable` instance that should be accessible in the menu.
+ */
++ (void)addCustomVariable:(DBCustomVariable *)customVariable;
+
+/**
+ Adds multiple `DBCustomVariable` instances to the array accessible in the menu.
+ 
+ @param customVariables An array of `DBCustomVariable` instances that should be accessible in the menu.
+ */
++ (void)addCustomVariables:(NSArray <DBCustomVariable *> *)customVariables;
+
+/**
+ Removes a single `DBCustomVariable` instance with the given name.
+ 
+ @param variableName The name of the variable that should be removed.
+ */
++ (void)removeCustomVariableWithName:(NSString *)variableName;
+
+/**
+ Removes multiple `DBCustomVariable` instances with the names contained in the given array.
+ 
+ @param variableNames An array of the names of the variables that should be removed.
+ */
++ (void)removeCustomVariablesWithNames:(NSArray <NSString *> *)variableNames;
+
+/**
+ Returns a `DBCustomVariable` instance with a given name. If there is no such an instance, the method returns `nil`.
+ 
+ @param variableName The name of the accessed variable.
+ */
++ (DBCustomVariable *)customVariableWithName:(NSString *)variableName;
 
 @end

@@ -30,7 +30,7 @@ static NSString *const DBCoreDataFilterTableViewControllerOptionCellIdentifier =
 static NSString *const DBCoreDataFilterTableViewControllerSwitchCellIdentifier = @"DBMenuSwitchTableViewCell";
 static NSString *const DBCoreDataFilterTableViewControllerTextViewCellIdentifier = @"DBTextViewTableViewCell";
 
-@interface DBCoreDataFilterTableViewController () <DBOptionsListTableViewControllerDelegate, DBOptionsListTableViewControllerDataSource, DBMenuSwitchTableViewCellDelegate, UITextViewDelegate>
+@interface DBCoreDataFilterTableViewController () <DBOptionsListTableViewControllerDelegate, DBOptionsListTableViewControllerDataSource, DBMenuSwitchTableViewCellDelegate, DBTextViewTableViewCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *saveButton;
 @property (nonatomic, assign) BOOL didSelectAttribute;
@@ -166,17 +166,21 @@ static NSString *const DBCoreDataFilterTableViewControllerTextViewCellIdentifier
     self.filter.value = [@(isOn) stringValue];
 }
 
-#pragma mark - UITextViewDelegate
+#pragma mark - DBTextViewTableViewCellDelegate
 
-- (void)textViewDidChange:(UITextView *)textView {
+- (void)textViewTableViewCellDidChangeText:(DBTextViewTableViewCell *)textViewCell {
     CGPoint currentContentOffset = self.tableView.contentOffset;
     [UIView setAnimationsEnabled:NO];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
     [self.tableView setContentOffset:currentContentOffset animated:NO];
-    self.filter.value = textView.text;
+    self.filter.value = textViewCell.textView.text;
     [self refreshSaveButton];
+}
+
+- (BOOL)textViewTableViewCell:(DBTextViewTableViewCell *)textViewCell shouldChangeTextTo:(NSString *)text {
+    return YES;
 }
 
 #pragma mark - Private methods
@@ -194,8 +198,8 @@ static NSString *const DBCoreDataFilterTableViewControllerTextViewCellIdentifier
         DBTextViewTableViewCell *textViewCell = [self.tableView dequeueReusableCellWithIdentifier:DBCoreDataFilterTableViewControllerTextViewCellIdentifier];
         textViewCell.titleLabel.text = @"value";
         textViewCell.textView.text = self.filter.value;
-        textViewCell.textView.delegate = self;
         textViewCell.textView.keyboardType = self.filter.attribute.attributeType == NSStringAttributeType ? UIKeyboardTypeDefault : UIKeyboardTypeNumbersAndPunctuation;
+        textViewCell.delegate = self;
         return textViewCell;
     }
 }
