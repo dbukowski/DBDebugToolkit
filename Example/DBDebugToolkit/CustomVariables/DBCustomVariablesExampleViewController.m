@@ -96,7 +96,7 @@ static NSString *const DBCustomVariablesExampleViewControllerExampleCellIdentifi
 #pragma mark - Cell colors
 
 - (void)setupCellColors {
-    NSInteger cellCount = 1000;
+    NSInteger cellCount = 200;
     NSArray <UIColor *> *mainColors = @[ [UIColor yellowColor], [UIColor orangeColor], [UIColor redColor], [UIColor purpleColor], [UIColor blueColor], [UIColor greenColor] ];
     NSMutableArray *cellColors = [NSMutableArray array];
     for (int colorIndex = 0; colorIndex < cellCount; colorIndex++) {
