@@ -265,7 +265,7 @@ import DBDebugToolkit
 override func viewDidLoad() {
     super.viewDidLoad()
 
-    // Creating custom variables
+    // Creating custom variables.
     let titleVariable = DBCustomVariable(name: "View title", value: "Custom variables")
     let numberOfColumnsVariable = DBCustomVariable(name: "Number of columns", value: 4)
     let minimumInteritemSpacingVariable = DBCustomVariable(name: "Minimum interitem spacing", value: 10.0)
@@ -277,7 +277,7 @@ override func viewDidLoad() {
     minimumInteritemSpacingVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
     showsNumbersVariable.addTarget(self, action: #selector(YourViewController.didUpdateCollectionViewVariable))
 
-    // Adding created variables to the menu
+    // Adding created variables to the menu.
     DBDebugToolkit.add([ titleVariable, numberOfColumnsVariable, minimumInteritemSpacingVariable, showsNumbersVariable ])
 }
 
@@ -293,11 +293,11 @@ func didUpdateCollectionViewVariable() {
     self.collectionView.reloadData()
 }
 
-// Accessing the custom variable values
+// Accessing the custom variable values.
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     // let cell = collectionView.dequeueReusableCell...
     let showsNumbers = DBDebugToolkit.customVariable(withName: "Shows cell numbers").value as! Bool
-    // Your cell configuration
+    // Your cell configuration.
 }
 
 func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
