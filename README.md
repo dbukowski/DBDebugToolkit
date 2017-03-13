@@ -11,9 +11,9 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
 - [Features](#features)
 - [Example](#example)
 - [Requirements](#requirements)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Author](#author)
+- [Installation](#installation)
 - [License](#license)
 
 ## Features
@@ -59,21 +59,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 DBDebugToolkit requires iOS 8.0 or later.
 
-## Installation
-
-DBDebugToolkit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "DBDebugToolkit"
-```
-
 ## Usage
 
 ### Setup
 
-DBDebugToolkit was meant to provide as many useful debugging tools as possible. However, the second equally important goal was to keep the setup seamless for all the iOS projects. A good place for setting up DBDebugToolkit is in the `AppDelegate`:
-[//]: # (Why is it a good place?)
+DBDebugToolkit was meant to provide as many useful debugging tools as possible. However, the second equally important goal was to keep the setup seamless for all the iOS projects. A good place for setting up DBDebugToolkit is in the `AppDelegate`, as it allows it to start as quickly as possible. The simplest setup consists of only one line:
 
 ```swift
 import DBDebugToolkit
@@ -83,6 +73,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     return true
 }
 ```
+
+After such setup, simply shake the device to present the menu with all the debugging options:
+[//]: # (Insert opening menu gif)
+
+Read more about triggers to find out how to customize menu presentation.
 
 #### Triggers
 
@@ -362,6 +357,15 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 To run these actions simply open the menu and go to custom actions section. You will see the list of all the actions. Tap on any of them to perform it.
 
 [//]: # (Insert menu -> tapping on those actions gif)
+
+## Installation
+
+DBDebugToolkit is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "DBDebugToolkit"
+```
 
 ## Author
 
