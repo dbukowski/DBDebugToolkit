@@ -207,7 +207,7 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
     }
     vm_deallocate(mach_task_self(), (vm_offset_t)threadList, threadCount * sizeof(thread_t));
     
-    return totalCpu;
+    return MIN(totalCpu, 100.0);
 }
 
 #pragma mark - Memory
