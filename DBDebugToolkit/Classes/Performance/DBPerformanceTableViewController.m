@@ -31,6 +31,8 @@ static NSString *const DBPerformanceTableViewControllerSegmentedControlCellIdent
 static NSString *const DBPerformanceTableViewControllerValueCellIdentifier = @"DBMenuValueTableViewCell";
 static NSString *const DBPerformanceTableViewControllerButtonCellIdentifier = @"DBMenuButtonTableViewCell";
 static NSString *const DBPerformanceTableViewControllerChartCellIdentifier = @"DBMenuChartTableViewCell";
+static const NSTimeInterval DBPerformanceTableViewControllerMarkedTimesInterval = 20.0;
+static const CGFloat DBPerformanceTableViewControllerChartCellRatioConstant = 20.0;
 
 typedef NS_ENUM(NSUInteger, DBPerformanceTableViewSection) {
     DBPerformanceTableViewSectionWidget,
@@ -126,6 +128,8 @@ typedef NS_ENUM(NSUInteger, DBPerformanceTableViewSection) {
             chartCell.chartView.markedValueFormat = @"%.1lf%%";
             chartCell.chartView.measurements = self.performanceToolkit.cpuMeasurements;
             chartCell.chartView.measurementsLimit = self.performanceToolkit.measurementsLimit;
+            chartCell.chartView.measurementInterval = self.performanceToolkit.timeBetweenMeasurements;
+            chartCell.chartView.markedTimesInterval = DBPerformanceTableViewControllerMarkedTimesInterval;
             return chartCell;
         }
     }
@@ -154,6 +158,8 @@ typedef NS_ENUM(NSUInteger, DBPerformanceTableViewSection) {
             chartCell.chartView.markedValueFormat = @"%.1lf";
             chartCell.chartView.measurements = self.performanceToolkit.memoryMeasurements;
             chartCell.chartView.measurementsLimit = self.performanceToolkit.measurementsLimit;
+            chartCell.chartView.measurementInterval = self.performanceToolkit.timeBetweenMeasurements;
+            chartCell.chartView.markedTimesInterval = DBPerformanceTableViewControllerMarkedTimesInterval;
             return chartCell;
         }
         case 3: {
@@ -191,6 +197,8 @@ typedef NS_ENUM(NSUInteger, DBPerformanceTableViewSection) {
             chartCell.chartView.markedValueFormat = @"%.0lf";
             chartCell.chartView.measurements = self.performanceToolkit.fpsMeasurements;
             chartCell.chartView.measurementsLimit = self.performanceToolkit.measurementsLimit;
+            chartCell.chartView.measurementInterval = self.performanceToolkit.timeBetweenMeasurements;
+            chartCell.chartView.markedTimesInterval = DBPerformanceTableViewControllerMarkedTimesInterval;
             return chartCell;
         }
     }
@@ -220,7 +228,7 @@ typedef NS_ENUM(NSUInteger, DBPerformanceTableViewSection) {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == DBPerformanceTableViewSectionStatistics && indexPath.row == 2) {
         // Chart cell.
-        return tableView.bounds.size.width;
+        return tableView.bounds.size.width + DBPerformanceTableViewControllerChartCellRatioConstant;
     }
     return 44.0;
 }

@@ -45,18 +45,18 @@ static const CGFloat DBChartViewArrowHeight = 4;
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
+    CGFloat bottomOffset = rect.size.height - rect.size.width;
     CGPoint chartStartPoint = CGPointMake(DBChartViewSpaceForMarkedValue + DBChartViewAdditionalLinesDistanceFromAxis + DBChartViewMarkedValueDistanceFromAxis,
-                                          rect.size.height - DBChartViewAdditionalLinesDistanceFromAxis);
+                                          rect.size.height - DBChartViewAdditionalLinesDistanceFromAxis - bottomOffset);
     CGPoint topRightChartCorner = CGPointMake(rect.size.width - DBChartViewOffsetFromArrows - DBChartViewAdditionalLinesDistanceFromAxis,
                                               DBChartViewOffsetFromArrows + DBChartViewAdditionalLinesDistanceFromAxis);
+    CGFloat oneMeasurementWidth = (topRightChartCorner.x - chartStartPoint.x) / (self.measurementsLimit - 1);
     
     if (self.measurements.count > 1) {
         // Drawing chart.
         CGContextSetStrokeColorWithColor(context, self.chartColor.CGColor);
         CGContextSetLineJoin(context, kCGLineJoinMiter);
         CGContextMoveToPoint(context, chartStartPoint.x, chartStartPoint.y);
-        CGFloat oneMeasurementWidth = (topRightChartCorner.x - chartStartPoint.x) / (self.measurementsLimit - 1);
         for (int index = 0; index < self.measurements.count; index++) {
             CGFloat measurement = [self.measurements[index] doubleValue];
             CGFloat measurementY = chartStartPoint.y - measurement * (chartStartPoint.y - topRightChartCorner.y) / self.maxValue;
@@ -109,6 +109,39 @@ static const CGFloat DBChartViewArrowHeight = 4;
                                             markedValueY - attributedStringSize.height / 2,
                                             attributedStringSize.width,
                                             attributedStringSize.height)];
+    
+    // Drawing marked times.
+    for (NSTimeInterval markedTime = self.markedTimesInterval; markedTime < self.measurements.count * self.measurementInterval; markedTime += self.markedTimesInterval) {
+        CGFloat markedTimeX = chartStartPoint.x + oneMeasurementWidth * self.measurements.count * (1.0 - markedTime / (self.measurements.count * self.measurementInterval));
+        
+        // Drawing marked time line
+        CGContextMoveToPoint(context, markedTimeX, chartStartPoint.y);
+        CGContextAddLineToPoint(context, markedTimeX, chartStartPoint.y + DBChartViewAdditionalLinesDistanceFromAxis);
+        CGContextAddLineToPoint(context, markedTimeX, chartStartPoint.y - DBChartViewAdditionalLinesDistanceFromAxis);
+        CGContextStrokePath(context);
+        
+        // Drawing marked time
+        NSString *markedTimeString = [self markedTimeTextWithTimeInterval:markedTime];
+        NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:markedTimeString attributes:stringAttributes];
+        CGSize attributedStringSize = attributedString.size;
+        [attributedString drawInRect:CGRectMake(markedTimeX - attributedStringSize.width / 2,
+                                                chartStartPoint.y + DBChartViewAdditionalLinesDistanceFromAxis + DBChartViewMarkedValueDistanceFromAxis,
+                                                attributedStringSize.width,
+                                                attributedStringSize.height)];
+    }
+}
+
+- (NSString *)markedTimeTextWithTimeInterval:(NSTimeInterval)timeInterval {
+    NSInteger minutes = (NSInteger)timeInterval / 60;
+    NSInteger seconds = (NSInteger)fmod(timeInterval, 60.0);
+    NSMutableArray *components = [NSMutableArray array];
+    if (minutes > 0) {
+        [components addObject:[NSString stringWithFormat:@"%ldm", minutes]];
+    }
+    if (seconds > 0) {
+        [components addObject:[NSString stringWithFormat:@"%lds", seconds]];
+    }
+    return [components componentsJoinedByString:@" "];
 }
 
 @end

@@ -34,6 +34,16 @@ IB_DESIGNABLE
 @property (nonatomic, strong) NSArray *measurements;
 
 /**
+ Time in seconds between measurements.
+ */
+@property (nonatomic, assign) NSTimeInterval measurementInterval;
+
+/**
+ Time in seconds between values marked on the x-axis.
+ */
+@property (nonatomic, assign) NSTimeInterval markedTimesInterval;
+
+/**
  A number specifying the limit of values presented on the chart. 
  Useful for presenting low numbers of measurements with proper scale.
  */

@@ -174,6 +174,10 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
     return [newMeasurements copy];
 }
 
+- (NSTimeInterval)timeBetweenMeasurements {
+    return DBPerformanceToolkitTimeBetweenMeasurements;
+}
+
 #pragma mark - CPU
 
 - (CGFloat)cpu {

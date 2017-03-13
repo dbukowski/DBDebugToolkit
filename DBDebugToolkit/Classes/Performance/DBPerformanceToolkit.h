@@ -156,4 +156,9 @@
  */
 - (void)windowDidResignKey:(UIWindow *)window;
 
+/**
+ Returns time in seconds between the measurements.
+ */
+- (NSTimeInterval)timeBetweenMeasurements;
+
 @end

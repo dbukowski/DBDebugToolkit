@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBG-hY-48i" id="lwM-8D-3gf">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lo2-MM-Gjv" customClass="DBChartView">
