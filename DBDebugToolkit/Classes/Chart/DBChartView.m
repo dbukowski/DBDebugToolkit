@@ -136,10 +136,10 @@ static const CGFloat DBChartViewArrowHeight = 4;
     NSInteger seconds = (NSInteger)fmod(timeInterval, 60.0);
     NSMutableArray *components = [NSMutableArray array];
     if (minutes > 0) {
-        [components addObject:[NSString stringWithFormat:@"%ldm", minutes]];
+        [components addObject:[NSString stringWithFormat:@"%ldm", (long)minutes]];
     }
     if (seconds > 0) {
-        [components addObject:[NSString stringWithFormat:@"%lds", seconds]];
+        [components addObject:[NSString stringWithFormat:@"%lds", (long)seconds]];
     }
     return [components componentsJoinedByString:@" "];
 }
