@@ -55,7 +55,13 @@
         if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &result) != errSecItemNotFound) {
             NSArray *dictionaries = (__bridge NSArray *)result;
             for (NSDictionary *dictionary in dictionaries) {
-                NSString *account = dictionary[(__bridge id)kSecAttrAccount];
+                NSString *account;
+                id accountObject = dictionary[(__bridge id)kSecAttrAccount];
+                if ([accountObject isKindOfClass:[NSData class]]) {
+                    account = [[NSString alloc] initWithData:accountObject encoding:NSUTF8StringEncoding];
+                } else {
+                    account = (NSString *)accountObject;
+                }
                 NSData *data = dictionary[(__bridge id)kSecValueData];
                 if (data.length > 0 && account.length > 0) {
                     id unarchivedObject = nil;
