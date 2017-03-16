@@ -135,7 +135,9 @@ The first submenu is dedicated to measuring your application performance. You ca
 
 On top of the performance submenu you can see a switch that enables the widget displaying current CPU usage, memory usage and frames per second. The widget will stay on top of the screen and will refresh every one second. It can be moved around the screen with pan gesture.
 Tapping on the widget opens the performance submenu with tapped section (CPU, memory or FPS).
-[//]: # (Insert widget gif)
+<p align="center">
+  <img src="Assets/widget.gif">
+</p>
 
 #### Simulating memory warning
 
@@ -146,14 +148,48 @@ In the memory section you can also find the "Simulate memory warning" button. Us
 DBDebugToolkit provides many useful tools for UI debugging:
 
 * Showing view frames
-[//]: # (Insert view frames gif)
+
+<p align="center">
+  <img src="Assets/viewFrames.gif">
+</p>
+
 * Slow animations
-[//]: # (Insert slow animations gif)
+
+<p align="center">
+  <img src="Assets/slowAnimations.gif">
+</p>
+
 * Showing touches (for screen sharing and recording)
-[//]: # (Insert showing touches gif)
+
+<p align="center">
+  <img src="Assets/showingTouches.gif">
+</p>
+
 If your device supports 3D Touch, the touch indicator view's alpha value will depend on the touch force.
-* Various debug logs
-[//]: # (Insert images with 4 logs)
+
+* Autolayout trace
+
+<p align="center">
+  <img src="Assets/autolayoutTrace.PNG">
+</p>
+
+* Current view description
+
+<p align="center">
+  <img src="Assets/currentViewDescription.PNG">
+</p>
+
+* View controller hierarchy
+
+<p align="center">
+  <img src="Assets/viewControllerHierarchy.PNG">
+</p>
+
+* Available font families
+
+<p align="center">
+  <img src="Assets/fontFamilies.PNG">
+</p>
 
 ### Network
 
