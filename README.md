@@ -208,7 +208,7 @@ Tap on any request on the list to see its details. From the request details scre
 
 <div align="center">
   <div>
-  <img src="Assets/requestsList.gif" hspace="10"><img src="Assets/requestsList.gif" hspace="10">
+  <img src="Assets/requestDetailsText.gif" hspace="10"><img src="Assets/requestDetailsImage.gif" hspace="10">
   </div>
 
 </div>
