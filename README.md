@@ -75,7 +75,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 After such setup, simply shake the device to present the menu with all the debugging options:
-[//]: # (Insert opening menu gif)
+<p align="center">
+  <img src="Assets/opening.gif">
+</p>
 
 Read more about triggers to find out how to customize menu presentation.
 
@@ -111,15 +113,23 @@ The first submenu is dedicated to measuring your application performance. You ca
 * CPU
 
    Includes current CPU usage, max CPU usage recorded and a chart displaying the CPU usage over time.
-   [//]: # (Insert cpu gif)
+   <p align="center">
+     <img src="Assets/cpu.gif">
+   </p>
+
 * Memory
 
    Includes current memory usage, max memory usage recorded and a chart displaying the memory usage over time. Additionally it has a "Simulate memory warning" option.
-   [//]: # (Insert memory gif)
+   <p align="center">
+     <img src="Assets/memory.gif">
+   </p>
+
 * FPS
 
    Includes current FPS, min FPS recorded and a chart displaying the FPS value over time.
-   [//]: # (Insert fps gif)
+   <p align="center">
+     <img src="Assets/fps.gif">
+   </p>
 
 #### Widget
 
