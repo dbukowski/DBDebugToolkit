@@ -507,7 +507,7 @@ However, to provide some of its features, DBDebugToolkit does use private API. T
   }
   ```
 
-The setup with separate target for App Store releases will help you prevent sending the build containing the private API calls included in DBDebugToolkit to the App Store review. However, you would have to remember about adding all the files to both targets during development. You will have to decide which way is the best for your project. Perhaps it will be easier to manually remove DBDebugToolkit from the podfile before each App Store release.
+The setup with a separate target for App Store releases will help you prevent sending the build containing the private API calls included in DBDebugToolkit to the App Store review. However, you would have to remember about adding all the files to both targets during development. You will have to decide which way is the best for your project. Perhaps it will be easier to manually remove DBDebugToolkit from the podfile before each App Store release.
 
 ## Author
 
