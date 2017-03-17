@@ -215,7 +215,7 @@ Tap on any request on the list to see its details. From the request details scre
 
 The request and response body data is saved to the files to minimize the memory usage caused by the requests logging. If it happens to be too big anyway, you can disable the logging in the network submenu.
 
-**Warning!** To provide the requests list, DBDebugToolkit uses custom `NSURLProtocol` subclass. However, this mechanism does not support informing about the request progress. If any of the requests send by your application is meant to inform about its progress (e.g. photo upload with a progress bar), you can disable the logging in the network submenu while testing it. If you need to perform more tests you can disable the logging programmatically to avoid browsing the menu too many times:
+**Warning!** To provide the requests list, DBDebugToolkit uses custom `NSURLProtocol` subclass. You should always make sure to test all your requests with network logging disabled as well, as this mechanism has some drawbacks. For example, it does not support informing about the request progress (e.g. when you download a photo and you want to show a progress bar). To test your requests, you can disable the logging in the network submenu. If you need to perform more tests you can disable the logging programmatically to avoid browsing the menu too many times:
 
 ```swift
 import DBDebugToolkit
@@ -451,6 +451,63 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "DBDebugToolkit"
 ```
+
+However, to provide some of its features, DBDebugToolkit does use private API. The code that uses it is obfuscated to minimize the risk of rejecting your application on the App Store, but it can not be guaranteed that it is enough. That being said, here are some safer ways to install DBDebugToolkit:
+
+* Adding it only to debug builds
+
+  It is now possible to specify the build configuration for a given pod:
+```ruby
+pod "DBDebugToolkit", :configurations => ['Debug']
+```
+  After such setup, all your code using DBDebugToolkit needs to be placed in preprocessor macros:
+
+  ```swift
+  #if DEBUG
+      import DBDebugToolkit
+  #endif
+
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+      #if DEBUG
+          DBDebugToolkit.setup()
+      #endif
+      return true
+  }
+  ```
+  The one major drawback of such setup is the fact that it won't include DBDebugToolkit in the builds that you send to the testers.
+
+* Creating a separate target for App Store releases
+
+  After creating a separate target for App Store releases, your podfile could be defined this way:
+  ```ruby
+  def common_pods
+    # Here are all the pods that will be used in both targets.
+  end
+
+  target 'YourApplication' do
+      common_pods
+  end
+
+  target 'YourApplicationAppStore' do
+      common_pods
+      pod "DBDebugToolkit"
+  end
+  ```
+  Then you will have to differentiate between the targets in code. To do this, you could add a custom flag to your App Store target build configuration. Assuming that you named the flag `APPSTORE`, all the code using DBDebugToolkit will be placed in preprocessor macros:
+  ```swift
+  #if !(APPSTORE)
+      import DBDebugToolkit
+  #endif
+
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+      #if !(APPSTORE)
+          DBDebugToolkit.setup()
+      #endif
+      return true
+  }
+  ```
+
+The setup with separate target for App Store releases will help you prevent sending the build containing the private API calls included in DBDebugToolkit to the App Store review. However, you would have to remember about adding all the files to both targets during development. You will have to decide which way is the best for your project. Perhaps it will be easier to manually remove DBDebugToolkit from the podfile before each App Store release.
 
 ## Author
 
