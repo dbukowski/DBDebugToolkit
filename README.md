@@ -457,9 +457,9 @@ However, to provide some of its features, DBDebugToolkit does use private API. T
 * Adding it only to debug builds
 
   It is now possible to specify the build configuration for a given pod:
-```ruby
-pod "DBDebugToolkit", :configurations => ['Debug']
-```
+  ```ruby
+  pod "DBDebugToolkit", :configurations => ['Debug']
+  ```
   After such setup, all your code using DBDebugToolkit needs to be placed in preprocessor macros:
 
   ```swift
