@@ -78,7 +78,7 @@ typedef int File_Writer_t(void *, const char *, int);
 
 - (void)appendConsoleOutput:(NSString *)consoleOutput {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.consoleOutput = [self.consoleOutput stringByAppendingString:consoleOutput];
+        self.consoleOutput = [self.consoleOutput stringByAppendingString:(consoleOutput ?: @"")];
         [self.delegate consoleOutputCaptorDidUpdateOutput:self];
     });
 }
