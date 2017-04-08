@@ -82,6 +82,9 @@ static const NSInteger DBRequestModelBodyStreamBufferSize = 4096;
     [inputStream open];
     while (inputStream.hasBytesAvailable) {
         NSInteger bytesRead = [inputStream read:byteBuffer maxLength:sizeof(byteBuffer)];
+        if (bytesRead == 0) {
+            break;
+        }
         [mutableData appendBytes:byteBuffer length:bytesRead];
     }
     return [mutableData copy];
