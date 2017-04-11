@@ -150,9 +150,11 @@ static const CGFloat UIWindowTouchIndicatorViewMinAlpha = 0.6;
 
 - (void)db_removeTouchIndicatorWithTouch:(UITouch *)touch {
     DBTouchIndicatorView *indicatorView = [self.touchIndicators objectForKey:touch];
-    [indicatorView removeFromSuperview];
-    [self.touchIndicators removeObjectForKey:touch];
-    [self.reusableTouchIndicators addObject:indicatorView];
+    if (indicatorView) {
+        [indicatorView removeFromSuperview];
+        [self.touchIndicators removeObjectForKey:touch];
+        [self.reusableTouchIndicators addObject:indicatorView];
+    }
 }
 
 - (void)db_handleTouchForce:(UITouch *)touch {
