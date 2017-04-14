@@ -23,10 +23,11 @@
 #import "DBURLProtocol.h"
 #import "DBNetworkToolkit.h"
 #import "DBRequestOutcome.h"
+#import "DBAuthenticationChallengeSender.h"
 
 static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
 
-@interface DBURLProtocol ()
+@interface DBURLProtocol () <NSURLSessionDelegate>
 
 @property (nonatomic, strong) NSURLSession *urlSession;
 
@@ -62,7 +63,9 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
     [DBURLProtocol setProperty:@YES forKey:DBURLProtocolHandledKey inRequest:request];
     
     if (!self.urlSession) {
-        self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                        delegate:self
+                                                   delegateQueue:nil];
     }
     
     [[self.urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -92,6 +95,14 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
 
 - (void)finishWithOutcome:(DBRequestOutcome *)requestOutcome {
     [[DBNetworkToolkit sharedInstance] saveRequestOutcome:requestOutcome forRequest:self.request];
+}
+
+#pragma mark - NSURLSessionDelegate 
+
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+    DBAuthenticationChallengeSender *challengeSender = [DBAuthenticationChallengeSender authenticationChallengeSenderWithSessionCompletionHandler:completionHandler];
+    NSURLAuthenticationChallenge *modifiedChallenge = [[NSURLAuthenticationChallenge alloc] initWithAuthenticationChallenge:challenge sender:challengeSender];
+    [self.client URLProtocol:self didReceiveAuthenticationChallenge:modifiedChallenge];
 }
 
 @end
