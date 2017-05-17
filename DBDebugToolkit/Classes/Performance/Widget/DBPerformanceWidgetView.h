@@ -53,18 +53,18 @@
 @property (nonatomic, weak) id <DBPerformanceWidgetViewDelegate> delegate;
 
 /**
- An outlet to the label displaying current CPU usage.
+ The layer displaying current CPU usage.
  */
-@property (nonatomic, strong) IBOutlet UILabel *cpuValueLabel;
+@property (nonatomic, strong, readonly) CATextLayer *cpuValueTextLayer;
 
 /**
- An outlet to the label displaying current memory usage.
+ The layer displaying current memory usage.
  */
-@property (nonatomic, strong) IBOutlet UILabel *memoryValueLabel;
+@property (nonatomic, strong, readonly) CATextLayer *memoryValueTextLayer;
 
 /**
- An outlet to the label displaying current frames per second value.
+ The layer displaying current frames per second value.
  */
-@property (nonatomic, strong) IBOutlet UILabel *fpsValueLabel;
+@property (nonatomic, strong, readonly) CATextLayer *fpsValueTextLayer;
 
 @end

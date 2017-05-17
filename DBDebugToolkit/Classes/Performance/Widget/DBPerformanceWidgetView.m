@@ -26,10 +26,41 @@ static const CGFloat DBPerformanceWidgetViewWidth = 220;
 static const CGFloat DBPerformanceWidgetViewHeight = 50;
 static const CGFloat DBPerformanceWidgetMinimalOffset = 10;
 
+@interface _DBBackgroundLayoutIgnoringLayer : CALayer @end
+@implementation _DBBackgroundLayoutIgnoringLayer
+
+- (void)layoutSublayers
+{
+	if([NSThread isMainThread] == NO)
+	{
+		return;
+	}
+	
+	[super layoutSublayers];
+}
+
+@end
+
+@interface _DBBackgroundLayoutIgnoringView : UIView @end
+@implementation _DBBackgroundLayoutIgnoringView
+
++ (Class)layerClass
+{
+	return [_DBBackgroundLayoutIgnoringLayer class];
+}
+
+@end
+
 @interface DBPerformanceWidgetView ()
 
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic, strong) IBOutlet UIView *cpuValueView;
+@property (nonatomic, strong) IBOutlet UIView *memoryValueView;
+@property (nonatomic, strong) IBOutlet UIView *fpsValueView;
+@property (nonatomic, strong, readwrite) CATextLayer *cpuValueTextLayer;
+@property (nonatomic, strong, readwrite) CATextLayer *memoryValueTextLayer;
+@property (nonatomic, strong, readwrite) CATextLayer *fpsValueTextLayer;
 
 @end
 
@@ -60,6 +91,50 @@ static const CGFloat DBPerformanceWidgetMinimalOffset = 10;
     self.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [self registerForNotifications];
     [self setupGestureRecognizers];
+}
+
+- (void)awakeFromNib
+{
+	[super awakeFromNib];
+	
+	_cpuValueTextLayer = [CATextLayer layer];
+	_cpuValueTextLayer.contentsScale = [UIScreen mainScreen].scale;
+	_cpuValueTextLayer.foregroundColor = [UIColor darkGrayColor].CGColor;
+	_cpuValueTextLayer.font = (__bridge CFTypeRef)[UIFont systemFontOfSize:14];
+	_cpuValueTextLayer.fontSize = 14;
+	_cpuValueTextLayer.frame = _cpuValueView.bounds;
+	_cpuValueTextLayer.alignmentMode = @"center";
+	_cpuValueTextLayer.actions = @{@"contents": [NSNull null]};
+	[_cpuValueView.layer addSublayer:_cpuValueTextLayer];
+	
+	_memoryValueTextLayer = [CATextLayer layer];
+	_memoryValueTextLayer.contentsScale = [UIScreen mainScreen].scale;
+	_memoryValueTextLayer.foregroundColor = [UIColor darkGrayColor].CGColor;
+	_memoryValueTextLayer.font = (__bridge CFTypeRef)[UIFont systemFontOfSize:14];
+	_memoryValueTextLayer.fontSize = 14;
+	_memoryValueTextLayer.frame = _memoryValueView.bounds;
+	_memoryValueTextLayer.alignmentMode = @"center";
+	_memoryValueTextLayer.actions = @{@"contents": [NSNull null]};
+	[_memoryValueView.layer addSublayer:_memoryValueTextLayer];
+	
+	_fpsValueTextLayer = [CATextLayer layer];
+	_fpsValueTextLayer.contentsScale = [UIScreen mainScreen].scale;
+	_fpsValueTextLayer.foregroundColor = [UIColor darkGrayColor].CGColor;
+	_fpsValueTextLayer.font = (__bridge CFTypeRef)[UIFont systemFontOfSize:14];
+	_fpsValueTextLayer.fontSize = 14;
+	_fpsValueTextLayer.frame = _fpsValueView.bounds;
+	_fpsValueTextLayer.alignmentMode = @"center";
+	_fpsValueTextLayer.actions = @{@"contents": [NSNull null]};
+	[_fpsValueView.layer addSublayer:_fpsValueTextLayer];
+}
+
+- (void)layoutSubviews
+{
+	[super layoutSubviews];
+	
+	_cpuValueTextLayer.frame = _cpuValueView.bounds;
+	_memoryValueTextLayer.frame = _memoryValueView.bounds;
+	_fpsValueTextLayer.frame = _fpsValueView.bounds;
 }
 
 - (void)dealloc {
