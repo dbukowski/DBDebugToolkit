@@ -27,11 +27,11 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zR5-48-IjT" customClass="_DBBackgroundLayoutIgnoringView">
-                                    <rect key="frame" x="12.5" y="29" width="85" height="17"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <rect key="frame" x="19.5" y="29" width="70" height="17"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="FIx-Ez-4se"/>
-                                        <constraint firstAttribute="width" constant="85" id="hGa-2M-D5p"/>
+                                        <constraint firstAttribute="width" constant="70" id="hGa-2M-D5p"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -64,10 +64,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8g-QP-wIE" customClass="_DBBackgroundLayoutIgnoringView">
-                                    <rect key="frame" x="0.0" y="29" width="109" height="17"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <rect key="frame" x="9.5" y="29" width="90" height="17"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="109" id="dDc-K2-IIb"/>
+                                        <constraint firstAttribute="width" constant="90" id="dDc-K2-IIb"/>
                                         <constraint firstAttribute="height" constant="17" id="rkJ-OG-L7H"/>
                                     </constraints>
                                 </view>
@@ -101,11 +101,11 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Of2-1f-1db" customClass="_DBBackgroundLayoutIgnoringView">
-                                    <rect key="frame" x="12.5" y="30" width="85" height="17"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <rect key="frame" x="20" y="30" width="70" height="17"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="WsB-jw-0v7"/>
-                                        <constraint firstAttribute="width" constant="85" id="crs-Na-idE"/>
+                                        <constraint firstAttribute="width" constant="70" id="crs-Na-idE"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -149,7 +149,7 @@
                 <outlet property="fpsValueView" destination="Of2-1f-1db" id="wHe-01-Z4s"/>
                 <outlet property="memoryValueView" destination="V8g-QP-wIE" id="nQh-wJ-oPR"/>
             </connections>
-            <point key="canvasLocation" x="9" y="-247"/>
+            <point key="canvasLocation" x="-25" y="-249"/>
         </view>
     </objects>
 </document>
