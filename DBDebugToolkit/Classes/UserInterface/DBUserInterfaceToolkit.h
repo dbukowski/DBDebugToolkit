@@ -72,4 +72,23 @@ extern NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotifica
  */
 - (NSString *)fontFamilies;
 
+///------------------------------------
+/// @name UIDebuggingInformationOverlay
+///------------------------------------
+
+/**
+ Returns `true` if the `UIDebuggingInformationOverlay` class is available.
+ */
+- (BOOL)isDebuggingInformationOverlayAvailable;
+
+/**
+ Toggles visibility of the `UIDebuggingInformationOverlay`.
+ */
+- (void)showDebuggingInformationOverlay;
+
+/**
+ Sets up the `UIDebuggingInformationOverlay`.
+ */
+- (void)setupDebuggingInformationOverlay;
+
 @end

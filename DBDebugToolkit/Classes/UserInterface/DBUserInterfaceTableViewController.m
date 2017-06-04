@@ -32,11 +32,14 @@ typedef NS_ENUM(NSUInteger, DBUserInterfaceTableViewControllerCell) {
     DBUserInterfaceTableViewControllerCellAutolayoutTrace,
     DBUserInterfaceTableViewControllerCellCurrentViewDescription,
     DBUserInterfaceTableViewControllerCellViewControllerHierarchy,
-    DBUserInterfaceTableViewControllerCellFontFamilies
+    DBUserInterfaceTableViewControllerCellFontFamilies,
+    DBUserInterfaceTableViewControllerCellDebuggingInformationOverlay
+
 };
 
 static NSString *const DBUserInterfaceTableViewControllerBasicCellIdentifier = @"DBUserInterfaceBasicCell";
 static NSString *const DBUserInterfaceTableViewControllerSwitchCellIdentifier = @"DBMenuSwitchTableViewCell";
+static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = @"DBMenuButtonTableViewCell";
 
 @interface DBUserInterfaceTableViewController () <DBMenuSwitchTableViewCellDelegate>
 
@@ -71,6 +74,8 @@ static NSString *const DBUserInterfaceTableViewControllerSwitchCellIdentifier = 
             return @"View controller hierarchy";
         case DBUserInterfaceTableViewControllerCellFontFamilies:
             return @"Font families";
+        case DBUserInterfaceTableViewControllerCellDebuggingInformationOverlay:
+            return @"Show UIDebuggingInformationOverlay";
         default:
             return nil;
     }
@@ -101,7 +106,7 @@ static NSString *const DBUserInterfaceTableViewControllerSwitchCellIdentifier = 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return self.userInterfaceToolkit.isDebuggingInformationOverlayAvailable ? 8 : 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -124,6 +129,16 @@ static NSString *const DBUserInterfaceTableViewControllerSwitchCellIdentifier = 
             UITableViewCell *basicCell = [tableView dequeueReusableCellWithIdentifier:DBUserInterfaceTableViewControllerBasicCellIdentifier];
             basicCell.textLabel.text = title;
             return basicCell;
+        }
+        case DBUserInterfaceTableViewControllerCellDebuggingInformationOverlay: {
+            UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:DBUserInterfaceTableViewControllerButtonCellIdentifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DBUserInterfaceTableViewControllerButtonCellIdentifier];
+                cell.textLabel.textColor = cell.tintColor;
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            }
+            cell.textLabel.text = title;
+            return cell;
         }
         default:
             return nil;
@@ -149,6 +164,11 @@ static NSString *const DBUserInterfaceTableViewControllerSwitchCellIdentifier = 
             break;
         case DBUserInterfaceTableViewControllerCellFontFamilies:
             [self openTextViewViewControllerWithTitle:title text:[self.userInterfaceToolkit fontFamilies]];
+            break;
+        case DBUserInterfaceTableViewControllerCellDebuggingInformationOverlay:
+            [self.delegate userInterfaceTableViewControllerDidOpenDebuggingInformationOverlay:self];
+            [self.userInterfaceToolkit showDebuggingInformationOverlay];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
         default:
             return;
     }

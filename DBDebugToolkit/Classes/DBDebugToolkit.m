@@ -178,6 +178,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     self.userInterfaceToolkit.colorizedViewBordersEnabled = NO;
     self.userInterfaceToolkit.slowAnimationsEnabled = NO;
     self.userInterfaceToolkit.showingTouchesEnabled = NO;
+    [self.userInterfaceToolkit setupDebuggingInformationOverlay];
 }
 
 #pragma mark - Location toolkit

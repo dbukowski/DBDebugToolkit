@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowApplicationSettings
 };
 
-@interface DBMenuTableViewController ()
+@interface DBMenuTableViewController () <DBUserInterfaceTableViewControllerDelegate>
 
 @end
 
@@ -104,6 +104,7 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     } else if ([destinationViewController isKindOfClass:[DBUserInterfaceTableViewController class]]) {
         DBUserInterfaceTableViewController *userInterfaceTableViewController = (DBUserInterfaceTableViewController *)destinationViewController;
         userInterfaceTableViewController.userInterfaceToolkit = self.userInterfaceToolkit;
+        userInterfaceTableViewController.delegate = self;
     } else if ([destinationViewController isKindOfClass:[DBLocationTableViewController class]]) {
         DBLocationTableViewController *locationTableViewController = (DBLocationTableViewController *)destinationViewController;
         locationTableViewController.locationToolkit = self.locationToolkit;
@@ -117,6 +118,12 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
         DBCustomActionsTableViewController *customActionsTableViewController = (DBCustomActionsTableViewController *)destinationViewController;
         customActionsTableViewController.customActions = self.customActions;
     }
+}
+
+#pragma mark - DBUserInterfaceTableViewControllerDelegate
+
+- (void)userInterfaceTableViewControllerDidOpenDebuggingInformationOverlay:(DBUserInterfaceTableViewController *)userInterfaceTableViewController {
+    [self.delegate menuTableViewControllerDidTapClose:self];
 }
 
 @end

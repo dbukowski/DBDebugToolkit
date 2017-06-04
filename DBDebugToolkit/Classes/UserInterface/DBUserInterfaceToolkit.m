@@ -137,4 +137,48 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
     [window setShowingTouchesEnabled:self.showingTouchesEnabled];
 }
 
+#pragma mark - UIDebuggingInformationOverlay
+
++ (Class)debuggingInformationOverlayClass {
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x55, 0x49, 0x44, 0x65, 0x62, 0x75, 0x67, 0x67, 0x69, 0x6e, 0x67, 0x49, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x76, 0x65, 0x72, 0x6c, 0x61, 0x79} length:29] encoding:NSASCIIStringEncoding];
+    return NSClassFromString(key);
+}
+
+- (BOOL)isDebuggingInformationOverlayAvailable {
+    return [DBUserInterfaceToolkit debuggingInformationOverlayClass] != NULL;
+}
+
+- (void)setupDebuggingInformationOverlay {
+    if (![self isDebuggingInformationOverlayAvailable]) {
+        return;
+    }
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class debuggingInformationOverlayClass = [DBUserInterfaceToolkit debuggingInformationOverlayClass];
+        // Making sure to minimize the risk of rejecting app because of the private API.
+        NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x70, 0x72, 0x65, 0x70, 0x61, 0x72, 0x65, 0x44, 0x65, 0x62, 0x75, 0x67, 0x67, 0x69, 0x6e, 0x67, 0x4f, 0x76, 0x65, 0x72, 0x6c, 0x61, 0x79} length:23] encoding:NSASCIIStringEncoding];
+        SEL selector = NSSelectorFromString(key);
+        ((void (*)(id, SEL))[debuggingInformationOverlayClass methodForSelector:selector])(debuggingInformationOverlayClass, selector);
+    });
+}
+
+- (void)showDebuggingInformationOverlay {
+    Class debuggingInformationOverlayClass = [DBUserInterfaceToolkit debuggingInformationOverlayClass];
+
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *overlayKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x6f, 0x76, 0x65, 0x72, 0x6c, 0x61, 0x79} length:7] encoding:NSASCIIStringEncoding];
+    SEL overlaySelector = NSSelectorFromString(overlayKey);
+
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *toggleVisibilityKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x74, 0x6f, 0x67, 0x67, 0x6c, 0x65, 0x56, 0x69, 0x73, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79} length:16] encoding:NSASCIIStringEncoding];
+    SEL toggleVisibilitySelector = NSSelectorFromString(toggleVisibilityKey);
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [[debuggingInformationOverlayClass performSelector:overlaySelector] performSelector:toggleVisibilitySelector];
+#pragma clang diagnostic pop
+}
+
 @end

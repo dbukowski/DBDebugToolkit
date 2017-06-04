@@ -23,6 +23,21 @@
 #import <UIKit/UIKit.h>
 #import "DBUserInterfaceToolkit.h"
 
+@class DBUserInterfaceTableViewController;
+
+/**
+ A protocol used for informing about showing the `UIDebuggingInformationOverlay`.
+ */
+@protocol DBUserInterfaceTableViewControllerDelegate <NSObject>
+
+/**
+ Informs the delegate that the `UIDebuggingInformationOverlay` is shown.
+ @param userInterfaceTableViewController The table view controller that received the `Show UIDebuggingInformationOverlay` cell selection.
+ */
+- (void)userInterfaceTableViewControllerDidOpenDebuggingInformationOverlay:(DBUserInterfaceTableViewController *)userInterfaceTableViewController;
+
+@end
+
 /**
  `DBUserInterfaceTableViewController` is a view controller presenting options related to user interface.
  */
@@ -32,5 +47,10 @@
  `DBUserInterfaceToolkit` instance serving as a data source for the table view controller. It is also informed about switch state changes.
  */
 @property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
+
+/**
+ Delegate that will be informed about showing the `UIDebuggingInformationOverlay`. It needs to conform to `DBUserInterfaceTableViewControllerDelegate` protocol.
+ */
+@property (nonatomic, weak) id <DBUserInterfaceTableViewControllerDelegate> delegate;
 
 @end
