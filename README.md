@@ -32,6 +32,7 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
   - [x] Current view description
   - [x] View controllers hierarchy
   - [x] List of available fonts
+  - [x] Showing UIDebuggingInformationOverlay
 - [x] Network
   - [x] List of all the requests sent by the application
   - [x] Request and response preview
@@ -195,6 +196,17 @@ If your device supports 3D Touch, the touch indicator view's alpha value will de
 <p align="center">
   <img src="Assets/fontFamilies.PNG">
 </p>
+
+* Showing `UIDebuggingInformationOverlay`
+
+`UIDebuggingInformationOverlay` is a powerful tool discovered by [Ryan Peterson](https://twitter.com/ryanipete) in the private API. Once you set up DBDebugToolkit, you can show `UIDebuggingInformationOverlay` either by selecting it in the user interface section or by tapping the status bar with two fingers. Make sure to check [Ryan's article]( http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/) to know more about the features it provides.
+
+<div align="center">
+  <div>
+  <img src="Assets/debuggingOverlayMenu.gif" hspace="10"><img src="Assets/debuggingOverlayTapping.gif" hspace="10">
+  </div>
+
+</div>
 
 ### Network
 
