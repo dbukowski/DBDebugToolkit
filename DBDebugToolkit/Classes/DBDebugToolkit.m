@@ -257,6 +257,29 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     [userDefaultsToolkit handleClearAction];
 }
 
+#pragma mark - Convenience methods
+
++ (void)showMenu {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    if (!toolkit.showsMenu) {
+        [toolkit showMenu];
+    }
+}
+
++ (void)showPerformanceWidget {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    DBPerformanceToolkit *performanceToolkit = toolkit.performanceToolkit;
+    performanceToolkit.isWidgetShown = YES;
+}
+
++ (void)showDebuggingInformationOverlay {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    DBUserInterfaceToolkit *userInterfaceToolkit = toolkit.userInterfaceToolkit;
+    if (userInterfaceToolkit.isDebuggingInformationOverlayAvailable) {
+        [userInterfaceToolkit showDebuggingInformationOverlay];
+    }
+}
+
 #pragma mark - Showing menu
 
 - (void)showMenu {

@@ -75,6 +75,21 @@
  */
 + (void)clearUserDefaults;
 
+/**
+ Shows the menu.
+ */
++ (void)showMenu;
+
+/**
+ Shows the performance widget.
+ */
++ (void)showPerformanceWidget;
+
+/**
+ Shows the `UIDebuggingInformationOverlay` (if available).
+ */
++ (void)showDebuggingInformationOverlay;
+
 ///---------------------
 /// @name Custom actions
 ///---------------------
