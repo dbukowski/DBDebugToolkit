@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^DBCustomActionBody)();
+typedef void(^DBCustomActionBody)(void);
 
 /**
  `DBCustomAction` is an object describing an action that will be added to the menu for easy access.
