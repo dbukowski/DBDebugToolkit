@@ -208,6 +208,8 @@ If your device supports 3D Touch, the touch indicator view's alpha value will de
 
 </div>
 
+**Warning!** Unfortunately, `UIDebuggingInformationOverlay` is no longer available on iOS 11.
+
 ### Network
 
 In the network submenu you can find a list of all the requests send by your application during the current launch. There is also a search bar that allows you to filter the requests.
