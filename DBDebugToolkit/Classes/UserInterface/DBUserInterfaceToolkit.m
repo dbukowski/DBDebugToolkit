@@ -145,8 +145,21 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
     return NSClassFromString(key);
 }
 
++ (id)debuggingInformationOverlay {
+    Class debuggingInformationOverlayClass = [DBUserInterfaceToolkit debuggingInformationOverlayClass];
+
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *overlayKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x6f, 0x76, 0x65, 0x72, 0x6c, 0x61, 0x79} length:7] encoding:NSASCIIStringEncoding];
+    SEL overlaySelector = NSSelectorFromString(overlayKey);
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    return [debuggingInformationOverlayClass performSelector:overlaySelector];
+#pragma clang diagnostic pop
+}
+
 - (BOOL)isDebuggingInformationOverlayAvailable {
-    return [DBUserInterfaceToolkit debuggingInformationOverlayClass] != NULL;
+    return [DBUserInterfaceToolkit debuggingInformationOverlay] != NULL;
 }
 
 - (void)setupDebuggingInformationOverlay {
@@ -165,19 +178,13 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
 }
 
 - (void)showDebuggingInformationOverlay {
-    Class debuggingInformationOverlayClass = [DBUserInterfaceToolkit debuggingInformationOverlayClass];
-
-    // Making sure to minimize the risk of rejecting app because of the private API.
-    NSString *overlayKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x6f, 0x76, 0x65, 0x72, 0x6c, 0x61, 0x79} length:7] encoding:NSASCIIStringEncoding];
-    SEL overlaySelector = NSSelectorFromString(overlayKey);
-
     // Making sure to minimize the risk of rejecting app because of the private API.
     NSString *toggleVisibilityKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x74, 0x6f, 0x67, 0x67, 0x6c, 0x65, 0x56, 0x69, 0x73, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79} length:16] encoding:NSASCIIStringEncoding];
     SEL toggleVisibilitySelector = NSSelectorFromString(toggleVisibilityKey);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [[debuggingInformationOverlayClass performSelector:overlaySelector] performSelector:toggleVisibilitySelector];
+    [[DBUserInterfaceToolkit debuggingInformationOverlay] performSelector:toggleVisibilitySelector];
 #pragma clang diagnostic pop
 }
 
