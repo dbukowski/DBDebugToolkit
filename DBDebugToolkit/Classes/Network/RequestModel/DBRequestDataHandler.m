@@ -70,7 +70,7 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
     return newImage;
 }
 
-- (void)determineDataTypeWithData:(NSData *)data shouldGenerateThumbnail:(BOOL)shouldGenerateThumbnail completion:(void(^)())completion {
+- (void)determineDataTypeWithData:(NSData *)data shouldGenerateThumbnail:(BOOL)shouldGenerateThumbnail completion:(void(^)(void))completion {
     __weak DBRequestDataHandler *weakSelf = self;
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         DBRequestDataHandler *strongSelf = weakSelf;
@@ -102,7 +102,7 @@ static CGSize const DBRequestDataHandlerThumbnailSize = { 50, 50 };
     [data writeToFile:filePath atomically:YES];
 }
 
-- (void)saveData:(NSData *)data withCompletion:(void(^)())completion {
+- (void)saveData:(NSData *)data withCompletion:(void(^)(void))completion {
     NSString *filePath = [self pathForFile];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         [self saveData:data atFilePath:filePath];
