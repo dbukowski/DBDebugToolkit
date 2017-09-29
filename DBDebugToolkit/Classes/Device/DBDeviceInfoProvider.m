@@ -59,6 +59,12 @@
         return @"iPhone 7 Plus";
     } else if ([deviceModelCode isEqualToString:@"iPhone8,4"]) {
         return @"iPhone SE";
+    } else if ([deviceModelCode isEqualToString:@"iPhone10,1"] || [deviceModelCode isEqualToString:@"iPhone10,4"]) {
+        return @"iPhone 8";
+    } else if ([deviceModelCode isEqualToString:@"iPhone10,2"] || [deviceModelCode isEqualToString:@"iPhone10,5"]) {
+        return @"iPhone 8 Plus";
+    } else if ([deviceModelCode isEqualToString:@"iPhone10,3"] || [deviceModelCode isEqualToString:@"iPhone10,6"]) {
+        return @"iPhone X";
     } else if ([deviceModelCode isEqualToString:@"iPad2,1"] || [deviceModelCode isEqualToString:@"iPad2,2"] || [deviceModelCode isEqualToString:@"iPad2,3"] || [deviceModelCode isEqualToString:@"iPad2,4"]) {
         return @"iPad 2";
     } else if ([deviceModelCode isEqualToString:@"iPad3,1"] || [deviceModelCode isEqualToString:@"iPad3,2"] || [deviceModelCode isEqualToString:@"iPad3,3"]) {
@@ -77,14 +83,24 @@
         return @"iPad Mini 3";
     } else if ([deviceModelCode isEqualToString:@"iPad5,1"] || [deviceModelCode isEqualToString:@"iPad5,2"]) {
         return @"iPad Mini 4";
-    } else if ([deviceModelCode isEqualToString:@"iPad6,3"] || [deviceModelCode isEqualToString:@"iPad6,4"] || [deviceModelCode isEqualToString:@"iPad6,7"] || [deviceModelCode isEqualToString:@"iPad6,8"]) {
-        return @"iPad Pro";
+    } else if ([deviceModelCode isEqualToString:@"iPad6,3"] || [deviceModelCode isEqualToString:@"iPad6,4"]) {
+        return @"iPad Pro (9.7-inch)";
+    } else if ([deviceModelCode isEqualToString:@"iPad6,7"] || [deviceModelCode isEqualToString:@"iPad6,8"]) {
+        return @"iPad Pro (12.9-inch)";
+    } else if ([deviceModelCode isEqualToString:@"iPad7,1"] || [deviceModelCode isEqualToString:@"iPad7,2"]) {
+        return @"iPad Pro (12.9-inch) 2";
+    } else if ([deviceModelCode isEqualToString:@"iPad7,3"] || [deviceModelCode isEqualToString:@"iPad7,4"]) {
+        return @"iPad Pro (10.5-inch)";
     } else if ([deviceModelCode isEqualToString:@"i386"] || [deviceModelCode isEqualToString:@"x86_64"]) {
         return @"Simulator";
     } else {
         return [[UIDevice currentDevice] model];
     }
 }
+
+//iPhone10,1", "iPhone10,4"],                  4.7,  (9, 16),  "iPhone 8", 326, False, False),
+//Device("iPhone8Plus",     "Device is an [iPhone 8 Plus](https://support.apple.com/kb/SP768)",               "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP768/iphone8plus.png",                          ["iPhone10,2", "iPhone10,5"],                  5.5,  (9, 16),  "iPhone 8 Plus", 401, True, False),
+//Device("iPhoneX",         "Device is an [iPhone X](https://support.apple.com/kb/SP770)",                    "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP770/iphonex.png",                              ["iPhone10,3", "iPhone10,6"],                  5.8,  (9, 19.5),  "iPhone X", 458, False, False)
 
 - (NSString *)systemVersion {
     UIDevice *device = [UIDevice currentDevice];
