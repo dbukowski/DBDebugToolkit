@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9BC0CB5B378C5179F822221247E7015E"
+               BlueprintIdentifier = "DEF392A262E9897DB32514D61C27A29A"
                BuildableName = "DBDebugToolkit.framework"
                BlueprintName = "DBDebugToolkit"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">

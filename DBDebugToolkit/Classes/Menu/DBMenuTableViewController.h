@@ -31,6 +31,7 @@
 #import "DBCoreDataToolkit.h"
 #import "DBCustomAction.h"
 #import "DBCustomVariable.h"
+#import "DBCrashReportsToolkit.h"
 
 @class DBMenuTableViewController;
 
@@ -97,6 +98,8 @@
  `DBDeviceInfoProvider` instance that will provide data for section footer.
  */
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
+
+@property (nonatomic, strong) DBCrashReportsToolkit *crashReportsToolkit;
 
 /**
  Array of `DBCustomAction` instances that will be passed on.

@@ -132,4 +132,10 @@
  */
 + (DBCustomVariable *)customVariableWithName:(NSString *)variableName;
 
+///--------------------
+/// @name Crash reports
+///--------------------
+
++ (void)setupCrashReporting;
+
 @end

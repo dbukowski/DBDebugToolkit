@@ -30,6 +30,7 @@
 #import "DBResourcesTableViewController.h"
 #import "DBCustomActionsTableViewController.h"
 #import "DBCustomVariablesTableViewController.h"
+#import "DBCrashReportsTableViewController.h"
 
 typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowPerformance,
@@ -38,6 +39,7 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowResources,
     DBMenuTableViewControllerRowConsole,
     DBMenuTableViewControllerRowLocation,
+    DBMenuTableViewControllerRowCrashReports,
     DBMenuTableViewControllerRowCustomVariables,
     DBMenuTableViewControllerRowCustomActions,
     DBMenuTableViewControllerRowApplicationSettings
@@ -116,6 +118,9 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     } else if ([destinationViewController isKindOfClass:[DBCustomActionsTableViewController class]]) {
         DBCustomActionsTableViewController *customActionsTableViewController = (DBCustomActionsTableViewController *)destinationViewController;
         customActionsTableViewController.customActions = self.customActions;
+    } else if ([destinationViewController isKindOfClass:[DBCrashReportsTableViewController class]]) {
+        DBCrashReportsTableViewController *crashReportsTableViewController = (DBCrashReportsTableViewController *)destinationViewController;
+        crashReportsTableViewController.crashReportsToolkit = self.crashReportsToolkit;
     }
 }
 
