@@ -25,7 +25,9 @@
 @interface DBTextViewViewController ()
 
 @property (nonatomic, weak) IBOutlet UITextView *textView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *textViewWidthConstraint;
 @property (nonatomic, copy) NSString *text;
+@property (nonatomic, assign) BOOL isInConsoleMode;
 
 @end
 
@@ -35,10 +37,12 @@
     [super viewDidLoad];
     self.textView.layoutManager.allowsNonContiguousLayout = NO;
     [self updateText:self.text];
+    [self modeSetup];
 }
 
-- (void)configureWithTitle:(NSString *)title text:(NSString *)text {
+- (void)configureWithTitle:(NSString *)title text:(NSString *)text isInConsoleMode:(BOOL)isInConsoleMode {
     self.title = title;
+    self.isInConsoleMode = isInConsoleMode;
     [self updateText:text];
 }
 
@@ -47,6 +51,15 @@
 - (void)updateText:(NSString *)text {
     self.text = text;
     self.textView.text = text;
+}
+
+- (void)modeSetup {
+    if (self.isInConsoleMode) {
+        self.textView.font = [UIFont systemFontOfSize:11 weight:UIFontWeightSemibold];
+    } else {
+        self.textView.font = [UIFont systemFontOfSize:14];
+        self.textViewWidthConstraint.active = NO;
+    }
 }
 
 @end

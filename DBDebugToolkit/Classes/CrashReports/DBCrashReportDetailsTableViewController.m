@@ -225,7 +225,7 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     NSBundle *bundle = [NSBundle debugToolkitBundle];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBTextViewViewController" bundle:bundle];
     DBTextViewViewController *textViewViewController = [storyboard instantiateInitialViewController];
-    [textViewViewController configureWithTitle:@"Console output" text:self.crashReport.consoleOutput];
+    [textViewViewController configureWithTitle:@"Console output" text:self.crashReport.consoleOutput isInConsoleMode:YES];
     [self.navigationController pushViewController:textViewViewController animated:YES];
 }
 

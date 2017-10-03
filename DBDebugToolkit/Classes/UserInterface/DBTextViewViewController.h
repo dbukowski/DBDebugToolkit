@@ -32,7 +32,8 @@
  
  @param title String containing a title for the view controller.
  @param text String with content of the text view.
+ @param isInConsoleMode Bool a flag determining whether the view will present the console output or not (affects font).
  */
-- (void)configureWithTitle:(NSString *)title text:(NSString *)text;
+- (void)configureWithTitle:(NSString *)title text:(NSString *)text isInConsoleMode:(BOOL)isInConsoleMode;
 
 @end
