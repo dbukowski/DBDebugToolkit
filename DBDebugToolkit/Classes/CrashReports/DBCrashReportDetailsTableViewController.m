@@ -25,6 +25,7 @@
 #import "DBTitleValueTableViewCell.h"
 #import "DBTextViewViewController.h"
 #import "DBImageViewViewController.h"
+#import <MessageUI/MessageUI.h>
 
 typedef NS_ENUM(NSUInteger, DBCrashReportDetailsTableViewControllerSection) {
     DBCrashReportDetailsTableViewControllerSectionDetails,
@@ -37,11 +38,12 @@ static NSString *const DBCrashReportDetailsTableViewControllerTitleValueCellIden
 static NSString *const DBCrashReportDetailsTableViewControllerContextCellIdentifier = @"ContextCell";
 static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIdentifier = @"StackTraceCell";
 
-@interface DBCrashReportDetailsTableViewController ()
+@interface DBCrashReportDetailsTableViewController () <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *shareButton;
 @property (nonatomic, strong) NSArray <DBTitleValueTableViewCellDataSource *> *detailCellDataSources;
 @property (nonatomic, strong) NSArray <DBTitleValueTableViewCellDataSource *> *userInfoCellDataSources;
+@property (nonatomic, strong) MFMailComposeViewController *mailComposeViewController;
 
 @end
 
@@ -51,6 +53,7 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     [super viewDidLoad];
     [self setupDetailCellDataSources];
     [self setupUserInfoCellDataSources];
+    [self setupShareButton];
     NSBundle *bundle = [NSBundle debugToolkitBundle];
     [self.tableView registerNib:[UINib nibWithNibName:@"DBTitleValueTableViewCell" bundle:bundle]
          forCellReuseIdentifier:DBCrashReportDetailsTableViewControllerTitleValueCellIdentifier];
@@ -58,10 +61,25 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     self.tableView.estimatedRowHeight = 44.0;
 }
 
+- (void)dealloc {
+    [self.mailComposeViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Share button
 
+- (void)setupShareButton {
+    self.shareButton.enabled = [MFMailComposeViewController canSendMail];
+}
+
 - (IBAction)shareButtonAction:(id)sender {
-    
+    self.mailComposeViewController = [[MFMailComposeViewController alloc] init];
+    self.mailComposeViewController.mailComposeDelegate = self;
+    [self.mailComposeViewController setSubject:[self mailSubject]];
+    [self.mailComposeViewController setMessageBody:[self mailHTMLBody] isHTML:YES];
+    NSData *screenshotData = UIImageJPEGRepresentation(self.crashReport.screenshot, 1);
+    [self.mailComposeViewController addAttachmentData:screenshotData mimeType:@"image/jpeg" fileName:@"screenshot"];
+
+    [self presentViewController:self.mailComposeViewController animated:YES completion:NULL];
 }
 
 #pragma mark - UITableViewDataSource
@@ -168,6 +186,12 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     return [self heightForFooterAndHeaderInSection:section];
 }
 
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Private methods
 
 #pragma mark - - Detail cells
@@ -176,11 +200,8 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     NSMutableArray *detailCellDataSources = [NSMutableArray array];
     [detailCellDataSources addObject:[DBTitleValueTableViewCellDataSource dataSourceWithTitle:@"Name"
                                                                                         value:self.crashReport.name]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:self.crashReport.date
-                                                          dateStyle:NSDateFormatterMediumStyle
-                                                          timeStyle:NSDateFormatterMediumStyle];
     [detailCellDataSources addObject:[DBTitleValueTableViewCellDataSource dataSourceWithTitle:@"Date"
-                                                                                        value:dateString]];
+                                                                                        value:self.crashReport.dateString]];
     if (self.crashReport.reason) {
         [detailCellDataSources addObject:[DBTitleValueTableViewCellDataSource dataSourceWithTitle:@"Reason"
                                                                                             value:self.crashReport.reason]];
@@ -227,6 +248,71 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     DBTextViewViewController *textViewViewController = [storyboard instantiateInitialViewController];
     [textViewViewController configureWithTitle:@"Console output" text:self.crashReport.consoleOutput isInConsoleMode:YES];
     [self.navigationController pushViewController:textViewViewController animated:YES];
+}
+
+#pragma mark - - Email content
+
+
+- (NSString *)mailSubject {
+    return [NSString stringWithFormat:@"%@ - Crash report: %@, %@", [self.buildInfoProvider buildInfoString],
+                                                                    self.crashReport.name,
+                                                                    self.crashReport.dateString];
+}
+
+- (NSString *)mailHTMLBody {
+//    self.crashReport.userInfo = @{@"test1" : @3, @"test3" : @"witam"};
+    NSMutableString *mailHTMLBody = [NSMutableString string];
+
+    // Environment.
+    [mailHTMLBody appendString:@"<b><u>Environment:</u></b><br/>"];
+
+    // App version.
+    [mailHTMLBody appendFormat:@"<b>App version:</b> %@<br/>", [self.buildInfoProvider buildInfoString]];
+
+    // System version.
+    [mailHTMLBody appendFormat:@"<b>System version:</b> %@<br/>", [self.deviceInfoProvider systemVersion]];
+
+    // Device model.
+    [mailHTMLBody appendFormat:@"<b>Device model:</b> %@<br/><br/>", [self.deviceInfoProvider deviceModel]];
+
+
+    // Details.
+    [mailHTMLBody appendString:@"<b><u>Details:</u></b><br/>"];
+
+    // Name.
+    [mailHTMLBody appendFormat:@"<b>Name:</b> %@<br/>", self.crashReport.name];
+
+    // Date.
+    [mailHTMLBody appendFormat:@"<b>Date:</b> %@<br/>", self.crashReport.dateString];
+
+    // Reason.
+    if (self.crashReport.reason) {
+        [mailHTMLBody appendFormat:@"<b>Reason:</b> %@<br/>", self.crashReport.reason];
+    }
+
+
+    // User info.
+    if (self.crashReport.userInfo.count > 0) {
+        [mailHTMLBody appendString:@"<br/><b><u>User info:</u></b><br/>"];
+        for (NSString *key in self.crashReport.userInfo.allKeys) {
+            NSString *value = self.crashReport.userInfo[key];
+            [mailHTMLBody appendFormat:@"<b>%@:</b> %@<br/>", key, value];
+        }
+    }
+
+
+    // Stack trace.
+    NSString *stackTrace = [self.crashReport.callStackSymbols componentsJoinedByString:@"\n"];
+    NSString *stackTraceWithIgnoredHTMLTags = [stackTrace stringByReplacingOccurrencesOfString:@"<" withString:@"&lt"];
+    NSString *stackTraceWithProperNewlines = [stackTraceWithIgnoredHTMLTags stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"];
+    [mailHTMLBody appendFormat:@"<p><b><u>Stack trace:</u></b><br>%@</p>", stackTraceWithProperNewlines];
+
+    // Console output.
+    NSString *consoleOutputWithIgnoredHTMLTags = [self.crashReport.consoleOutput stringByReplacingOccurrencesOfString:@"<" withString:@"&lt"];
+    NSString *consoleOutputWithProperNewlines = [consoleOutputWithIgnoredHTMLTags stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"];
+    [mailHTMLBody appendFormat:@"<p><b><u>Console output:</u></b><br>%@</p>", consoleOutputWithProperNewlines];
+
+    return mailHTMLBody;
 }
 
 @end

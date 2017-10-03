@@ -56,5 +56,6 @@
 
 - (NSDictionary *)dictionaryRepresentation;
 
+- (NSString *)dateString;
 
 @end

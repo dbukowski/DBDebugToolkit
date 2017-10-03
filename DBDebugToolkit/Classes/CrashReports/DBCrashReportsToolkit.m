@@ -124,13 +124,13 @@ static sighandler_t _previousSIGPIPEHandler;
 }
 
 void stopCrashReporting() {
-    NSSetUncaughtExceptionHandler(NULL);
-    signal(SIGABRT, SIG_DFL);
-    signal(SIGILL, SIG_DFL);
-    signal(SIGSEGV, SIG_DFL);
-    signal(SIGFPE, SIG_DFL);
-    signal(SIGBUS, SIG_DFL);
-    signal(SIGPIPE, SIG_DFL);
+    NSSetUncaughtExceptionHandler(_previousUncaughtExceptionHandler);
+    signal(SIGABRT, _previousSIGABRTHandler);
+    signal(SIGILL, _previousSIGILLHandler);
+    signal(SIGSEGV, _previousSIGSEGVHandler);
+    signal(SIGFPE, _previousSIGFPEHandler);
+    signal(SIGBUS, _previousSIGBUSHandler);
+    signal(SIGPIPE, _previousSIGPIPEHandler);
 }
 
 void handleException(NSException *exception) {

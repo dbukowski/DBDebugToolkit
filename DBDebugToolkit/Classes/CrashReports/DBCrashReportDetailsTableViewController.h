@@ -22,9 +22,21 @@
 
 #import <UIKit/UIKit.h>
 #import "DBCrashReport.h"
+#import "DBBuildInfoProvider.h"
+#import "DBDeviceInfoProvider.h"
 
 @interface DBCrashReportDetailsTableViewController : UITableViewController
 
 @property (nonatomic, strong) DBCrashReport *crashReport;
+
+/**
+ `DBBuildInfoProvider` instance providing build information displayed in the email subject.
+ */
+@property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
+
+/**
+ `DBDeviceInfoProvider` instance providing device information displayed in the email body.
+ */
+@property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
 
 @end

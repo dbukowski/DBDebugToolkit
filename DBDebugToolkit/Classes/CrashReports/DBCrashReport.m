@@ -116,4 +116,10 @@ static NSString *const DBCrashReportAppVersionKey = @"appVersion";
     return [dictionary copy];
 }
 
+- (NSString *)dateString {
+    return [NSDateFormatter localizedStringFromDate:self.date
+                                          dateStyle:NSDateFormatterMediumStyle
+                                          timeStyle:NSDateFormatterMediumStyle];
+}
+
 @end

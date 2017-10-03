@@ -25,6 +25,8 @@
 #import "DBTitleValueTableViewCell.h"
 #import "UILabel+DBDebugToolkit.h"
 #import "DBCrashReportDetailsTableViewController.h"
+#import "DBBuildInfoProvider.h"
+#import "DBDeviceInfoProvider.h"
 
 static NSString *const DBCrashReportsTableViewControllerTitleValueCellIdentifier = @"DBTitleValueTableViewCell";
 
@@ -72,6 +74,8 @@ static NSString *const DBCrashReportsTableViewControllerTitleValueCellIdentifier
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBCrashReportDetailsTableViewController" bundle:bundle];
     DBCrashReportDetailsTableViewController *crashReportDetailsViewController = [storyboard instantiateInitialViewController];
     crashReportDetailsViewController.crashReport = crashReport;
+    crashReportDetailsViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
+    crashReportDetailsViewController.buildInfoProvider = [DBBuildInfoProvider new];
     [self.navigationController pushViewController:crashReportDetailsViewController animated:YES];
 }
 
@@ -97,11 +101,8 @@ static NSString *const DBCrashReportsTableViewControllerTitleValueCellIdentifier
 
 - (DBTitleValueTableViewCellDataSource *)dataSourceForCellAtRow:(NSInteger)row {
     DBCrashReport *crashReport = self.crashReportsToolkit.crashReports[row];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:crashReport.date
-                                                          dateStyle:NSDateFormatterMediumStyle
-                                                          timeStyle:NSDateFormatterMediumStyle];
     return [DBTitleValueTableViewCellDataSource dataSourceWithTitle:crashReport.name
-                                                              value:dateString];
+                                                              value:crashReport.dateString];
 }
 
 @end
