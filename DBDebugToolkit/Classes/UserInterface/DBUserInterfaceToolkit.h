@@ -67,11 +67,6 @@ extern NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotifica
  */
 - (NSString *)viewControllerHierarchy;
 
-/**
- Returns the text containing all the available fonts.
- */
-- (NSString *)fontFamilies;
-
 ///------------------------------------
 /// @name UIDebuggingInformationOverlay
 ///------------------------------------

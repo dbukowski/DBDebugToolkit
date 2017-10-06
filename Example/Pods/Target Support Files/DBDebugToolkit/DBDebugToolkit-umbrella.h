@@ -91,6 +91,8 @@
 #import "UIColor+DBUserInterfaceToolkit.h"
 #import "UIView+DBUserInterfaceToolkit.h"
 #import "UIWindow+DBUserInterfaceToolkit.h"
+#import "DBFontFamiliesTableViewController.h"
+#import "DBFontPreviewViewController.h"
 #import "DBTextViewViewController.h"
 #import "DBTouchIndicatorView.h"
 #import "DBUserInterfaceTableViewController.h"

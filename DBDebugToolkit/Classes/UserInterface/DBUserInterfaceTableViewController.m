@@ -24,6 +24,7 @@
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBMenuSwitchTableViewCell.h"
 #import "DBTextViewViewController.h"
+#import "DBFontFamiliesTableViewController.h"
 
 typedef NS_ENUM(NSUInteger, DBUserInterfaceTableViewControllerCell) {
     DBUserInterfaceTableViewControllerCellColorBorders,
@@ -103,6 +104,13 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
     [self.navigationController pushViewController:textViewViewController animated:YES];
 }
 
+- (void)openFontFamiliesTableViewController {
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBFontFamiliesTableViewController" bundle:bundle];
+    DBFontFamiliesTableViewController *fontFamiliesTableViewController = [storyboard instantiateInitialViewController];
+    [self.navigationController pushViewController:fontFamiliesTableViewController animated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -163,7 +171,7 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
             [self openTextViewViewControllerWithTitle:title text:[self.userInterfaceToolkit viewControllerHierarchy]];
             break;
         case DBUserInterfaceTableViewControllerCellFontFamilies:
-            [self openTextViewViewControllerWithTitle:title text:[self.userInterfaceToolkit fontFamilies]];
+            [self openFontFamiliesTableViewController];
             break;
         case DBUserInterfaceTableViewControllerCellDebuggingInformationOverlay:
             [self.delegate userInterfaceTableViewControllerDidOpenDebuggingInformationOverlay:self];

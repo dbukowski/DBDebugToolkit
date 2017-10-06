@@ -136,9 +136,9 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
             if (contextCell == nil) {
                 contextCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                      reuseIdentifier:DBCrashReportDetailsTableViewControllerContextCellIdentifier];
+                contextCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             contextCell.textLabel.text = indexPath.row == 0 ? @"Screenshot" : @"Console output";
-            contextCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return contextCell;
         }
         case DBCrashReportDetailsTableViewControllerSectionUserInfo: {

@@ -84,22 +84,6 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
     return ((NSString *(*)(id, SEL))[rootViewController methodForSelector:selector])(rootViewController, selector);
 }
 
-- (NSString *)fontFamilies {
-    NSMutableArray *fontFamilyDescriptions = [NSMutableArray array];
-    NSArray *sortedFontFamilyNames = [[UIFont familyNames] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    for (NSString *fontFamilyName in sortedFontFamilyNames) {
-        NSMutableArray *fontDescriptions = [NSMutableArray array];
-        NSArray *fontNames = [UIFont fontNamesForFamilyName:fontFamilyName];
-        NSArray *sortedFontNames = [fontNames sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        for (NSString *fontName in sortedFontNames) {
-            [fontDescriptions addObject:[NSString stringWithFormat:@"\t- %@", fontName]];
-        }
-        NSString *fontDescriptionsString = [fontDescriptions componentsJoinedByString:@"\n"];
-        [fontFamilyDescriptions addObject:[NSString stringWithFormat:@" • %@:\n%@", fontFamilyName, fontDescriptionsString]];
-    }
-    return [fontFamilyDescriptions componentsJoinedByString:@"\n\n"];
-}
-
 #pragma mark - Handling flags 
 
 - (void)setSlowAnimationsEnabled:(BOOL)slowAnimationsEnabled {
