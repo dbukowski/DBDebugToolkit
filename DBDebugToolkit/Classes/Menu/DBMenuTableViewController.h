@@ -99,6 +99,9 @@
  */
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
 
+/**
+ `DBCrashReportsToolkit` instance that will be passed on.
+ */
 @property (nonatomic, strong) DBCrashReportsToolkit *crashReportsToolkit;
 
 /**

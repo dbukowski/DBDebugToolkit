@@ -136,6 +136,9 @@
 /// @name Crash reports
 ///--------------------
 
+/**
+ Enables collecting crash reports.
+ */
 + (void)setupCrashReporting;
 
 @end

@@ -32,6 +32,20 @@ static NSString *const DBCrashReportScreenshotKey = @"screenshot";
 static NSString *const DBCrashReportSystemVersionKey = @"systemVersion";
 static NSString *const DBCrashReportAppVersionKey = @"appVersion";
 
+@interface DBCrashReport ()
+
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *reason;
+@property (nonatomic, copy) NSDictionary *userInfo;
+@property (nonatomic, copy) NSArray<NSString *> *callStackSymbols;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, copy) NSString *consoleOutput;
+@property (nonatomic, strong) UIImage *screenshot;
+@property (nonatomic, copy) NSString *systemVersion;
+@property (nonatomic, copy) NSString *appVersion;
+
+@end
+
 @implementation DBCrashReport
 
 #pragma mark - Initialization

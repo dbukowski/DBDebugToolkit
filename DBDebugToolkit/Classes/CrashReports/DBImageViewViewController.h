@@ -22,8 +22,17 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ `DBImageViewViewController` is a view controller containing a single `UIImageView` instance.
+ */
 @interface DBImageViewViewController : UIViewController
 
+/**
+ Configures the view controller with an image and a title.
+
+ @param title String containing a title for the view controller.
+ @param image Image that should be displayed in the view controller's image view.
+ */
 - (void)configureWithTitle:(NSString *)title image:(UIImage *)image;
 
 @end

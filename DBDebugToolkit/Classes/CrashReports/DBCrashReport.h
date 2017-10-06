@@ -22,28 +22,31 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ `DBCrashReport` is an object containing all the information about a collected crash.
+ */
 @interface DBCrashReport : NSObject
 
-@property (nonatomic, copy) NSString *name;
+/**
+ Initializes `DBCrashReport` object with the data contained in a dictionary.
 
-@property (nonatomic, copy) NSString *reason;
-
-@property (nonatomic, copy) NSDictionary *userInfo;
-
-@property (nonatomic, copy) NSArray<NSString *> *callStackSymbols;
-
-@property (nonatomic, strong) NSDate *date;
-
-@property (nonatomic, copy) NSString *consoleOutput;
-
-@property (nonatomic, strong) UIImage *screenshot;
-
-@property (nonatomic, copy) NSString *systemVersion;
-
-@property (nonatomic, copy) NSString *appVersion;
-
+ @param dictionary Dictionary containing all the information about a collected crash.
+ */
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
+/**
+ Initializes `DBCrashReport` object with the provided data.
+
+ @param name Name of the crash.
+ @param reason Reason of the crash.
+ @param userInfo User info attached to the crash.
+ @param callStackSymbols An array of strings describing the call stack backtrace at the moment of the crash.
+ @param date Date of the crash occurence.
+ @param consoleOutput String containing the console output at the moment of the crash.
+ @param screenshot The screenshot image taken at the moment of the crash.
+ @param systemVersion Version of the system installed when the crash occured.
+ @param appVersion Version of the application installed when the crash occured.
+ */
 - (instancetype)initWithName:(NSString *)name
                       reason:(NSString *)reason
                     userInfo:(NSDictionary *)userInfo
@@ -54,8 +57,59 @@
                systemVersion:(NSString *)systemVersion
                   appVersion:(NSString *)appVersion;
 
+/**
+ Returns a dictionary containing all the information about a collected crash.
+ */
 - (NSDictionary *)dictionaryRepresentation;
 
+/**
+ Returns a string containing the date of the crash occurence.
+ */
 - (NSString *)dateString;
+
+/**
+ Name of the crash. Read-only.
+ */
+@property (nonatomic, readonly) NSString *name;
+
+/**
+ Reason of the crash. Read-only.
+ */
+@property (nonatomic, readonly) NSString *reason;
+
+/**
+ User info attached to the crash. Read-only.
+ */
+@property (nonatomic, readonly) NSDictionary *userInfo;
+
+/**
+ An array of strings describing the call stack backtrace at the moment of the crash. Read-only.
+ */
+@property (nonatomic, readonly) NSArray<NSString *> *callStackSymbols;
+
+/**
+ Date of the crash occurence. Read-only.
+ */
+@property (nonatomic, readonly) NSDate *date;
+
+/**
+ String containing the console output at the moment of the crash. Read-only.
+ */
+@property (nonatomic, readonly) NSString *consoleOutput;
+
+/**
+ The screenshot image taken at the moment of the crash. Read-only.
+ */
+@property (nonatomic, readonly) UIImage *screenshot;
+
+/**
+ Version of the system installed when the crash occured. Read-only.
+ */
+@property (nonatomic, readonly) NSString *systemVersion;
+
+/**
+ Version of the application installed when the crash occured. Read-only.
+ */
+@property (nonatomic, readonly) NSString *appVersion;
 
 @end

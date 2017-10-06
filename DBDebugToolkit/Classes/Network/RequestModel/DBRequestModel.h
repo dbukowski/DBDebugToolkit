@@ -57,6 +57,9 @@ typedef NS_ENUM(NSUInteger, DBRequestModelBodySynchronizationStatus) {
 
 @end
 
+/**
+ `DBRequestModel` is an object containing all the information about a request and its outcome.
+ */
 @interface DBRequestModel : NSObject
 
 /**

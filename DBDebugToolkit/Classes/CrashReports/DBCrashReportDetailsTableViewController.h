@@ -25,8 +25,14 @@
 #import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
 
+/**
+ `DBCrashReportDetailsTableViewController` is a view controller displaying the details of a crash report.
+ */
 @interface DBCrashReportDetailsTableViewController : UITableViewController
 
+/**
+ `DBCrashReport` instance containing all the details of the application crash.
+ */
 @property (nonatomic, strong) DBCrashReport *crashReport;
 
 /**

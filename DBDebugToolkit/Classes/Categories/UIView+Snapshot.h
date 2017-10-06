@@ -20,8 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+/**
+ `UIView` category adding helper method for creating a snaphot image of the view.
+ */
 @interface UIView (Snapshot)
 
+/**
+ Creates and returns an image containing 
+ */
 - (UIImage *)snapshot;
 
 @end
