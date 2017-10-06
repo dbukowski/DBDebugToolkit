@@ -45,4 +45,6 @@
 
 @property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
 
+@property (nonatomic, readonly) BOOL isCrashReportingEnabled;
+
 @end

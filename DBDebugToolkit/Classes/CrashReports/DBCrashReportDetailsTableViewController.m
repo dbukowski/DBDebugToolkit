@@ -260,7 +260,6 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
 }
 
 - (NSString *)mailHTMLBody {
-//    self.crashReport.userInfo = @{@"test1" : @3, @"test3" : @"witam"};
     NSMutableString *mailHTMLBody = [NSMutableString string];
 
     // Environment.

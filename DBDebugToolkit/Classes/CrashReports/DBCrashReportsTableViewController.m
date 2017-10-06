@@ -82,8 +82,13 @@ static NSString *const DBCrashReportsTableViewControllerTitleValueCellIdentifier
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (!self.crashReportsToolkit.isCrashReportingEnabled) {
+        self.backgroundLabel.text = @"Crash reporting disabled.";
+        self.clearButton.enabled = NO;
+        return 0;
+    }
     NSInteger numberOfItems = self.crashReportsToolkit.crashReports.count;
-    self.backgroundLabel.text = numberOfItems == 0 ? @"There are no crash reports" : @"";
+    self.backgroundLabel.text = numberOfItems == 0 ? @"There are no crash reports." : @"";
     self.clearButton.enabled = numberOfItems > 0;
     return numberOfItems;
 }

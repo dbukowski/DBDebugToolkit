@@ -36,6 +36,7 @@ static sighandler_t _previousSIGPIPEHandler;
 @interface DBCrashReportsToolkit ()
 
 @property (nonatomic, strong) NSArray <DBCrashReport *> *crashReports;
+@property (nonatomic, assign) BOOL isCrashReportingEnabled;
 
 @end
 
@@ -48,6 +49,7 @@ static sighandler_t _previousSIGPIPEHandler;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DBCrashReportsToolkit alloc] init];
+        sharedInstance.isCrashReportingEnabled = NO;
     });
     return sharedInstance;
 }
@@ -94,6 +96,8 @@ static sighandler_t _previousSIGPIPEHandler;
 }
 
 - (void)setupCrashReporting {
+    self.isCrashReportingEnabled = YES;
+
     // Uncaught exceptions
     _previousUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
     NSSetUncaughtExceptionHandler(&handleException);
@@ -138,9 +142,6 @@ void handleException(NSException *exception) {
                                                              reason:exception.reason
                                                            userInfo:exception.userInfo
                                                    callStackSymbols:exception.callStackSymbols];
-    if (_previousUncaughtExceptionHandler != NULL) {
-        _previousUncaughtExceptionHandler(exception);
-    }
     stopCrashReporting();
     [exception raise];
 }
@@ -150,9 +151,6 @@ static void handleSIGABRTSignal(int sig) {
                                                              reason:nil
                                                            userInfo:nil
                                                    callStackSymbols:[NSThread callStackSymbols]];
-    if (_previousSIGABRTHandler != NULL) {
-        _previousSIGABRTHandler(sig);
-    }
     stopCrashReporting();
     kill(getpid(), sig);
 }
@@ -162,9 +160,6 @@ static void handleSIGILLSignal(int sig) {
                                                              reason:nil
                                                            userInfo:nil
                                                    callStackSymbols:[NSThread callStackSymbols]];
-    if (_previousSIGILLHandler != NULL) {
-        _previousSIGILLHandler(sig);
-    }
     stopCrashReporting();
     kill(getpid(), sig);
 }
@@ -174,9 +169,6 @@ static void handleSIGSEGVSignal(int sig) {
                                                              reason:nil
                                                            userInfo:nil
                                                    callStackSymbols:[NSThread callStackSymbols]];
-    if (_previousSIGSEGVHandler != NULL) {
-        _previousSIGSEGVHandler(sig);
-    }
     stopCrashReporting();
     kill(getpid(), sig);
 }
@@ -186,9 +178,6 @@ static void handleSIGFPESignal(int sig) {
                                                              reason:nil
                                                            userInfo:nil
                                                    callStackSymbols:[NSThread callStackSymbols]];
-    if (_previousSIGFPEHandler != NULL) {
-        _previousSIGFPEHandler(sig);
-    }
     stopCrashReporting();
     kill(getpid(), sig);
 }
@@ -198,9 +187,6 @@ static void handleSIGBUSSignal(int sig) {
                                                              reason:nil
                                                            userInfo:nil
                                                    callStackSymbols:[NSThread callStackSymbols]];
-    if (_previousSIGBUSHandler != NULL) {
-        _previousSIGBUSHandler(sig);
-    }
     stopCrashReporting();
     kill(getpid(), sig);
 }
@@ -210,9 +196,6 @@ static void handleSIGPIPESignal(int sig) {
                                                              reason:nil
                                                            userInfo:nil
                                                    callStackSymbols:[NSThread callStackSymbols]];
-    if (_previousSIGPIPEHandler != NULL) {
-        _previousSIGPIPEHandler(sig);
-    }
     stopCrashReporting();
     kill(getpid(), sig);
 }

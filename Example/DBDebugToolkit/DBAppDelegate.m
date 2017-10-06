@@ -33,7 +33,7 @@
                                                                                     [self prepopulateCoreData];
                                                                                 }];
     [DBDebugToolkit addCustomAction:prepopulateCoreDataAction];
-//    [Fabric with:@[[Crashlytics class]]];
+    [DBDebugToolkit setupCrashReporting];
     return YES;
 }
 
