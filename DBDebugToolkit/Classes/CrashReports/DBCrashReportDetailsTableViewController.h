@@ -1,6 +1,6 @@
 // The MIT License
 //
-// Copyright (c) 2016 Dariusz Bukowski
+// Copyright (c) 2017 Dariusz Bukowski
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,19 +21,28 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "DBCrashReport.h"
+#import "DBBuildInfoProvider.h"
+#import "DBDeviceInfoProvider.h"
 
 /**
- `DBTextViewViewController` is a view controller containing a single `UITextView` instance.
+ `DBCrashReportDetailsTableViewController` is a view controller displaying the details of a crash report.
  */
-@interface DBTextViewViewController : UIViewController
+@interface DBCrashReportDetailsTableViewController : UITableViewController
 
 /**
- Configures the view controller with a text and title.
- 
- @param title String containing a title for the view controller.
- @param text String with content of the text view.
- @param isInConsoleMode Bool a flag determining whether the view will present the console output or not (affects font).
+ `DBCrashReport` instance containing all the details of the application crash.
  */
-- (void)configureWithTitle:(NSString *)title text:(NSString *)text isInConsoleMode:(BOOL)isInConsoleMode;
+@property (nonatomic, strong) DBCrashReport *crashReport;
+
+/**
+ `DBBuildInfoProvider` instance providing build information displayed in the email subject.
+ */
+@property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
+
+/**
+ `DBDeviceInfoProvider` instance providing device information displayed in the email body.
+ */
+@property (nonatomic, strong) DBDeviceInfoProvider *deviceInfoProvider;
 
 @end

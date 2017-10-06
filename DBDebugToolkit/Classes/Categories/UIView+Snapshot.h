@@ -1,6 +1,6 @@
 // The MIT License
 //
-// Copyright (c) 2016 Dariusz Bukowski
+// Copyright (c) 2017 Dariusz Bukowski
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,20 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+/**
+ `UIView` category adding helper method for creating a snaphot image of the view.
+ */
+@interface UIView (Snapshot)
 
 /**
- `DBTextViewViewController` is a view controller containing a single `UITextView` instance.
+ Creates and returns an image containing 
  */
-@interface DBTextViewViewController : UIViewController
-
-/**
- Configures the view controller with a text and title.
- 
- @param title String containing a title for the view controller.
- @param text String with content of the text view.
- @param isInConsoleMode Bool a flag determining whether the view will present the console output or not (affects font).
- */
-- (void)configureWithTitle:(NSString *)title text:(NSString *)text isInConsoleMode:(BOOL)isInConsoleMode;
+- (UIImage *)snapshot;
 
 @end

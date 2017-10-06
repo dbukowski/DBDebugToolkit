@@ -24,6 +24,7 @@
 		6627B2221E460AF60020618C /* DBRequestExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6627B2201E460AF60020618C /* DBRequestExampleTableViewCell.xib */; };
 		662F49961E49301800D98E31 /* DBLocationExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F49951E49301800D98E31 /* DBLocationExampleViewController.m */; };
 		662F49981E49321200D98E31 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F49971E49321200D98E31 /* MapKit.framework */; };
+		663A55061EE4D2CE0027C4E6 /* DBCrashReportsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663A55051EE4D2CE0027C4E6 /* DBCrashReportsExampleViewController.m */; };
 		663E02B51E49413B0069FDCB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663E02B41E49413B0069FDCB /* CoreLocation.framework */; };
 		66571C031E631EF10047D5BA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66571C001E631E590047D5BA /* DataModel.xcdatamodeld */; };
 		66739E651E6C4C180090838D /* DBCoreDataRandomDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 66739E641E6C4C180090838D /* DBCoreDataRandomDataGenerator.m */; };
@@ -83,6 +84,8 @@
 		662F49941E49301800D98E31 /* DBLocationExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLocationExampleViewController.h; sourceTree = "<group>"; };
 		662F49951E49301800D98E31 /* DBLocationExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLocationExampleViewController.m; sourceTree = "<group>"; };
 		662F49971E49321200D98E31 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		663A55041EE4D2CE0027C4E6 /* DBCrashReportsExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCrashReportsExampleViewController.h; sourceTree = "<group>"; };
+		663A55051EE4D2CE0027C4E6 /* DBCrashReportsExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCrashReportsExampleViewController.m; sourceTree = "<group>"; };
 		663E02B41E49413B0069FDCB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		66571C011E631E590047D5BA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		66739E631E6C4C180090838D /* DBCoreDataRandomDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCoreDataRandomDataGenerator.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				662F49941E49301800D98E31 /* DBLocationExampleViewController.h */,
 				662F49951E49301800D98E31 /* DBLocationExampleViewController.m */,
 				66571C001E631E590047D5BA /* DataModel.xcdatamodeld */,
+				663A55041EE4D2CE0027C4E6 /* DBCrashReportsExampleViewController.h */,
+				663A55051EE4D2CE0027C4E6 /* DBCrashReportsExampleViewController.m */,
 			);
 			name = "Example for DBDebugToolkit";
 			path = DBDebugToolkit;
@@ -511,6 +516,7 @@
 				66D99DEC1E6C608700ED8119 /* PersonMO+CoreDataProperties.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				66D99DEA1E6C608700ED8119 /* PassportMO+CoreDataProperties.m in Sources */,
+				663A55061EE4D2CE0027C4E6 /* DBCrashReportsExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

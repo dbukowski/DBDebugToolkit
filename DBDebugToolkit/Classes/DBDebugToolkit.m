@@ -34,6 +34,7 @@
 #import "DBKeychainToolkit.h"
 #import "DBUserDefaultsToolkit.h"
 #import "DBCoreDataToolkit.h"
+#import "DBCrashReportsToolkit.h"
 
 static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPath = @"containerView";
 
@@ -48,6 +49,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 @property (nonatomic, strong) DBUserInterfaceToolkit *userInterfaceToolkit;
 @property (nonatomic, strong) DBLocationToolkit *locationToolkit;
 @property (nonatomic, strong) DBCoreDataToolkit *coreDataToolkit;
+@property (nonatomic, strong) DBCrashReportsToolkit *crashReportsToolkit;
 @property (nonatomic, strong) NSMutableArray <DBCustomAction *> *customActions;
 @property (nonatomic, strong) NSMutableDictionary <NSString *, DBCustomVariable *> *customVariables;
 
@@ -85,6 +87,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
         [sharedInstance setupCoreDataToolkit];
         [sharedInstance setupCustomActions];
         [sharedInstance setupCustomVariables];
+        [sharedInstance setupCrashReportsToolkit];
     });
     return sharedInstance;
 }
@@ -245,6 +248,20 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     return toolkit.customVariables[variableName];
 }
 
+#pragma mark - Crash reports toolkit
+
+- (void)setupCrashReportsToolkit {
+    self.crashReportsToolkit = [DBCrashReportsToolkit sharedInstance];
+    self.crashReportsToolkit.consoleOutputCaptor = self.consoleOutputCaptor;
+    self.crashReportsToolkit.buildInfoProvider = [DBBuildInfoProvider new];
+    self.crashReportsToolkit.deviceInfoProvider = [DBDeviceInfoProvider new];
+}
+
++ (void)setupCrashReporting {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    [toolkit.crashReportsToolkit setupCrashReporting];
+}
+
 #pragma mark - Resources 
 
 + (void)clearKeychain {
@@ -320,6 +337,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
         _menuViewController.userInterfaceToolkit = self.userInterfaceToolkit;
         _menuViewController.locationToolkit = self.locationToolkit;
         _menuViewController.coreDataToolkit = self.coreDataToolkit;
+        _menuViewController.crashReportsToolkit = self.crashReportsToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;

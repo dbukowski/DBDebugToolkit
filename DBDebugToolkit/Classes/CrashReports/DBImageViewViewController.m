@@ -1,6 +1,6 @@
 // The MIT License
 //
-// Copyright (c) 2016 Dariusz Bukowski
+// Copyright (c) 2017 Dariusz Bukowski
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,46 +20,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DBTextViewViewController.h"
+#import "DBImageViewViewController.h"
+#import "UIView+Snapshot.h"
 
-@interface DBTextViewViewController ()
+@interface DBImageViewViewController ()
 
-@property (nonatomic, weak) IBOutlet UITextView *textView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *textViewWidthConstraint;
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, assign) BOOL isInConsoleMode;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) UIImage *image;
 
 @end
 
-@implementation DBTextViewViewController
+@implementation DBImageViewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.textView.layoutManager.allowsNonContiguousLayout = NO;
-    [self updateText:self.text];
-    [self modeSetup];
+    [self updateImage:self.image];
 }
 
-- (void)configureWithTitle:(NSString *)title text:(NSString *)text isInConsoleMode:(BOOL)isInConsoleMode {
+- (void)configureWithTitle:(NSString *)title image:(UIImage *)image {
     self.title = title;
-    self.isInConsoleMode = isInConsoleMode;
-    [self updateText:text];
+    [self updateImage:image];
 }
 
 #pragma mark - Private methods
 
-- (void)updateText:(NSString *)text {
-    self.text = text;
-    self.textView.text = text;
-}
-
-- (void)modeSetup {
-    if (self.isInConsoleMode) {
-        self.textView.font = [UIFont systemFontOfSize:11 weight:UIFontWeightSemibold];
-    } else {
-        self.textView.font = [UIFont systemFontOfSize:14];
-        self.textViewWidthConstraint.active = NO;
-    }
+- (void)updateImage:(UIImage *)image {
+    self.image = image;
+    self.imageView.image = image;
 }
 
 @end

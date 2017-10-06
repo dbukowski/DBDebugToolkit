@@ -99,7 +99,7 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
     NSBundle *bundle = [NSBundle debugToolkitBundle];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBTextViewViewController" bundle:bundle];
     DBTextViewViewController *textViewViewController = [storyboard instantiateInitialViewController];
-    [textViewViewController configureWithTitle:title text:text];
+    [textViewViewController configureWithTitle:title text:text isInConsoleMode:NO];
     [self.navigationController pushViewController:textViewViewController animated:YES];
 }
 

@@ -1,6 +1,6 @@
 // The MIT License
 //
-// Copyright (c) 2016 Dariusz Bukowski
+// Copyright (c) 2017 Dariusz Bukowski
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +23,16 @@
 #import <UIKit/UIKit.h>
 
 /**
- `DBTextViewViewController` is a view controller containing a single `UITextView` instance.
+ `DBImageViewViewController` is a view controller containing a single `UIImageView` instance.
  */
-@interface DBTextViewViewController : UIViewController
+@interface DBImageViewViewController : UIViewController
 
 /**
- Configures the view controller with a text and title.
- 
+ Configures the view controller with an image and a title.
+
  @param title String containing a title for the view controller.
- @param text String with content of the text view.
- @param isInConsoleMode Bool a flag determining whether the view will present the console output or not (affects font).
+ @param image Image that should be displayed in the view controller's image view.
  */
-- (void)configureWithTitle:(NSString *)title text:(NSString *)text isInConsoleMode:(BOOL)isInConsoleMode;
+- (void)configureWithTitle:(NSString *)title image:(UIImage *)image;
 
 @end

@@ -147,4 +147,13 @@
  */
 + (DBCustomVariable *)customVariableWithName:(NSString *)variableName;
 
+///--------------------
+/// @name Crash reports
+///--------------------
+
+/**
+ Enables collecting crash reports.
+ */
++ (void)setupCrashReporting;
+
 @end

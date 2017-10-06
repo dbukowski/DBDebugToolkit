@@ -33,6 +33,7 @@
                                                                                     [self prepopulateCoreData];
                                                                                 }];
     [DBDebugToolkit addCustomAction:prepopulateCoreDataAction];
+    [DBDebugToolkit setupCrashReporting];
     return YES;
 }
 
