@@ -101,7 +101,7 @@ static sighandler_t _previousSIGPIPEHandler;
 }
 
 - (void)setupCrashReporting {
-    if ([self isRunUnderDebugger]) {
+    if ([self isRunningUnderDebugger]) {
         NSLog(@"[DBDebugToolkit] The app is running under the debugger. It may not generate crash reports correctly.");
     }
 
@@ -239,7 +239,7 @@ static void handleSIGPIPESignal(int sig) {
 }
 
 // Code from iOS Technical Q&A: https://developer.apple.com/library/content/qa/qa1361/_index.html
-- (BOOL)isRunUnderDebugger {
+- (BOOL)isRunningUnderDebugger {
 #ifndef DEBUG
     return NO;
 #endif
