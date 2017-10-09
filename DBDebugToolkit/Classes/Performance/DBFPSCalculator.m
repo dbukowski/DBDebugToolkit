@@ -20,17 +20,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#define FPS_CALCULATOR_ENFORCE_THREAD_SAFETY 1
+
 #import "DBFPSCalculator.h"
 
-static const NSUInteger DBFPSCalculatorSamplesCount = 60;
+@import Darwin;
+
+static const CGFloat DBFPSCalculatorTargetFramerate = 60.0;
+extern const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements;
 
 @interface DBFPSCalculator ()
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
-@property (nonatomic, assign) CFTimeInterval lastDisplayLinkTickTime;
-@property (nonatomic, strong) NSMutableArray *tickTimes;
-@property (nonatomic, assign) NSUInteger nextTickTimeIndex;
-@property (nonatomic, assign) CFTimeInterval storedTickTimesSum;
+
+//Holds
+@property (nonatomic, assign) uint32_t frameCount;
+
+//Background polling timer
+@property (nonatomic, strong) dispatch_queue_t fpsPollingQueue;
+@property (nonatomic, strong) dispatch_source_t backgroundTimer;
+
+//Handle last known fps - must use synchronized access for thread safety
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+@property (nonatomic, strong) dispatch_queue_t lastKnownFPSQueue;
+#endif
+@property (nonatomic, assign) CGFloat lastKnownFPS;
 
 @end
 
@@ -41,7 +55,7 @@ static const NSUInteger DBFPSCalculatorSamplesCount = 60;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self setupDisplayLink];
+        [self setupFPSMonitoring];
         [self setupNotifications];
     }
     
@@ -53,27 +67,64 @@ static const NSUInteger DBFPSCalculatorSamplesCount = 60;
     [self.displayLink removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
 
-#pragma mark - Display Link
+#pragma mark - FPS Monitoring
 
-- (void)setupDisplayLink {
-    self.lastDisplayLinkTickTime = CACurrentMediaTime();
-    self.tickTimes = [NSMutableArray array];
+- (void)setupFPSMonitoring {
+	dispatch_queue_attr_t qosAttribute = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INTERACTIVE, 0);
+	self.fpsPollingQueue = dispatch_queue_create("fpsPollingQueue", qosAttribute);
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+	self.lastKnownFPSQueue = dispatch_queue_create("lastKnownFPSQueue", DISPATCH_QUEUE_SERIAL);
+#endif
+	
+	self.backgroundTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, self.fpsPollingQueue);
+	uint64_t interval = DBPerformanceToolkitTimeBetweenMeasurements * NSEC_PER_SEC;
+	dispatch_source_set_timer(self.backgroundTimer, dispatch_walltime(NULL, 0), interval, interval / 10);
+	
+	__weak __typeof(self) weakSelf = self;
+	
+	dispatch_source_set_event_handler(self.backgroundTimer, ^{
+		__strong __typeof(weakSelf) strongSelf = weakSelf;
+		if(strongSelf == nil)
+		{
+			return;
+		}
+		
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+		uint32_t frameCount = OSAtomicXor32Orig(strongSelf->_frameCount, &strongSelf->_frameCount);
+#else
+		uint32_t frameCount = strongSelf->_frameCount;
+		strongSelf->_frameCount = 0;
+#endif
+		CGFloat fps = MIN(frameCount / DBPerformanceToolkitTimeBetweenMeasurements, DBFPSCalculatorTargetFramerate);
+
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+		dispatch_sync(strongSelf.lastKnownFPSQueue, ^{
+#endif
+			strongSelf.lastKnownFPS = fps;
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+		});
+#endif
+	});
+	
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkTick)];
-    [self.displayLink setPaused:YES];
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+	
+	if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+	{
+		dispatch_resume(self.backgroundTimer);
+	}
+	else
+	{
+		[self.displayLink setPaused:YES];
+	}
 }
 
 - (void)displayLinkTick {
-    CFTimeInterval tickTime = self.displayLink.timestamp - self.lastDisplayLinkTickTime;
-    self.storedTickTimesSum += tickTime;
-    if (self.nextTickTimeIndex == self.tickTimes.count) {
-        [self.tickTimes addObject:@(tickTime)];
-    } else {
-        self.storedTickTimesSum -= [self.tickTimes[self.nextTickTimeIndex] doubleValue];
-        self.tickTimes[self.nextTickTimeIndex] = @(tickTime);
-    }
-    self.nextTickTimeIndex = (self.nextTickTimeIndex == DBFPSCalculatorSamplesCount - 1) ? 0 : (self.nextTickTimeIndex + 1);
-    self.lastDisplayLinkTickTime = self.displayLink.timestamp;
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+	OSAtomicIncrement32((int32_t*)&_frameCount);
+#else
+	_frameCount++;
+#endif
 }
 
 #pragma mark - Notifications
@@ -91,25 +142,31 @@ static const NSUInteger DBFPSCalculatorSamplesCount = 60;
 }
 
 - (void)applicationDidBecomeActiveNotification:(NSNotification *)notification {
-    self.lastDisplayLinkTickTime = CACurrentMediaTime(); // Don't include the inactive time.
+	self.frameCount = 0;
     [self.displayLink setPaused:NO];
+	dispatch_resume(self.backgroundTimer);
 }
 
 
 - (void)applicationWillResignActiveNotification:(NSNotification *)notification {
     [self.displayLink setPaused:YES];
+	dispatch_suspend(self.backgroundTimer);
 }
 
 #pragma mark - FPS 
 
 - (CGFloat)fps {
-    if (self.tickTimes.count == 0) {
-        return -1;
-    }
-    
-    // storedTickTimesSum should be equal to the sum of tickTimes array elements.
-    CGFloat meanTickTime = self.storedTickTimesSum / self.tickTimes.count;
-    return 1.0 / meanTickTime;
+	__block CGFloat fps;
+	
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+	dispatch_sync(_lastKnownFPSQueue, ^{
+#endif
+		fps = self.lastKnownFPS;
+#if FPS_CALCULATOR_ENFORCE_THREAD_SAFETY
+	});
+#endif
+	
+	return fps;
 }
 
 @end

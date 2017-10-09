@@ -20,18 +20,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+//#define PERFORMANCE_TOOLKIT_ENFORCE_THREAD_SAFETY 1
+
 #import "DBPerformanceToolkit.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBFPSCalculator.h"
 #import <mach/mach.h>
 
 static const NSUInteger DBPerformanceToolkitMeasurementsCount = 120;
-static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
+const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
 
 @interface DBPerformanceToolkit ()
 
+#if PERFORMANCE_TOOLKIT_ENFORCE_THREAD_SAFETY
+@property (nonatomic, strong) dispatch_queue_t dataAccessQueue;
+#endif
+
+@property (nonatomic, strong) dispatch_queue_t measurementsTimerQueue;
+@property (nonatomic, strong) dispatch_source_t measurementsTimer;
+
 @property (nonatomic, strong) DBPerformanceWidgetView *widget;
-@property (nonatomic, strong) NSTimer *measurementsTimer;
 @property (nonatomic, strong) DBFPSCalculator *fpsCalculator;
 
 @property (nonatomic, strong) NSArray *cpuMeasurements;
@@ -67,7 +75,7 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
 }
 
 - (void)dealloc {
-    [self.measurementsTimer invalidate];
+//	dispatch_
     self.measurementsTimer = nil;
 }
 
@@ -83,9 +91,11 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
 }
 
 - (void)refreshWidget {
-    self.widget.cpuValueLabel.text = [NSString stringWithFormat:@"%.1lf%%", self.currentCPU];
-    self.widget.memoryValueLabel.text = [NSString stringWithFormat:@"%.1lf MB", self.currentMemory];
-    self.widget.fpsValueLabel.text = [NSString stringWithFormat:@"%.0lf", self.currentFPS];
+	self.widget.cpuValueTextLayer.string = [NSString stringWithFormat:@"%.1lf%%", _currentCPU];
+	self.widget.memoryValueTextLayer.string = [NSString stringWithFormat:@"%.1lf MB", _currentMemory];
+	self.widget.fpsValueTextLayer.string = [NSString stringWithFormat:@"%.0lf", _currentFPS];
+	[self.widget.cpuValueTextLayer display];
+	[CATransaction flush];
 }
 
 - (void)setIsWidgetShown:(BOOL)isWidgetShown {
@@ -121,42 +131,84 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
 #pragma mark - Performance Measurement
 
 - (void)setupPerformanceMeasurement {
+#if PERFORMANCE_TOOLKIT_ENFORCE_THREAD_SAFETY
+	self.dataAccessQueue = dispatch_queue_create("dataAccessQueue", DISPATCH_QUEUE_SERIAL);
+#endif
+	
     self.measurementsLimit = DBPerformanceToolkitMeasurementsCount;
     self.cpuMeasurements = [NSArray array];
     self.memoryMeasurements = [NSArray array];
     self.fpsMeasurements = [NSArray array];
     self.fpsCalculator = [DBFPSCalculator new];
     self.minFPS = CGFLOAT_MAX;
-    
-    self.measurementsTimer = [NSTimer timerWithTimeInterval:DBPerformanceToolkitTimeBetweenMeasurements
-                                                     target:self
-                                                   selector:@selector(updateMeasurements)
-                                                   userInfo:nil
-                                                    repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.measurementsTimer forMode:NSRunLoopCommonModes];
+
+	dispatch_queue_attr_t qosAttribute = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INTERACTIVE, 0);
+	self.measurementsTimerQueue = dispatch_queue_create("measurementsTimerQueue", qosAttribute);
+
+	self.measurementsTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, self.measurementsTimerQueue);
+	uint64_t interval = DBPerformanceToolkitTimeBetweenMeasurements * NSEC_PER_SEC;
+	dispatch_source_set_timer(self.measurementsTimer, dispatch_walltime(NULL, 0), interval, interval / 10);
+	__weak __typeof(self) weakSelf = self;
+	
+	dispatch_source_set_event_handler(self.measurementsTimer, ^{
+		[weakSelf updateMeasurements];
+	});
+	
+	dispatch_resume(self.measurementsTimer);
 }
 
 - (void)updateMeasurements {
-    // Update CPU measurements
-    self.currentCPU = [self cpu];
-    self.cpuMeasurements = [self array:self.cpuMeasurements byAddingMeasurement:self.currentCPU];
-    self.maxCPU = MAX(self.maxCPU, self.currentCPU);
-    
-    // Update memory measurements
-    self.currentMemory = [self memory];
-    self.memoryMeasurements = [self array:self.memoryMeasurements byAddingMeasurement:self.currentMemory];
-    self.maxMemory = MAX(self.maxMemory, self.currentMemory);
-    
-    // Update FPS measurements
-    self.currentFPS = [self fps];
-    self.fpsMeasurements = [self array:self.fpsMeasurements byAddingMeasurement:self.currentFPS];
-    self.minFPS = MIN(self.minFPS, self.currentFPS);
-    self.maxFPS = MAX(self.maxFPS, self.currentFPS);
-    
-    [self refreshWidget];
-    [self.delegate performanceToolkitDidUpdateStats:self];
-    self.currentMeasurementIndex = MIN(DBPerformanceToolkitMeasurementsCount, self.currentMeasurementIndex + 1);
+#if PERFORMANCE_TOOLKIT_ENFORCE_THREAD_SAFETY
+	dispatch_sync(self.dataAccessQueue, ^{
+#endif
+		// Update CPU measurements
+		self.currentCPU = [self cpu];
+		self.cpuMeasurements = [self array:_cpuMeasurements byAddingMeasurement:_currentCPU];
+		self.maxCPU = MAX(_maxCPU, _currentCPU);
+		
+		// Update memory measurements
+		self.currentMemory = [self memory];
+		self.memoryMeasurements = [self array:_memoryMeasurements byAddingMeasurement:_currentMemory];
+		self.maxMemory = MAX(_maxMemory, _currentMemory);
+		
+		// Update FPS measurements
+		self.currentFPS = [self fps];
+		self.fpsMeasurements = [self array:_fpsMeasurements byAddingMeasurement:_currentFPS];
+		self.minFPS = MIN(_minFPS, _currentFPS);
+		self.maxFPS = MAX(_maxFPS, _currentFPS);
+		
+		[self refreshWidget];
+		self.currentMeasurementIndex = MIN(DBPerformanceToolkitMeasurementsCount, self.currentMeasurementIndex + 1);
+#if PERFORMANCE_TOOLKIT_ENFORCE_THREAD_SAFETY
+	});
+#endif
+	[self.delegate performanceToolkitDidUpdateStats:self];
 }
+
+#if PERFORMANCE_TOOLKIT_ENFORCE_THREAD_SAFETY
+#define THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(__name__, __type__) - (__type__)__name__ {\
+	__block __type__ rv;\
+	dispatch_sync(self.dataAccessQueue, ^{\
+		rv = _##__name__;\
+	});\
+	return rv;\
+}
+
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(cpuMeasurements, NSArray*);
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(currentCPU, CGFloat);
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(maxCPU, CGFloat);
+
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(memoryMeasurements, NSArray*);
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(currentMemory, CGFloat);
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(maxMemory, CGFloat);
+
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(fpsMeasurements, NSArray*);
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(currentFPS, CGFloat);
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(minFPS, CGFloat);
+THREAD_SAFE_PROPERTY_ACCESSOR_MACRO(maxFPS, CGFloat);
+
+#undef THREAD_SAFE_PROPERTY_ACCESSOR_MACRO
+#endif
 
 - (NSArray *)array:(NSArray *)array byAddingMeasurement:(CGFloat)measurement {
     NSMutableArray *newMeasurements = [array mutableCopy];
@@ -224,6 +276,8 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
 }
 
 - (void)simulateMemoryWarning {
+	NSAssert([NSThread isMainThread], @"Must be called on main thread.");
+	
     // Making sure to minimize the risk of rejecting app because of the private API.
     NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x5f, 0x70, 0x65, 0x72, 0x66, 0x6f, 0x72, 0x6d, 0x4d, 0x65, 0x6d, 0x6f, 0x72, 0x79, 0x57, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67} length:21] encoding:NSASCIIStringEncoding];
     SEL selector = NSSelectorFromString(key);

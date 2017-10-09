@@ -290,7 +290,9 @@ typedef NS_ENUM(NSUInteger, DBPerformanceTableViewSection) {
 #pragma mark - DBPerformanceToolkitDelegate 
 
 - (void)performanceToolkitDidUpdateStats:(DBPerformanceToolkit *)performanceToolkit {
-    [self reloadStatisticsSectionAnimated:NO];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self reloadStatisticsSectionAnimated:NO];
+	});
 }
 
 @end
