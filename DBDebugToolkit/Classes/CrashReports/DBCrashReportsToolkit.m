@@ -216,8 +216,44 @@ static void handleSIGPIPESignal(int sig) {
                        userInfo:(NSDictionary *)userInfo
                callStackSymbols:(NSArray<NSString *> *)callStackSymbols {
     NSDate *date = [NSDate date];
+    [self saveCrashReportWithName:name
+                           reason:reason
+                         userInfo:userInfo
+                 callStackSymbols:callStackSymbols
+                             date:date];
+}
+
+- (void)saveCrashReportWithName:(NSString *)name
+                         reason:(NSString *)reason
+                       userInfo:(NSDictionary *)userInfo
+               callStackSymbols:(NSArray<NSString *> *)callStackSymbols
+                           date:(NSDate *)date {
+    BOOL isMainThread = [NSThread isMainThread];
+    UIImage *screenshot = isMainThread ? [[UIApplication sharedApplication].keyWindow snapshot] : nil;
+    [self saveCrashReportWithName:name
+                           reason:reason
+                         userInfo:userInfo
+                 callStackSymbols:callStackSymbols
+                             date:date
+                       screenshot:screenshot];
+    if (!isMainThread) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self saveCrashReportWithName:name
+                                   reason:reason
+                                 userInfo:userInfo
+                         callStackSymbols:callStackSymbols
+                                     date:date];
+        });
+    }
+}
+
+- (void)saveCrashReportWithName:(NSString *)name
+                         reason:(NSString *)reason
+                       userInfo:(NSDictionary *)userInfo
+               callStackSymbols:(NSArray<NSString *> *)callStackSymbols
+                           date:(NSDate *)date
+                     screenshot:(UIImage *)screenshot {
     NSString *consoleOutput = self.consoleOutputCaptor.consoleOutput;
-    UIImage *screenshot = [[UIApplication sharedApplication].keyWindow snapshot];
     NSString *systemVersion = [self.deviceInfoProvider systemVersion];
     NSString *appVersion = [self.buildInfoProvider buildInfoString];
     DBCrashReport *crashReport = [[DBCrashReport alloc] initWithName:name

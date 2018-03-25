@@ -238,7 +238,9 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     NSBundle *bundle = [NSBundle debugToolkitBundle];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBImageViewViewController" bundle:bundle];
     DBImageViewViewController *imageViewViewController = [storyboard instantiateInitialViewController];
-    [imageViewViewController configureWithTitle:@"Screenshot" image:self.crashReport.screenshot];
+    [imageViewViewController configureWithTitle:@"Screenshot"
+                                          image:self.crashReport.screenshot
+                                placeholderText:@"No screenshot available."];
     [self.navigationController pushViewController:imageViewViewController animated:YES];
 }
 

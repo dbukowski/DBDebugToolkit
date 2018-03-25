@@ -59,11 +59,13 @@ static NSString *const DBCrashReportAppVersionKey = @"appVersion";
         self.callStackSymbols = dictionary[DBCrashReportCallStackSymbolsKey];
         self.date = dictionary[DBCrashReportDateKey];
         self.consoleOutput = dictionary[DBCrashReportConsoleOutputKey];
-        NSData *screenshotData = [[NSData alloc] initWithBase64EncodedString:dictionary[DBCrashReportScreenshotKey]
-                                                                     options:NSDataBase64DecodingIgnoreUnknownCharacters];
-        self.screenshot = [UIImage imageWithData:screenshotData];
         self.systemVersion = dictionary[DBCrashReportSystemVersionKey];
         self.appVersion = dictionary[DBCrashReportAppVersionKey];
+        if (dictionary[DBCrashReportScreenshotKey]) {
+            NSData *screenshotData = [[NSData alloc] initWithBase64EncodedString:dictionary[DBCrashReportScreenshotKey]
+                                                                         options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            self.screenshot = [UIImage imageWithData:screenshotData];
+        }
     }
 
     return self;

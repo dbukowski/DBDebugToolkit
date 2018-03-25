@@ -32,7 +32,8 @@
 
  @param title String containing a title for the view controller.
  @param image Image that should be displayed in the view controller's image view.
+ @param placeholderText Placeholder text displayed in case of invalid or missing image.
  */
-- (void)configureWithTitle:(NSString *)title image:(UIImage *)image;
+- (void)configureWithTitle:(NSString *)title image:(UIImage *)image placeholderText:(NSString *)placeholderText;
 
 @end
