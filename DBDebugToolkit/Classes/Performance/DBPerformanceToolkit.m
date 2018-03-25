@@ -77,6 +77,7 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
     NSBundle *bundle = [NSBundle debugToolkitBundle];
     self.widget = [[bundle loadNibNamed:@"DBPerformanceWidgetView" owner:self options:nil] objectAtIndex:0];
     self.widget.alpha = 0.0;
+    self.widget.hidden = YES;
     self.widget.delegate = widgetDelegate;
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     [self addWidgetToWindow:keyWindow];
@@ -90,8 +91,11 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
 
 - (void)setIsWidgetShown:(BOOL)isWidgetShown {
     _isWidgetShown = isWidgetShown;
+    self.widget.hidden = NO;
     [UIView animateWithDuration:0.35 animations:^{
         self.widget.alpha = isWidgetShown ? 1.0 : 0.0;
+    } completion:^(BOOL finished) {
+        self.widget.hidden = !isWidgetShown;
     }];
 }
 
