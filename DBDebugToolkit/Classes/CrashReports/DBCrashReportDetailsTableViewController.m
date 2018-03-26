@@ -76,8 +76,11 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     self.mailComposeViewController.mailComposeDelegate = self;
     [self.mailComposeViewController setSubject:[self mailSubject]];
     [self.mailComposeViewController setMessageBody:[self mailHTMLBody] isHTML:YES];
-    NSData *screenshotData = UIImageJPEGRepresentation(self.crashReport.screenshot, 1);
-    [self.mailComposeViewController addAttachmentData:screenshotData mimeType:@"image/jpeg" fileName:@"screenshot"];
+
+    if (self.crashReport.screenshot) {
+        NSData *screenshotData = UIImageJPEGRepresentation(self.crashReport.screenshot, 1);
+        [self.mailComposeViewController addAttachmentData:screenshotData mimeType:@"image/jpeg" fileName:@"screenshot"];
+    }
 
     [self presentViewController:self.mailComposeViewController animated:YES completion:NULL];
 }
