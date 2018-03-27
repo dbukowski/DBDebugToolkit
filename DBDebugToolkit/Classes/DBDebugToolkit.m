@@ -141,7 +141,6 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 - (void)windowDidResignKeyNotification:(NSNotification *)notification {
     UIWindow *windowResigningKey = notification.object;
     [self removeTriggersFromWindow:windowResigningKey];
-    [self.performanceToolkit windowDidResignKey:windowResigningKey];
 }
 
 #pragma mark - Performance toolkit

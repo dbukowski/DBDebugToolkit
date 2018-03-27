@@ -150,13 +150,6 @@
 - (void)updateKeyWindow:(UIWindow *)window;
 
 /**
- Removes the widget from the old key window.
- 
- @param window The window that resigned key. It should have the widget removed.
- */
-- (void)windowDidResignKey:(UIWindow *)window;
-
-/**
  Returns time in seconds between the measurements.
  */
 - (NSTimeInterval)timeBetweenMeasurements;
