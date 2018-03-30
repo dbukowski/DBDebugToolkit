@@ -25,6 +25,7 @@
 #import "NSBundle+DBDebugToolkit.h"
 #import "DBNetworkSettingsTableViewController.h"
 #import "DBRequestDetailsViewController.h"
+#import "NSOperationQueue+DBMainQueueOperation.h"
 
 static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBRequestTableViewCell";
 
@@ -32,10 +33,11 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *loggingRequestsDisabledLabel;
+@property (nonatomic, weak) IBOutlet UILabel *loggingRequestsDisabledLabel;
 @property (nonatomic, strong) NSArray *filteredRequests;
 @property (nonatomic, strong) DBRequestDetailsViewController *requestDetailsViewController;
 @property (nonatomic, strong) DBRequestModel *openedRequest;
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
 
 @end
 
@@ -53,6 +55,8 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
          forCellReuseIdentifier:DBNetworkViewControllerRequestCellIdentifier];
     self.tableView.tableFooterView = [UIView new];
     [self configureViewWithLoggingRequestsEnabled:self.networkToolkit.loggingEnabled];
+    self.operationQueue = [NSOperationQueue new];
+    self.operationQueue.maxConcurrentOperationCount = 1;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -90,8 +94,12 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 }
 
 - (void)reloadData {
-    [self updateRequests];
-    [self.tableView reloadData];
+    __weak DBNetworkViewController *weakSelf = self;
+    [self.operationQueue addMainQueueOperationWithBlock:^{
+        __strong DBNetworkViewController *strongSelf = weakSelf;
+        [strongSelf updateRequests];
+        [strongSelf.tableView reloadData];
+    }];
 }
 
 - (void)configureViewWithLoggingRequestsEnabled:(BOOL)enabled {
@@ -187,24 +195,26 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
 #pragma mark - DBNetworkToolkitDelegate
 
 - (void)networkDebugToolkitDidUpdateRequestsList:(DBNetworkToolkit *)networkToolkit {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self reloadData];
-    });
+    [self reloadData];
 }
 
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didUpdateRequestAtIndex:(NSInteger)index {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        DBRequestModel *requestModel = self.networkToolkit.savedRequests[index];
-        if (requestModel == self.openedRequest) {
-            [self.requestDetailsViewController configureWithRequestModel:requestModel];
+    __weak DBNetworkViewController *weakSelf = self;
+    [self.operationQueue addMainQueueOperationWithBlock:^{
+        __strong DBNetworkViewController *strongSelf = weakSelf;
+        DBRequestModel *requestModel = strongSelf.networkToolkit.savedRequests[index];
+        if (requestModel == strongSelf.openedRequest) {
+            [strongSelf.requestDetailsViewController configureWithRequestModel:requestModel];
         }
-        [self updateRequests];
-        NSInteger updatedRequestIndex = [self.filteredRequests indexOfObject:requestModel];
+        [strongSelf updateRequests];
+        NSInteger updatedRequestIndex = [strongSelf.filteredRequests indexOfObject:requestModel];
         if (updatedRequestIndex != NSNotFound) {
-            [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:self.filteredRequests.count - 1 - updatedRequestIndex inSection:0] ]
-                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:strongSelf.filteredRequests.count - 1 - updatedRequestIndex inSection:0];
+            DBRequestTableViewCell *requestCell = [strongSelf.tableView cellForRowAtIndexPath:indexPath];
+            DBRequestModel *requestModel = strongSelf.filteredRequests[strongSelf.filteredRequests.count - 1 - indexPath.row];
+            [requestCell configureWithRequestModel:requestModel];
         }
-    });
+    }];
 }
 
 - (void)networkDebugToolkit:(DBNetworkToolkit *)networkToolkit didSetEnabled:(BOOL)enabled {

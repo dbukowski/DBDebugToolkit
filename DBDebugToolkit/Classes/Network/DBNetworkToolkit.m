@@ -28,6 +28,7 @@
 
 @property (nonatomic, copy) NSMutableArray *requests;
 @property (nonatomic, strong) NSMapTable *runningRequestsModels;
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
 
 @end
 
@@ -38,6 +39,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        [self setupOperationQueue];
         [self resetLoggedData];
     }
     
@@ -58,6 +60,11 @@
     [NSURLProtocol registerClass:[DBURLProtocol class]];
 }
 
+- (void)setupOperationQueue {
+    self.operationQueue = [NSOperationQueue new];
+    self.operationQueue.maxConcurrentOperationCount = 1;
+}
+
 #pragma mark - Logging settings 
 
 - (void)setLoggingEnabled:(BOOL)loggingEnabled {
@@ -70,9 +77,11 @@
 }
 
 - (void)resetLoggedData {
-    _requests = [NSMutableArray array];
-    _runningRequestsModels = [NSMapTable strongToWeakObjectsMapTable];
-    [self removeOldSavedRequests];
+    [self.operationQueue addOperationWithBlock:^{
+        _requests = [NSMutableArray array];
+        _runningRequestsModels = [NSMapTable strongToWeakObjectsMapTable];
+        [self removeOldSavedRequests];
+    }];
 }
 
 #pragma mark - Saving request data
@@ -94,19 +103,23 @@
 }
 
 - (void)saveRequest:(NSURLRequest *)request {
-    DBRequestModel *requestModel = [DBRequestModel requestModelWithRequest:request];
-    requestModel.delegate = self;
-    [self.runningRequestsModels setObject:requestModel forKey:request.description];
-    [self.requests addObject:requestModel];
-    [self.delegate networkDebugToolkitDidUpdateRequestsList:self];
+    [self.operationQueue addOperationWithBlock:^{
+        DBRequestModel *requestModel = [DBRequestModel requestModelWithRequest:request];
+        requestModel.delegate = self;
+        [self.runningRequestsModels setObject:requestModel forKey:request.description];
+        [self.requests addObject:requestModel];
+        [self.delegate networkDebugToolkitDidUpdateRequestsList:self];
+    }];
 }
 
 - (void)saveRequestOutcome:(DBRequestOutcome *)requestOutcome forRequest:(NSURLRequest *)request {
-    DBRequestModel *requestModel = [self.runningRequestsModels objectForKey:request.description];
-    [requestModel saveOutcome:requestOutcome];
-    [requestModel saveBodyWithData:request.HTTPBody inputStream:request.HTTPBodyStream];
-    [self.runningRequestsModels removeObjectForKey:request.description];
-    [self didUpdateRequestModel:requestModel];
+    [self.operationQueue addOperationWithBlock:^{
+        DBRequestModel *requestModel = [self.runningRequestsModels objectForKey:request.description];
+        [requestModel saveOutcome:requestOutcome];
+        [requestModel saveBodyWithData:request.HTTPBody inputStream:request.HTTPBodyStream];
+        [self.runningRequestsModels removeObjectForKey:request.description];
+        [self didUpdateRequestModel:requestModel];
+    }];
 }
 
 - (NSArray *)savedRequests {
@@ -120,8 +133,10 @@
 }
 
 - (void)didUpdateRequestModel:(DBRequestModel *)requestModel {
-    NSInteger requestIndex = [self.requests indexOfObject:requestModel];
-    [self.delegate networkDebugToolkit:self didUpdateRequestAtIndex:requestIndex];
+    [self.operationQueue addOperationWithBlock:^{
+        NSInteger requestIndex = [self.requests indexOfObject:requestModel];
+        [self.delegate networkDebugToolkit:self didUpdateRequestAtIndex:requestIndex];
+    }];
 }
 
 @end
