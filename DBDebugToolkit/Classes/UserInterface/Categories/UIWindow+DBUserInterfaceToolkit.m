@@ -166,4 +166,14 @@ static const CGFloat UIWindowTouchIndicatorViewMinAlpha = 0.6;
     indicatorView.alpha = indicatorViewAlpha;
 }
 
+#pragma mark - UIDebuggingInformationOverlay
+
+- (instancetype)db_debuggingInformationOverlayInit {
+    return [super init];
+}
+
+- (UIGestureRecognizerState)state {
+    return UIGestureRecognizerStateEnded;
+}
+
 @end

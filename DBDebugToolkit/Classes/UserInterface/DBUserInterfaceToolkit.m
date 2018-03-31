@@ -23,6 +23,7 @@
 #import "DBUserInterfaceToolkit.h"
 #import "UIView+DBUserInterfaceToolkit.h"
 #import "UIWindow+DBUserInterfaceToolkit.h"
+#import "NSObject+DBDebugToolkit.h"
 
 NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = @"DBUserInterfaceToolkitColorizedViewBordersChangedNotification";
 
@@ -143,7 +144,7 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
 }
 
 - (BOOL)isDebuggingInformationOverlayAvailable {
-    return [DBUserInterfaceToolkit debuggingInformationOverlay] != NULL;
+    return [DBUserInterfaceToolkit debuggingInformationOverlayClass] != NULL;
 }
 
 - (void)setupDebuggingInformationOverlay {
@@ -162,13 +163,53 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
 }
 
 - (void)showDebuggingInformationOverlay {
-    // Making sure to minimize the risk of rejecting app because of the private API.
-    NSString *toggleVisibilityKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x74, 0x6f, 0x67, 0x67, 0x6c, 0x65, 0x56, 0x69, 0x73, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79} length:16] encoding:NSASCIIStringEncoding];
-    SEL toggleVisibilitySelector = NSSelectorFromString(toggleVisibilityKey);
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"11.0" options:NSNumericSearch] != NSOrderedAscending) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            Class debuggingInformationOverlayClass = [DBUserInterfaceToolkit debuggingInformationOverlayClass];
+            SEL swizzledInitSelector = NSSelectorFromString(@"db_debuggingInformationOverlayInit");
+            [debuggingInformationOverlayClass exchangeInstanceMethodsWithOriginalSelector:@selector(init)
+                                                                      andSwizzledSelector:swizzledInitSelector];
+        });
+
+        [[DBUserInterfaceToolkit debuggingInformationOverlay] setFrame:[[UIScreen mainScreen] bounds]];
+
+        // Making sure to minimize the risk of rejecting app because of the private API.
+        NSString *handleActivationGestureKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x5f, 0x68, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x41, 0x63, 0x74, 0x69, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x65, 0x73, 0x74, 0x75, 0x72, 0x65, 0x3a} length:25] encoding:NSASCIIStringEncoding];
+        SEL handleActivationGestureSelectior = NSSelectorFromString(handleActivationGestureKey);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [[DBUserInterfaceToolkit debuggingInformationOverlay] performSelector:toggleVisibilitySelector];
+        [[DBUserInterfaceToolkit debuggingInformationOverlayMainHandler] performSelector:handleActivationGestureSelectior withObject:[UIWindow new]];
+#pragma clang diagnostic pop
+    } else {
+        // Making sure to minimize the risk of rejecting app because of the private API.
+        NSString *toggleVisibilityKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x74, 0x6f, 0x67, 0x67, 0x6c, 0x65, 0x56, 0x69, 0x73, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79} length:16] encoding:NSASCIIStringEncoding];
+        SEL toggleVisibilitySelector = NSSelectorFromString(toggleVisibilityKey);
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [[DBUserInterfaceToolkit debuggingInformationOverlay] performSelector:toggleVisibilitySelector];
+#pragma clang diagnostic pop
+    }
+}
+
++ (Class)debuggingInformationOverlayHandlerClass {
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x55, 0x49, 0x44, 0x65, 0x62, 0x75, 0x67, 0x67, 0x69, 0x6e, 0x67, 0x49, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x76, 0x65, 0x72, 0x6c, 0x61, 0x79, 0x49, 0x6e, 0x76, 0x6f, 0x6b, 0x65, 0x47, 0x65, 0x73, 0x74, 0x75, 0x72, 0x65, 0x48, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x72} length:49] encoding:NSASCIIStringEncoding];
+    return NSClassFromString(key);
+}
+
++ (id)debuggingInformationOverlayMainHandler {
+    Class debuggingInformationOverlayHandlerClass = [DBUserInterfaceToolkit debuggingInformationOverlayHandlerClass];
+
+    // Making sure to minimize the risk of rejecting app because of the private API.
+    NSString *mainHandlerKey = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x6d, 0x61, 0x69, 0x6e, 0x48, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x72} length:11] encoding:NSASCIIStringEncoding];
+    SEL mainHandlerSelector = NSSelectorFromString(mainHandlerKey);
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    return [debuggingInformationOverlayHandlerClass performSelector:mainHandlerSelector];
 #pragma clang diagnostic pop
 }
 

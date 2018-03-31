@@ -118,7 +118,7 @@ If your device supports 3D Touch, the touch indicator view's alpha value will de
 
 </div>
 
-**Warning!** Unfortunately, `UIDebuggingInformationOverlay` is no longer available on iOS 11.
+Thanks to [Derek Selander](https://twitter.com/LOLgrep) `UIDebuggingInformationOverlay` is also available on iOS 11. Here is his fantastic [tutorial](https://www.raywenderlich.com/177890/swizzling-in-ios-11-with-uidebugginginformationoverlay) describing how he got around the checks imposed by Apple in this OS version.
 
 ### Network
 
