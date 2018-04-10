@@ -160,9 +160,12 @@ static const CGFloat UIWindowTouchIndicatorViewMinAlpha = 0.6;
 - (void)db_handleTouchForce:(UITouch *)touch {
     DBTouchIndicatorView *indicatorView = [self.touchIndicators objectForKey:touch];
     CGFloat indicatorViewAlpha = 1.0;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpartial-availability"
     if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)] && self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
         indicatorViewAlpha = UIWindowTouchIndicatorViewMinAlpha + (1.0 - UIWindowTouchIndicatorViewMinAlpha) * touch.force / touch.maximumPossibleForce;
     }
+#pragma clang diagnostic pop
     indicatorView.alpha = indicatorViewAlpha;
 }
 

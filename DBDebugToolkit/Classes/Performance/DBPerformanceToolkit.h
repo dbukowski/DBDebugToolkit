@@ -143,13 +143,6 @@
 - (void)simulateMemoryWarning;
 
 /**
- Updates the widget with new key window.
- 
- @param window The new application key window.
- */
-- (void)updateKeyWindow:(UIWindow *)window;
-
-/**
  Returns time in seconds between the measurements.
  */
 - (NSTimeInterval)timeBetweenMeasurements;

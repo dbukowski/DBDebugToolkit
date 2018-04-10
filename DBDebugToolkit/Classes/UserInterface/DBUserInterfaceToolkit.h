@@ -21,6 +21,8 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "DBGridOverlayView.h"
+#import "DBGridOverlayColorScheme.h"
 
 /**
  String containing the name of notifications send to inform about change in colorized view borders settings.
@@ -51,6 +53,31 @@ extern NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotifica
  Boolean flag determining whether showing touches is enabled or not.
  */
 @property (nonatomic, assign) BOOL showingTouchesEnabled;
+
+/**
+ Boolean determining whether the grid overlay should be shown or not.
+ */
+@property (nonatomic, assign) BOOL isGridOverlayShown;
+
+/**
+ Created grid overlay displayed on top of the screen.
+ */
+@property (nonatomic, readonly) DBGridOverlayView *gridOverlay;
+
+/**
+ An array of available grid overlay color schemes. Read-only.
+ */
+@property (nonatomic, readonly) NSArray <DBGridOverlayColorScheme *> *gridOverlayColorSchemes;
+
+/**
+ The index of the currently selected color scheme.
+ */
+@property (nonatomic, assign) NSInteger selectedGridOverlayColorSchemeIndex;
+
+/**
+ Sets up the `DBGridOverlayView`.
+ */
+- (void)setupGridOverlay;
 
 /**
  Returns the autolayout trace for the key window.

@@ -22,6 +22,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DBPerformanceSection.h"
+#import "DBTopLevelView.h"
 
 @class DBPerformanceWidgetView;
 
@@ -45,7 +46,7 @@
  It shows the current CPU usage, memory usage and current frames per second value.
  It can be moved around the window with pan gesture and it recognizes taps.
  */
-@interface DBPerformanceWidgetView : UIView
+@interface DBPerformanceWidgetView : DBTopLevelView
 
 /**
  Delegate that will be informed about tapping the widget. It needs to conform to `DBPerformanceWidgetViewDelegate` protocol.

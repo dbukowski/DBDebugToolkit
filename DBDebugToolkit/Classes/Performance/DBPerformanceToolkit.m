@@ -79,8 +79,6 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
     self.widget.alpha = 0.0;
     self.widget.hidden = YES;
     self.widget.delegate = widgetDelegate;
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    [self addWidgetToWindow:keyWindow];
 }
 
 - (void)refreshWidget {
@@ -97,25 +95,6 @@ static const NSTimeInterval DBPerformanceToolkitTimeBetweenMeasurements = 1.0;
     } completion:^(BOOL finished) {
         self.widget.hidden = !isWidgetShown;
     }];
-}
-
-- (void)addWidgetToWindow:(UIWindow *)window {
-    [self.widget.superview removeObserver:self forKeyPath:@"layer.sublayers"];
-    [window addSubview:self.widget];
-    // We observe the "layer.sublayers" property of the window to keep the widget on top.
-    [window addObserver:self
-             forKeyPath:@"layer.sublayers"
-                options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                context:nil];
-}
-
-- (void)updateKeyWindow:(UIWindow *)window {
-    [self addWidgetToWindow:window];
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    // We want to keep the widget on top of all the views.
-    [self.widget.superview bringSubviewToFront:self.widget];
 }
 
 #pragma mark - Performance Measurement

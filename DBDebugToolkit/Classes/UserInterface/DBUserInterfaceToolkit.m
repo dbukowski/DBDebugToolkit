@@ -24,8 +24,16 @@
 #import "UIView+DBUserInterfaceToolkit.h"
 #import "UIWindow+DBUserInterfaceToolkit.h"
 #import "NSObject+DBDebugToolkit.h"
+#import "UIColor+DBDebugToolkit.h"
 
 NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = @"DBUserInterfaceToolkitColorizedViewBordersChangedNotification";
+
+@interface DBUserInterfaceToolkit ()
+
+@property (nonatomic, strong) DBGridOverlayView *gridOverlay;
+@property (nonatomic, strong) NSArray <DBGridOverlayColorScheme *> *gridOverlayColorSchemes;
+
+@end
 
 @implementation DBUserInterfaceToolkit
 
@@ -120,6 +128,53 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
 
 - (void)setShowingTouchesEnabledForWindow:(UIWindow *)window {
     [window setShowingTouchesEnabled:self.showingTouchesEnabled];
+}
+
+#pragma mark - Grid overlay
+
+- (void)setupGridOverlay {
+    self.gridOverlay = [DBGridOverlayView new];
+    self.gridOverlay.alpha = 0.0;
+    self.gridOverlay.hidden = YES;
+    self.gridOverlayColorSchemes = @[[DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor blackColor]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0x8E8E93]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0x0076FF]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0x54C7FC]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0x44DB5E]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0xFF3824]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0xFF2851]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0xFF9600]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor colorWithRGBValue:0xFFCD00]
+                                                                            secondaryColor:[UIColor whiteColor]],
+                                     [DBGridOverlayColorScheme colorSchemeWithPrimaryColor:[UIColor whiteColor]
+                                                                            secondaryColor:[UIColor lightGrayColor]]];
+    self.gridOverlay.colorScheme = self.gridOverlayColorSchemes.firstObject;
+}
+
+- (void)setIsGridOverlayShown:(BOOL)isGridOverlayShown {
+    _isGridOverlayShown = isGridOverlayShown;
+    self.gridOverlay.hidden = NO;
+    [UIView animateWithDuration:0.35 animations:^{
+        self.gridOverlay.alpha = isGridOverlayShown ? 1.0 : 0.0;
+    } completion:^(BOOL finished) {
+        self.gridOverlay.hidden = !isGridOverlayShown;
+    }];
+}
+
+- (void)setSelectedGridOverlayColorSchemeIndex:(NSInteger)selectedGridOverlayColorSchemeIndex {
+    self.gridOverlay.colorScheme = self.gridOverlayColorSchemes[selectedGridOverlayColorSchemeIndex];
+}
+
+- (NSInteger)selectedGridOverlayColorSchemeIndex {
+    return [self.gridOverlayColorSchemes indexOfObject:self.gridOverlay.colorScheme];
 }
 
 #pragma mark - UIDebuggingInformationOverlay

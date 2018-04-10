@@ -58,7 +58,6 @@ static const CGFloat DBPerformanceWidgetMinimalOffset = 10;
 - (void)commonInit {
     self.layer.borderWidth = 1.0 / [UIScreen mainScreen].scale;
     self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    [self registerForNotifications];
     [self setupGestureRecognizers];
 }
 
@@ -66,31 +65,23 @@ static const CGFloat DBPerformanceWidgetMinimalOffset = 10;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - Adding to window
-
-- (void)willMoveToWindow:(UIWindow *)newWindow {
-    [super willMoveToWindow:newWindow];
-    if (!self.window) {
-        // Setting up the default frame.
-        self.frame = [self defaultFrameWithWindow:newWindow];
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (!self.superview) {
+        self.frame = [self defaultFrameWithSuperview:newSuperview];
     }
-}
-
-- (void)didMoveToWindow {
-    [super didMoveToWindow];
-    [self updateFrame];
 }
 
 #pragma mark - Updating frame
 
 - (void)updateFrame {
-    CGSize windowBoundsSize = self.window.bounds.size;
+    CGSize superviewBoundsSize = self.superview.bounds.size;
     CGRect frame = self.frame;
     frame.size.width = DBPerformanceWidgetViewWidth;
     frame.size.height = DBPerformanceWidgetViewHeight;
-    frame.origin.x = MIN(windowBoundsSize.width - frame.size.width - DBPerformanceWidgetMinimalOffset,
+    frame.origin.x = MIN(superviewBoundsSize.width - frame.size.width - DBPerformanceWidgetMinimalOffset,
                          MAX(DBPerformanceWidgetMinimalOffset, frame.origin.x));
-    frame.origin.y = MIN(windowBoundsSize.height - frame.size.height - DBPerformanceWidgetMinimalOffset,
+    frame.origin.y = MIN(superviewBoundsSize.height - frame.size.height - DBPerformanceWidgetMinimalOffset,
                          MAX(DBPerformanceWidgetMinimalOffset, frame.origin.y));
     self.frame = frame;
 }
@@ -100,30 +91,14 @@ static const CGFloat DBPerformanceWidgetMinimalOffset = 10;
     [self updateFrame];
 }
 
-- (CGRect)defaultFrameWithWindow:(UIWindow *)window {
-    CGSize windowBoundsSize = window.bounds.size;
+- (CGRect)defaultFrameWithSuperview:(UIView *)superview {
+    CGSize superviewBoundsSize = superview.bounds.size;
     CGRect frame = CGRectZero;
     frame.size.width = DBPerformanceWidgetViewWidth;
     frame.size.height = DBPerformanceWidgetViewHeight;
-    frame.origin.x = (windowBoundsSize.width - frame.size.width) / 2;
-    frame.origin.y = windowBoundsSize.height - frame.size.height - DBPerformanceWidgetMinimalOffset;
+    frame.origin.x = (superviewBoundsSize.width - frame.size.width) / 2;
+    frame.origin.y = superviewBoundsSize.height - frame.size.height - DBPerformanceWidgetMinimalOffset;
     return frame;
-}
-
-#pragma mark - Rotation notifications
-
-- (void)registerForNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceDidChangeOrientation:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
-}
-
-- (void)deviceDidChangeOrientation:(NSNotification *)notification {
-    if ([self.superview isKindOfClass:[UIWindow class]]) {
-        // The widget view was added directly to the window, so it needs custom rotation handling.
-        [self updateFrame];
-    }
 }
 
 #pragma mark - Gesture recognizers

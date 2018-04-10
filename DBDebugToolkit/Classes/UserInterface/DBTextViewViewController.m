@@ -54,12 +54,15 @@
 }
 
 - (void)modeSetup {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpartial-availability"
     if (self.isInConsoleMode) {
         self.textView.font = [UIFont systemFontOfSize:11 weight:UIFontWeightSemibold];
     } else {
         self.textView.font = [UIFont systemFontOfSize:14];
         self.textViewWidthConstraint.active = NO;
     }
+#pragma clang diagnostic pop
 }
 
 @end

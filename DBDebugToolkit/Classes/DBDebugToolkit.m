@@ -35,6 +35,7 @@
 #import "DBUserDefaultsToolkit.h"
 #import "DBCoreDataToolkit.h"
 #import "DBCrashReportsToolkit.h"
+#import "DBTopLevelViewsWrapper.h"
 
 static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPath = @"containerView";
 
@@ -52,6 +53,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 @property (nonatomic, strong) DBCrashReportsToolkit *crashReportsToolkit;
 @property (nonatomic, strong) NSMutableArray <DBCustomAction *> *customActions;
 @property (nonatomic, strong) NSMutableDictionary <NSString *, DBCustomVariable *> *customVariables;
+@property (nonatomic, strong) DBTopLevelViewsWrapper *topLevelViewsWrapper;
 
 @end
 
@@ -79,6 +81,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DBDebugToolkit alloc] init];
         [sharedInstance registerForNotifications];
+        [sharedInstance setupTopLevelViewsWrapper];
         [sharedInstance setupPerformanceToolkit];
         [sharedInstance setupConsoleOutputCaptor];
         [sharedInstance setupNetworkToolkit];
@@ -135,7 +138,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 - (void)newKeyWindowNotification:(NSNotification *)notification {
     UIWindow *newKeyWindow = notification.object;
     [self addTriggersToWindow:newKeyWindow];
-    [self.performanceToolkit updateKeyWindow:newKeyWindow];
+    [self addTopLevelViewsWrapperToWindow:newKeyWindow];
 }
 
 - (void)windowDidResignKeyNotification:(NSNotification *)notification {
@@ -147,6 +150,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 
 - (void)setupPerformanceToolkit {
     self.performanceToolkit = [[DBPerformanceToolkit alloc] initWithWidgetDelegate:self];
+    [self.topLevelViewsWrapper addTopLevelView:self.performanceToolkit.widget];
 }
 
 #pragma mark - Console output captor
@@ -181,6 +185,8 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     self.userInterfaceToolkit.slowAnimationsEnabled = NO;
     self.userInterfaceToolkit.showingTouchesEnabled = NO;
     [self.userInterfaceToolkit setupDebuggingInformationOverlay];
+    [self.userInterfaceToolkit setupGridOverlay];
+    [self.topLevelViewsWrapper addTopLevelView:self.userInterfaceToolkit.gridOverlay];
 }
 
 #pragma mark - Location toolkit
@@ -273,6 +279,24 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     [userDefaultsToolkit handleClearAction];
 }
 
+#pragma mark - Top level views
+
+- (void)setupTopLevelViewsWrapper {
+    self.topLevelViewsWrapper = [DBTopLevelViewsWrapper new];
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    [self addTopLevelViewsWrapperToWindow:keyWindow];
+}
+
+- (void)addTopLevelViewsWrapperToWindow:(UIWindow *)window {
+    [self.topLevelViewsWrapper.superview removeObserver:self forKeyPath:@"layer.sublayers"];
+    [window addSubview:self.topLevelViewsWrapper];
+    // We observe the "layer.sublayers" property of the window to keep the widget on top.
+    [window addObserver:self
+             forKeyPath:@"layer.sublayers"
+                options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                context:nil];
+}
+
 #pragma mark - Convenience methods
 
 + (void)showMenu {
@@ -322,6 +346,8 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
             self.showsMenu = NO;
             [presentationController removeObserver:self forKeyPath:DBDebugToolkitObserverPresentationControllerPropertyKeyPath];
         }
+    } else if ([object isKindOfClass:[UIWindow class]]) {
+        [self.topLevelViewsWrapper.superview bringSubviewToFront:self.topLevelViewsWrapper];
     }
 }
 

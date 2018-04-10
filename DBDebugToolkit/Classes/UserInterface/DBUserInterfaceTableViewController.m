@@ -25,17 +25,18 @@
 #import "DBMenuSwitchTableViewCell.h"
 #import "DBTextViewViewController.h"
 #import "DBFontFamiliesTableViewController.h"
+#import "DBGridOverlaySettingsTableViewController.h"
 
 typedef NS_ENUM(NSUInteger, DBUserInterfaceTableViewControllerCell) {
     DBUserInterfaceTableViewControllerCellColorBorders,
     DBUserInterfaceTableViewControllerCellSlowAnimations,
     DBUserInterfaceTableViewControllerCellShowTouches,
+    DBUserInterfaceTableViewControllerCellGridOverlay,
     DBUserInterfaceTableViewControllerCellAutolayoutTrace,
     DBUserInterfaceTableViewControllerCellCurrentViewDescription,
     DBUserInterfaceTableViewControllerCellViewControllerHierarchy,
     DBUserInterfaceTableViewControllerCellFontFamilies,
     DBUserInterfaceTableViewControllerCellDebuggingInformationOverlay
-
 };
 
 static NSString *const DBUserInterfaceTableViewControllerBasicCellIdentifier = @"DBUserInterfaceBasicCell";
@@ -67,6 +68,8 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
             return @"Slow animations";
         case DBUserInterfaceTableViewControllerCellShowTouches:
             return @"Showing touches";
+        case DBUserInterfaceTableViewControllerCellGridOverlay:
+            return @"Grid overlay";
         case DBUserInterfaceTableViewControllerCellAutolayoutTrace:
             return @"Autolayout trace";
         case DBUserInterfaceTableViewControllerCellCurrentViewDescription:
@@ -111,10 +114,18 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
     [self.navigationController pushViewController:fontFamiliesTableViewController animated:YES];
 }
 
+- (void)openGridOverlaySettingsTableViewController {
+    NSBundle *bundle = [NSBundle debugToolkitBundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBGridOverlaySettingsTableViewController" bundle:bundle];
+    DBGridOverlaySettingsTableViewController *gridOverlaySettingsTableViewController = [storyboard instantiateInitialViewController];
+    gridOverlaySettingsTableViewController.userInterfaceToolkit = self.userInterfaceToolkit;
+    [self.navigationController pushViewController:gridOverlaySettingsTableViewController animated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.userInterfaceToolkit.isDebuggingInformationOverlayAvailable ? 8 : 7;
+    return self.userInterfaceToolkit.isDebuggingInformationOverlayAvailable ? 9 : 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -133,7 +144,8 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
         case DBUserInterfaceTableViewControllerCellAutolayoutTrace:
         case DBUserInterfaceTableViewControllerCellCurrentViewDescription:
         case DBUserInterfaceTableViewControllerCellViewControllerHierarchy:
-        case DBUserInterfaceTableViewControllerCellFontFamilies: {
+        case DBUserInterfaceTableViewControllerCellFontFamilies:
+        case DBUserInterfaceTableViewControllerCellGridOverlay: {
             UITableViewCell *basicCell = [tableView dequeueReusableCellWithIdentifier:DBUserInterfaceTableViewControllerBasicCellIdentifier];
             basicCell.textLabel.text = title;
             return basicCell;
@@ -159,6 +171,9 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
     DBUserInterfaceTableViewControllerCell cell = indexPath.row;
     NSString *title = [self titleForCellAtIndex:indexPath.row];
     switch (cell) {
+        case DBUserInterfaceTableViewControllerCellGridOverlay:
+            [self openGridOverlaySettingsTableViewController];
+            break;
         case DBUserInterfaceTableViewControllerCellAutolayoutTrace:
             [self openTextViewViewControllerWithTitle:title text:[self.userInterfaceToolkit autolayoutTrace]];
             break;
@@ -196,6 +211,7 @@ static NSString *const DBUserInterfaceTableViewControllerButtonCellIdentifier = 
             break;
         case DBUserInterfaceTableViewControllerCellShowTouches:
             self.userInterfaceToolkit.showingTouchesEnabled = isOn;
+            break;
         default:
             return;
     }
