@@ -28,6 +28,7 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
   - [x] Showing all view frames
   - [x] Slowing down animations
   - [x] Showing touches on screen (useful for recording and screen sharing)
+  - [x] Displaying customizable grid overlay on top of the screen
   - [x] Autolayout trace
   - [x] Current view description
   - [x] View controllers hierarchy
