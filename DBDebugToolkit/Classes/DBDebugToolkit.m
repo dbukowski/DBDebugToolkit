@@ -217,6 +217,16 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     [toolkit.customActions addObjectsFromArray:customActions];
 }
 
++ (void)removeCustomAction:(DBCustomAction *)customAction {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    [toolkit.customActions removeObject:customAction];
+}
+
++ (void)removeCustomActions:(NSArray <DBCustomAction *> *)customActions {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    [toolkit.customActions removeObjectsInArray:customActions];
+}
+
 #pragma mark - Custom variables
 
 - (void)setupCustomVariables {
