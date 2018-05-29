@@ -316,6 +316,13 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     }
 }
 
++ (void)closeMenu {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    if (toolkit.showsMenu) {
+        [toolkit closeMenu];
+    }
+}
+
 + (void)showPerformanceWidget {
     DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
     DBPerformanceToolkit *performanceToolkit = toolkit.performanceToolkit;
@@ -346,6 +353,10 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
                                                          options:0
                                                          context:nil];
     }];
+}
+
+- (void)closeMenu {
+    [self menuTableViewControllerDidTapClose:self.menuViewController];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
