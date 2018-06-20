@@ -108,6 +108,20 @@
  */
 + (void)addCustomActions:(NSArray <DBCustomAction *> *)customActions;
 
+/**
+ Removes a single `DBCustomAction` instance from the array accessible in the menu.
+ 
+ @param customAction The `DBCustomAction` instance that should be removed.
+ */
++ (void)removeCustomAction:(DBCustomAction *)customAction;
+
+/**
+ Removes multiple `DBCustomAction` instances from the array accessible in the menu.
+ 
+ @param customActions An array of `DBCustomAction` instances that should be accessible in the menu.
+ */
++ (void)removeCustomActions:(NSArray <DBCustomAction *> *)customActions;
+
 ///-----------------------
 /// @name Custom variables
 ///-----------------------
