@@ -1,5 +1,5 @@
 PODS:
-  - DBDebugToolkit (0.3.0)
+  - DBDebugToolkit (0.3.1)
   - Expecta (1.0.5)
   - Specta (1.0.5)
 
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DBDebugToolkit: d62a4c18837d85214c6590e42f86eed5e54adb14
+  DBDebugToolkit: 3ba51487be2b6cd6ddf00e40f809e251cb5a6059
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
