@@ -63,6 +63,7 @@ static const CGFloat DBGridOverlayViewVerticalLabelContentOffsets = 4.0;
     self.userInteractionEnabled = NO;
     self.opaque = NO;
     self.gridSize = 8;
+    self.opacity = 1;
     [self setupLabels];
 }
 
@@ -169,6 +170,11 @@ static const CGFloat DBGridOverlayViewVerticalLabelContentOffsets = 4.0;
 - (void)setGridSize:(NSInteger)gridSize {
     _gridSize = gridSize;
     [self setNeedsDisplay];
+}
+
+- (void)setOpacity:(CGFloat)opacity {
+    _opacity = opacity;
+    self.alpha = opacity;
 }
 
 - (void)setColorScheme:(DBGridOverlayColorScheme *)colorScheme {
