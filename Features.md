@@ -89,7 +89,7 @@ If your device supports 3D Touch, the touch indicator view's alpha value will de
   <img src="Assets/gridOverlay.gif">
 </p>
 
-Grid overlay is highly customizable. You can choose the size of the grid from values between 4 and 64. There are also 10 available color settings. Due to the fact that the device screen dimensions are not always a multiple of the selected size of the grid, the grid lines are drawn from left, right, top and bottom, so you can check if your layout was implemented properly. The remaining middle parts of the grid can have a different size, which is indicated by two labels. The grid overlay stays on top of the screen at all times.
+Grid overlay is highly customizable. You can choose the size of the grid from values between 4 and 64. There are also 10 available color settings and a slider for adjusting the opacity. Due to the fact that the device screen dimensions are not always a multiple of the selected size of the grid, the grid lines are drawn from left, right, top and bottom, so you can check if your layout was implemented properly. The remaining middle parts of the grid can have a different size, which is indicated by two labels. The grid overlay stays on top of the screen at all times.
 
 * Autolayout trace
 
