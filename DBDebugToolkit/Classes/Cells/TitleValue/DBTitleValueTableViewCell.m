@@ -25,15 +25,21 @@
 @interface DBTitleValueTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UITextView *valueTextView;
 
 @end
 
 @implementation DBTitleValueTableViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.valueTextView.textContainer.lineFragmentPadding = 0;
+    self.valueTextView.textContainerInset = UIEdgeInsetsZero;
+}
+
 - (void)configureWithDataSource:(DBTitleValueTableViewCellDataSource *)dataSource {
     self.titleLabel.text = dataSource.title;
-    self.valueLabel.text = dataSource.value;
+    self.valueTextView.text = dataSource.value;
 }
 
 @end
