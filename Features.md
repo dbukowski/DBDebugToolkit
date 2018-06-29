@@ -17,6 +17,7 @@
 - [Crash reports](#crash-reports)
 - [Custom variables](#custom-variables)
 - [Custom actions](#custom-actions)
+- [Shortcut items](#shortcut-items)
 
 ### Performance
 
@@ -401,3 +402,21 @@ To run these actions simply open the menu and go to custom actions section. You 
 <p align="center">
   <img src="Assets/customActions.gif">
 </p>
+
+### Shortcut items
+
+What would you do if one of the testers in your team had a crash on the app launch caused by invalid data stored in the keychain? To avoid wiping all content and settings from the device, you would probably have to prepare a special build that removes the keychain data. This can be avoided with DBDebugToolkit, as it comes now with a shortcut item that removes all the data from the keychain, user defaults, documents directory and cookies.
+
+<p align="center">
+  <img src="Assets/shortcutItem.gif">
+</p>
+
+To enable that option, all you have to do is add one line of code after DBDebugToolkit setup:
+
+```swift
+DBDebugToolkit.addClearDataShortcutItem()
+```
+
+Please note that overriding `UIApplication.shared.shortcutItems` after that line of code will remove this shortcut item.
+
+**Warning!** Shortcut items are available on iOS 9.0 and above. Also, you can only use them on devices that support 3D Touch.

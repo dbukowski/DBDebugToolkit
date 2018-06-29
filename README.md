@@ -55,6 +55,7 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
 - [x] Modifying custom variable values from the menu
 - [x] Adding custom actions to the menu
 - [x] Opening application settings
+- [x] Application shortcut item for clearing data
 - [x] Showing version & build number
 - [x] Showing device model & iOS version
 
