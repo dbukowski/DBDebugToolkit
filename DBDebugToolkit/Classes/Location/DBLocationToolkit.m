@@ -26,11 +26,15 @@
 @interface DBLocationToolkit ()
 
 @property (nonatomic, strong) NSArray <DBPresetLocation *> *presetLocations;
-
+@property (nonatomic, strong) NSArray *tripLocations;
+@property (nonatomic, strong) NSTimer *tripTimer;
+@property (nonatomic, assign) NSInteger tripLocationCounter;
 @end
 
 @implementation DBLocationToolkit
 
+@synthesize tripLocations;
+@synthesize tripTimer;
 @synthesize simulatedLocation;
 
 #pragma mark - Initialization
@@ -50,6 +54,7 @@
     if (aSimulatedLocation != simulatedLocation) {
         simulatedLocation = aSimulatedLocation;
         if (simulatedLocation) {
+          
             [[NSUserDefaults standardUserDefaults] setObject:@(simulatedLocation.coordinate.latitude)
                                                       forKey:DBDebugToolkitUserDefaultsSimulatedLocationLatitudeKey];
             [[NSUserDefaults standardUserDefaults] setObject:@(simulatedLocation.coordinate.longitude)
@@ -121,5 +126,51 @@
     
     return _presetLocations;
 }
+#pragma mark - Simulated location Trip
 
+-(void)startTrip:(NSTimeInterval)interval
+   tripLocations:(NSArray <DBPresetLocation *> *)locations {
+  
+  if (interval < 1.0 || locations == nil || locations.count < 1) {
+    NSLog(@"invalid params");
+    return;
+  }
+  [self stopTrip];
+  self.tripLocations = [NSArray arrayWithArray:locations];
+  self.tripLocationCounter = 0;
+  self.tripTimer  = [NSTimer timerWithTimeInterval:interval
+                                             target:self
+                                           selector:@selector(updateLocation)
+                                           userInfo:nil
+                                            repeats:YES];
+  [[NSRunLoop mainRunLoop] addTimer:self.tripTimer
+                            forMode:NSRunLoopCommonModes];
+  
+}
+-(void)stopTrip {
+  if (self.tripTimer != nil) {
+    [self.tripTimer invalidate];
+    self.tripTimer = nil;
+  }
+  self.tripLocations = nil;
+}
+
+
+-(void)updateLocation {
+  if (self.currentLocationCounter >= self.tripLocations.count) {
+    // We reached the limit or location array is empty
+    [self stopTrip];
+    return;
+  }
+  DBPresetLocation *presetLocation = self.tripLocations[self.currentLocationCounter];
+  if(presetLocation == nil) {
+    // data is not able to cast
+  }
+   CLLocation *currentLocation= [[CLLocation alloc] initWithLatitude:presetLocation.latitude
+                                                                      longitude:presetLocation.longitude];
+  [self setSimulatedLocation:currentLocation];
+  [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationUpdate object:nil];
+  self.tripLocationCounter++;
+  currentLocation = nil;
+}
 @end

@@ -21,6 +21,10 @@
 // THE SOFTWARE.
 
 #import <CoreLocation/CoreLocation.h>
+/**
+ string is used as notification name for location update.
+ */
+static NSString *const CLLocationUpdate = @"locationUpdate";
 
 /**
  `CLLocationManager` category that replaces private methods to simulate location.
