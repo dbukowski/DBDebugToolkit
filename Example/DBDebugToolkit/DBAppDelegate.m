@@ -28,12 +28,14 @@
     [self setupUserDefaultsExample];
     [self setupKeychainExample];
     [self setupCoreData];
+    [self setupExampleShortcutItems];
     DBCustomAction *prepopulateCoreDataAction = [DBCustomAction customActionWithName:@"Add more core data instances"
                                                                                 body:^{
                                                                                     [self prepopulateCoreData];
                                                                                 }];
     [DBDebugToolkit addCustomAction:prepopulateCoreDataAction];
     [DBDebugToolkit setupCrashReporting];
+    [DBDebugToolkit addClearDataShortcutItem];
     return YES;
 }
 
@@ -85,6 +87,18 @@
         NSString *key = [NSString stringWithFormat:@"Example keychain key %ld", (long)i];
         [self addValue:value forKeyInKeychain:key];
     }
+}
+
+- (void)setupExampleShortcutItems {
+    if (![[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){9, 0, 0}]) {
+        // Shortcut items are not supported on the running iOS version.
+        return;
+    }
+
+    UIApplicationShortcutItem *item1 = [[UIApplicationShortcutItem alloc] initWithType:@"Type1" localizedTitle:@"Example shortcut 1"];
+    UIApplicationShortcutItem *item2 = [[UIApplicationShortcutItem alloc] initWithType:@"Type2" localizedTitle:@"Example shortcut 2"];
+    UIApplicationShortcutItem *item3 = [[UIApplicationShortcutItem alloc] initWithType:@"Type3" localizedTitle:@"Example shortcut 3"];
+    UIApplication.sharedApplication.shortcutItems = @[item1, item2, item3];
 }
 
 - (void)addValue:(NSString *)value forKeyInKeychain:(NSString *)key {
