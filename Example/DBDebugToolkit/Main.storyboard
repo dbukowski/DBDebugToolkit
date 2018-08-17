@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xh2-Xv-FOO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YIB-sz-OoV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6W-iA-Rmw">
-                                <rect key="frame" x="155" y="118.5" width="64" height="30"/>
+                                <rect key="frame" x="155.5" y="118.5" width="64" height="30"/>
                                 <state key="normal" title="Requests"/>
                                 <connections>
                                     <segue destination="Fvj-FL-Kb5" kind="show" id="N7T-KD-wSM"/>
@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBH-sZ-DG7" userLabel="Crash reports">
-                                <rect key="frame" x="139.5" y="518.5" width="95" height="30"/>
+                                <rect key="frame" x="140" y="518.5" width="95" height="30"/>
                                 <state key="normal" title="Crash reports"/>
                                 <connections>
                                     <segue destination="XR3-EI-02y" kind="show" id="X5g-ox-nVj"/>
@@ -162,6 +162,37 @@
             </objects>
             <point key="canvasLocation" x="2233" y="432"/>
         </scene>
+        <!--My Map View Controller-->
+        <scene sceneID="jcw-YB-gYh">
+            <objects>
+                <viewController id="xYQ-wT-8Bc" customClass="MyMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GvY-dt-efd"/>
+                        <viewControllerLayoutGuide type="bottom" id="kKZ-Zx-hPg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="shb-XB-pln">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9TF-Zv-og6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xYQ-wT-8Bc" id="8kB-34-bIk"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yZS-LC-XTt"/>
+                    <connections>
+                        <outlet property="mapView" destination="9TF-Zv-og6" id="Trf-Rr-GP3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNE-lF-8oB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5436" y="480.80959520239884"/>
+        </scene>
         <!--Crash reports-->
         <scene sceneID="B7Y-Xr-8Cs">
             <objects>
@@ -175,21 +206,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYB-17-l58">
-                                <rect key="frame" x="112" y="152" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="152" width="150" height="30"/>
                                 <state key="normal" title="Calling NULL function"/>
                                 <connections>
                                     <action selector="callingNullFunctionAction:" destination="XR3-EI-02y" eventType="touchUpInside" id="kMM-vm-xp9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yS-1f-Vbu">
-                                <rect key="frame" x="109" y="318.5" width="156" height="30"/>
+                                <rect key="frame" x="109.5" y="318.5" width="156" height="30"/>
                                 <state key="normal" title="Unrecognized selector"/>
                                 <connections>
                                     <action selector="unrecognizedSelectorAction:" destination="XR3-EI-02y" eventType="touchUpInside" id="tOt-UK-VJe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5C-4h-FlU">
-                                <rect key="frame" x="118.5" y="485.5" width="137" height="30"/>
+                                <rect key="frame" x="119" y="485.5" width="137" height="30"/>
                                 <state key="normal" title="Index out of bounds"/>
                                 <connections>
                                     <action selector="indexOutOfBoundsAction:" destination="XR3-EI-02y" eventType="touchUpInside" id="JJK-uG-QmW"/>
@@ -257,7 +288,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xh2-Xv-FOO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3hp-lZ-0eD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -268,6 +299,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSq-Pj-ZfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="304.80000000000001" y="432.23388305847078"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zdj-qM-yFa">
+            <objects>
+                <viewController id="pui-eg-McI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MtE-JO-Fww"/>
+                        <viewControllerLayoutGuide type="bottom" id="lo7-nb-izk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VGt-LQ-HFM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPY-Wv-OZh">
+                                <rect key="frame" x="197" y="280" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="xYQ-wT-8Bc" kind="push" id="rBi-px-E0F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H31-4x-2xT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nHh-AB-Ncd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4764" y="480.80959520239884"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="g5u-j7-QFe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="YIB-sz-OoV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HeX-dK-Fgg">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pui-eg-McI" kind="relationship" relationship="rootViewController" id="eUx-K0-Ybp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SGz-sK-taK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3824.8000000000002" y="480.80959520239884"/>
         </scene>
     </scenes>
 </document>

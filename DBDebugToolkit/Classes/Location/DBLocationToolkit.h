@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "CLLocationManager+DBLocationToolkit.h"
+#import <CoreLocation/CoreLocation.h>
 #import "DBPresetLocation.h"
 
 /**
@@ -37,20 +37,11 @@
 /**
  Current simulated location.
  */
-@property (nonatomic, strong) CLLocation *simulatedLocation;
+@property (nonatomic, strong) NSMutableArray<DBPresetLocation *> *simulatedLocation;
 
 /**
  A list of preset locations. Read-only.
  */
-@property (nonatomic, readonly) NSArray <DBPresetLocation *> *presetLocations;
-/**
- call method to start changing user location.
- required: interval at what time interval want to change the location. atleast 1 sec is required.
- required: locations list of locations.
- */
--(void)startTrip:(NSTimeInterval)interval tripLocations:(NSArray <DBPresetLocation *> *)locations;
-/**
- call method to stop changing user location.
- */
--(void)stopTrip;
+@property (nonatomic, readonly) NSArray <NSMutableArray<DBPresetLocation *> *> *presetLocations;
+
 @end

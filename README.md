@@ -2,7 +2,6 @@
 
 [![CI Status](http://img.shields.io/travis/dbukowski/DBDebugToolkit.svg?style=flat)](https://travis-ci.org/dbukowski/DBDebugToolkit)
 [![Version](https://img.shields.io/cocoapods/v/DBDebugToolkit.svg?style=flat)](http://cocoapods.org/pods/DBDebugToolkit)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/DBDebugToolkit.svg?style=flat)](http://cocoapods.org/pods/DBDebugToolkit)
 [![Platform](https://img.shields.io/cocoapods/p/DBDebugToolkit.svg?style=flat)](http://cocoapods.org/pods/DBDebugToolkit)
 [![Twitter: @darekbukowski](https://img.shields.io/badge/contact-@darekbukowski-blue.svg?style=flat)](https://twitter.com/darekbukowski)
@@ -55,7 +54,6 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
 - [x] Modifying custom variable values from the menu
 - [x] Adding custom actions to the menu
 - [x] Opening application settings
-- [x] Application shortcut item for clearing data
 - [x] Showing version & build number
 - [x] Showing device model & iOS version
 
@@ -121,8 +119,6 @@ You can also create your own trigger. To do this, create a class that conforms t
 
 ## Installation
 
-### CocoaPods
-
 DBDebugToolkit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -186,14 +182,6 @@ However, to provide some of its features, DBDebugToolkit does use private API. T
   ```
 
 The setup with a separate target for App Store releases will help you prevent sending the build containing the private API calls included in DBDebugToolkit to the App Store review. However, you would have to remember about adding all the files to both targets during development. You will have to decide which way is the best for your project. Perhaps it will be easier to manually remove DBDebugToolkit from the podfile before each App Store release.
-
-### Carthage
-
-To integrate DBDebugToolkit into your Xcode project using Carthage, specify it in your Cartfile:
-```ruby
-github "dbukowski/DBDebugToolkit" ~> 0.5.0
-```
-Run carthage update to build the framework and drag the built DBDebugToolkit.framework into your Xcode project.
 
 ## Author
 

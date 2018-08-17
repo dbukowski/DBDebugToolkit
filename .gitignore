@@ -18,7 +18,6 @@ profile
 DerivedData
 *.hmap
 *.ipa
-xcshareddata/
 
 # Bundler
 .bundle

@@ -163,7 +163,7 @@ NSString *const DBUserInterfaceToolkitColorizedViewBordersChangedNotification = 
     _isGridOverlayShown = isGridOverlayShown;
     self.gridOverlay.hidden = NO;
     [UIView animateWithDuration:0.35 animations:^{
-        self.gridOverlay.alpha = isGridOverlayShown ? self.gridOverlay.opacity : 0.0;
+        self.gridOverlay.alpha = isGridOverlayShown ? 1.0 : 0.0;
     } completion:^(BOOL finished) {
         self.gridOverlay.hidden = !isGridOverlayShown;
     }];

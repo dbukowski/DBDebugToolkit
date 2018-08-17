@@ -43,6 +43,10 @@
 		BF0AAF78D26BBE364C17AD3F /* Pods_DBDebugToolkit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */; };
 		E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */; };
 		EAAA7239721FAA600A155293 /* Pods_DBDebugToolkit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16FE01ECBAB52F3B0D7D9D /* Pods_DBDebugToolkit_Example.framework */; };
+		ECA906F521230CCE0042B654 /* MyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA906F421230CCE0042B654 /* MyMapViewController.m */; };
+		ECA907642124590A0042B654 /* Adelaide.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ECA90761212459090042B654 /* Adelaide.gpx */; };
+		ECA907652124590A0042B654 /* Trip.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ECA90762212459090042B654 /* Trip.gpx */; };
+		ECA907662124590A0042B654 /* FishingPoints.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ECA907632124590A0042B654 /* FishingPoints.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1579C017B82DCAD1B5C03B58 /* DBDebugToolkit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DBDebugToolkit.podspec; path = ../DBDebugToolkit.podspec; sourceTree = "<group>"; };
+		1579C017B82DCAD1B5C03B58 /* DBDebugToolkit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DBDebugToolkit.podspec; path = ../DBDebugToolkit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1C37DDBAA04A4D71A40B4F81 /* Pods-DBDebugToolkit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBDebugToolkit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBDebugToolkit_Tests/Pods-DBDebugToolkit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4B0E7F3B81EA38613B9CCDB7 /* Pods-DBDebugToolkit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBDebugToolkit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* DBDebugToolkit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBDebugToolkit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +122,11 @@
 		B86DD624B9EBCDC139C5CD07 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchImage.storyboard; sourceTree = "<group>"; };
 		EC232FA05C4C8FD4997750B9 /* Pods-DBDebugToolkit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBDebugToolkit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		ECA906F321230CCE0042B654 /* MyMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMapViewController.h; sourceTree = "<group>"; };
+		ECA906F421230CCE0042B654 /* MyMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMapViewController.m; sourceTree = "<group>"; };
+		ECA90761212459090042B654 /* Adelaide.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Adelaide.gpx; path = ../DBDebugToolkit/Adelaide.gpx; sourceTree = "<group>"; };
+		ECA90762212459090042B654 /* Trip.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Trip.gpx; path = ../DBDebugToolkit/Trip.gpx; sourceTree = "<group>"; };
+		ECA907632124590A0042B654 /* FishingPoints.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FishingPoints.gpx; path = ../DBDebugToolkit/FishingPoints.gpx; sourceTree = "<group>"; };
 		FC16FE01ECBAB52F3B0D7D9D /* Pods_DBDebugToolkit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -196,6 +205,8 @@
 				E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				ECA906F321230CCE0042B654 /* MyMapViewController.h */,
+				ECA906F421230CCE0042B654 /* MyMapViewController.m */,
 				6627B2181E45E8070020618C /* DBRequestsExampleViewController.h */,
 				6627B2191E45E8070020618C /* DBRequestsExampleViewController.m */,
 				6627B21E1E460AF60020618C /* DBRequestExampleTableViewCell.h */,
@@ -234,6 +245,9 @@
 		6003F5B6195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ECA90761212459090042B654 /* Adelaide.gpx */,
+				ECA907632124590A0042B654 /* FishingPoints.gpx */,
+				ECA90762212459090042B654 /* Trip.gpx */,
 				6003F5B7195388D20070C39A /* Tests-Info.plist */,
 				6003F5B8195388D20070C39A /* InfoPlist.strings */,
 				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
@@ -311,7 +325,6 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				E3BD1DF086F2E3056D86F0AF /* [CP] Embed Pods Frameworks */,
-				D920CFCECB09DF2F551ED845 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,7 +344,6 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				102F47257DE3B8E83925D3AF /* [CP] Embed Pods Frameworks */,
-				BCC884F097ABBD7D49AC9DAC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -353,6 +365,9 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Dariusz Bukowski";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = B89H5L73N6;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -382,8 +397,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA907652124590A0042B654 /* Trip.gpx in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				ECA907662124590A0042B654 /* FishingPoints.gpx in Resources */,
+				ECA907642124590A0042B654 /* Adelaide.gpx in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */,
 				6627B2221E460AF60020618C /* DBRequestExampleTableViewCell.xib in Resources */,
@@ -408,9 +426,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DBDebugToolkit_Tests/Pods-DBDebugToolkit_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TBXML/TBXML.framework",
+				"${BUILT_PRODUCTS_DIR}/iOS-GPX-Framework/iOS_GPX_Framework.framework",
+				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
+				"${BUILT_PRODUCTS_DIR}/Specta/Specta.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TBXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOS_GPX_Framework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Specta.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -423,13 +450,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DBDebugToolkit_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4416244A3E82E7B3DC103F6E /* [CP] Check Pods Manifest.lock */ = {
@@ -438,43 +468,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DBDebugToolkit_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		BCC884F097ABBD7D49AC9DAC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBDebugToolkit_Tests/Pods-DBDebugToolkit_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D920CFCECB09DF2F551ED845 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3BD1DF086F2E3056D86F0AF /* [CP] Embed Pods Frameworks */ = {
@@ -483,9 +486,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DBDebugToolkit/DBDebugToolkit.framework",
+				"${BUILT_PRODUCTS_DIR}/TBXML/TBXML.framework",
+				"${BUILT_PRODUCTS_DIR}/iOS-GPX-Framework/iOS_GPX_Framework.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBDebugToolkit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TBXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOS_GPX_Framework.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -509,6 +519,7 @@
 				66D99DE61E6C608700ED8119 /* CarMO+CoreDataProperties.m in Sources */,
 				66571C031E631EF10047D5BA /* DataModel.xcdatamodeld in Sources */,
 				668EDCA81E748EAD00730A8F /* DBCustomVariablesExampleViewController.m in Sources */,
+				ECA906F521230CCE0042B654 /* MyMapViewController.m in Sources */,
 				66D99DE81E6C608700ED8119 /* AddressMO+CoreDataProperties.m in Sources */,
 				662F49961E49301800D98E31 /* DBLocationExampleViewController.m in Sources */,
 				66D99DEB1E6C608700ED8119 /* PersonMO+CoreDataClass.m in Sources */,
@@ -659,7 +670,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B89H5L73N6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBDebugToolkit/DBDebugToolkit-Prefix.pch";
 				INFOPLIST_FILE = "DBDebugToolkit/DBDebugToolkit-Info.plist";
@@ -676,7 +687,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B89H5L73N6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBDebugToolkit/DBDebugToolkit-Prefix.pch";
 				INFOPLIST_FILE = "DBDebugToolkit/DBDebugToolkit-Info.plist";

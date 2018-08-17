@@ -25,7 +25,7 @@
 /**
  `DBPresetLocation` is a simple wrapper that contains all the basic information about a preset location.
  */
-@interface DBPresetLocation : NSObject
+@interface DBPresetLocation : NSObject<NSCoding>
 
 /**
  Creates and returns a new instance wrapping the information about a preset location.
@@ -36,6 +36,7 @@
  */
 + (instancetype)presetLocationWithTitle:(NSString *)title latitude:(CGFloat)latitude longitude:(CGFloat)longitude;
 
+//+(instancetype)addArrayOfLocations:(NSArray <DBPresetLocation *>*)locations;
 /**
  Simple title describing the location, e.g. "San Francisco, CA, USA". Read-only.
  */
@@ -44,11 +45,11 @@
 /**
  The latitude of the location. Read-only.
  */
-@property (nonatomic, readonly) CGFloat latitude;
+@property (nonatomic, assign) CGFloat latitude;
 
 /**
  The longitude of the location. Read-only.
  */
-@property (nonatomic, readonly) CGFloat longitude;
+@property (nonatomic, assign) CGFloat longitude;
 
 @end

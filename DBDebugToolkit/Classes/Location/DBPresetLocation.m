@@ -40,5 +40,16 @@
 + (instancetype)presetLocationWithTitle:(NSString *)title latitude:(CGFloat)latitude longitude:(CGFloat)longitude {
     return [[self alloc] initWithTitle:title latitude:latitude longitude:longitude];
 }
+-(void)encodeWithCoder:(NSCoder *)encoder{
+    [encoder encodeObject:@(self.latitude) forKey:@"latitude"];
+    [encoder encodeObject:@(self.longitude) forKey:@"longitude"];
+}
 
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.latitude = [[decoder decodeObjectForKey:@"latitude"] floatValue];
+        self.longitude = [[decoder decodeObjectForKey:@"longitude"] floatValue];
+    }
+    return self;
+}
 @end

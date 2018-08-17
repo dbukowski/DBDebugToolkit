@@ -35,11 +35,6 @@
 @property (nonatomic, assign) NSInteger gridSize;
 
 /**
- Selected grid opacity.
- */
-@property (nonatomic, assign) CGFloat opacity;
-
-/**
  Selected color scheme.
  */
 @property (nonatomic, strong) DBGridOverlayColorScheme *colorScheme;

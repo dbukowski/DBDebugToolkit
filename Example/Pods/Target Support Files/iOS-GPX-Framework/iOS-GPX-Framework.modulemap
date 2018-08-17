@@ -1,0 +1,6 @@
+framework module iOS_GPX_Framework {
+  umbrella header "iOS-GPX-Framework-umbrella.h"
+
+  export *
+  module * { export * }
+}

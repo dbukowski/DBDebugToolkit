@@ -8,5 +8,7 @@ target 'DBDebugToolkit_Example' do
 
     pod 'Specta'
     pod 'Expecta'
+    pod 'iOS-GPX-Framework'
   end
+  
 end

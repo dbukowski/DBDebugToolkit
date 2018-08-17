@@ -36,7 +36,6 @@
 #import "DBCoreDataToolkit.h"
 #import "DBCrashReportsToolkit.h"
 #import "DBTopLevelViewsWrapper.h"
-#import "UIApplication+DBDebugToolkit.h"
 
 static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPath = @"containerView";
 
@@ -288,58 +287,6 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 + (void)clearUserDefaults {
     DBUserDefaultsToolkit *userDefaultsToolkit = [DBUserDefaultsToolkit new];
     [userDefaultsToolkit handleClearAction];
-}
-
-+ (void)clearDocuments {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSArray <NSString *> *documentsContents = [fileManager contentsOfDirectoryAtPath:documentsPath error:nil];
-    for (NSString *file in documentsContents) {
-        NSString *filePath = [documentsPath stringByAppendingPathComponent:file];
-        [fileManager removeItemAtPath:filePath error:nil];
-    }
-}
-
-+ (void)clearCookies {
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (NSHTTPCookie *cookie in cookieStorage.cookies) {
-        [cookieStorage deleteCookie:cookie];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-#pragma mark - Shortcut items
-
-+ (void)addClearDataShortcutItem {
-    if (![[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){9, 0, 0}]) {
-        // Shortcut items are not supported on the running iOS version.
-        return;
-    }
-
-    NSArray <UIApplicationShortcutItem *> *shortcutItems = UIApplication.sharedApplication.shortcutItems;
-    for (UIApplicationShortcutItem *item in shortcutItems) {
-        if ([item.type isEqualToString:DBClearDataShortcutItemType]) {
-            // We already added `Clear data` shortcut item.
-            return;
-        }
-    }
-
-    UIApplicationShortcutIcon *shortcutIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeCompose];
-    UIApplicationShortcutItem *clearDataShortcutItem = [[UIApplicationShortcutItem alloc] initWithType:DBClearDataShortcutItemType
-                                                                                        localizedTitle:@"Clear data"
-                                                                                     localizedSubtitle:@"DBDebugToolkit"
-                                                                                                  icon:shortcutIcon
-                                                                                              userInfo:nil];
-    NSMutableArray *newShortcutItems = shortcutItems == nil ? [NSMutableArray array] : [NSMutableArray arrayWithArray:shortcutItems];
-    [newShortcutItems insertObject:clearDataShortcutItem atIndex:0];
-    UIApplication.sharedApplication.shortcutItems = [newShortcutItems copy];
-}
-
-+ (void)handleClearDataShortcutItemAction {
-    [self clearUserDefaults];
-    [self clearKeychain];
-    [self clearDocuments];
-    [self clearCookies];
 }
 
 #pragma mark - Top level views
