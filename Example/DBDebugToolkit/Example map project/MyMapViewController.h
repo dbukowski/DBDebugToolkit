@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-
-@interface MyMapViewController : UIViewController<MKMapViewDelegate>
+#import <CoreLocation/CoreLocation.h>
+#import <DBDebugToolkit/DBDebugToolkit.h>
+#import <DBDebugToolkit/CLLocationManager+DBLocationToolkit.h>
+@interface MyMapViewController : UIViewController<MKMapViewDelegate,CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

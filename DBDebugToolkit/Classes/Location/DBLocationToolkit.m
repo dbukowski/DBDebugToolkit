@@ -125,23 +125,27 @@
         [presetLocations addObject:@[[DBPresetLocation presetLocationWithTitle:@"Rio de Janeiro, Brazil"
                                                                     latitude:-22.903539
                                                                    longitude:-43.209587]]];
-        [presetLocations addObject:@[[DBPresetLocation presetLocationWithTitle:@"Trip"
-                                                                    latitude:-34.76079435
-                                                                   longitude:138.47511292]]];
         
+        [presetLocations addObject:@[[DBPresetLocation presetLocationWithTitle:@"Adelaide, Australia"
+                                                                      latitude:-35.086572
+                                                                     longitude:138.321284]]];
+        
+        
+        // GPX parsing of Trip.gpx
         NSMutableArray *locationsArrayTrip =  [NSMutableArray new];
         NSString *str=[[NSBundle mainBundle] pathForResource:@"Trip" ofType:@"gpx"];
         NSData *fileData = [NSData dataWithContentsOfFile:str];
-        
         GPXRoot *gpx = [GPXParser parseGPXWithData:fileData];
         NSArray *arrayLocations = [NSArray new];
         arrayLocations = [gpx waypoints];
-       
         for (GPXWaypoint *point in arrayLocations){
             DBPresetLocation *location = [DBPresetLocation  presetLocationWithTitle:point.name latitude:point.latitude longitude:point.longitude];
             [locationsArrayTrip addObject:location];
         }
-        [presetLocations addObject:locationsArrayTrip];
+        //Added the gpx parsed array object in the presetlocations array
+            [presetLocations addObject:locationsArrayTrip];
+
+       
        _presetLocations = [presetLocations copy];
     }
     

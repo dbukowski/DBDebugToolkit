@@ -46,8 +46,16 @@ static NSString *const CLLocationManagerLocationsKey = @"Locations";
 - (void)db_onClientEventLocation:(NSDictionary *)dictionary {
     if ([DBLocationToolkit sharedInstance].simulatedLocation == nil) {
         [self db_onClientEventLocation:dictionary];
-    } else {
-        [self.delegate locationManager:self didUpdateLocations:@[[DBLocationToolkit sharedInstance].simulatedLocation]];
+    }else{
+        
+        
+        NSMutableArray *clLocations = [[NSMutableArray alloc]init];
+        [[DBLocationToolkit sharedInstance].simulatedLocation enumerateObjectsUsingBlock:^(DBPresetLocation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:obj.latitude longitude:obj.longitude];
+            [clLocations addObject: location];
+        }];
+        [self.delegate locationManager:self didUpdateLocations:clLocations];
+        
     }
 }
 
@@ -55,7 +63,13 @@ static NSString *const CLLocationManagerLocationsKey = @"Locations";
     if ([DBLocationToolkit sharedInstance].simulatedLocation == nil) {
         [self db_onClientEventLocation:dictionary forceMapMatching:forceMapMatching type:type];
     } else {
-        [self.delegate locationManager:self didUpdateLocations:@[[DBLocationToolkit sharedInstance].simulatedLocation]];
+        
+        NSMutableArray *clLocations = [[NSMutableArray alloc]init];
+        [[DBLocationToolkit sharedInstance].simulatedLocation enumerateObjectsUsingBlock:^(DBPresetLocation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:obj.latitude longitude:obj.longitude];
+            [clLocations addObject: location];
+        }];
+        [self.delegate locationManager:self didUpdateLocations:clLocations];
     }
 }
 

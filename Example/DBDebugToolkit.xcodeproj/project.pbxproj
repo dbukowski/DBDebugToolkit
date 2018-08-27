@@ -205,8 +205,7 @@
 				E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				ECA906F321230CCE0042B654 /* MyMapViewController.h */,
-				ECA906F421230CCE0042B654 /* MyMapViewController.m */,
+				EC9842B621328C6400C9F440 /* Example map project */,
 				6627B2181E45E8070020618C /* DBRequestsExampleViewController.h */,
 				6627B2191E45E8070020618C /* DBRequestsExampleViewController.m */,
 				6627B21E1E460AF60020618C /* DBRequestExampleTableViewCell.h */,
@@ -311,6 +310,15 @@
 				668EDCAB1E748FDB00730A8F /* DBExampleCollectionViewCell.xib */,
 			);
 			path = CustomVariables;
+			sourceTree = "<group>";
+		};
+		EC9842B621328C6400C9F440 /* Example map project */ = {
+			isa = PBXGroup;
+			children = (
+				ECA906F321230CCE0042B654 /* MyMapViewController.h */,
+				ECA906F421230CCE0042B654 /* MyMapViewController.m */,
+			);
+			path = "Example map project";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

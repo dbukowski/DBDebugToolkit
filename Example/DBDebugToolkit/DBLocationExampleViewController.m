@@ -12,8 +12,10 @@
 @interface DBLocationExampleViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
 {
-    NSMutableArray *latArray, *longArray;
+    NSMutableArray *latArray, *longArray, *arrLocations, *array;
     CLLocationCoordinate2D location;
+    NSTimer *timer;
+    int counter;
 
 }
 
@@ -42,10 +44,34 @@
     [self.locationManager startUpdatingLocation];
 }
 
+- (void)coutnerCalled {
+    if (counter>=[array count]) {
+        counter = 0;
+    }
+    MKUserLocation *loc = [MKUserLocation new];
+    loc = [array objectAtIndex:counter++];
+    NSLog(@"%@",loc);
+    [self mapView:self.mapView didUpdateUserLocation:loc];
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
-    CLLocation *location = locations.lastObject;
+    
+    CLLocation *location;
+    arrLocations = [NSMutableArray new];
+    if (locations.count>0) {
+        counter = locations.count;
+        arrLocations = [locations mutableCopy];
+        array = [NSMutableArray new];
+        for (CLLocation *lo in locations){
+            MKUserLocation *loc = [MKUserLocation new];
+            loc.coordinate = lo.coordinate;
+            [array addObject: loc];
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(coutnerCalled) userInfo:nil repeats:YES];
+    } else {
+    location = locations.lastObject;
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:location
                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -62,35 +88,21 @@
                        }
                        self.label.text = [placemarkDescriptions componentsJoinedByString:@", "];
                    }];
+    }
 }
 
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     
-//   for (int i = 0; i<latArray.count; i++) {
-
-//        location.latitude = [[latArray objectAtIndex:i] floatValue];
-//        location.longitude = [[longArray objectAtIndex:i] floatValue];
-//        float lat, longe;
-//        lat = [[latArray objectAtIndex:i] floatValue];
-//        longe = [[longArray objectAtIndex:i] floatValue];
-//        CLLocationDegrees latDegree, longDegree;
-//        latDegree = lat;
-//        longDegree = longe;
-//        MKUserLocation *lo =[MKUserLocation new];
-//        lo.coordinate = CLLocationCoordinate2DMake(latDegree,longDegree);
-//        CLLocationCoordinate2D locat = lo.coordinate;
-//        NSLog(@"Lat %f  Long %f",lo.coordinate.latitude,lo.coordinate.longitude);
-//        MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
-//        MKCoordinateRegion region = MKCoordinateRegionMake(locat, span);
-//        [mapView setRegion:region animated:YES];
-//
-//    }
     CLLocationCoordinate2D location = userLocation.coordinate;
     NSLog(@"Lat %f  Long %f",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
     MKCoordinateRegion region = MKCoordinateRegionMake(location, span);
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = userLocation.coordinate;
+    point.title = userLocation.title;
+    [self.mapView addAnnotation:point];
     [mapView setRegion:region animated:YES];
 }
 
