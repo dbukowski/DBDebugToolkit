@@ -81,6 +81,12 @@
 + (void)showMenu;
 
 /**
+ Closes the menu.
+ */
++ (void)closeMenu;
+
+
+/**
  Shows the performance widget.
  */
 + (void)showPerformanceWidget;
