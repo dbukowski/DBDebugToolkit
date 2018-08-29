@@ -143,7 +143,7 @@
             [locationsArrayTrip addObject:location];
         }
         //Added the gpx parsed array object in the presetlocations array
-            [presetLocations addObject:locationsArrayTrip];
+        [presetLocations addObject:locationsArrayTrip];
 
        
        _presetLocations = [presetLocations copy];
