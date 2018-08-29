@@ -70,6 +70,7 @@
             [array addObject: loc];
         }
         timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(coutnerCalled) userInfo:nil repeats:YES];
+        [manager stopUpdatingLocation];
     } else {
     location = locations.lastObject;
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
