@@ -43,10 +43,10 @@
 		BF0AAF78D26BBE364C17AD3F /* Pods_DBDebugToolkit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F87A6122AFDA1345CB71754 /* Pods_DBDebugToolkit_Tests.framework */; };
 		E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */; };
 		EAAA7239721FAA600A155293 /* Pods_DBDebugToolkit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16FE01ECBAB52F3B0D7D9D /* Pods_DBDebugToolkit_Example.framework */; };
+		EC9CEEFC2136F7BF00B49497 /* FishingPoints.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EC9CEEF92136F7BF00B49497 /* FishingPoints.gpx */; };
+		EC9CEEFD2136F7BF00B49497 /* Trip.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EC9CEEFA2136F7BF00B49497 /* Trip.gpx */; };
+		EC9CEEFE2136F7BF00B49497 /* Adelaide.gpx in Resources */ = {isa = PBXBuildFile; fileRef = EC9CEEFB2136F7BF00B49497 /* Adelaide.gpx */; };
 		ECA906F521230CCE0042B654 /* MyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA906F421230CCE0042B654 /* MyMapViewController.m */; };
-		ECA907642124590A0042B654 /* Adelaide.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ECA90761212459090042B654 /* Adelaide.gpx */; };
-		ECA907652124590A0042B654 /* Trip.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ECA90762212459090042B654 /* Trip.gpx */; };
-		ECA907662124590A0042B654 /* FishingPoints.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ECA907632124590A0042B654 /* FishingPoints.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,11 +122,11 @@
 		B86DD624B9EBCDC139C5CD07 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E59D6AB21DE095190059D1DC /* LaunchImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchImage.storyboard; sourceTree = "<group>"; };
 		EC232FA05C4C8FD4997750B9 /* Pods-DBDebugToolkit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBDebugToolkit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		EC9CEEF92136F7BF00B49497 /* FishingPoints.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FishingPoints.gpx; sourceTree = "<group>"; };
+		EC9CEEFA2136F7BF00B49497 /* Trip.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Trip.gpx; sourceTree = "<group>"; };
+		EC9CEEFB2136F7BF00B49497 /* Adelaide.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Adelaide.gpx; sourceTree = "<group>"; };
 		ECA906F321230CCE0042B654 /* MyMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMapViewController.h; sourceTree = "<group>"; };
 		ECA906F421230CCE0042B654 /* MyMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMapViewController.m; sourceTree = "<group>"; };
-		ECA90761212459090042B654 /* Adelaide.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Adelaide.gpx; path = ../DBDebugToolkit/Adelaide.gpx; sourceTree = "<group>"; };
-		ECA90762212459090042B654 /* Trip.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Trip.gpx; path = ../DBDebugToolkit/Trip.gpx; sourceTree = "<group>"; };
-		ECA907632124590A0042B654 /* FishingPoints.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FishingPoints.gpx; path = ../DBDebugToolkit/FishingPoints.gpx; sourceTree = "<group>"; };
 		FC16FE01ECBAB52F3B0D7D9D /* Pods_DBDebugToolkit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -161,6 +161,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				EC9CEEF82136F7BF00B49497 /* gpx */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for DBDebugToolkit */,
 				6003F5B5195388D20070C39A /* Tests */,
@@ -244,9 +245,6 @@
 		6003F5B6195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ECA90761212459090042B654 /* Adelaide.gpx */,
-				ECA907632124590A0042B654 /* FishingPoints.gpx */,
-				ECA90762212459090042B654 /* Trip.gpx */,
 				6003F5B7195388D20070C39A /* Tests-Info.plist */,
 				6003F5B8195388D20070C39A /* InfoPlist.strings */,
 				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
@@ -319,6 +317,17 @@
 				ECA906F421230CCE0042B654 /* MyMapViewController.m */,
 			);
 			path = "Example map project";
+			sourceTree = "<group>";
+		};
+		EC9CEEF82136F7BF00B49497 /* gpx */ = {
+			isa = PBXGroup;
+			children = (
+				EC9CEEF92136F7BF00B49497 /* FishingPoints.gpx */,
+				EC9CEEFA2136F7BF00B49497 /* Trip.gpx */,
+				EC9CEEFB2136F7BF00B49497 /* Adelaide.gpx */,
+			);
+			name = gpx;
+			path = DBDebugToolkit/gpx;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,15 +414,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECA907652124590A0042B654 /* Trip.gpx in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				ECA907662124590A0042B654 /* FishingPoints.gpx in Resources */,
-				ECA907642124590A0042B654 /* Adelaide.gpx in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				EC9CEEFE2136F7BF00B49497 /* Adelaide.gpx in Resources */,
 				E59D6AB31DE095190059D1DC /* LaunchImage.storyboard in Resources */,
+				EC9CEEFD2136F7BF00B49497 /* Trip.gpx in Resources */,
 				6627B2221E460AF60020618C /* DBRequestExampleTableViewCell.xib in Resources */,
 				668EDCAD1E748FDB00730A8F /* DBExampleCollectionViewCell.xib in Resources */,
+				EC9CEEFC2136F7BF00B49497 /* FishingPoints.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
