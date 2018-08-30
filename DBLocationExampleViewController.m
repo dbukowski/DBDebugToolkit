@@ -69,7 +69,7 @@
             loc.coordinate = lo.coordinate;
             [array addObject: loc];
         }
-        timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(coutnerCalled) userInfo:nil repeats:YES];
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(coutnerCalled) userInfo:nil repeats:YES];
         [manager stopUpdatingLocation];
     } else {
     location = locations.lastObject;
