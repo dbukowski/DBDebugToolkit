@@ -34,7 +34,6 @@ typedef NS_ENUM(NSUInteger, DBGridOverlaySettingsTableViewControllerSection) {
 
 typedef NS_ENUM(NSUInteger, DBGridOverlaySettingsTableViewControllerSettingsRow) {
     DBGridOverlaySettingsTableViewControllerSettingsRowSize,
-    DBGridOverlaySettingsTableViewControllerSettingsRowOpacity,
     DBGridOverlaySettingsTableViewControllerSettingsRowColor
 };
 
@@ -44,11 +43,6 @@ static NSString *const DBGridOverlaySettingsTableViewControllerColorPickerCellId
 
 static const NSInteger DBGridOverlaySettingsTableViewControllerMinGridSize = 4.0;
 static const NSInteger DBGridOverlaySettingsTableViewControllerMaxGridSize = 64.0;
-
-static const NSInteger DBGridOverlaySettingsTableViewControllerMinOpacity = 10;
-static const NSInteger DBGridOverlaySettingsTableViewControllerMaxOpacity = 100;
-
-static const CGFloat DBGridOverlaySemiTransparencyRatio = 0.2;
 
 @interface DBGridOverlaySettingsTableViewController () <DBMenuSwitchTableViewCellDelegate, DBSliderTableViewCellDelegate, DBColorPickerTableViewCellDelegate>
 
@@ -103,7 +97,7 @@ static const CGFloat DBGridOverlaySemiTransparencyRatio = 0.2;
         case DBGridOverlaySettingsTableViewControllerSectionSwitch:
             return 1;
         case DBGridOverlaySettingsTableViewControllerSectionSettings:
-            return self.userInterfaceToolkit.isGridOverlayShown ? 3 : 0;
+            return self.userInterfaceToolkit.isGridOverlayShown ? 2 : 0;
     }
     return 0;
 }
@@ -135,15 +129,6 @@ static const CGFloat DBGridOverlaySemiTransparencyRatio = 0.2;
             [sliderCell setMinValue:DBGridOverlaySettingsTableViewControllerMinGridSize];
             [sliderCell setMaxValue:DBGridOverlaySettingsTableViewControllerMaxGridSize];
             [sliderCell setValue:self.userInterfaceToolkit.gridOverlay.gridSize];
-            return sliderCell;
-        }
-        case DBGridOverlaySettingsTableViewControllerSettingsRowOpacity: {
-            DBSliderTableViewCell *sliderCell = [tableView dequeueReusableCellWithIdentifier:DBGridOverlaySettingsTableViewControllerSliderCellIdentifier];
-            sliderCell.titleLabel.text = @"Opacity";
-            sliderCell.delegate = self;
-            [sliderCell setMinValue:DBGridOverlaySettingsTableViewControllerMinOpacity];
-            [sliderCell setMaxValue:DBGridOverlaySettingsTableViewControllerMaxOpacity];
-            [sliderCell setValue:self.userInterfaceToolkit.gridOverlay.opacity * 100];
             return sliderCell;
         }
         case DBGridOverlaySettingsTableViewControllerSettingsRowColor: {
@@ -181,42 +166,23 @@ static const CGFloat DBGridOverlaySemiTransparencyRatio = 0.2;
 #pragma mark - DBSliderTableViewCell
 
 - (void)sliderCell:(DBSliderTableViewCell *)sliderCell didSelectValue:(NSInteger)value {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sliderCell];
-    DBGridOverlaySettingsTableViewControllerSettingsRow settingsRow = indexPath.row;
-    if (settingsRow == DBGridOverlaySettingsTableViewControllerSettingsRowSize) {
-        self.userInterfaceToolkit.gridOverlay.gridSize = value;
-    } else {
-        self.userInterfaceToolkit.gridOverlay.opacity = (CGFloat)value / 100.0;
-    }
+    self.userInterfaceToolkit.gridOverlay.gridSize = value;
 }
 
 - (void)sliderCellDidStartEditingValue:(DBSliderTableViewCell *)sliderCell {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sliderCell];
-    DBGridOverlaySettingsTableViewControllerSettingsRow settingsRow = indexPath.row;
-    if (settingsRow == DBGridOverlaySettingsTableViewControllerSettingsRowSize) {
-        [self setShouldMakeGridSemiTransparent:YES];
-    }
+    [self setShouldMakeGridSemiTransparent:YES];
 }
 
 - (void)sliderCellDidEndEditingValue:(DBSliderTableViewCell *)sliderCell {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sliderCell];
-    DBGridOverlaySettingsTableViewControllerSettingsRow settingsRow = indexPath.row;
-    if (settingsRow == DBGridOverlaySettingsTableViewControllerSettingsRowSize) {
-        [self setShouldMakeGridSemiTransparent:NO];
-    }
+    [self setShouldMakeGridSemiTransparent:NO];
 }
 
 - (void)setShouldMakeGridSemiTransparent:(BOOL)shouldMakeGridSemiTransparent {
-    CGFloat targetAlpha = self.userInterfaceToolkit.gridOverlay.opacity;
-    if (shouldMakeGridSemiTransparent) {
-        targetAlpha *= DBGridOverlaySemiTransparencyRatio;
-    }
-    targetAlpha = MAX(MIN(0.2, self.userInterfaceToolkit.gridOverlay.opacity), targetAlpha);
     [UIView animateWithDuration:0.35
                           delay:0.0
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
-                         self.userInterfaceToolkit.gridOverlay.alpha = targetAlpha;
+                         self.userInterfaceToolkit.gridOverlay.alpha = shouldMakeGridSemiTransparent ? 0.2 : 1.0;
                      } completion:nil];
 }
 

@@ -11,3 +11,4 @@ language: objective-c
 # - pod install --project-directory=Example
 script:
 - set -o pipefail && xcodebuild test -workspace Example/DBDebugToolkit.xcworkspace -scheme DBDebugToolkit-Example -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.1' -sdk iphonesimulator10.0 ONLY_ACTIVE_ARCH=NO | xcpretty
+- pod lib lint

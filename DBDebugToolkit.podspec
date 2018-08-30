@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DBDebugToolkit'
-  s.version          = '0.5.0'
+  s.version          = '0.3.1'
   s.summary          = 'Set of easy to use debugging tools for iOS developers & QA engineers.'
 
 # This description is used to generate tags and improve search results.
@@ -39,4 +39,5 @@ DBDebugToolkit is a library written with two goals in mind: providing as many ea
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'iOS-GPX-Framework'
 end

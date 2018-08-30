@@ -27,31 +27,30 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" text="Label" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ipT-ap-VKk">
-                        <rect key="frame" x="16" y="29" width="343" height="15"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-u6-DWh">
+                        <rect key="frame" x="16" y="29" width="343" height="14.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="wSm-A6-1bs"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="DId-y5-dPU"/>
                         </constraints>
-                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="cFk-ja-XAW" firstAttribute="top" secondItem="U8G-v2-7OC" secondAttribute="top" constant="4" id="3h4-WL-d1B"/>
-                    <constraint firstAttribute="bottom" secondItem="ipT-ap-VKk" secondAttribute="bottom" constant="6" id="ESf-Qb-jRo"/>
-                    <constraint firstItem="ipT-ap-VKk" firstAttribute="top" secondItem="cFk-ja-XAW" secondAttribute="bottom" constant="4" id="JlF-cT-dx5"/>
-                    <constraint firstItem="ipT-ap-VKk" firstAttribute="leading" secondItem="U8G-v2-7OC" secondAttribute="leading" constant="16" id="Szx-mj-M1F"/>
-                    <constraint firstAttribute="trailing" secondItem="ipT-ap-VKk" secondAttribute="trailing" constant="16" id="mNH-s3-lgX"/>
+                    <constraint firstItem="QOn-u6-DWh" firstAttribute="leading" secondItem="U8G-v2-7OC" secondAttribute="leading" constant="16" id="VeG-Ul-IdQ"/>
+                    <constraint firstAttribute="bottom" secondItem="QOn-u6-DWh" secondAttribute="bottom" constant="6" id="ktm-Pk-GiF"/>
                     <constraint firstAttribute="trailing" secondItem="cFk-ja-XAW" secondAttribute="trailing" constant="16" id="qnS-7e-cM9"/>
                     <constraint firstItem="cFk-ja-XAW" firstAttribute="leading" secondItem="U8G-v2-7OC" secondAttribute="leading" constant="16" id="vqr-9r-SFX"/>
+                    <constraint firstAttribute="trailing" secondItem="QOn-u6-DWh" secondAttribute="trailing" constant="16" id="w9a-tG-AF1"/>
+                    <constraint firstItem="QOn-u6-DWh" firstAttribute="top" secondItem="cFk-ja-XAW" secondAttribute="bottom" constant="4" id="zuR-Nd-Ka0"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="titleLabel" destination="cFk-ja-XAW" id="FTe-YT-2Eh"/>
-                <outlet property="valueTextView" destination="ipT-ap-VKk" id="oBn-85-Rj9"/>
+                <outlet property="valueLabel" destination="QOn-u6-DWh" id="CJJ-fG-Sl0"/>
             </connections>
             <point key="canvasLocation" x="20.5" y="12"/>
         </tableViewCell>

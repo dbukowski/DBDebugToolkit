@@ -17,7 +17,6 @@
 - [Crash reports](#crash-reports)
 - [Custom variables](#custom-variables)
 - [Custom actions](#custom-actions)
-- [Shortcut items](#shortcut-items)
 
 ### Performance
 
@@ -90,7 +89,7 @@ If your device supports 3D Touch, the touch indicator view's alpha value will de
   <img src="Assets/gridOverlay.gif">
 </p>
 
-Grid overlay is highly customizable. You can choose the size of the grid from values between 4 and 64. There are also 10 available color settings and a slider for adjusting the opacity. Due to the fact that the device screen dimensions are not always a multiple of the selected size of the grid, the grid lines are drawn from left, right, top and bottom, so you can check if your layout was implemented properly. The remaining middle parts of the grid can have a different size, which is indicated by two labels. The grid overlay stays on top of the screen at all times.
+Grid overlay is highly customizable. You can choose the size of the grid from values between 4 and 64. There are also 10 available color settings. Due to the fact that the device screen dimensions are not always a multiple of the selected size of the grid, the grid lines are drawn from left, right, top and bottom, so you can check if your layout was implemented properly. The remaining middle parts of the grid can have a different size, which is indicated by two labels. The grid overlay stays on top of the screen at all times.
 
 * Autolayout trace
 
@@ -402,21 +401,3 @@ To run these actions simply open the menu and go to custom actions section. You 
 <p align="center">
   <img src="Assets/customActions.gif">
 </p>
-
-### Shortcut items
-
-What would you do if one of the testers in your team had a crash on the app launch caused by invalid data stored in the keychain? To avoid wiping all content and settings from the device, you would probably have to prepare a special build that removes the keychain data. This can be avoided with DBDebugToolkit, as it comes now with a shortcut item that removes all the data from the keychain, user defaults, documents directory and cookies.
-
-<p align="center">
-  <img src="Assets/shortcutItem.gif">
-</p>
-
-To enable that option, all you have to do is add one line of code after DBDebugToolkit setup:
-
-```swift
-DBDebugToolkit.addClearDataShortcutItem()
-```
-
-Please note that overriding `UIApplication.shared.shortcutItems` after that line of code will remove this shortcut item.
-
-**Warning!** Shortcut items are available on iOS 9.0 and above. Also, you can only use them on devices that support 3D Touch.
