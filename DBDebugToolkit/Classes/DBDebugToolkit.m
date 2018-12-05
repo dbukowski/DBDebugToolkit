@@ -409,7 +409,10 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 }
 
 - (void)closeMenu {
-    [self menuTableViewControllerDidTapClose:self.menuViewController];
+    UIViewController *presentingViewController = self.menuViewController.navigationController.presentingViewController;
+    [presentingViewController dismissViewControllerAnimated:YES completion:^{
+        self.showsMenu = NO;
+    }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -479,10 +482,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 #pragma mark - DBMenuTableViewControllerDelegate
 
 - (void)menuTableViewControllerDidTapClose:(DBMenuTableViewController *)menuTableViewController {
-    UIViewController *presentingViewController = self.menuViewController.navigationController.presentingViewController;
-    [presentingViewController dismissViewControllerAnimated:YES completion:^{
-        self.showsMenu = NO;
-    }];
+    [self closeMenu];
 }
 
 #pragma mark - DBPerformanceWidgetViewDelegate 

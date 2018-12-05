@@ -13,6 +13,7 @@
 #import "DBBuildInfoProvider.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "NSObject+DBDebugToolkit.h"
+#import "UIApplication+DBDebugToolkit.h"
 #import "UIColor+DBDebugToolkit.h"
 #import "UILabel+DBDebugToolkit.h"
 #import "UIView+Snapshot.h"
