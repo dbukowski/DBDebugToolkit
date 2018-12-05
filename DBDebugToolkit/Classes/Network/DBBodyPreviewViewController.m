@@ -53,13 +53,29 @@ typedef NS_ENUM(NSUInteger, DBBodyPreviewViewControllerViewState) {
         } else {
             NSString *dataString;
             if (bodyType == DBRequestModelBodyTypeJSON) {
-                NSJSONSerialization *jsonSerialization = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                data = [NSJSONSerialization dataWithJSONObject:jsonSerialization options:NSJSONWritingPrettyPrinted error:nil];
-                dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                dataString = [dataString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+                NSError *error;
+                NSJSONSerialization *jsonSerialization = [NSJSONSerialization JSONObjectWithData:data ?: [NSData data]
+                                                                                         options:NSJSONReadingAllowFragments
+                                                                                           error:&error];
+                if (error) {
+                    dataString = @"Unable to read the data.";
+                } else {
+                    data = [NSJSONSerialization dataWithJSONObject:jsonSerialization options:NSJSONWritingPrettyPrinted error:nil];
+                    dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    dataString = [dataString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+                }
             } else {
                 NSString *UTF8DecodedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                dataString = UTF8DecodedString ?: [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+                if (UTF8DecodedString == nil) {
+                    NSMutableString *mutableDataString = [NSMutableString stringWithCapacity:data.length * 2];
+                    const unsigned char *dataBytes = [data bytes];
+                    for (NSInteger index = 0; index < data.length; index++) {
+                        [mutableDataString appendFormat:@"%02x", dataBytes[index]];
+                    }
+                    dataString = [mutableDataString copy];
+                } else {
+                    dataString = UTF8DecodedString;
+                }
             }
             self.textView.text = dataString;
             [self setViewState:DBBodyPreviewViewControllerViewStateShowingText animated:YES];
