@@ -112,7 +112,7 @@ static NSString *const UIViewDebugBorderColorKey = @"DBDebugToolkit_debugBorderC
                                                                          }];
         __block IMP originalInitWithFrameIMP = [self replaceMethodWithSelector:@selector(initWithFrame:)
                                                                          block:^UIView * (UIView *blockSelf, CGRect frame) {
-                                                                             UIView *res = ((UIView * (*)(id, SEL, CGRect))originalInitWithFrameIMP)(blockSelf, @selector(initWithCoder:), frame);
+                                                                             UIView *res = ((UIView * (*)(id, SEL, CGRect))originalInitWithFrameIMP)(blockSelf, @selector(initWithFrame:), frame);
                                                                              [res db_refreshDebugBorders];
                                                                              [res db_registerForNotifications];
                                                                              return res;
