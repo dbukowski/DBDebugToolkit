@@ -78,8 +78,8 @@
 
 - (void)resetLoggedData {
     [self.operationQueue addOperationWithBlock:^{
-        _requests = [NSMutableArray array];
-        _runningRequestsModels = [NSMapTable strongToWeakObjectsMapTable];
+        self->_requests = [NSMutableArray array];
+        self->_runningRequestsModels = [NSMapTable strongToWeakObjectsMapTable];
         [self removeOldSavedRequests];
     }];
 }
