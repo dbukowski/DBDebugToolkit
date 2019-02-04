@@ -229,7 +229,7 @@ static void handleSIGPIPESignal(int sig) {
                callStackSymbols:(NSArray<NSString *> *)callStackSymbols
                            date:(NSDate *)date {
     BOOL isMainThread = [NSThread isMainThread];
-    UIImage *screenshot = isMainThread ? [[UIApplication sharedApplication].keyWindow snapshot] : nil;
+    UIImage *screenshot = isMainThread ? [[UIApplication sharedApplication].keyWindow db_snapshot] : nil;
     [self saveCrashReportWithName:name
                            reason:reason
                          userInfo:userInfo

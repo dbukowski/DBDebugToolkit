@@ -28,6 +28,6 @@
 /**
  Creates and returns an image containing 
  */
-- (UIImage *)snapshot;
+- (UIImage *)db_snapshot;
 
 @end

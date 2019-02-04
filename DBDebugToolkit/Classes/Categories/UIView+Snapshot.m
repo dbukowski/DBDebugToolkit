@@ -24,7 +24,7 @@
 
 @implementation UIView (Snapshot)
 
-- (UIImage *)snapshot {
+- (UIImage *)db_snapshot {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
     [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
