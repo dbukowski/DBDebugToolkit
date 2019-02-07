@@ -65,6 +65,12 @@
         return @"iPhone 8 Plus";
     } else if ([deviceModelCode isEqualToString:@"iPhone10,3"] || [deviceModelCode isEqualToString:@"iPhone10,6"]) {
         return @"iPhone X";
+    } else if ([deviceModelCode isEqualToString:@"iPhone11,2"]) {
+        return @"iPhone XS";
+    } else if ([deviceModelCode isEqualToString:@"iPhone11,4"] || [deviceModelCode isEqualToString:@"iPhone11,6"]) {
+        return @"iPhone XS Max";
+    } else if ([deviceModelCode isEqualToString:@"iPhone11,8"]) {
+        return @"iPhone XR";
     } else if ([deviceModelCode isEqualToString:@"iPad2,1"] || [deviceModelCode isEqualToString:@"iPad2,2"] || [deviceModelCode isEqualToString:@"iPad2,3"] || [deviceModelCode isEqualToString:@"iPad2,4"]) {
         return @"iPad 2";
     } else if ([deviceModelCode isEqualToString:@"iPad3,1"] || [deviceModelCode isEqualToString:@"iPad3,2"] || [deviceModelCode isEqualToString:@"iPad3,3"]) {
@@ -75,6 +81,10 @@
         return @"iPad Air";
     } else if ([deviceModelCode isEqualToString:@"iPad5,3"] || [deviceModelCode isEqualToString:@"iPad5,4"]) {
         return @"iPad Air 2";
+    } else if ([deviceModelCode isEqualToString:@"iPad6,11"] || [deviceModelCode isEqualToString:@"iPad6,12"] || [deviceModelCode isEqualToString:@"iPad3,3"]) {
+        return @"iPad 5";
+    } else if ([deviceModelCode isEqualToString:@"iPad7,5"] || [deviceModelCode isEqualToString:@"iPad7,6"] || [deviceModelCode isEqualToString:@"iPad3,6"]) {
+        return @"iPad 6";
     } else if ([deviceModelCode isEqualToString:@"iPad2,5"] || [deviceModelCode isEqualToString:@"iPad2,6"] || [deviceModelCode isEqualToString:@"iPad2,7"]) {
         return @"iPad Mini";
     } else if ([deviceModelCode isEqualToString:@"iPad4,4"] || [deviceModelCode isEqualToString:@"iPad4,5"] || [deviceModelCode isEqualToString:@"iPad4,6"]) {
@@ -91,16 +101,16 @@
         return @"iPad Pro (12.9-inch) 2";
     } else if ([deviceModelCode isEqualToString:@"iPad7,3"] || [deviceModelCode isEqualToString:@"iPad7,4"]) {
         return @"iPad Pro (10.5-inch)";
+    } else if ([deviceModelCode isEqualToString:@"iPad8,1"] || [deviceModelCode isEqualToString:@"iPad8,2"] || [deviceModelCode isEqualToString:@"iPad8,3"] || [deviceModelCode isEqualToString:@"iPad8,4"]) {
+        return @"iPad Pro (11-inch)";
+    } else if ([deviceModelCode isEqualToString:@"iPad8,5"] || [deviceModelCode isEqualToString:@"iPad8,6"] || [deviceModelCode isEqualToString:@"iPad8,7"] || [deviceModelCode isEqualToString:@"iPad8,8"]) {
+        return @"iPad Pro (12.9-inch) 3";
     } else if ([deviceModelCode isEqualToString:@"i386"] || [deviceModelCode isEqualToString:@"x86_64"]) {
         return @"Simulator";
     } else {
         return [[UIDevice currentDevice] model];
     }
 }
-
-//iPhone10,1", "iPhone10,4"],                  4.7,  (9, 16),  "iPhone 8", 326, False, False),
-//Device("iPhone8Plus",     "Device is an [iPhone 8 Plus](https://support.apple.com/kb/SP768)",               "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP768/iphone8plus.png",                          ["iPhone10,2", "iPhone10,5"],                  5.5,  (9, 16),  "iPhone 8 Plus", 401, True, False),
-//Device("iPhoneX",         "Device is an [iPhone X](https://support.apple.com/kb/SP770)",                    "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP770/iphonex.png",                              ["iPhone10,3", "iPhone10,6"],                  5.8,  (9, 19.5),  "iPhone X", 458, False, False)
 
 - (NSString *)systemVersion {
     UIDevice *device = [UIDevice currentDevice];
