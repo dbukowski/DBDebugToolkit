@@ -24,7 +24,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBJsonNode/DBJsonNode.h"
+#import "DBJsonNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
