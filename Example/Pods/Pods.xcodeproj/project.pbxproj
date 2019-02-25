@@ -52,7 +52,7 @@
 		1634BA9C5EFA20D493A9CD8A1F3050C9 /* DBTopLevelViewsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6629C274EA74D16DBC6FDDD32F21E02 /* DBTopLevelViewsWrapper.m */; };
 		16C5671C93E035D2D3E3556B56E3FEF5 /* DBTitleValueTableViewCellDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECC4063B81445AF317549F3D7A986E9 /* DBTitleValueTableViewCellDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		170557EFE098061774481211AFE817AB /* DBFPSCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BAF1B1991800CAEF1FC5EC6A48FB221 /* DBFPSCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		17EFA58A222332E000F8BF71 /* DBJsonViewerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57317DA406283D425378B23941E6D58 /* DBJsonViewerTableViewCell.xib */; };
+		17A3EE86222450E5006E20CE /* DBJsonViewerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17A3EE85222450E5006E20CE /* DBJsonViewerTableViewCell.xib */; };
 		188F9AED593CE5E56496E6EE5A5CA1B2 /* DBEntitiesTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7300A7F874E9B225C76BFEA0C2E13953 /* DBEntitiesTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18E8335BD7981C6AB955E0507EAEB4B3 /* UIView+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = A626F8DE2283341C64BCFBBEBB8C57EB /* UIView+Snapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		19AF541F1137205FDF8F5C58861B07C4 /* DBCrashReportsToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A3A7BECA6F09FB5B1524677AEBD5DCC /* DBCrashReportsToolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -453,6 +453,7 @@
 		163175BB4B021BA33C28EA3B338CB16B /* DBCookieTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DBCookieTableViewCell.xib; path = ../../Resources/DBCookieTableViewCell.xib; sourceTree = "<group>"; };
 		1763C67593D5F1DEA878486F8C702400 /* DBFontFamiliesTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBFontFamiliesTableViewController.h; sourceTree = "<group>"; };
 		177EE8E7DD8C4226F8E15FE4C447154D /* EXPMatchers+endWith.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+endWith.h"; path = "Expecta/Matchers/EXPMatchers+endWith.h"; sourceTree = "<group>"; };
+		17A3EE85222450E5006E20CE /* DBJsonViewerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DBJsonViewerTableViewCell.xib; path = ../../Resources/DBJsonViewerTableViewCell.xib; sourceTree = "<group>"; };
 		17B271C769948413B2D6A2FA5FA661F5 /* EXPFloatTuple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPFloatTuple.h; path = Expecta/EXPFloatTuple.h; sourceTree = "<group>"; };
 		17B5A9E155E6261BE14CD96C43F206B0 /* NSPersistentStoreCoordinator+DBCoreDataToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSPersistentStoreCoordinator+DBCoreDataToolkit.m"; sourceTree = "<group>"; };
 		17CA7960708C58AA43773ECC852E8A66 /* DBJsonViewerTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBJsonViewerTableViewController.h; sourceTree = "<group>"; };
@@ -722,7 +723,6 @@
 		C3B7CE88E8D0130112F01B09DF88A29A /* DBCoreDataFilterSettingsTableViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DBCoreDataFilterSettingsTableViewController.storyboard; path = ../../Resources/DBCoreDataFilterSettingsTableViewController.storyboard; sourceTree = "<group>"; };
 		C42B635BA2BC5F1E126EFEF2D7C15914 /* DBEntitiesTableViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DBEntitiesTableViewController.storyboard; path = ../../Resources/DBEntitiesTableViewController.storyboard; sourceTree = "<group>"; };
 		C51083BF920BE6BD19486DD6027632A9 /* DBManagedObjectTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBManagedObjectTableViewController.h; sourceTree = "<group>"; };
-		C57317DA406283D425378B23941E6D58 /* DBJsonViewerTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DBJsonViewerTableViewCell.xib; sourceTree = "<group>"; };
 		C68747BA4D865E9BD27E024E557C31D6 /* DBRequestModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRequestModel.h; sourceTree = "<group>"; };
 		C6A12D01B7BED3AE6C933EDC959F0AEE /* Specta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Specta.modulemap; sourceTree = "<group>"; };
 		C6DDFAA48594B0014602F60606C68B58 /* DBCookieDetailsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBCookieDetailsTableViewController.m; sourceTree = "<group>"; };
@@ -1020,7 +1020,7 @@
 				B5FF15890A92D35E7EFBD666283E1BE6 /* DBFontPreviewViewController.storyboard */,
 				AAB7408B30132E64249A54A344C75A51 /* DBGridOverlaySettingsTableViewController.storyboard */,
 				09009F1953EF7258446A116634CF56D6 /* DBImageViewViewController.storyboard */,
-				C57317DA406283D425378B23941E6D58 /* DBJsonViewerTableViewCell.xib */,
+				17A3EE85222450E5006E20CE /* DBJsonViewerTableViewCell.xib */,
 				81CAD2C2E6B1764AE6B88E485E5F9080 /* DBLocationTableViewController.storyboard */,
 				8EBBA099CE3F954455914A041BD9EC9B /* DBManagedObjectsListTableViewController.storyboard */,
 				F479E7637C7F65972873A36CDEF4B205 /* DBManagedObjectTableViewCell.xib */,
@@ -2083,6 +2083,7 @@
 				02C2B2BCE666DE94BE690CB4BABCDE2A /* DBMenuSwitchTableViewCell.xib in Resources */,
 				0DABCF355381C4CDFB0E0F2E24DBAB7E /* DBMenuTableViewController.storyboard in Resources */,
 				40ACED76D2A8E80A5D058FBC026242AD /* DBNetworkSettingsTableViewController.storyboard in Resources */,
+				17A3EE86222450E5006E20CE /* DBJsonViewerTableViewCell.xib in Resources */,
 				B62F03C4BEE5C8AD21F75BFEA8FF4AB9 /* DBNetworkViewController.storyboard in Resources */,
 				72304AD990374F5E3FDC605242F0300D /* DBOptionsListTableViewController.storyboard in Resources */,
 				D1B96BEDB8E74F3C77229C94EE49DDE7 /* DBPerformanceTableViewController.storyboard in Resources */,
@@ -2097,7 +2098,6 @@
 				87C1384411B8BC28129AD6D95EC4AFB1 /* DBTitleValueListTableViewController.storyboard in Resources */,
 				7D928FADBD74EE5F3C0B07D7BAE80DAC /* DBTitleValueTableViewCell.xib in Resources */,
 				495145EB9A59D0E0DA1847AD3D146866 /* DBUserInterfaceViewController.storyboard in Resources */,
-				17EFA58A222332E000F8BF71 /* DBJsonViewerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
