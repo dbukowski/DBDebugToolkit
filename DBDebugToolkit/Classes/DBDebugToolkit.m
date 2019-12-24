@@ -60,6 +60,11 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 
 @implementation DBDebugToolkit
 
++ (UINavigationController *)viewController {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    return [[UINavigationController alloc] initWithRootViewController:toolkit.menuViewController];
+}
+
 #pragma mark - Setup
 
 + (void)setup {

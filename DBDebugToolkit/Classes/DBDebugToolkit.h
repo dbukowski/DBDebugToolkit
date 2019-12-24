@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "DBDebugToolkitTrigger.h"
 #import "DBCustomAction.h"
 #import "DBCustomVariable.h"
@@ -29,6 +30,11 @@
  `DBDebugToolkit` provides the interface that can be used to setup and customize the debugging tools.
  */
 @interface DBDebugToolkit : NSObject
+
+/**
+ Provides `UINavigationController` to custom showing.
+ */
++ (UINavigationController *)viewController;
 
 ///------------
 /// @name Setup
