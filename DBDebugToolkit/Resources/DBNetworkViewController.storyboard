@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cJS-nu-gIj">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cJS-nu-gIj">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="QLk-A9-Lhm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G7w-9S-MOF">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logging requests disabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Va7-rj-ZAx">
-                                <rect key="frame" x="82.5" y="291.5" width="211" height="20.5"/>
+                                <rect key="frame" x="82" y="301.5" width="211" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -33,9 +31,12 @@
                                     <constraint firstAttribute="height" constant="44" id="V8R-cW-2sz"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cJS-nu-gIj" id="21L-hP-sXl"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f48-Qm-HRd">
-                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -66,19 +67,10 @@
                     <connections>
                         <outlet property="loggingRequestsDisabledLabel" destination="Va7-rj-ZAx" id="p9c-M9-iJ7"/>
                         <outlet property="searchBar" destination="0Yc-DO-OxS" id="8o1-ev-K53"/>
-                        <outlet property="searchDisplayController" destination="iUG-lh-oc2" id="hi3-6b-KPW"/>
                         <outlet property="tableView" destination="f48-Qm-HRd" id="4IR-sN-MBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPz-B4-mLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="iUG-lh-oc2">
-                    <connections>
-                        <outlet property="delegate" destination="cJS-nu-gIj" id="ZX1-yW-Wbf"/>
-                        <outlet property="searchContentsController" destination="cJS-nu-gIj" id="qsQ-v2-BTj"/>
-                        <outlet property="searchResultsDataSource" destination="cJS-nu-gIj" id="9WW-Ek-zPW"/>
-                        <outlet property="searchResultsDelegate" destination="cJS-nu-gIj" id="Sjd-i4-IDy"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="556" y="-239.73013493253376"/>
         </scene>
