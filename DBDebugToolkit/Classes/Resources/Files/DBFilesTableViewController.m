@@ -144,6 +144,18 @@ static const NSInteger DBFilesTableViewControllerNextSizeAbbreviationThreshold =
         filesTableViewController.path = [self.path stringByAppendingPathComponent:subdirectoryName];
         filesTableViewController.title = subdirectoryName;
         [self.navigationController pushViewController:filesTableViewController animated:YES];
+    } else {
+        NSString *filePath = [self.path stringByAppendingPathComponent:self.files[indexPath.row]];
+        NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+        UIActivityViewController *activity = [[UIActivityViewController alloc]
+                                              initWithActivityItems:@[fileURL]
+                                              applicationActivities:nil];
+        UIPopoverPresentationController *popover = activity.popoverPresentationController;
+        if (popover) {
+            popover.sourceView = tableView;
+            popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+        }
+        [self presentViewController:activity animated:YES completion:nil];
     }
 }
 
