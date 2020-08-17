@@ -190,7 +190,7 @@ The setup with a separate target for App Store releases will help you prevent se
 
 To integrate DBDebugToolkit into your Xcode project using Carthage, specify it in your Cartfile:
 ```ruby
-github "dbukowski/DBDebugToolkit" ~> 0.5.3
+github "dbukowski/DBDebugToolkit" ~> 0.5.2
 ```
 Run carthage update to build the framework and drag the built DBDebugToolkit.framework into your Xcode project.
 
