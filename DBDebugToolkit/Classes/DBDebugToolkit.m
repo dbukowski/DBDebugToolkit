@@ -390,6 +390,10 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     }
 }
 
++ (UIViewController *)menuViewController {
+    return [DBDebugToolkit sharedInstance].menuViewController;
+}
+
 #pragma mark - Showing menu
 
 - (void)showMenu {
