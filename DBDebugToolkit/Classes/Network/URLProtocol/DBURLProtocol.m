@@ -90,6 +90,7 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
         }
         
         [self.client URLProtocolDidFinishLoading:self];
+        [self.urlSession finishTasksAndInvalidate];
     }] resume];
 }
 
