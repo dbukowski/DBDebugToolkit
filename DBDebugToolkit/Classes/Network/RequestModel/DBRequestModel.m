@@ -24,6 +24,7 @@
 #import "DBRequestDataHandler.h"
 
 static const NSInteger DBRequestModelBodyStreamBufferSize = 4096;
+static const NSInteger DBRequestModelMaxFilenameLeangth = 255;
 
 @interface DBRequestModel () <DBRequestDataHandlerDelegate>
 
@@ -119,17 +120,35 @@ static const NSInteger DBRequestModelBodyStreamBufferSize = 4096;
 
 #pragma mark - Saving body
 
-- (NSString *)urlStringByRemovingSchemeFromURL:(NSURL *)url {
-    NSRange dividerRange = [url.absoluteString rangeOfString:@"://"];
-    return dividerRange.length == 0 ? url.absoluteString : [url.absoluteString substringFromIndex:NSMaxRange(dividerRange)];
+- (NSString *)stringByRemovingSchemeFromURL:(NSString *)urlString {
+    NSRange dividerRange = [urlString rangeOfString:@"://"];
+    return dividerRange.length == 0 ? urlString : [urlString substringFromIndex:NSMaxRange(dividerRange)];
+}
+
+- (NSString *)urlStringByTrimingUrlLastComponent:(NSURL *)url toMaxLength:(NSInteger)maxLength {
+    NSRange lastComponentRange = [url.absoluteString rangeOfString:url.lastPathComponent];
+    NSString *fileName = [url.absoluteString substringFromIndex:lastComponentRange.location];
+    if([fileName length] > maxLength) {
+        fileName = [fileName substringToIndex:maxLength];
+    }
+
+    return [[[url absoluteString] substringToIndex:lastComponentRange.location] stringByAppendingPathComponent:fileName];
+}
+
+- (NSString *)urlStringForFileSave:(NSURL *)url timestamp:(NSDate *)timestamp {
+    NSString *timestampStr = [NSString stringWithFormat:@"_%@", @(timestamp.timeIntervalSince1970)];
+    NSInteger fileNameMaxLength = DBRequestModelMaxFilenameLeangth - [timestampStr length];
+    NSString *trimmedUrlString = [self urlStringByTrimingUrlLastComponent:url toMaxLength:fileNameMaxLength];
+
+    return [[self stringByRemovingSchemeFromURL:trimmedUrlString] stringByAppendingString:timestampStr];
 }
 
 - (NSString *)requestBodyFilename {
-    return [NSString stringWithFormat:@"Request/%@_%@", [self urlStringByRemovingSchemeFromURL:self.url], @(self.sendingDate.timeIntervalSince1970)];
+    return [NSString stringWithFormat:@"Request/%@", [self urlStringForFileSave:self.url timestamp:self.sendingDate]];
 }
 
 - (NSString *)responseBodyFilename {
-    return [NSString stringWithFormat:@"Response/%@_%@", [self urlStringByRemovingSchemeFromURL:self.url], @(self.receivingDate.timeIntervalSince1970)];
+    return [NSString stringWithFormat:@"Response/%@", [self urlStringForFileSave:self.url timestamp:self.receivingDate]];
 }
 
 - (void)saveRequestBody:(NSData *)data {
