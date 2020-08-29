@@ -24,6 +24,19 @@
 #import "DBURLProtocol.h"
 #import "NSObject+DBDebugToolkit.h"
 
+/**
+`DBEphemeralURLProtocol` is a `DBURLProtocol` subclass for internal usage of `NSURLSession.ephemeralSessionConfiguration`
+*/
+@interface DBEphemeralURLProtocol : DBURLProtocol
+@end
+
+@implementation DBEphemeralURLProtocol
++ (NSURLSessionConfiguration *)sessionConfiguration {
+    return NSURLSessionConfiguration.ephemeralSessionConfiguration;
+}
+@end
+
+
 @implementation NSURLSessionConfiguration (DBURLProtocol)
 
 #pragma mark - Method Swizzling
@@ -49,7 +62,7 @@
 + (instancetype)db_ephemeralSessionConfiguration {
     NSURLSessionConfiguration *ephemeralSessionConfiguration = [self db_ephemeralSessionConfiguration];
     NSMutableArray *originalProtocols = [NSMutableArray arrayWithArray:ephemeralSessionConfiguration.protocolClasses];
-    [originalProtocols insertObject:[DBURLProtocol class] atIndex:0];
+    [originalProtocols insertObject:[DBEphemeralURLProtocol class] atIndex:0];
     ephemeralSessionConfiguration.protocolClasses = originalProtocols;
     return ephemeralSessionConfiguration;
 }

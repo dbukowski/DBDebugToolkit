@@ -35,6 +35,10 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
 
 @implementation DBURLProtocol
 
++ (NSURLSessionConfiguration *)sessionConfiguration {
+    return NSURLSessionConfiguration.defaultSessionConfiguration;
+}
+
 + (BOOL)canInitWithTask:(NSURLSessionTask *)task {
     NSURLRequest *request = task.currentRequest;
     return request == nil ? NO : [self canInitWithRequest:request];
@@ -64,11 +68,11 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
     
     if (!self.urlSession) {
         if ([[[UIDevice currentDevice] systemVersion] compare:@"10.0" options:NSNumericSearch] != NSOrderedAscending) {
-            self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+            self.urlSession = [NSURLSession sessionWithConfiguration:[[self class] sessionConfiguration]
                                                             delegate:self
                                                        delegateQueue:nil];
         } else {
-            self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            self.urlSession = [NSURLSession sessionWithConfiguration:[[self class] sessionConfiguration]];
         }
     }
     
