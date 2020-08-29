@@ -27,7 +27,7 @@
 
 static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
 
-@interface DBURLProtocol () <NSURLSessionDelegate>
+@interface DBURLProtocol () <NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
 @property (nonatomic, strong) NSURLSession *urlSession;
 
@@ -108,6 +108,12 @@ static NSString *const DBURLProtocolHandledKey = @"DBURLProtocolHandled";
     DBAuthenticationChallengeSender *challengeSender = [DBAuthenticationChallengeSender authenticationChallengeSenderWithSessionCompletionHandler:completionHandler];
     NSURLAuthenticationChallenge *modifiedChallenge = [[NSURLAuthenticationChallenge alloc] initWithAuthenticationChallenge:challenge sender:challengeSender];
     [self.client URLProtocol:self didReceiveAuthenticationChallenge:modifiedChallenge];
+}
+
+#pragma mark - NSURLSessionTaskDelegate
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest *))completionHandler {
+    [self.client URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
 }
 
 @end
