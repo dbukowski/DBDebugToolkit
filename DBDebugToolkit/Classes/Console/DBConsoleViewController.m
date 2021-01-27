@@ -23,12 +23,13 @@
 #import "DBConsoleViewController.h"
 #import <MessageUI/MessageUI.h>
 
-@interface DBConsoleViewController () <DBConsoleOutputCaptorDelegate, MFMailComposeViewControllerDelegate>
+@interface DBConsoleViewController () <DBConsoleOutputCaptorDelegate, MFMailComposeViewControllerDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextView *textView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *clearBarButtonItem;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *sendBarButtonItem;
 @property (nonatomic, strong) MFMailComposeViewController *mailComposeViewController;
+@property (nonatomic, strong) NSString* query;
 
 @end
 
@@ -39,6 +40,7 @@
     self.consoleOutputCaptor.delegate = self;
     [self reloadConsole];
     [self updateShowingConsole];
+    [self setupNavigationItem];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -53,7 +55,14 @@
 - (void)reloadConsole {
     CGSize contentSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, DBL_MAX)];
     BOOL shouldScrollToBottom = -self.textView.contentOffset.y + contentSize.height <= self.textView.frame.size.height + DBL_EPSILON;
-    self.textView.text = self.consoleOutputCaptor.consoleOutput;
+    NSString* wholeOutput = self.consoleOutputCaptor.consoleOutput;
+    if (self.query.length > 0) {
+        NSMutableArray<NSString*>* allStrings = [wholeOutput componentsSeparatedByString:@"\n"].mutableCopy;
+        [allStrings filterUsingPredicate:[NSPredicate predicateWithFormat:@"SELF contains[c] %@", self.query]];
+        self.textView.text = [allStrings componentsJoinedByString:@"\n"];
+    } else {
+        self.textView.text = wholeOutput;
+    }
     if (shouldScrollToBottom) {
         [self scrollToBottom];
     }
@@ -68,6 +77,20 @@
     self.clearBarButtonItem.enabled = self.consoleOutputCaptor.enabled;
     self.sendBarButtonItem.enabled = self.consoleOutputCaptor.enabled && [MFMailComposeViewController canSendMail];
     self.textView.hidden = !self.consoleOutputCaptor.enabled;
+}
+
+- (void)setupNavigationItem {
+    UISearchController* sc = [[UISearchController alloc] initWithSearchResultsController: nil];
+    sc.searchBar.delegate = self;
+    sc.obscuresBackgroundDuringPresentation = NO;
+    sc.searchBar.placeholder = @"Filter";
+    self.navigationItem.searchController = sc;
+    self.navigationItem.hidesSearchBarWhenScrolling = YES;
+}
+
+- (void)setQuery:(NSString *)query {
+    _query = query;
+    [self reloadConsole];
 }
 
 #pragma mark - Sending logs
@@ -122,6 +145,20 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    self.query = searchBar.text;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.query = nil;
 }
 
 @end

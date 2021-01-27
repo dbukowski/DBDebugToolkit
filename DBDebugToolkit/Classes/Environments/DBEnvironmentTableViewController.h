@@ -20,37 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DBBuildInfoProvider.h"
+#import "DBDebugToolkit.h"
+#import "DBEnvironmentModelProtocol.h"
+#import "DBTextViewTableViewCell.h"
 
-@implementation DBBuildInfoProvider
+@interface DBEnvironmentTableViewController : UITableViewController <DBTextViewTableViewCellDelegate>
 
-- (NSString *)applicationName {
-    return [self infoDictionaryObjectForKey:(NSString *)kCFBundleNameKey];
-}
-
-- (NSString *)buildVersion {
-    return [self infoDictionaryObjectForKey:@"CFBundleShortVersionString"];
-}
-
-- (NSString *)buildNumber {
-    return [self infoDictionaryObjectForKey:@"CFBundleVersion"];
-}
-
-- (NSString *)buildInfoString {
-    NSString *buildInfoStringFormat = @"%@, v. %@ (%@)";
-    return [NSString stringWithFormat:buildInfoStringFormat, [self applicationName], [self buildVersion], [self buildNumber]];
-}
-
--(NSString *) applicationNameVer{
-    NSString *buildInfoStringFormat =@"%@%@";
-    return [NSString stringWithFormat:buildInfoStringFormat,[self applicationName],[self buildVersion]];
-}
-
-#pragma mark - Private methods
-
-- (NSString *)infoDictionaryObjectForKey:(NSString *)key {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    return [infoDictionary objectForKey:key];
-}
+@property (nonatomic, strong) id <DBEnvironmentModelProtocol> viewModel;
 
 @end

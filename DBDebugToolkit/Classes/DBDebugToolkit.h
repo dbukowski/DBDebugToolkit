@@ -185,6 +185,11 @@
 /// @name Crash reports
 ///--------------------
 
++ (void)setEnvironments:(NSArray<NSDictionary *>*)environments;
+
++ (void)sendEnvironmentNotification;
+
+
 /**
  Enables collecting crash reports.
  */
@@ -206,3 +211,18 @@
 + (void)handleClearDataShortcutItemAction NS_AVAILABLE_IOS(9_0);
 
 @end
+
+
+extern NSString * const DBEnvironmentDidChangedNotification;
+
+extern NSString * const DBEnvironmentNameKey;
+extern NSString * const DBEnvironmentValueKey;
+
+extern NSString * const DBEnvironmentTypeKey;
+extern NSString * const DBEnvironmentTypeWorkEnvironmentTitle;
+extern NSString * const DBEnvironmentTypeContentEnvironmentTitle;
+
+extern NSString * const DBEnvironmentDevelopment;
+extern NSString * const DBEnvironmentRelease;
+extern NSString * const DBEnvironmentTest;
+extern NSString * const DBEnvironmentCustom;

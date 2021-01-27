@@ -20,37 +20,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DBBuildInfoProvider.h"
+#ifndef DBEnvironmentModelProtocol_h
+#define DBEnvironmentModelProtocol_h
 
-@implementation DBBuildInfoProvider
+#import "DBTitleValueTableViewCellDataSource.h"
+@import UIKit;
 
-- (NSString *)applicationName {
-    return [self infoDictionaryObjectForKey:(NSString *)kCFBundleNameKey];
-}
+@protocol DBEnvironmentModelProtocol
+@property (assign, readonly) NSInteger numberOfPresets;
+@property (strong, readonly) NSArray<NSIndexPath *> *selectedItems;
 
-- (NSString *)buildVersion {
-    return [self infoDictionaryObjectForKey:@"CFBundleShortVersionString"];
-}
 
-- (NSString *)buildNumber {
-    return [self infoDictionaryObjectForKey:@"CFBundleVersion"];
-}
+-(NSInteger) numberOfItemsInPreset:(NSInteger) presetIndex;
+-(NSString*) titleForPresetAtIndex:(NSInteger) presetIndex;
+-(NSDictionary*) presetItemForIndexPath:(NSIndexPath*) indexPath;
+-(DBTitleValueTableViewCellDataSource*) dataSourceForItemAtIndexPath:(NSIndexPath*) indexPath;
 
-- (NSString *)buildInfoString {
-    NSString *buildInfoStringFormat = @"%@, v. %@ (%@)";
-    return [NSString stringWithFormat:buildInfoStringFormat, [self applicationName], [self buildVersion], [self buildNumber]];
-}
+-(void) setNewCustomValue:(NSString*) value forIndexPath:(NSIndexPath*) indexPath;
+-(void) didSelectIndexPath:(NSIndexPath*) indexPath;
 
--(NSString *) applicationNameVer{
-    NSString *buildInfoStringFormat =@"%@%@";
-    return [NSString stringWithFormat:buildInfoStringFormat,[self applicationName],[self buildVersion]];
-}
-
-#pragma mark - Private methods
-
-- (NSString *)infoDictionaryObjectForKey:(NSString *)key {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    return [infoDictionary objectForKey:key];
-}
+-(void) applyChanges;
 
 @end
+
+#endif /* DBEnvironmentModelProtocolProtocol_h */

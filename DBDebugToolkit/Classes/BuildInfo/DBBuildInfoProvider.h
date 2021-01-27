@@ -47,4 +47,6 @@
  */
 - (NSString *)buildInfoString;
 
+- (NSString *)applicationNameVer;
+
 @end

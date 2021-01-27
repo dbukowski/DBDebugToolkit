@@ -31,6 +31,9 @@
 #import "DBCustomActionsTableViewController.h"
 #import "DBCustomVariablesTableViewController.h"
 #import "DBCrashReportsTableViewController.h"
+#import "DBEnvironmentTableViewController.h"
+
+const NSInteger kConfigPresetsDetailsTag = 989;
 
 typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowPerformance,
@@ -40,6 +43,7 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowConsole,
     DBMenuTableViewControllerRowLocation,
     DBMenuTableViewControllerRowCrashReports,
+    DBMenuTableViewControllerRowEnvironments,
     DBMenuTableViewControllerRowCustomVariables,
     DBMenuTableViewControllerRowCustomActions,
     DBMenuTableViewControllerRowApplicationSettings
@@ -73,7 +77,9 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == DBMenuTableViewControllerRowApplicationSettings) {
         // Open application settings.
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]
+                                           options:@{}
+                                 completionHandler:nil];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
     }
 }
@@ -122,6 +128,23 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     } else if ([destinationViewController isKindOfClass:[DBCrashReportsTableViewController class]]) {
         DBCrashReportsTableViewController *crashReportsTableViewController = (DBCrashReportsTableViewController *)destinationViewController;
         crashReportsTableViewController.crashReportsToolkit = self.crashReportsToolkit;
+    } else if ([destinationViewController isKindOfClass:[DBEnvironmentTableViewController class]]) {
+        DBEnvironmentTableViewController *confPresets = (DBEnvironmentTableViewController*) destinationViewController;
+        confPresets.viewModel = self.environmentToolkit;
+        
+    }
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateConfigPresetValue];
+}
+
+-(void) updateConfigPresetValue {
+    UIView* vw = [self.view viewWithTag:kConfigPresetsDetailsTag];
+    if (vw && [vw isKindOfClass:[UILabel class]]) {
+        UILabel* detail = (UILabel*)vw;
+        detail.text = self.environmentToolkit.currentPreset;
     }
 }
 

@@ -37,10 +37,12 @@
 #import "DBCrashReportsToolkit.h"
 #import "DBTopLevelViewsWrapper.h"
 #import "UIApplication+DBDebugToolkit.h"
+#import "DBEnvironmentToolkit.h"
+#import "DBDebugSettings.h"
 
 static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPath = @"containerView";
 
-@interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate>
+@interface DBDebugToolkit () <DBDebugToolkitTriggerDelegate, DBMenuTableViewControllerDelegate, DBPerformanceWidgetViewDelegate, DBDebugSettingsDelegate>
 
 @property (nonatomic, copy) NSArray <id <DBDebugToolkitTrigger>> *triggers;
 @property (nonatomic, strong) DBMenuTableViewController *menuViewController;
@@ -55,6 +57,8 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 @property (nonatomic, strong) NSMutableArray <DBCustomAction *> *customActions;
 @property (nonatomic, strong) NSMutableDictionary <NSString *, DBCustomVariable *> *customVariables;
 @property (nonatomic, strong) DBTopLevelViewsWrapper *topLevelViewsWrapper;
+@property (nonatomic, strong) DBEnvironmentToolkit *environmentToolkit;
+@property (nonatomic, strong) DBDebugSettings *dbDebugSettings;
 
 @end
 
@@ -81,6 +85,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DBDebugToolkit alloc] init];
+        [sharedInstance setupSettings];
         [sharedInstance registerForNotifications];
         [sharedInstance setupTopLevelViewsWrapper];
         [sharedInstance setupPerformanceToolkit];
@@ -91,6 +96,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
         [sharedInstance setupCoreDataToolkit];
         [sharedInstance setupCustomActions];
         [sharedInstance setupCustomVariables];
+        [sharedInstance setupEnvironments];
         [sharedInstance setupCrashReportsToolkit];
     });
     return sharedInstance;
@@ -167,6 +173,11 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 }
 
 #pragma mark - Network toolkit
+
+- (void)setupSettings{
+    self.dbDebugSettings = [DBDebugSettings sharedInstance];
+    self.dbDebugSettings.delegate = self;
+}
 
 - (void)setupNetworkToolkit {
     self.networkToolkit = [DBNetworkToolkit sharedInstance];
@@ -396,6 +407,40 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 
 #pragma mark - Showing menu
 
+- (void)setupEnvironments {
+    self.environmentToolkit = [[DBEnvironmentToolkit alloc] init];
+}
+
++ (void)setEnvironments:(NSArray<NSDictionary *>*) environments {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    if([toolkit.dbDebugSettings.selectedPresets isEqualToString:@"-1"]){
+        NSMutableArray *selectedPresets = [[NSMutableArray alloc] init];
+        for (NSDictionary* cfgEnv in environments) {
+            NSString* selected = [cfgEnv[@"selected"] description];
+            [selectedPresets addObject:selected];
+        }
+        [toolkit.dbDebugSettings updateSelectedPresets:[[selectedPresets valueForKey:@"description"] componentsJoinedByString:@","]];
+        [toolkit.environmentToolkit setEnvironments:environments];
+    } else {
+        NSMutableArray<NSDictionary *>* customPresets = [[NSMutableArray alloc] init];
+        NSUInteger presetCount = 0;
+        NSArray<NSString *> *selectedPresets = [toolkit.dbDebugSettings.selectedPresets componentsSeparatedByString:@","];
+        for (NSDictionary* cfgEnv in environments) {
+            NSMutableDictionary* customEnv = [NSMutableDictionary dictionaryWithDictionary:cfgEnv];
+            [customEnv removeObjectForKey:@"selected"];
+            [customEnv setObject:[selectedPresets objectAtIndex:presetCount] forKey:@"selected"];
+            [customPresets addObject:[customEnv copy]];
+            presetCount++;
+        }
+        [toolkit.environmentToolkit setEnvironments:[customPresets copy]];
+    }
+}
+
++ (void)sendEnvironmentNotification {
+    DBDebugToolkit *toolkit = [DBDebugToolkit sharedInstance];
+    [toolkit.environmentToolkit sendUpdateNotification];
+}
+
 - (void)showMenu {
     self.showsMenu = YES;
     UIViewController *presentingViewController = [self topmostViewController];
@@ -444,6 +489,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
         _menuViewController.locationToolkit = self.locationToolkit;
         _menuViewController.coreDataToolkit = self.coreDataToolkit;
         _menuViewController.crashReportsToolkit = self.crashReportsToolkit;
+        _menuViewController.environmentToolkit = self.environmentToolkit;
         _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;

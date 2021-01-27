@@ -20,37 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DBBuildInfoProvider.h"
+#import <Foundation/Foundation.h>
+#import "DBEnvironmentModelProtocol.h"
 
-@implementation DBBuildInfoProvider
+@interface DBEnvironmentToolkit : NSObject <DBEnvironmentModelProtocol>
 
-- (NSString *)applicationName {
-    return [self infoDictionaryObjectForKey:(NSString *)kCFBundleNameKey];
-}
+@property (strong,readonly) NSString *currentPreset;
 
-- (NSString *)buildVersion {
-    return [self infoDictionaryObjectForKey:@"CFBundleShortVersionString"];
-}
-
-- (NSString *)buildNumber {
-    return [self infoDictionaryObjectForKey:@"CFBundleVersion"];
-}
-
-- (NSString *)buildInfoString {
-    NSString *buildInfoStringFormat = @"%@, v. %@ (%@)";
-    return [NSString stringWithFormat:buildInfoStringFormat, [self applicationName], [self buildVersion], [self buildNumber]];
-}
-
--(NSString *) applicationNameVer{
-    NSString *buildInfoStringFormat =@"%@%@";
-    return [NSString stringWithFormat:buildInfoStringFormat,[self applicationName],[self buildVersion]];
-}
-
-#pragma mark - Private methods
-
-- (NSString *)infoDictionaryObjectForKey:(NSString *)key {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    return [infoDictionary objectForKey:key];
-}
+- (void) setEnvironments:(NSArray<NSDictionary *>*)environments;
+- (void) sendUpdateNotification;
 
 @end

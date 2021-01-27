@@ -60,6 +60,14 @@
 		27BE6F7EA66B93492AAEFBF4BBE5373E /* CLLocationManager+DBLocationToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = A22AF7F4EB27D881F4A708DAB475142B /* CLLocationManager+DBLocationToolkit.m */; };
 		285C6F6BE59E632CB219CD98B4EDC1AA /* EXPMatchers+endWith.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F350337B25F09061F55C2252CBD6 /* EXPMatchers+endWith.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28B9C19500E7985E9A189414D65B4587 /* DBRequestDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DACE071C3FB5866380A643110B4FC099 /* DBRequestDataHandler.m */; };
+		28E2CE3F25C1D07C00B63414 /* DBEnvironmentToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E2CE3A25C1D07C00B63414 /* DBEnvironmentToolkit.m */; };
+		28E2CE4025C1D07C00B63414 /* DBEnvironmentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E2CE3B25C1D07C00B63414 /* DBEnvironmentTableViewController.m */; };
+		28E2CE4125C1D07C00B63414 /* DBEnvironmentToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 28E2CE3C25C1D07C00B63414 /* DBEnvironmentToolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28E2CE4225C1D07C00B63414 /* DBEnvironmentTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 28E2CE3D25C1D07C00B63414 /* DBEnvironmentTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28E2CE4325C1D07C00B63414 /* DBEnvironmentModelProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 28E2CE3E25C1D07C00B63414 /* DBEnvironmentModelProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28E2CF3025C1DE3700B63414 /* DBEnvironmentTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E2CF2F25C1DE3700B63414 /* DBEnvironmentTableViewController.storyboard */; };
+		28E2D0D125C20BE900B63414 /* DBDebugSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E2D0C825C20BD800B63414 /* DBDebugSettings.m */; };
+		28E2D0DE25C20BF200B63414 /* DBDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 28E2D0C925C20BD800B63414 /* DBDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2916D75F69E777954F5BF46AE63C52C0 /* EXPMatchers+beSubclassOf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF80B5A24CE07B6C736EEF474E7E9C /* EXPMatchers+beSubclassOf.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C461BD04A11E4B59DD1BFF592FB7D2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0F5DAA0AC84C5E3ADE087C20B50BA /* Foundation.framework */; };
 		2D67E40AE63E732CDB15132013D1E82B /* DBMenuSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 176AD3947797C66B43848818CBB54AB4 /* DBMenuSwitchTableViewCell.m */; };
@@ -401,7 +409,7 @@
 
 /* Begin PBXFileReference section */
 		0113D5AEBFB0CFAAEAEF1261D9AE5530 /* NSBundle+DBDebugToolkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSBundle+DBDebugToolkit.h"; sourceTree = "<group>"; };
-		018ED9E4086824FB0E8D3BEC8B54D24E /* Pods_DBDebugToolkit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DBDebugToolkit_Tests.framework; path = "Pods-DBDebugToolkit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		018ED9E4086824FB0E8D3BEC8B54D24E /* Pods_DBDebugToolkit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0286B3810FD46FB7244AF922B77340DD /* DBCoreDataFilterSettingsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBCoreDataFilterSettingsTableViewController.m; sourceTree = "<group>"; };
 		02A9C60CDA76A5DD213394B6333F7352 /* DBNetworkSettingsTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBNetworkSettingsTableViewController.h; sourceTree = "<group>"; };
 		02BA0A574801ACD7F6942E16363105F7 /* DBCrashReportDetailsTableViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DBCrashReportDetailsTableViewController.storyboard; path = ../../Resources/DBCrashReportDetailsTableViewController.storyboard; sourceTree = "<group>"; };
@@ -419,7 +427,7 @@
 		0C3D3DF8EF48C041C4CAAED45FCECEFC /* DBTitleValueTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DBTitleValueTableViewCell.xib; path = ../../Resources/DBTitleValueTableViewCell.xib; sourceTree = "<group>"; };
 		0CD2D838732511C329FF4F4FFF83FC49 /* DBUserDefaultsToolkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBUserDefaultsToolkit.h; sourceTree = "<group>"; };
 		0D742C36417083F91C50620C170817D1 /* EXPDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPDefines.h; path = Expecta/EXPDefines.h; sourceTree = "<group>"; };
-		0DA8BB959E3E86F3181C6A209B9F9FCA /* DBDebugToolkit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = DBDebugToolkit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		0DA8BB959E3E86F3181C6A209B9F9FCA /* DBDebugToolkit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = DBDebugToolkit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		0E4673A6E30BB3693A359E797487C8A8 /* DBKeychainToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBKeychainToolkit.m; sourceTree = "<group>"; };
 		0E8067D53F22D39AE1B0413A464A738A /* DBBuildInfoProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBBuildInfoProvider.m; sourceTree = "<group>"; };
 		0EE70C6C21F43BB6A0B54C1ECAB443A9 /* DBTopLevelViewsWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBTopLevelViewsWrapper.h; sourceTree = "<group>"; };
@@ -435,7 +443,7 @@
 		124408F448490BCF39CC1C2AA5297197 /* EXPMatchers+postNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+postNotification.h"; path = "Expecta/Matchers/EXPMatchers+postNotification.h"; sourceTree = "<group>"; };
 		1400357C678C75B839AF4F27BC15D706 /* DBDebugToolkitTriggerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBDebugToolkitTriggerDelegate.h; sourceTree = "<group>"; };
 		14008BBA0C272616F3AC655BA8258470 /* DBFontPreviewViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBFontPreviewViewController.h; sourceTree = "<group>"; };
-		14875B0AD839B44C350E1CB789B14504 /* Pods_DBDebugToolkit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DBDebugToolkit_Example.framework; path = "Pods-DBDebugToolkit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14875B0AD839B44C350E1CB789B14504 /* Pods_DBDebugToolkit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBDebugToolkit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		176AD3947797C66B43848818CBB54AB4 /* DBMenuSwitchTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBMenuSwitchTableViewCell.m; sourceTree = "<group>"; };
 		177EE8E7DD8C4226F8E15FE4C447154D /* EXPMatchers+endWith.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+endWith.h"; path = "Expecta/Matchers/EXPMatchers+endWith.h"; sourceTree = "<group>"; };
 		17B271C769948413B2D6A2FA5FA661F5 /* EXPFloatTuple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPFloatTuple.h; path = Expecta/EXPFloatTuple.h; sourceTree = "<group>"; };
@@ -459,8 +467,16 @@
 		25309716CCE76CE63895B0CEDBEACCD8 /* DBMenuSwitchTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DBMenuSwitchTableViewCell.xib; path = ../../Resources/DBMenuSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		270EDC4B3EE34062F3911156AA900A5C /* DBFontFamiliesTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBFontFamiliesTableViewController.h; sourceTree = "<group>"; };
 		27576C638FD3AB691E7F4FB1E3980464 /* EXPMatcherHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPMatcherHelpers.h; path = Expecta/Matchers/EXPMatcherHelpers.h; sourceTree = "<group>"; };
-		278433EA8029202C7B9B2BA9E86D6145 /* DBDebugToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DBDebugToolkit.framework; path = DBDebugToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		278433EA8029202C7B9B2BA9E86D6145 /* DBDebugToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DBDebugToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		279DF95762E948BE7B719A7F673E9E56 /* EXPMatchers+beIdenticalTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beIdenticalTo.m"; path = "Expecta/Matchers/EXPMatchers+beIdenticalTo.m"; sourceTree = "<group>"; };
+		28E2CE3A25C1D07C00B63414 /* DBEnvironmentToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBEnvironmentToolkit.m; sourceTree = "<group>"; };
+		28E2CE3B25C1D07C00B63414 /* DBEnvironmentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBEnvironmentTableViewController.m; sourceTree = "<group>"; };
+		28E2CE3C25C1D07C00B63414 /* DBEnvironmentToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBEnvironmentToolkit.h; sourceTree = "<group>"; };
+		28E2CE3D25C1D07C00B63414 /* DBEnvironmentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBEnvironmentTableViewController.h; sourceTree = "<group>"; };
+		28E2CE3E25C1D07C00B63414 /* DBEnvironmentModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBEnvironmentModelProtocol.h; sourceTree = "<group>"; };
+		28E2CF2F25C1DE3700B63414 /* DBEnvironmentTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DBEnvironmentTableViewController.storyboard; path = ../../Resources/DBEnvironmentTableViewController.storyboard; sourceTree = "<group>"; };
+		28E2D0C825C20BD800B63414 /* DBDebugSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDebugSettings.m; sourceTree = "<group>"; };
+		28E2D0C925C20BD800B63414 /* DBDebugSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDebugSettings.h; sourceTree = "<group>"; };
 		2A9C5D8286D6C07A05C41E57C4523718 /* DBMenuChartTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBMenuChartTableViewCell.m; sourceTree = "<group>"; };
 		2AFD77F6B582228E3C05EB3F700225A9 /* EXPMatchers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPMatchers.h; path = Expecta/Matchers/EXPMatchers.h; sourceTree = "<group>"; };
 		2B28D47C815A5D1B03B908ADBA7D0D92 /* DBPerformanceToolkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBPerformanceToolkit.h; sourceTree = "<group>"; };
@@ -486,7 +502,7 @@
 		39BC038910EBCB591054AE486D2A4830 /* Pods-DBDebugToolkit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DBDebugToolkit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		39D3DC56226F304A4A4BFF2CD7495BE0 /* DBDebugToolkit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DBDebugToolkit-prefix.pch"; sourceTree = "<group>"; };
 		39FBFFF139202E2FEA8399EF541FE099 /* Pods-DBDebugToolkit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DBDebugToolkit_Example-frameworks.sh"; sourceTree = "<group>"; };
-		3A15AD9A438E06054DC72F76527BA30C /* Expecta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Expecta.framework; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A15AD9A438E06054DC72F76527BA30C /* Expecta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACF80B5A24CE07B6C736EEF474E7E9C /* EXPMatchers+beSubclassOf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beSubclassOf.m"; path = "Expecta/Matchers/EXPMatchers+beSubclassOf.m"; sourceTree = "<group>"; };
 		3B10B83D33ACF40AF7A4981B0EBF5A47 /* NSPersistentStoreCoordinator+DBCoreDataToolkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSPersistentStoreCoordinator+DBCoreDataToolkit.h"; sourceTree = "<group>"; };
 		3B236E34C19DC967CCE978293BCF8C5E /* SPTSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SPTSpec.m; path = Specta/Specta/SPTSpec.m; sourceTree = "<group>"; };
@@ -545,7 +561,7 @@
 		621D45D57ACA8E38D852A1E07D2AD679 /* SpectaDSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpectaDSL.m; path = Specta/Specta/SpectaDSL.m; sourceTree = "<group>"; };
 		657240E4169964713321618F566A9BBD /* DBBodyPreviewViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBBodyPreviewViewController.m; sourceTree = "<group>"; };
 		65DA28E34D6B2634B0D3632970B9AFD0 /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raiseWithReason.h"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
-		65F77F4E21A1B904C5BE28F1459E6222 /* Specta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Specta.framework; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65F77F4E21A1B904C5BE28F1459E6222 /* Specta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		664FF58EE154D6D8EF19D15FB30563A2 /* DBRequestDetailsViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DBRequestDetailsViewController.storyboard; path = ../../Resources/DBRequestDetailsViewController.storyboard; sourceTree = "<group>"; };
 		66BECFA2A24DC336BD66108BD4E3FE2B /* DBPerformanceWidgetView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBPerformanceWidgetView.m; sourceTree = "<group>"; };
 		66D8EF000FBB66526BB9DBEF66A337E6 /* DBFontPreviewViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBFontPreviewViewController.m; sourceTree = "<group>"; };
@@ -612,7 +628,7 @@
 		924BF15B0F1D99CAD6E46F0030F50C50 /* ExpectaSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ExpectaSupport.m; path = Expecta/ExpectaSupport.m; sourceTree = "<group>"; };
 		92F2F9516F7B31796421B1B0E81B8502 /* DBManagedObjectTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBManagedObjectTableViewController.m; sourceTree = "<group>"; };
 		930B0000D2C96B2D3942173AD5E2E63A /* DBDeviceInfoProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBDeviceInfoProvider.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93B613869003A3D21F03ECEADC589822 /* EXPMatchers+beNil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beNil.m"; path = "Expecta/Matchers/EXPMatchers+beNil.m"; sourceTree = "<group>"; };
 		93D3AC7031A95FCACEB157786FB5CE40 /* DBManagedObjectsListTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBManagedObjectsListTableViewController.h; sourceTree = "<group>"; };
 		94C46ED40250439AFE9AC503758A5D2C /* DBBodyPreviewViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBBodyPreviewViewController.h; sourceTree = "<group>"; };
@@ -644,7 +660,7 @@
 		A31DB2F213B606BBB124F2A6D10D8417 /* EXPMatchers+beInstanceOf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beInstanceOf.h"; path = "Expecta/Matchers/EXPMatchers+beInstanceOf.h"; sourceTree = "<group>"; };
 		A393E8CA864FB36948A3AA288CB73F04 /* DBCrashReportsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBCrashReportsTableViewController.m; sourceTree = "<group>"; };
 		A484422A0FE1CA997492A683587F3186 /* DBTouchIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBTouchIndicatorView.m; sourceTree = "<group>"; };
-		A487E9764FC558FA78E8575E837D7016 /* DBDebugToolkit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = DBDebugToolkit.bundle; path = "DBDebugToolkit-DBDebugToolkit.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A487E9764FC558FA78E8575E837D7016 /* DBDebugToolkit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBDebugToolkit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75A4A641C104BDCFBEDE8D5FB2C61BF /* DBCustomActionsTableViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DBCustomActionsTableViewController.storyboard; path = ../../Resources/DBCustomActionsTableViewController.storyboard; sourceTree = "<group>"; };
 		A7E6D556258572A88041A9732998DD7A /* DBEntitiesTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBEntitiesTableViewController.h; sourceTree = "<group>"; };
 		A81DD98F60EBFE766B08AF205273D7A4 /* DBRequestDataHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRequestDataHandler.h; sourceTree = "<group>"; };
@@ -680,7 +696,7 @@
 		B74B8805E49E91D9017AFAE5CD685203 /* DBUserInterfaceTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBUserInterfaceTableViewController.h; sourceTree = "<group>"; };
 		B821055595D924B4D847C0C48ECB4B68 /* DBNetworkViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DBNetworkViewController.storyboard; path = ../../Resources/DBNetworkViewController.storyboard; sourceTree = "<group>"; };
 		B850D20E0161902833ADB9EC452B24D7 /* Pods-DBDebugToolkit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DBDebugToolkit_Tests.modulemap"; sourceTree = "<group>"; };
-		B8E6331C07D8C8BA4E1025D5264280A5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		B8E6331C07D8C8BA4E1025D5264280A5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BC21DB6163C991234C44951BC3049E80 /* DBChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBChartView.m; sourceTree = "<group>"; };
 		BD3AD1EBD286ECC272E23EF6F48C482B /* DBCrashReportDetailsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBCrashReportDetailsTableViewController.m; sourceTree = "<group>"; };
 		BEAEA563405DD31BBBEE3A291D51D550 /* Specta-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Specta-umbrella.h"; sourceTree = "<group>"; };
@@ -758,7 +774,7 @@
 		E9AE8F08E5BF8761248953266308C74A /* DBFileTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DBFileTableViewCell.xib; path = ../../Resources/DBFileTableViewCell.xib; sourceTree = "<group>"; };
 		E9BC463512360A2C2988AFE066E95A36 /* Pods-DBDebugToolkit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DBDebugToolkit_Example-dummy.m"; sourceTree = "<group>"; };
 		EA76F7E94AEE6800E88D3DF1AD221855 /* DBCustomActionsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBCustomActionsTableViewController.m; sourceTree = "<group>"; };
-		EA8421D5A9982F4B55FFB8C3E96B3714 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		EA8421D5A9982F4B55FFB8C3E96B3714 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EAED0894E260A79994C6C48085B3A258 /* DBCustomLocationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBCustomLocationViewController.h; sourceTree = "<group>"; };
 		EB82C3DE848D7773A910115EA01F2A5F /* DBTopLevelViewsWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBTopLevelViewsWrapper.m; sourceTree = "<group>"; };
 		EB8A2E31604ACF2DE5DA0C51D070BC50 /* DBCoreDataToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBCoreDataToolkit.m; sourceTree = "<group>"; };
@@ -850,7 +866,6 @@
 				11D657256C524DAE8583CA3631B3706F /* DBGridOverlayView.h */,
 				BF5181440CAB7C7F5B6205C22CE535CB /* DBGridOverlayView.m */,
 			);
-			name = GridOverlay;
 			path = GridOverlay;
 			sourceTree = "<group>";
 		};
@@ -862,7 +877,6 @@
 				0B6FBEE7CB849F0EF586F74560F3B2FD /* NSOperationQueue+DBMainQueueOperation.h */,
 				78FD53632368F0838D0142331240E361 /* NSOperationQueue+DBMainQueueOperation.m */,
 			);
-			name = MainQueueOperation;
 			path = MainQueueOperation;
 			sourceTree = "<group>";
 		};
@@ -874,7 +888,6 @@
 				F597F1AC425A35D7B3410373585BE0C9 /* UIWindow+DBShakeTrigger.h */,
 				CB416208331BD9F7758CFD7ECE957437 /* UIWindow+DBShakeTrigger.m */,
 			);
-			name = ShakeTrigger;
 			path = ShakeTrigger;
 			sourceTree = "<group>";
 		};
@@ -908,7 +921,6 @@
 				ABE29471E8953384B36B17DC33FB8C75 /* XCTestCase+Specta.m */,
 				A979DE50F769668B397DD7DCF79B8685 /* Support Files */,
 			);
-			name = Specta;
 			path = Specta;
 			sourceTree = "<group>";
 		};
@@ -918,7 +930,6 @@
 				E561775F1D55682D86718E1144DD8F21 /* DBKeychainToolkit.h */,
 				0E4673A6E30BB3693A359E797487C8A8 /* DBKeychainToolkit.m */,
 			);
-			name = Keychain;
 			path = Keychain;
 			sourceTree = "<group>";
 		};
@@ -999,6 +1010,7 @@
 				A8B7C5B3707C84D9A1D28DF0521DD9BE /* DBTitleValueListViewModel.h */,
 				0C3D3DF8EF48C041C4CAAED45FCECEFC /* DBTitleValueTableViewCell.xib */,
 				A14B65551FB56AD14D783B123B6853C2 /* DBUserInterfaceViewController.storyboard */,
+				28E2CF2F25C1DE3700B63414 /* DBEnvironmentTableViewController.storyboard */,
 				8BD8E5A4156EABF3658CE9C424EDFEBE /* Cookies */,
 				B70B7D04D7261BF70D2586A1B43A0ACE /* CoreData */,
 				D5320D43B0A3F558E1F264881A2C785F /* Files */,
@@ -1069,6 +1081,29 @@
 			path = "Target Support Files/Pods-DBDebugToolkit_Tests";
 			sourceTree = "<group>";
 		};
+		28E2CE3925C1D07C00B63414 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				28E2CE3A25C1D07C00B63414 /* DBEnvironmentToolkit.m */,
+				28E2CE3B25C1D07C00B63414 /* DBEnvironmentTableViewController.m */,
+				28E2CE3C25C1D07C00B63414 /* DBEnvironmentToolkit.h */,
+				28E2CE3D25C1D07C00B63414 /* DBEnvironmentTableViewController.h */,
+				28E2CE3E25C1D07C00B63414 /* DBEnvironmentModelProtocol.h */,
+			);
+			name = Environments;
+			path = DBDebugToolkit/Classes/Environments;
+			sourceTree = "<group>";
+		};
+		28E2D0C725C20BD800B63414 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				28E2D0C825C20BD800B63414 /* DBDebugSettings.m */,
+				28E2D0C925C20BD800B63414 /* DBDebugSettings.h */,
+			);
+			name = Settings;
+			path = DBDebugToolkit/Classes/Settings;
+			sourceTree = "<group>";
+		};
 		2FB2FD2D8D33A5A147815DC958361D7B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1079,7 +1114,6 @@
 				0A15259C509659FF5C123892D0FBBAF2 /* UIWindow+DBUserInterfaceToolkit.h */,
 				7A71572D508ADDDF92A98EDE71EF961A /* UIWindow+DBUserInterfaceToolkit.m */,
 			);
-			name = Categories;
 			path = Categories;
 			sourceTree = "<group>";
 		};
@@ -1089,7 +1123,6 @@
 				FBBDA70FA556FAD64C68935C3A50DE88 /* DBLongPressTrigger.h */,
 				4BBC14CF780BBBBC458EB814F36A4632 /* DBLongPressTrigger.m */,
 			);
-			name = LongPressTrigger;
 			path = LongPressTrigger;
 			sourceTree = "<group>";
 		};
@@ -1103,6 +1136,8 @@
 				AAFC0221D839BB308AA84D4953A1C12E /* Cells */,
 				6AF7C7CC403EF6C7E6BF3FC6F7ACD544 /* Chart */,
 				216D0DDD46BDEB586CE947588B920A52 /* Console */,
+				28E2CE3925C1D07C00B63414 /* Environments */,
+				28E2D0C725C20BD800B63414 /* Settings */,
 				7CA5A1624421947C6B170CC064F5BBDE /* CrashReports */,
 				EDEF09CCCBEDD21525503E18468281CC /* CustomActions */,
 				1745556EFEF4DAEBEC7979EFBFC821F6 /* CustomVariables */,
@@ -1129,7 +1164,6 @@
 				0CD2D838732511C329FF4F4FFF83FC49 /* DBUserDefaultsToolkit.h */,
 				E3D33367A8124E285243E44E7E820FD9 /* DBUserDefaultsToolkit.m */,
 			);
-			name = UserDefaults;
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
@@ -1156,7 +1190,6 @@
 				40A088A0EB740ED186AB2886D0F34A4E /* DBRequestOutcome.h */,
 				08D87BA0D268B805433717E3AC69BDE2 /* DBRequestOutcome.m */,
 			);
-			name = RequestModel;
 			path = RequestModel;
 			sourceTree = "<group>";
 		};
@@ -1184,7 +1217,6 @@
 				59622C80B843F964A9E990B36B012494 /* DBPerformanceWidgetView.h */,
 				66BECFA2A24DC336BD66108BD4E3FE2B /* DBPerformanceWidgetView.m */,
 			);
-			name = Widget;
 			path = Widget;
 			sourceTree = "<group>";
 		};
@@ -1291,7 +1323,6 @@
 				2499EDF4CE48DC7D295875D373CE6ACB /* NSValue+Expecta.m */,
 				1B493CB7677D90B7CD1D27527EA16596 /* Support Files */,
 			);
-			name = Expecta;
 			path = Expecta;
 			sourceTree = "<group>";
 		};
@@ -1303,7 +1334,6 @@
 				97539D20A0DC50AED3AE26DD72A75A5D /* DBTitleValueTableViewCellDataSource.h */,
 				9DF7E53198F249E0D909580F166AB72E /* DBTitleValueTableViewCellDataSource.m */,
 			);
-			name = TitleValue;
 			path = TitleValue;
 			sourceTree = "<group>";
 		};
@@ -1434,7 +1464,6 @@
 				E60CDD4477D0FC7D06C326E2DA0D2805 /* DBCookieTableViewCell.h */,
 				D4B5D9A979AFF5C962B687BFD13A8781 /* DBCookieTableViewCell.m */,
 			);
-			name = Cookies;
 			path = Cookies;
 			sourceTree = "<group>";
 		};
@@ -1446,7 +1475,6 @@
 				FA2A180CBDBFAC3776D93A692232E2A9 /* DBColorPickerTableViewCell.h */,
 				C07FBF0CF65A1758B13B9B4F595DE459 /* DBColorPickerTableViewCell.m */,
 			);
-			name = ColorPicker;
 			path = ColorPicker;
 			sourceTree = "<group>";
 		};
@@ -1515,7 +1543,6 @@
 				A99F5E2DC6E325CB40555A8FD4EC9A39 /* NSPersistentStoreCoordinator+DBCoreDataToolkit.m */,
 				BFF330ACB4D4F0499534FE8949710973 /* Filters */,
 			);
-			name = CoreData;
 			path = CoreData;
 			sourceTree = "<group>";
 		};
@@ -1535,7 +1562,6 @@
 				90A6C9ADC098E2D71FC8C4A5EE8621FF /* DBOptionsListTableViewController.h */,
 				DC462C92EA8CF54A2A85DD3827A60815 /* DBOptionsListTableViewController.m */,
 			);
-			name = Filters;
 			path = Filters;
 			sourceTree = "<group>";
 		};
@@ -1547,7 +1573,6 @@
 				6204575CC9A799EE24EB8D40980A405B /* DBFileTableViewCell.h */,
 				0F6E12C839B23CD7DF3D15185BBA2663 /* DBFileTableViewCell.m */,
 			);
-			name = Files;
 			path = Files;
 			sourceTree = "<group>";
 		};
@@ -1589,7 +1614,6 @@
 				B107AF8E896908697F9E9B83FB9A5769 /* DBTapTrigger.h */,
 				6B1C93E385A0C9B27728D2E819F23A41 /* DBTapTrigger.m */,
 			);
-			name = TapTrigger;
 			path = TapTrigger;
 			sourceTree = "<group>";
 		};
@@ -1625,7 +1649,6 @@
 				98308DA94EDF6C941D3B63E3191B7D26 /* NSURLSessionConfiguration+DBURLProtocol.h */,
 				DDDF8D1EFCA298DB0579B2995ED3A60C /* NSURLSessionConfiguration+DBURLProtocol.m */,
 			);
-			name = URLProtocol;
 			path = URLProtocol;
 			sourceTree = "<group>";
 		};
@@ -1769,6 +1792,7 @@
 				E6607DA6064ECF2ABF50741FEA480D37 /* DBConsoleViewController.h in Headers */,
 				FC05EB1CFF710D32E1E7FE61E520F392 /* DBCookieDetailsTableViewController.h in Headers */,
 				EC4A17924441AD136B7C03415B1F0748 /* DBCookiesTableViewController.h in Headers */,
+				28E2CE4325C1D07C00B63414 /* DBEnvironmentModelProtocol.h in Headers */,
 				E0774777EE8133BF3678482391E95692 /* DBCookieTableViewCell.h in Headers */,
 				CA98DEDDBD4589BC4453076101212E29 /* DBCoreDataFilter.h in Headers */,
 				E8C783E6F884191E7D676F2CDC3429FB /* DBCoreDataFilterOperator.h in Headers */,
@@ -1776,7 +1800,9 @@
 				17CA226D23DF51F5B3263C3636A72CAB /* DBCoreDataFilterSettingsTableViewController.h in Headers */,
 				D540EECD9005362A48BAA9BCA524B7D0 /* DBCoreDataFilterTableViewController.h in Headers */,
 				9717B3E34968C4BF57CEB995D7E504B0 /* DBCoreDataToolkit.h in Headers */,
+				28E2CE4225C1D07C00B63414 /* DBEnvironmentTableViewController.h in Headers */,
 				F5C3295254C272DB792E4B2830690C66 /* DBCrashReport.h in Headers */,
+				28E2D0DE25C20BF200B63414 /* DBDebugSettings.h in Headers */,
 				EAD4A8C144B86B612A7B8894A54A9982 /* DBCrashReportDetailsTableViewController.h in Headers */,
 				BF510CC31C37E29DC9D2B0D64F9DE0F7 /* DBCrashReportsTableViewController.h in Headers */,
 				7C6076B9A299A493EDD55FBB3145B10E /* DBCrashReportsToolkit.h in Headers */,
@@ -1829,6 +1855,7 @@
 				1E089A8B0C4CF56A98270557C705DC78 /* DBRequestOutcome.h in Headers */,
 				72212F9C7FF14D79A0952E9042F2F592 /* DBRequestTableViewCell.h in Headers */,
 				A45CC4A8F2F01C4C7B0DE3FB8C1D1BDA /* DBResourcesTableViewController.h in Headers */,
+				28E2CE4125C1D07C00B63414 /* DBEnvironmentToolkit.h in Headers */,
 				9DE8447105807500434F7D9360FA449C /* DBShakeTrigger.h in Headers */,
 				E229AD1EACC5F4E7DBA06ED3C7E93FB9 /* DBSliderTableViewCell.h in Headers */,
 				4CBA95BC9726A0863A8C7A74089F1E57 /* DBTapTrigger.h in Headers */,
@@ -1986,6 +2013,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
@@ -2056,6 +2084,7 @@
 				6756561FAC3B44169402C9DE985FD469 /* DBSliderTableViewCell.xib in Resources */,
 				CFFFF8A2E2D31BCCF0F63CB72763194A /* DBTextViewTableViewCell.xib in Resources */,
 				526BC0EB066785908FC7A3CA0298DFF7 /* DBTextViewViewController.storyboard in Resources */,
+				28E2CF3025C1DE3700B63414 /* DBEnvironmentTableViewController.storyboard in Resources */,
 				1865CB3D0522B5748E6AF7FB4146D353 /* DBTitleValueListTableViewController.storyboard in Resources */,
 				314C73F35EC642BFD6B05BD67E8A8221 /* DBTitleValueTableViewCell.xib in Resources */,
 				F4478A3E47EE74C73558FC2DC6ED1B54 /* DBUserInterfaceViewController.storyboard in Resources */,
@@ -2099,6 +2128,7 @@
 				F90E7004B364F6C0ACE579CD6071918B /* DBDebugToolkit-dummy.m in Sources */,
 				926B44A4383E0EA909C8FA7198A858B3 /* DBDebugToolkit.m in Sources */,
 				A3E3D8C1333F8B92F41BBA939B944FEC /* DBDeviceInfoProvider.m in Sources */,
+				28E2D0D125C20BE900B63414 /* DBDebugSettings.m in Sources */,
 				68243291E5DAEA6A78C9BD01420F6BC2 /* DBEntitiesTableViewController.m in Sources */,
 				20B45210FDD1845C06DFC2EBA20DE0B7 /* DBFilesTableViewController.m in Sources */,
 				0597568A8F29114D8E1316C638A6C11C /* DBFileTableViewCell.m in Sources */,
@@ -2138,6 +2168,7 @@
 				837571D1E53E32BCF9DD8698BCB99BB3 /* DBResourcesTableViewController.m in Sources */,
 				8DC39C893D59768FA5A5DFB5BBE0E4BA /* DBShakeTrigger.m in Sources */,
 				845236D4575D3AFA05FCD2797D0C5E09 /* DBSliderTableViewCell.m in Sources */,
+				28E2CE4025C1D07C00B63414 /* DBEnvironmentTableViewController.m in Sources */,
 				B5DF2D69CBE3B518B95B85968B32407E /* DBTapTrigger.m in Sources */,
 				A6C8429C07C8BE023ABBCEF94FBD5EFA /* DBTextViewTableViewCell.m in Sources */,
 				76928886B8E10F3E77E9D9513AD16C8F /* DBTextViewViewController.m in Sources */,
@@ -2151,6 +2182,7 @@
 				1A579086CF357F69B08E8B378A556E64 /* DBUserDefaultsToolkit.m in Sources */,
 				7D41374645B196CC2513A628B2427F9B /* DBUserInterfaceTableViewController.m in Sources */,
 				0172CA5E7DFD7FED2F95211F6C778EEE /* DBUserInterfaceToolkit.m in Sources */,
+				28E2CE3F25C1D07C00B63414 /* DBEnvironmentToolkit.m in Sources */,
 				9CFBF8BFE6F99591971D7E2BB8ED2E30 /* NSBundle+DBDebugToolkit.m in Sources */,
 				3970D9CF4E8FEE1E0178415B5F9401CE /* NSObject+DBDebugToolkit.m in Sources */,
 				EFC315DA0629BBDD26B1DB8DB0D1DB55 /* NSOperationQueue+DBMainQueueOperation.m in Sources */,
@@ -2302,7 +2334,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-DBDebugToolkit_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-DBDebugToolkit_Tests/Pods-DBDebugToolkit_Tests.modulemap";
@@ -2336,7 +2368,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Expecta/Expecta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Expecta/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Expecta/Expecta.modulemap";
 				PRODUCT_MODULE_NAME = Expecta;
@@ -2358,7 +2390,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DBDebugToolkit";
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/ResourceBundle-DBDebugToolkit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2437,7 +2469,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DBDebugToolkit";
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/ResourceBundle-DBDebugToolkit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2462,7 +2494,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-DBDebugToolkit_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-DBDebugToolkit_Tests/Pods-DBDebugToolkit_Tests.modulemap";
@@ -2495,7 +2527,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Specta/Specta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Specta/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Specta/Specta.modulemap";
 				PRODUCT_MODULE_NAME = Specta;
@@ -2525,7 +2557,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DBDebugToolkit/DBDebugToolkit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DBDebugToolkit/DBDebugToolkit.modulemap";
 				PRODUCT_MODULE_NAME = DBDebugToolkit;
@@ -2556,7 +2588,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-DBDebugToolkit_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example.modulemap";
@@ -2590,7 +2622,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DBDebugToolkit/DBDebugToolkit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DBDebugToolkit/DBDebugToolkit.modulemap";
 				PRODUCT_MODULE_NAME = DBDebugToolkit;
@@ -2620,7 +2652,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Specta/Specta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Specta/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Specta/Specta.modulemap";
 				PRODUCT_MODULE_NAME = Specta;
@@ -2651,7 +2683,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-DBDebugToolkit_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-DBDebugToolkit_Example/Pods-DBDebugToolkit_Example.modulemap";
@@ -2684,7 +2716,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Expecta/Expecta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Expecta/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Expecta/Expecta.modulemap";
 				PRODUCT_MODULE_NAME = Expecta;
