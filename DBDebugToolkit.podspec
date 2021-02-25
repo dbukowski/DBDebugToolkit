@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DBDebugToolkit'
-  s.version          = '0.6.1'
+  s.version          = '0.6.2'
   s.summary          = 'Set of easy to use debugging tools for iOS developers & QA engineers.'
 
 # This description is used to generate tags and improve search results.
