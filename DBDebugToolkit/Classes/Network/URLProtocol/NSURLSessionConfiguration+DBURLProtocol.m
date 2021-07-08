@@ -23,6 +23,7 @@
 #import "NSURLSessionConfiguration+DBURLProtocol.h"
 #import "DBURLProtocol.h"
 #import "NSObject+DBDebugToolkit.h"
+#import "DBNetworkToolkit.h"
 
 @implementation NSURLSessionConfiguration (DBURLProtocol)
 
@@ -41,7 +42,7 @@
 + (instancetype)db_defaultSessionConfiguration {
     NSURLSessionConfiguration *defaultSessionConfiguration = [self db_defaultSessionConfiguration];
     NSMutableArray *originalProtocols = [NSMutableArray arrayWithArray:defaultSessionConfiguration.protocolClasses];
-    [originalProtocols insertObject:[DBURLProtocol class] atIndex:0];
+    [originalProtocols insertObject:DBNetworkURLProtocolClass atIndex:0];
     defaultSessionConfiguration.protocolClasses = originalProtocols;
     return defaultSessionConfiguration;
 }
@@ -49,7 +50,7 @@
 + (instancetype)db_ephemeralSessionConfiguration {
     NSURLSessionConfiguration *ephemeralSessionConfiguration = [self db_ephemeralSessionConfiguration];
     NSMutableArray *originalProtocols = [NSMutableArray arrayWithArray:ephemeralSessionConfiguration.protocolClasses];
-    [originalProtocols insertObject:[DBURLProtocol class] atIndex:0];
+    [originalProtocols insertObject:DBNetworkURLProtocolClass atIndex:0];
     ephemeralSessionConfiguration.protocolClasses = originalProtocols;
     return ephemeralSessionConfiguration;
 }
