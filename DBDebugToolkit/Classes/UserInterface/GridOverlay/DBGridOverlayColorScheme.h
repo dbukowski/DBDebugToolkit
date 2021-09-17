@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  `DBGridOverlayColorScheme` is a simple class encapsulating primary and secondary colors used for drawing a grid overlay.

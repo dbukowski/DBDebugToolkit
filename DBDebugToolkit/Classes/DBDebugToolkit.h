@@ -24,6 +24,7 @@
 #import "DBDebugToolkitTrigger.h"
 #import "DBCustomAction.h"
 #import "DBCustomVariable.h"
+#import <UIKit/UIKit.h>
 
 /**
  `DBDebugToolkit` provides the interface that can be used to setup and customize the debugging tools.

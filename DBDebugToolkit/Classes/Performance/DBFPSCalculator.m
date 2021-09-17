@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import "DBFPSCalculator.h"
+#import <UIKit/UIKit.h>
 
 static const NSUInteger DBFPSCalculatorSamplesCount = 60;
 

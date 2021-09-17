@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'DBDebugToolkit_Example' do
-  pod 'DBDebugToolkit', :path => '../'
+  pod 'DBDebugToolkit', :path => '../../'
 
   target 'DBDebugToolkit_Tests' do
     inherit! :search_paths

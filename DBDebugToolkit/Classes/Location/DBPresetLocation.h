@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  `DBPresetLocation` is a simple wrapper that contains all the basic information about a preset location.

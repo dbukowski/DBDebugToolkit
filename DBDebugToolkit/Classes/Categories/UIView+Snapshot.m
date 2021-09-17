@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import "UIView+Snapshot.h"
+#import <UIKit/UIKit.h>
 
 @implementation UIView (Snapshot)
 

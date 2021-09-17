@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <UIKit/UIKit.h>
+
 static const CGSize DBTouchIndicatorViewDefaultSize = { 40.0, 40.0 };
 
 #import "DBTouchIndicatorView.h"
