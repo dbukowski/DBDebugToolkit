@@ -26,9 +26,13 @@
 @implementation NSBundle (DBDebugToolkit)
 
 + (instancetype)debugToolkitBundle {
+    #if COCOAPODS
     NSBundle *podBundle = [NSBundle bundleForClass:[DBDebugToolkit class]];
     NSURL *bundleURL = [podBundle URLForResource:@"DBDebugToolkit" withExtension:@"bundle"];
     return [NSBundle bundleWithURL:bundleURL];
+    #else
+    return SWIFTPM_MODULE_BUNDLE;
+    #endif
 }
 
 @end
