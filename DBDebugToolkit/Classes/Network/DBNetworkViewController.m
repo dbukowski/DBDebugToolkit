@@ -202,6 +202,9 @@ static NSString *const DBNetworkViewControllerRequestCellIdentifier = @"DBReques
     __weak DBNetworkViewController *weakSelf = self;
     [self.operationQueue addMainQueueOperationWithBlock:^{
         __strong DBNetworkViewController *strongSelf = weakSelf;
+        if (index >= strongSelf.networkToolkit.savedRequests.count) {
+            return;
+        }
         DBRequestModel *requestModel = strongSelf.networkToolkit.savedRequests[index];
         if (requestModel == strongSelf.openedRequest) {
             [strongSelf.requestDetailsViewController configureWithRequestModel:requestModel];
