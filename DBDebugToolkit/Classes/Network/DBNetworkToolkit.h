@@ -56,6 +56,11 @@
 @end
 
 /**
+ Current registered NSURLProtocol a protocol class.
+ */
+extern Class DBNetworkURLProtocolClass;
+
+/**
  `DBNetworkToolkit` is a class responsible for logging all the requests sent by the application.
  */
 @interface DBNetworkToolkit : NSObject
@@ -64,6 +69,11 @@
  Returns the singleton instance.
  */
 + (instancetype)sharedInstance;
+
+/**
+ This method registers NSURLProtocol a protocol class.
+ */
++ (void)registerURLProtocolClass:(Class)protocolClass;
 
 /**
  Returns a string containing the path to the directory where the requests data is stored.

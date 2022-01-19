@@ -24,6 +24,8 @@
 #import "DBURLProtocol.h"
 #import "DBRequestModel.h"
 
+Class DBNetworkURLProtocolClass;
+
 @interface DBNetworkToolkit () <DBRequestModelDelegate>
 
 @property (nonatomic, copy) NSMutableArray *requests;
@@ -35,6 +37,12 @@
 @implementation DBNetworkToolkit
 
 #pragma mark - Initialization
+
++ (void)initialize {
+    if (self == [DBNetworkToolkit class]) {
+        DBNetworkURLProtocolClass = [DBURLProtocol class];
+    }
+}
 
 - (instancetype)init {
     self = [super init];
@@ -57,7 +65,13 @@
 }
 
 + (void)setupURLProtocol {
-    [NSURLProtocol registerClass:[DBURLProtocol class]];
+    [NSURLProtocol registerClass:DBNetworkURLProtocolClass];
+}
+
++ (void)registerURLProtocolClass:(Class)protocolClass {
+    @synchronized(self) {
+        DBNetworkURLProtocolClass = protocolClass;
+    }
 }
 
 - (void)setupOperationQueue {
