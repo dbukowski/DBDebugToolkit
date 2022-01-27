@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "DBDebugToolkitTrigger.h"
 #import "DBCustomAction.h"
 #import "DBCustomVariable.h"
