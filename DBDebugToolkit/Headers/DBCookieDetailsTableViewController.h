@@ -1,0 +1,1 @@
+../Classes/Resources/Cookies/DBCookieDetailsTableViewController.h
