@@ -1,10 +1,11 @@
 # DBDebugToolkit
 
-[![CI Status](http://img.shields.io/travis/dbukowski/DBDebugToolkit.svg?style=flat)](https://travis-ci.org/dbukowski/DBDebugToolkit)
-[![Version](https://img.shields.io/cocoapods/v/DBDebugToolkit.svg?style=flat)](http://cocoapods.org/pods/DBDebugToolkit)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/DBDebugToolkit.svg?style=flat)](http://cocoapods.org/pods/DBDebugToolkit)
-[![Platform](https://img.shields.io/cocoapods/p/DBDebugToolkit.svg?style=flat)](http://cocoapods.org/pods/DBDebugToolkit)
+[![CI Status](http://img.shields.io/travis/dbukowski/DBDebugToolkit.svg?style=flat-square)](https://travis-ci.org/dbukowski/DBDebugToolkit)
+[![Version](https://img.shields.io/cocoapods/v/DBDebugToolkit.svg?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat-square)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
+[![License](https://img.shields.io/cocoapods/l/DBDebugToolkit.svg?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
+[![Platform](https://img.shields.io/cocoapods/p/DBDebugToolkit.svg?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
 
 DBDebugToolkit is a debugging library written in Objective-C. It is meant to provide as many easily accessible tools as possible while keeping the integration process seamless.
 
