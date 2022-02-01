@@ -1,0 +1,1 @@
+../Classes/Resources/CoreData/NSPersistentStoreCoordinator+DBCoreDataToolkit.h

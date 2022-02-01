@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  `DBFPSCalculator` is a simple class that calculates the current frames per second value.
