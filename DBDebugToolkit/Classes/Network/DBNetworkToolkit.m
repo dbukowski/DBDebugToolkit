@@ -38,7 +38,7 @@ Class DBNetworkURLProtocolClass;
 
 #pragma mark - Initialization
 
-+ (void)initialize {
++ (void)load {
     if (self == [DBNetworkToolkit class]) {
         DBNetworkURLProtocolClass = [DBURLProtocol class];
     }
