@@ -21,8 +21,8 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBGridOverlayView.h"
-#import "DBGridOverlayColorScheme.h"
+#import <DBGridOverlayView.h>
+#import <DBGridOverlayColorScheme.h>
 
 /**
  String containing the name of notifications send to inform about change in colorized view borders settings.

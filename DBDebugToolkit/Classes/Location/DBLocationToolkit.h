@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "DBPresetLocation.h"
+#import <DBPresetLocation.h>
 
 /**
  `DBLocationToolkit` is a class responsible for simulating location and providing a list of preset locations.

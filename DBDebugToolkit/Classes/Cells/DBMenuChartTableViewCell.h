@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBChartView.h"
+#import <DBChartView.h>
 
 /**
  `DBMenuChartTableViewCell` is a simple table view cell with a `DBChartView` instance as its only subview.

@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBMainQueueOperation.h"
+#import <DBMainQueueOperation.h>
 
 /**
  `NSOperationQueue` category that provides a helper method for adding a single main queue operation.

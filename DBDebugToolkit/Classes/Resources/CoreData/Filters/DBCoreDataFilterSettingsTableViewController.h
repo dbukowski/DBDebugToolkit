@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBCoreDataFilterSettings.h"
+#import <DBCoreDataFilterSettings.h>
 
 /**
  `DBCoreDataFilterSettingsTableViewController` is a table view controller allowing the user to modify the sorting and filtering settings.

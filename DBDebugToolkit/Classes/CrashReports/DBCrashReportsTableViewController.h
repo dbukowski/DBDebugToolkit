@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBCrashReportsToolkit.h"
+#import <DBCrashReportsToolkit.h>
 
 /**
  `DBCrashReportsTableViewController` is a view controller displaying a list of collected crash reports.

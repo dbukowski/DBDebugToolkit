@@ -21,10 +21,9 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBCrashReport.h"
-#import "DBConsoleOutputCaptor.h"
-#import "DBBuildInfoProvider.h"
-#import "DBDeviceInfoProvider.h"
+#import <DBCrashReport.h>
+#import <DBConsoleOutputCaptor.h>
+#import <DBDeviceInfoProvider.h>
 
 /**
  `DBCrashReportsToolkit` is a class responsible for collecting crash reports.
@@ -55,11 +54,6 @@
  `DBConsoleOutputCaptor` instance providing console output attached to crash reports.
  */
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
-
-/**
- `DBBuildInfoProvider` instance providing build information attached to crash reports.
- */
-@property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
 /**
  `DBDeviceInfoProvider` instance providing device information attached to crash reports.

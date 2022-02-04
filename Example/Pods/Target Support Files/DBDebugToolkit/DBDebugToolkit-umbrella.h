@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "DBBuildInfoProvider.h"
 #import "NSBundle+DBDebugToolkit.h"
 #import "NSObject+DBDebugToolkit.h"
 #import "UIApplication+DBDebugToolkit.h"

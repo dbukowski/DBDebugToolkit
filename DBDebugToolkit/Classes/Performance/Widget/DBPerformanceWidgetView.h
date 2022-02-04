@@ -21,8 +21,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBPerformanceSection.h"
-#import "DBTopLevelView.h"
+#import <DBPerformanceSection.h>
+#import <DBTopLevelView.h>
 
 @class DBPerformanceWidgetView;
 

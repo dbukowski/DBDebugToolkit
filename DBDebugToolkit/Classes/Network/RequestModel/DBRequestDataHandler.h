@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "DBRequestModel.h"
+#import <DBDebugToolkit/DBRequestModel.h>
 
 @class DBRequestDataHandler;
 

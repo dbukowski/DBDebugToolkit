@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBDebugToolkitTrigger.h"
+#import <DBDebugToolkitTrigger.h>
 
 /**
  `DBShakeTrigger` is one of the provided `DBDebugToolkitTrigger` protocol implementations.

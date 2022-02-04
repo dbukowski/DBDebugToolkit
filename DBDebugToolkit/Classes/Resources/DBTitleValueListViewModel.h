@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBTitleValueTableViewCellDataSource.h"
+#import <DBTitleValueTableViewCellDataSource.h>
 
 /**
  A protocol used for providing data that needs to be presented in the `DBTitleValueListTableViewController` instance. It is also responsible for handling user interaction.

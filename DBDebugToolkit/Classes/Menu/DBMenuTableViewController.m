@@ -31,6 +31,7 @@
 #import "DBCustomActionsTableViewController.h"
 #import "DBCustomVariablesTableViewController.h"
 #import "DBCrashReportsTableViewController.h"
+#import <DBDebugToolkit/DBDebugToolkit-Swift.h>
 
 typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     DBMenuTableViewControllerRowPerformance,
@@ -73,7 +74,8 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == DBMenuTableViewControllerRowApplicationSettings) {
         // Open application settings.
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
     }
 }
@@ -81,7 +83,7 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.buildInfoProvider buildInfoString];
+    return NSBundle.buildInfoString;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
@@ -98,7 +100,6 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     } else if ([destinationViewController isKindOfClass:[DBConsoleViewController class]]) {
         DBConsoleViewController *consoleViewController = (DBConsoleViewController *)destinationViewController;
         consoleViewController.consoleOutputCaptor = self.consoleOutputCaptor;
-        consoleViewController.buildInfoProvider = self.buildInfoProvider;
         consoleViewController.deviceInfoProvider = self.deviceInfoProvider;
     } else if ([destinationViewController isKindOfClass:[DBNetworkViewController class]]) {
         DBNetworkViewController *networkViewController = (DBNetworkViewController *)destinationViewController;

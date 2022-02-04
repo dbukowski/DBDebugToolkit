@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "DBCoreDataFilterOperator.h"
+#import <DBCoreDataFilterOperator.h>
 
 /**
  `DBCoreDataFilter` is an object encapsulating the information about one of the filters set up in the `DBCoreDataFilterSettingsTableViewController` instance. Conforms to the `NSCopying` protocol.

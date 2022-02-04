@@ -21,9 +21,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBConsoleOutputCaptor.h"
-#import "DBBuildInfoProvider.h"
-#import "DBDeviceInfoProvider.h"
+#import <DBConsoleOutputCaptor.h>
+#import <DBDeviceInfoProvider.h>
 
 /**
  `DBConsoleViewController` is a view controller that presents the captured console output in a text view.
@@ -35,11 +34,6 @@
  `DBConsoleOutputCaptor` instance that will provide data displayed in a text view.
  */
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
-
-/**
- `DBBuildInfoProvider` instance providing build information displayed in the email subject.
- */
-@property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
 /**
  `DBDeviceInfoProvider` instance providing device information displayed in the email body.

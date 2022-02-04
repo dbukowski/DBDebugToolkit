@@ -21,8 +21,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBPerformanceSection.h"
-#import "DBPerformanceToolkit.h"
+#import <DBPerformanceSection.h>
+#import <DBPerformanceToolkit.h>
 
 /**
  `DBPerformanceTableViewController` is a view controller with a table view presenting statistics and allowing the user to show/hide the widget.

@@ -21,9 +21,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBCrashReport.h"
-#import "DBBuildInfoProvider.h"
-#import "DBDeviceInfoProvider.h"
+#import <DBDebugToolkit/DBCrashReport.h>
+#import <DBDebugToolkit/DBDeviceInfoProvider.h>
 
 /**
  `DBCrashReportDetailsTableViewController` is a view controller displaying the details of a crash report.
@@ -34,11 +33,6 @@
  `DBCrashReport` instance containing all the details of the application crash.
  */
 @property (nonatomic, strong) DBCrashReport *crashReport;
-
-/**
- `DBBuildInfoProvider` instance providing build information displayed in the email subject.
- */
-@property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
 /**
  `DBDeviceInfoProvider` instance providing device information displayed in the email body.

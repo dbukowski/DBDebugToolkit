@@ -25,7 +25,6 @@
 #import "DBTitleValueTableViewCell.h"
 #import "UILabel+DBDebugToolkit.h"
 #import "DBCrashReportDetailsTableViewController.h"
-#import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
 
 static NSString *const DBCrashReportsTableViewControllerTitleValueCellIdentifier = @"DBTitleValueTableViewCell";
@@ -75,7 +74,7 @@ static NSString *const DBCrashReportsTableViewControllerTitleValueCellIdentifier
     DBCrashReportDetailsTableViewController *crashReportDetailsViewController = [storyboard instantiateInitialViewController];
     crashReportDetailsViewController.crashReport = crashReport;
     crashReportDetailsViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
-    crashReportDetailsViewController.buildInfoProvider = [DBBuildInfoProvider new];
+
     [self.navigationController pushViewController:crashReportDetailsViewController animated:YES];
 }
 

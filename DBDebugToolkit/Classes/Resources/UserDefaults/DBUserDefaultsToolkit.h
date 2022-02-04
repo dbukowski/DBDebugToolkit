@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBTitleValueListViewModel.h"
+#import <DBTitleValueListViewModel.h>
 
 /**
  `DBUserDefaultsToolkit` is an object responsible for providing the user defaults data and for handling the user interaction in the user defaults values list. It conforms to the `DBTitleValueListViewModel` protocol.
