@@ -1,4 +1,4 @@
-name: Xcode - Build and Analyze
+name: Xcode - Build
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
       - 'DBDebugToolkit.podspec'
 jobs:
   build:
-    name: Build and analyse default scheme using xcodebuild command
+    name: Build using xcodebuild command
     runs-on: macos-latest
     defaults:
       run:
