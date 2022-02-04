@@ -4,8 +4,12 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
-
+    paths:
+      - 'DBDebugToolkit/**'
+      - 'Example/**'
+      - '.github/workflows/**'
+      - 'Package.swift'
+      - 'DBDebugToolkit.podspec'
 jobs:
   build:
     name: Build and analyse default scheme using xcodebuild command
