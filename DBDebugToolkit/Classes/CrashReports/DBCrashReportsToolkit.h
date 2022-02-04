@@ -23,7 +23,6 @@
 #import <Foundation/Foundation.h>
 #import "DBCrashReport.h"
 #import "DBConsoleOutputCaptor.h"
-#import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
 
 /**
@@ -55,11 +54,6 @@
  `DBConsoleOutputCaptor` instance providing console output attached to crash reports.
  */
 @property (nonatomic, strong) DBConsoleOutputCaptor *consoleOutputCaptor;
-
-/**
- `DBBuildInfoProvider` instance providing build information attached to crash reports.
- */
-@property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
 /**
  `DBDeviceInfoProvider` instance providing device information attached to crash reports.

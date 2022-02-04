@@ -23,7 +23,6 @@
 #import <UIKit/UIKit.h>
 #import "DBPerformanceToolkit.h"
 #import "DBConsoleOutputCaptor.h"
-#import "DBBuildInfoProvider.h"
 #import "DBDeviceInfoProvider.h"
 #import "DBNetworkToolkit.h"
 #import "DBUserInterfaceToolkit.h"
@@ -88,11 +87,6 @@
  `DBCoreDataToolkit` instance that will be passed on.
  */
 @property (nonatomic, strong) DBCoreDataToolkit *coreDataToolkit;
-
-/**
- `DBBuildInfoProvider` instance that will provide data for section header.
- */
-@property (nonatomic, strong) DBBuildInfoProvider *buildInfoProvider;
 
 /**
  `DBDeviceInfoProvider` instance that will provide data for section footer.

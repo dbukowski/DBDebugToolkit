@@ -26,6 +26,7 @@
 #import "DBTextViewViewController.h"
 #import "DBImageViewViewController.h"
 #import <MessageUI/MessageUI.h>
+#import <DBDebugToolkit/DBDebugToolkit-Swift.h>
 
 typedef NS_ENUM(NSUInteger, DBCrashReportDetailsTableViewControllerSection) {
     DBCrashReportDetailsTableViewControllerSectionDetails,
@@ -259,7 +260,7 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
 
 
 - (NSString *)mailSubject {
-    return [NSString stringWithFormat:@"%@ - Crash report: %@, %@", [self.buildInfoProvider buildInfoString],
+    return [NSString stringWithFormat:@"%@ - Crash report: %@, %@", NSBundle.buildInfoString,
                                                                     self.crashReport.name,
                                                                     self.crashReport.dateString];
 }
@@ -271,7 +272,7 @@ static NSString *const DBCrashReportDetailsTableViewControllerStackTraceCellIden
     [mailHTMLBody appendString:@"<b><u>Environment:</u></b><br/>"];
 
     // App version.
-    [mailHTMLBody appendFormat:@"<b>App version:</b> %@<br/>", [self.buildInfoProvider buildInfoString]];
+    [mailHTMLBody appendFormat:@"<b>App version:</b> %@<br/>", NSBundle.buildInfoString];
 
     // System version.
     [mailHTMLBody appendFormat:@"<b>System version:</b> %@<br/>", [self.deviceInfoProvider systemVersion]];

@@ -269,7 +269,6 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 - (void)setupCrashReportsToolkit {
     self.crashReportsToolkit = [DBCrashReportsToolkit sharedInstance];
     self.crashReportsToolkit.consoleOutputCaptor = self.consoleOutputCaptor;
-    self.crashReportsToolkit.buildInfoProvider = [DBBuildInfoProvider new];
     self.crashReportsToolkit.deviceInfoProvider = [DBDeviceInfoProvider new];
 }
 
@@ -444,7 +443,6 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
         _menuViewController.locationToolkit = self.locationToolkit;
         _menuViewController.coreDataToolkit = self.coreDataToolkit;
         _menuViewController.crashReportsToolkit = self.crashReportsToolkit;
-        _menuViewController.buildInfoProvider = [DBBuildInfoProvider new];
         _menuViewController.deviceInfoProvider = [DBDeviceInfoProvider new];
         _menuViewController.delegate = self;
     }

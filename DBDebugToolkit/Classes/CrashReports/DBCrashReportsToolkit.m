@@ -27,6 +27,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/sysctl.h>
+#import <DBDebugToolkit/DBDebugToolkit-Swift.h>
 
 typedef void (*sighandler_t)(int);
 
@@ -255,7 +256,7 @@ static void handleSIGPIPESignal(int sig) {
                      screenshot:(UIImage *)screenshot {
     NSString *consoleOutput = self.consoleOutputCaptor.consoleOutput;
     NSString *systemVersion = [self.deviceInfoProvider systemVersion];
-    NSString *appVersion = [self.buildInfoProvider buildInfoString];
+    NSString *appVersion = NSBundle.buildInfoString;
     DBCrashReport *crashReport = [[DBCrashReport alloc] initWithName:name
                                                               reason:reason
                                                             userInfo:userInfo
