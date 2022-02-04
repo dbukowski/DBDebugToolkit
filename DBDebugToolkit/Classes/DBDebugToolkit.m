@@ -37,6 +37,7 @@
 #import "DBCrashReportsToolkit.h"
 #import "DBTopLevelViewsWrapper.h"
 #import "UIApplication+DBDebugToolkit.h"
+#import <DBDebugToolkit/DBDebugToolkit-Swift.h>
 
 static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPath = @"containerView";
 
@@ -104,7 +105,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 
 - (void)setTriggers:(NSArray<id<DBDebugToolkitTrigger>> *)triggers {
     _triggers = [triggers copy];
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    UIWindow *keyWindow = UIWindow.keyWindow;
     [self addTriggersToWindow:keyWindow];
     for (id <DBDebugToolkitTrigger> trigger in triggers) {
         trigger.delegate = self;
@@ -345,7 +346,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 
 - (void)setupTopLevelViewsWrapper {
     self.topLevelViewsWrapper = [DBTopLevelViewsWrapper new];
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    UIWindow *keyWindow = UIWindow.keyWindow;
     [self addTopLevelViewsWrapperToWindow:keyWindow];
 }
 
@@ -452,7 +453,7 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 }
 
 - (UIViewController *)topmostViewController {
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *rootViewController = UIWindow.keyWindow.rootViewController;
     return [self topmostViewControllerWithRootViewController:rootViewController];
 }
 

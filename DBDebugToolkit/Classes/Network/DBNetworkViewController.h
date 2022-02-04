@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBNetworkToolkit.h"
+#import <DBNetworkToolkit.h>
 
 /**
  `DBNetworkViewController` is a view controller displaying the list of logged requests with a search bar.

@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBCustomVariable.h"
+#import <DBCustomVariable.h>
 
 /**
  `DBCustomVariablesTableViewController` is a table view controller presenting the list of the defined custom variables.

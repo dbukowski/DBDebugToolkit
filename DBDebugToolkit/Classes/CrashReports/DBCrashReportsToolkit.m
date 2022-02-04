@@ -137,7 +137,7 @@ static sighandler_t _previousSIGPIPEHandler;
     signal(SIGPIPE, handleSIGPIPESignal);
 }
 
-void stopCrashReporting() {
+void stopCrashReporting(void) {
     NSSetUncaughtExceptionHandler(_previousUncaughtExceptionHandler);
     signal(SIGABRT, _previousSIGABRTHandler);
     signal(SIGILL, _previousSIGILLHandler);
@@ -230,7 +230,7 @@ static void handleSIGPIPESignal(int sig) {
                callStackSymbols:(NSArray<NSString *> *)callStackSymbols
                            date:(NSDate *)date {
     BOOL isMainThread = [NSThread isMainThread];
-    UIImage *screenshot = isMainThread ? [[UIApplication sharedApplication].keyWindow db_snapshot] : nil;
+    UIImage *screenshot = isMainThread ? [UIWindow.keyWindow db_snapshot] : nil;
     [self saveCrashReportWithName:name
                            reason:reason
                          userInfo:userInfo

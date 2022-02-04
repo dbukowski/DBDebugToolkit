@@ -21,8 +21,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBCrashReport.h"
-#import "DBDeviceInfoProvider.h"
+#import <DBDebugToolkit/DBCrashReport.h>
+#import <DBDebugToolkit/DBDeviceInfoProvider.h>
 
 /**
  `DBCrashReportDetailsTableViewController` is a view controller displaying the details of a crash report.

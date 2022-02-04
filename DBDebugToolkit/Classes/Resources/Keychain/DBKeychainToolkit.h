@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DBTitleValueListViewModel.h"
+#import <DBTitleValueListViewModel.h>
 
 /**
  `DBKeychainToolkit` is an object responsible for providing the keychain data and for handling the user interaction in the keychain values list. It conforms to the `DBTitleValueListViewModel` protocol.

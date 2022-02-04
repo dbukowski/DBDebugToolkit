@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBCoreDataToolkit.h"
+#import <DBCoreDataToolkit.h>
 
 /**
  `DBResourcesTableViewController` is a table view controller showing all the sections related to resources.

@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DBUserInterfaceToolkit.h"
+#import <DBUserInterfaceToolkit.h>
 
 @class DBUserInterfaceTableViewController;
 

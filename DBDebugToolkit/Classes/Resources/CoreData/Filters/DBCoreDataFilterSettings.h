@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "DBCoreDataFilter.h"
+#import <DBCoreDataFilter.h>
 
 /**
  `DBCoreDataFilterSettings` is an object encapsulating the information about all the filters and sorting settings set up in `DBCoreDataFilterSettingsTableViewController` instance.

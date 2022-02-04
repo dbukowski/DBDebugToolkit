@@ -288,6 +288,7 @@
 		C2B19DC2A258C13A62F1880634FA9CAA /* DBCustomLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829594680CE936F95B8DDA3A4DED665F /* DBCustomLocationViewController.storyboard */; };
 		C4632B64DD0F3ADB3BB829A6EBC322E6 /* EXPMatcherHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCD8C59420DCE7D4A6267D2F0D5F40 /* EXPMatcherHelpers.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C5AA5942234D22D5648D9E8FFDBF2914 /* DBDebugToolkitTriggerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 69F8898B1FF1A403EA9BE04A6F22E681 /* DBDebugToolkitTriggerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5F7974227ADB82000C67FC3 /* UIWindow+keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7974127ADB82000C67FC3 /* UIWindow+keyWindow.swift */; };
 		C673E6B9722C4D48DC5FE6317CEE8706 /* NSBundle+DBDebugToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2378461AD90D38229AA76F75A612C95A /* NSBundle+DBDebugToolkit.m */; };
 		C7445F6A1CE7F24916622854A83CF81B /* DBNetworkViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF8824896AC5DB315EFC659A6A78C09 /* DBNetworkViewController.storyboard */; };
 		C7A0705012AE13CE4CE64EE50F4BF72A /* DBGridOverlaySettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8F4F3741A3F84A6CF8ACE455A160C3 /* DBGridOverlaySettingsTableViewController.m */; };
@@ -703,6 +704,7 @@
 		C3AFDD2A4912369B9775E4F5AB38F85C /* EXPUnsupportedObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPUnsupportedObject.h; path = Expecta/EXPUnsupportedObject.h; sourceTree = "<group>"; };
 		C4B359C8C5C59B57D94C0A8410CB3252 /* DBConsoleViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBConsoleViewController.m; sourceTree = "<group>"; };
 		C59D1284C71A60B75D1DCA4EC3521C85 /* EXPMatchers+respondTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+respondTo.m"; path = "Expecta/Matchers/EXPMatchers+respondTo.m"; sourceTree = "<group>"; };
+		C5F7974127ADB82000C67FC3 /* UIWindow+keyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+keyWindow.swift"; sourceTree = "<group>"; };
 		C6765584CA100DEC7F90A0F7A9A49A3E /* NSOperationQueue+DBMainQueueOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+DBMainQueueOperation.h"; sourceTree = "<group>"; };
 		C6C395D8346BDC4873EAC84C5CB960CD /* NSPersistentStoreCoordinator+DBCoreDataToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSPersistentStoreCoordinator+DBCoreDataToolkit.m"; sourceTree = "<group>"; };
 		C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBDebugToolkit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1141,7 +1143,6 @@
 		4272969EE98B52D9E7B763A87A7D999A /* BuildInfo */ = {
 			isa = PBXGroup;
 			children = (
-				5A0D9F13C4FFC20F353DA8FF56D7099E /* Bundle+BuildInfo.swift */,
 			);
 			name = BuildInfo;
 			path = DBDebugToolkit/Classes/BuildInfo;
@@ -1488,6 +1489,15 @@
 			path = DBDebugToolkit/Classes/Menu;
 			sourceTree = "<group>";
 		};
+		C5F7974027ADB80900C67FC3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A0D9F13C4FFC20F353DA8FF56D7099E /* Bundle+BuildInfo.swift */,
+				C5F7974127ADB82000C67FC3 /* UIWindow+keyWindow.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
@@ -1562,6 +1572,7 @@
 		E584EB3E78A48460419A3D55F3F9F55A /* DBDebugToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				C5F7974027ADB80900C67FC3 /* Extensions */,
 				0839A977B97CBA105C3B3F2D06AD2CEC /* DBDebugToolkit.h */,
 				025C82BE0C2C90C2EC1BE79782FBAE72 /* DBDebugToolkit.m */,
 				4272969EE98B52D9E7B763A87A7D999A /* BuildInfo */,
@@ -1962,7 +1973,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1250;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2175,6 +2186,7 @@
 				A620CDDD7F2DA76696C4E67A57D82CB3 /* DBMenuSwitchTableViewCell.m in Sources */,
 				63433A6BD4531753B31B3247C4542610 /* DBMenuTableViewController.m in Sources */,
 				C9BD3297B2804255B9CB6D100557FA0C /* DBNetworkSettingsTableViewController.m in Sources */,
+				C5F7974227ADB82000C67FC3 /* UIWindow+keyWindow.swift in Sources */,
 				D61989E147A227FC0A47B1212FC60785 /* DBNetworkToolkit.m in Sources */,
 				21C97A2A170E24E6A8389EEBBE7B4891 /* DBNetworkViewController.m in Sources */,
 				8E4619B4D536688A2FA47FC61C287488 /* DBOptionsListTableViewController.m in Sources */,
@@ -2302,7 +2314,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B7698BC14348D11DB5988D50723090E /* Specta.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2314,7 +2325,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Specta/Specta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Specta/Specta-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Specta/Specta.modulemap";
 				PRODUCT_MODULE_NAME = Specta;
@@ -2334,7 +2345,6 @@
 			baseConfigurationReference = D5F08AFEC6E58C124077FBB4460BBA58 /* Pods-DBDebugToolkit_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2367,8 +2377,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3503407CE7E3FD0A475687BCB5226F5 /* Pods-DBDebugToolkit_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2401,7 +2410,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 55C6A1564E8226CDD5ED59B1C9FFB619 /* Expecta.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2413,7 +2421,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Expecta/Expecta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Expecta/Expecta-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Expecta/Expecta.modulemap";
 				PRODUCT_MODULE_NAME = Expecta;
@@ -2432,7 +2440,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A44F746AE2C1E2BF5892DC00BB3EF94F /* DBDebugToolkit.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2464,7 +2471,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59841D283684DDC07C7B52ABDFB93F0A /* DBDebugToolkit.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2498,7 +2504,6 @@
 			baseConfigurationReference = 862C3D08DDEC9EE91DDCAA6E6C9B8F9D /* Pods-DBDebugToolkit_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2624,7 +2629,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1218DB33FF4977A659F76DFBEFD4F1D4 /* Expecta.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2636,7 +2640,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Expecta/Expecta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Expecta/Expecta-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Expecta/Expecta.modulemap";
 				PRODUCT_MODULE_NAME = Expecta;
@@ -2654,7 +2658,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 691EB50857CC51C10FACF438F831E34D /* Specta.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2666,7 +2669,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Specta/Specta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Specta/Specta-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Specta/Specta.modulemap";
 				PRODUCT_MODULE_NAME = Specta;
@@ -2749,8 +2752,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76EE3AFD0A49A92A5096C39F081EE477 /* Pods-DBDebugToolkit_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

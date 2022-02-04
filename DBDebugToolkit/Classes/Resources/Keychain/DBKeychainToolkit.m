@@ -66,7 +66,7 @@
                 if (data.length > 0 && account.length > 0) {
                     id unarchivedObject = nil;
                     @try { // Needed on iOS 8.0, where unarchiveObjectWithData: throws exception.
-                        unarchivedObject = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                        unarchivedObject = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSArray class] fromData:data error:nil];
                     } @catch (NSException *) {
                         // Do nothing.
                     }

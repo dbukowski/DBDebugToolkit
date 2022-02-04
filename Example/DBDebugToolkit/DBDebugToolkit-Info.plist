@@ -32,7 +32,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Example description</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchImage</string>
+	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
