@@ -23,4 +23,4 @@ jobs:
       - name: CocoaPod Install
         run: pod install
       - name: Build
-        run: xcodebuild build -workspace DBDebugToolkit.xcworkspace -scheme DBDebugToolkit-Example -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 12,OS=15.3"
+        run: xcodebuild build -workspace DBDebugToolkit.xcworkspace -scheme DBDebugToolkit-Example -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2"
