@@ -24,6 +24,7 @@
 #import <DBRequestOutcome.h>
 
 @class DBNetworkToolkit;
+@class DBRequestModel;
 
 /**
  A protocol used for informing about changes in logging settings or in logged requests list.
@@ -108,6 +109,6 @@ extern Class DBNetworkURLProtocolClass;
 /**
  An array containing all the logged requests.
  */
-@property (nonatomic, readonly) NSArray *savedRequests;
+@property (nonatomic, readonly) NSArray<DBRequestModel *> *savedRequests;
 
 @end
