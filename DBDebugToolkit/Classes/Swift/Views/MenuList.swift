@@ -11,7 +11,7 @@ public struct MenuList: View {
             ) {
                 NavigationLink("Performance", destination: PerformanceView(performanceToolkit: viewModel.performanceToolkit))
                 NavigationLink("User Interface", destination: UserInterfaceView(userInterfaceToolkit: viewModel.userInterfaceToolkit))
-                NavigationLink("Network", destination: NetworkView(viewModel: .init( networkToolkit: viewModel.networkToolkit)))
+                NavigationLink("Network", destination: NetworkList(viewModel: .init( networkToolkit: viewModel.networkToolkit)))
                 NavigationLink("Resources", destination: ResourcesList(viewModel: .init(coreDataToolkit: viewModel.coreDataToolkit)))
                 NavigationLink("Console", destination: ConsoleView(viewModel: .init(consoleOutputCaptor: viewModel.consoleOutputCaptor, deviceInfoProvider: viewModel.deviceInfoProvider)))
                 NavigationLink("Location", destination: LocationView(locationToolkit: viewModel.locationToolkit))
@@ -26,5 +26,13 @@ public struct MenuList: View {
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle("Menu")
+        .navigationBarItems(
+            leading: Button(
+                action: viewModel.menuDismissAction,
+                label: {
+                    Text("Cancel")
+                }
+            )
+        )
     }
 }

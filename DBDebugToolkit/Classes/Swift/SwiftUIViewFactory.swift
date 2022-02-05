@@ -14,7 +14,8 @@ public class SwiftUIViewFactory: NSObject {
         crashReportsToolkit: DBCrashReportsToolkit,
         deviceInfoProvider: DBDeviceInfoProvider,
         customVariables: [String: DBCustomVariable],
-        customActions: [DBCustomAction]
+        customActions: [DBCustomAction],
+        menuDismissAction: @escaping () -> Void
     ) -> UIViewController {
         UIHostingController(
             rootView: MenuList(
@@ -28,7 +29,8 @@ public class SwiftUIViewFactory: NSObject {
                     crashReportsToolkit: crashReportsToolkit,
                     deviceInfoProvider: deviceInfoProvider,
                     customVariables: customVariables,
-                    customActions: customActions
+                    customActions: customActions,
+                    menuDismissAction: menuDismissAction
                 )
             )
         )

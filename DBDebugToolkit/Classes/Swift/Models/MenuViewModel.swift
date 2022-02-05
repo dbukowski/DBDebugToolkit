@@ -9,6 +9,7 @@ public final class MenuViewModel: ObservableObject {
     let deviceInfoProvider: DBDeviceInfoProvider
     let customVariables: [String: DBCustomVariable]
     let customActions: [DBCustomAction]
+    let menuDismissAction: () -> Void
 
     init(
         performanceToolkit: DBPerformanceToolkit,
@@ -20,7 +21,8 @@ public final class MenuViewModel: ObservableObject {
         crashReportsToolkit: DBCrashReportsToolkit,
         deviceInfoProvider: DBDeviceInfoProvider,
         customVariables: [String: DBCustomVariable],
-        customActions: [DBCustomAction]
+        customActions: [DBCustomAction],
+        menuDismissAction: @escaping () -> Void
     ) {
         self.performanceToolkit = performanceToolkit
         self.consoleOutputCaptor = consoleOutputCaptor
@@ -32,6 +34,7 @@ public final class MenuViewModel: ObservableObject {
         self.deviceInfoProvider = deviceInfoProvider
         self.customVariables = customVariables
         self.customActions = customActions
+        self.menuDismissAction = menuDismissAction
     }
 
     func applicationSettingsTapped() {

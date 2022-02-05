@@ -433,7 +433,8 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 }
 
 - (DBMenuTableViewController *)menuViewController {
-    return [SwiftUIViewFactory
+    if (!_menuViewController) {
+        _menuViewController = [SwiftUIViewFactory
             makeMenuListViewWithPerformanceToolkit:self.performanceToolkit
             consoleOutputCaptor:self.consoleOutputCaptor
             networkToolkit:self.networkToolkit
@@ -444,7 +445,13 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
             deviceInfoProvider:[DBDeviceInfoProvider new]
             customVariables:self.customVariables
             customActions:self.customActions
-            ];
+            menuDismissAction:^{
+                [self closeMenu];
+            }
+        ];
+    }
+
+    return _menuViewController;
 
     if (!_menuViewController) {
         NSBundle *bundle = [NSBundle debugToolkitBundle];
