@@ -49,8 +49,6 @@
 #import "DBBodyPreviewViewController.h"
 #import "DBNetworkSettingsTableViewController.h"
 #import "DBNetworkToolkit.h"
-#import "DBNetworkViewController.h"
-#import "DBRequestDetailsViewController.h"
 #import "DBMainQueueOperation.h"
 #import "NSOperationQueue+DBMainQueueOperation.h"
 #import "DBRequestDataHandler.h"
