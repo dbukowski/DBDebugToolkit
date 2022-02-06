@@ -293,7 +293,9 @@
 		C3E753428DBDCEDE257CA79A4B7760A7 /* DBPerformanceTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C020895A261332FFABEF30C72B4A20E3 /* DBPerformanceTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3FC33CB0A954AC79BD64F8BE3FD86C4 /* DBCoreDataFilterTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F8132DF5C2BBB460F9C47FBC72E4121A /* DBCoreDataFilterTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C421EB1F1B5E8051E8919FB99A403D2E /* EXPMatchers+postNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DFAADECAC34707F7DDB000FED3C6F77 /* EXPMatchers+postNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C54AA5EF27AF3E9A000E9AA8 /* NetworkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AA5EE27AF3E9A000E9AA8 /* NetworkDetail.swift */; };
+		C54AA5F127AFFFE7000E9AA8 /* RequestDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AA5F027AFFFE7000E9AA8 /* RequestDetails.swift */; };
+		C54AA5F327B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AA5F227B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift */; };
+		C54AA5F527B0162F000E9AA8 /* RequestBodyPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AA5F427B0162F000E9AA8 /* RequestBodyPreview.swift */; };
 		C68373B25E6D9A4AF2D1513B95A920AD /* EXPMatchers+beLessThanOrEqualTo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54C4B4E9A2D9A0D88F2852FD1466E59 /* EXPMatchers+beLessThanOrEqualTo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C717F6D17BEA0B96DF6B377D32E3EF75 /* DBCookieDetailsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = CD66260252633A9687D39145824DFA2C /* DBCookieDetailsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7308C99B424A2E79E4014DF69551901 /* DBGridOverlaySettingsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 63993C63B1C3DA981C9D1F69E6A8389F /* DBGridOverlaySettingsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -746,7 +748,9 @@
 		C346FB385E646787BCDA910EA29E552E /* EXPMatchers+endWith.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+endWith.m"; path = "Expecta/Matchers/EXPMatchers+endWith.m"; sourceTree = "<group>"; };
 		C37C37D717A1F4DBB95B16B868F61890 /* DBLocationToolkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBLocationToolkit.h; sourceTree = "<group>"; };
 		C3AFDD2A4912369B9775E4F5AB38F85C /* EXPUnsupportedObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPUnsupportedObject.h; path = Expecta/EXPUnsupportedObject.h; sourceTree = "<group>"; };
-		C54AA5EE27AF3E9A000E9AA8 /* NetworkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDetail.swift; sourceTree = "<group>"; };
+		C54AA5F027AFFFE7000E9AA8 /* RequestDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetails.swift; sourceTree = "<group>"; };
+		C54AA5F227B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest.CachePolicy+readableDescription.swift"; sourceTree = "<group>"; };
+		C54AA5F427B0162F000E9AA8 /* RequestBodyPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBodyPreview.swift; sourceTree = "<group>"; };
 		C59D1284C71A60B75D1DCA4EC3521C85 /* EXPMatchers+respondTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+respondTo.m"; path = "Expecta/Matchers/EXPMatchers+respondTo.m"; sourceTree = "<group>"; };
 		C66D7E40BE0DE710A70750843710B610 /* DBFontFamiliesTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBFontFamiliesTableViewController.m; sourceTree = "<group>"; };
 		C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit-DBDebugToolkit */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "DBDebugToolkit-DBDebugToolkit"; path = DBDebugToolkit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1398,6 +1402,7 @@
 				A6CED03489E44E2DF3E00491357E613A /* Bundle+BuildInfo.swift */,
 				B2D038100385AE24AEF565BE108ABEE7 /* DBRequestModel+responseDescription.swift */,
 				8AB903C6B3DBC89C23A1A8CCBA0C4861 /* UIWindow+keyWindow.swift */,
+				C54AA5F227B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift */,
 			);
 			name = Extensions;
 			path = DBDebugToolkit/Classes/Extensions;
@@ -1577,7 +1582,8 @@
 				18E9DCD3FE09A96D6A45996D41C2E478 /* NetworkList.swift */,
 				50CB61E25F60D4C48F31C52217168EA9 /* PerformanceView.swift */,
 				170DAE881255E1C2A900911D8B1CFB5B /* ResourcesList.swift */,
-				C54AA5EE27AF3E9A000E9AA8 /* NetworkDetail.swift */,
+				C54AA5F027AFFFE7000E9AA8 /* RequestDetails.swift */,
+				C54AA5F427B0162F000E9AA8 /* RequestBodyPreview.swift */,
 				961E700CDA9796D6AA3739B09A67F216 /* SearchBar.swift */,
 				B281F9B0AD4491833B591E3D15374F7C /* TitleValueView.swift */,
 				A942D73F29553A30BC680E0E72A3A4F8 /* UserInterfaceView.swift */,
@@ -2201,6 +2207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F722E00A9E3C25AA1CED834F72C2BE /* Bundle+BuildInfo.swift in Sources */,
+				C54AA5F527B0162F000E9AA8 /* RequestBodyPreview.swift in Sources */,
 				FA9006711E2577F4EA31BEED33A7EDEA /* CLLocationManager+DBLocationToolkit.m in Sources */,
 				D214D30CB86DAFF66794380B7D842A6E /* ConsoleView.swift in Sources */,
 				0F0A66F92D9FD0F7B21FB9579D915D7C /* ConsoleViewModel.swift in Sources */,
@@ -2215,6 +2222,7 @@
 				2C8BB107004F7693592B07521142E24F /* DBColorCheckbox.m in Sources */,
 				4F09E189E98A2D6154A23F2BFD4654BB /* DBColorPickerTableViewCell.m in Sources */,
 				35CB72913842D511D06D7CF28759B2DF /* DBConsoleOutputCaptor.m in Sources */,
+				C54AA5F127AFFFE7000E9AA8 /* RequestDetails.swift in Sources */,
 				E58A399A52E227FF10AF7F42C1109B44 /* DBConsoleViewController.m in Sources */,
 				07E10616050C90EF801B6C83BDA31682 /* DBCookieDetailsTableViewController.m in Sources */,
 				46662395930313EF3DF2A1F439EA7C46 /* DBCookiesTableViewController.m in Sources */,
@@ -2229,7 +2237,6 @@
 				B217CB4AA3881A8FFCC1A7AE94D8F047 /* DBCrashReportDetailsTableViewController.m in Sources */,
 				B2A41FCFBFBF525D1A6345CDA1A4BE5C /* DBCrashReportsTableViewController.m in Sources */,
 				F51185C6E4BF6179046FD476554E3CE2 /* DBCrashReportsToolkit.m in Sources */,
-				C54AA5EF27AF3E9A000E9AA8 /* NetworkDetail.swift in Sources */,
 				18346030BB587B9F5EB78802D5D33739 /* DBCustomAction.m in Sources */,
 				EAE471C144F16AC0E3C4303D2F66741E /* DBCustomActionsTableViewController.m in Sources */,
 				1EA0C872188B3C2A1B3F876B2B3931B0 /* DBCustomLocationViewController.m in Sources */,
@@ -2292,6 +2299,7 @@
 				E04C559C7B9AAB68EB38541EBAC939AF /* DBUserInterfaceTableViewController.m in Sources */,
 				8EB17308F3AE432F1488BE795C46C6A1 /* DBUserInterfaceToolkit.m in Sources */,
 				C1FAA44F59AFAF0FC25454BBDB64945B /* FilesView.swift in Sources */,
+				C54AA5F327B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift in Sources */,
 				7985C706615E3D0450ED88DF847E471F /* LocationView.swift in Sources */,
 				956DCF0EBB8CCE919B1A6C4C8B573BBF /* MenuList.swift in Sources */,
 				44E342119EB9FBFEDABFC81C11CEE520 /* MenuViewModel.swift in Sources */,

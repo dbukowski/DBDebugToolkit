@@ -18,7 +18,7 @@ struct NetworkList: View {
         List {
             ForEach(viewModel.requestModels, id: \.self) { model in
                 NavigationLink(
-                    destination: NetworkDetail(model: model),
+                    destination: RequestDetails(model: model),
                     label: {
                         HStack {
                             if let image = model.thumbnail {
