@@ -126,9 +126,6 @@
                                                 <constraint firstItem="eLi-gK-CBQ" firstAttribute="centerY" secondItem="9lB-9s-sCz" secondAttribute="centerY" id="8f5-mW-v1D"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="HUH-b2-D4F" kind="show" id="go1-s9-S5f"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="sch-dv-xwT">
                                         <rect key="frame" x="0.0" y="269.5" width="375" height="44"/>
@@ -270,14 +267,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azm-V7-rVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="702" y="-245"/>
-        </scene>
-        <!--DBConsoleViewController-->
-        <scene sceneID="I53-7x-TV5">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DBConsoleViewController" id="HUH-b2-D4F" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QTX-5I-wae" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="653" y="-85"/>
         </scene>
         <!--DBCustomActionsTableViewController-->
         <scene sceneID="Hj9-qn-qzD">
