@@ -296,6 +296,7 @@
 		C54AA5F127AFFFE7000E9AA8 /* RequestDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AA5F027AFFFE7000E9AA8 /* RequestDetails.swift */; };
 		C54AA5F327B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AA5F227B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift */; };
 		C54AA5F527B0162F000E9AA8 /* RequestBodyPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AA5F427B0162F000E9AA8 /* RequestBodyPreview.swift */; };
+		C5A57C2627B0457600A6E58C /* RequestSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A57C2527B0457600A6E58C /* RequestSettings.swift */; };
 		C68373B25E6D9A4AF2D1513B95A920AD /* EXPMatchers+beLessThanOrEqualTo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54C4B4E9A2D9A0D88F2852FD1466E59 /* EXPMatchers+beLessThanOrEqualTo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C717F6D17BEA0B96DF6B377D32E3EF75 /* DBCookieDetailsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = CD66260252633A9687D39145824DFA2C /* DBCookieDetailsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7308C99B424A2E79E4014DF69551901 /* DBGridOverlaySettingsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 63993C63B1C3DA981C9D1F69E6A8389F /* DBGridOverlaySettingsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -752,6 +753,7 @@
 		C54AA5F227B00799000E9AA8 /* URLRequest.CachePolicy+readableDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest.CachePolicy+readableDescription.swift"; sourceTree = "<group>"; };
 		C54AA5F427B0162F000E9AA8 /* RequestBodyPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBodyPreview.swift; sourceTree = "<group>"; };
 		C59D1284C71A60B75D1DCA4EC3521C85 /* EXPMatchers+respondTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+respondTo.m"; path = "Expecta/Matchers/EXPMatchers+respondTo.m"; sourceTree = "<group>"; };
+		C5A57C2527B0457600A6E58C /* RequestSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSettings.swift; sourceTree = "<group>"; };
 		C66D7E40BE0DE710A70750843710B610 /* DBFontFamiliesTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBFontFamiliesTableViewController.m; sourceTree = "<group>"; };
 		C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit-DBDebugToolkit */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "DBDebugToolkit-DBDebugToolkit"; path = DBDebugToolkit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C9B8E2C4552E49EDB4AE3B970598DA /* DBDebugToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBDebugToolkit.m; path = DBDebugToolkit/Classes/DBDebugToolkit.m; sourceTree = "<group>"; };
@@ -1583,6 +1585,7 @@
 				50CB61E25F60D4C48F31C52217168EA9 /* PerformanceView.swift */,
 				170DAE881255E1C2A900911D8B1CFB5B /* ResourcesList.swift */,
 				C54AA5F027AFFFE7000E9AA8 /* RequestDetails.swift */,
+				C5A57C2527B0457600A6E58C /* RequestSettings.swift */,
 				C54AA5F427B0162F000E9AA8 /* RequestBodyPreview.swift */,
 				961E700CDA9796D6AA3739B09A67F216 /* SearchBar.swift */,
 				B281F9B0AD4491833B591E3D15374F7C /* TitleValueView.swift */,
@@ -2233,6 +2236,7 @@
 				8115390A68551E1310A12EB4698F731F /* DBCoreDataFilterSettingsTableViewController.m in Sources */,
 				20B9A672D2DF59C36FCDFEFC6B386F04 /* DBCoreDataFilterTableViewController.m in Sources */,
 				5ED8520EE9AAE1347361A73E05C85C34 /* DBCoreDataToolkit.m in Sources */,
+				C5A57C2627B0457600A6E58C /* RequestSettings.swift in Sources */,
 				FDFF4609D46E65DBFF00BD070CAF0774 /* DBCrashReport.m in Sources */,
 				B217CB4AA3881A8FFCC1A7AE94D8F047 /* DBCrashReportDetailsTableViewController.m in Sources */,
 				B2A41FCFBFBF525D1A6345CDA1A4BE5C /* DBCrashReportsTableViewController.m in Sources */,

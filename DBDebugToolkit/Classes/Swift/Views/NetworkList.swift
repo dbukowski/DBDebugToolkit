@@ -51,5 +51,14 @@ struct NetworkList: View {
 
             }
         }
+        .navigationBarTitle("Requests")
+        .navigationBarItems(
+            trailing:  NavigationLink(
+                destination: RequestSettings(networkToolkit: viewModel.networkToolkit),
+                label: {
+                    Text("Settings")
+                }
+            )
+        )
     }
 }
