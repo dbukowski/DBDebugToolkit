@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/cocoapods/l/DBDebugToolkit.svg?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
 [![Platform](https://img.shields.io/cocoapods/p/DBDebugToolkit.svg?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
 
-DBDebugToolkit is a debugging library written in Objective-C. It is meant to provide as many easily accessible tools as possible while keeping the integration process seamless.
+DBDebugToolkit is a debugging library written in Objective-C and Swift. It is meant to provide as many easily accessible tools as possible while keeping the integration process seamless.
 
 - [Features](#features)
 - [Example](#example)
@@ -51,7 +51,7 @@ DBDebugToolkit is a debugging library written in Objective-C. It is meant to pro
 - [x] Crash reports
   - [x] List of all the crashes
   - [x] Crash reports containing details, stack trace, console output and a screenshot
-  - [x] Sending crash reports by email
+  - [x] Sending crash reports by system actions
 - [x] Modifying custom variable values from the menu
 - [x] Adding custom actions to the menu
 - [x] Opening application settings
@@ -65,7 +65,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-DBDebugToolkit requires iOS 8.0 or later.
+DBDebugToolkit requires iOS 13.0 or later.
 
 ## Usage
 
@@ -197,7 +197,7 @@ Run carthage update to build the framework and drag the built DBDebugToolkit.fra
 
 ## Author
 
-Maintained by Marian Sobczyk, marian.sobczyk@gmail.com
+Maintained by Gamada-d, debugtoolkit@outlook.de.com
 
 Created by Dariusz Bukowski, dariusz.m.bukowski@gmail.com
 
