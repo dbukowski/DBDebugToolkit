@@ -197,7 +197,7 @@ Run carthage update to build the framework and drag the built DBDebugToolkit.fra
 
 ## Author
 
-Maintained by Gamada-d, debugtoolkit@outlook.de.com
+Maintained by Gamada-d, debugtoolkit@outlook.de
 
 Created by Dariusz Bukowski, dariusz.m.bukowski@gmail.com
 
