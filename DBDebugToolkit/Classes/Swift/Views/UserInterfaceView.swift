@@ -10,12 +10,13 @@ struct UserInterfaceView: UIViewControllerRepresentable {
     let userInterfaceToolkit: DBUserInterfaceToolkit
     let delegate: Delegate = Delegate()
 
-    func makeUIViewController(context: Context) -> DBUserInterfaceTableViewController {
-        let viewController = DBUserInterfaceTableViewController()
-        viewController.userInterfaceToolkit = userInterfaceToolkit
-        viewController.delegate = self.delegate
-        return viewController
+    func makeUIViewController(context: Context) -> UIViewController {
+        let storyboard = UIStoryboard(name: "DBUserInterfaceViewController", bundle: Bundle.debugToolkit())
+        let viewController = storyboard.instantiateInitialViewController() as? DBUserInterfaceTableViewController
+        viewController?.userInterfaceToolkit = userInterfaceToolkit
+        viewController?.delegate = self.delegate
+        return viewController ?? UIViewController()
     }
 
-    func updateUIViewController(_ uiViewController: DBUserInterfaceTableViewController, context: Context) {}
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
