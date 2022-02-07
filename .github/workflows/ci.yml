@@ -2,7 +2,7 @@ name: Xcode - Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ '**' ]
   pull_request:
     paths:
       - 'DBDebugToolkit/**'

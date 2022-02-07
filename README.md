@@ -1,6 +1,6 @@
 # DBDebugToolkit
 
-[![CI Status](http://img.shields.io/travis/dbukowski/DBDebugToolkit.svg?style=flat-square)](https://travis-ci.org/dbukowski/DBDebugToolkit)
+[![Xcode - Build](https://github.com/dbukowski/DBDebugToolkit/actions/workflows/ci.yml/badge.svg?style=flat-square)](https://github.com/dbukowski/DBDebugToolkit/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/cocoapods/v/DBDebugToolkit.svg?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat-square)](https://github.com/Carthage/Carthage)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](http://cocoapods.org/pods/DBDebugToolkit)
