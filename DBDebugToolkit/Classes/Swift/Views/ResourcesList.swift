@@ -9,7 +9,7 @@ struct ResourcesList: View {
             NavigationLink("User defaults", destination: TitleValueView(viewModel: viewModel.userDefaultsModel))
             NavigationLink("Keychain", destination: TitleValueView(viewModel: viewModel.keychainModel))
             NavigationLink("CoreData", destination: CoreDataView(coreDataToolkit: viewModel.coreDataToolkit))
-            NavigationLink("Cookies", destination: CookiesView())
+            NavigationLink("Cookies", destination: CookiesList(viewModel: .init()))
         }
     }
 }
