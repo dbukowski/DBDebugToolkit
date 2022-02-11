@@ -14,9 +14,10 @@
 #import <DBDebugToolkit/DBLongPressTrigger.h>
 #import "DBCoreDataRandomDataGenerator.h"
 
-@interface DBAppDelegate ()
+@interface DBAppDelegate () <NSURLSessionTaskDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSURLSession *session;
 
 @end
 
@@ -36,6 +37,22 @@
     [DBDebugToolkit addCustomAction:prepopulateCoreDataAction];
     [DBDebugToolkit setupCrashReporting];
     [DBDebugToolkit addClearDataShortcutItem];
+
+
+    NSInteger memoryCapacity = 500 * 1024 * 1024; // 500 MB
+    NSInteger diskCapacity = 500 * 1024 * 1024; // 500 MB
+
+    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:memoryCapacity diskCapacity:diskCapacity diskPath:@"com.xxxxx.yyyyy"];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    [configuration setURLCache:cache];
+
+    self.session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+
+    // A ~130 KB image, small enough to be cached by the default URLSession session
+    NSURL *url = [[NSURL alloc] initWithString:@"https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"];
+
+    [[self.session dataTaskWithURL:url] resume];
+
     return YES;
 }
 
@@ -65,6 +82,40 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+-(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+    NSLog(@"didReceiveChallenge");
+    completionHandler(1, nil);
+}
+
+//- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
+//    NSLog(@"didBecomeInvalidWithError");
+//}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+                                  willCacheResponse:(NSCachedURLResponse *)proposedResponse
+ completionHandler:(void (^)(NSCachedURLResponse * _Nullable cachedResponse))completionHandler {
+    NSLog(@"willCacheResponse");
+    completionHandler(proposedResponse);
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+                                 didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    NSLog(@"didReceiveResponse");
+    NSLog(@"%@", response);
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask {
+    NSLog(@"didBecomeDownloadTask");
+}
+//
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+//    didReceiveData:(NSData *)data {
+//    NSLog(@"didReceiveData");
+//    NSLog(@"%@", data);
+//}
 
 #pragma mark - Resource examples
 

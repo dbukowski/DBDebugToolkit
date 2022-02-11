@@ -20,13 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DBCookieTableViewCell.h"
-
-@implementation DBCookieTableViewCell
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    self.separatorInset = UIEdgeInsetsZero;
-}
+#import <Foundation/Foundation.h>
+#import <DBRequestOutcome.h>
+/**
+ `NSURLSessionDelegateSwizzle`
+*/
+@interface NSURLSessionDelegateSwizzle: NSObject
+//- (void)db_URLSession:(NSURLSession *)session
+//             dataTask:(NSURLSessionDataTask *)dataTask
+//       didReceiveData:(NSData *)data;
 
 @end

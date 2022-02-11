@@ -23,8 +23,6 @@
 #import "DBMenuTableViewController.h"
 #import "DBPerformanceTableViewController.h"
 #import "NSBundle+DBDebugToolkit.h"
-#import "DBConsoleViewController.h"
-#import "DBNetworkViewController.h"
 #import "DBUserInterfaceTableViewController.h"
 #import "DBLocationTableViewController.h"
 #import "DBResourcesTableViewController.h"
@@ -97,13 +95,6 @@ typedef NS_ENUM(NSUInteger, DBMenuTableViewControllerRow) {
     if ([destinationViewController isKindOfClass:[DBPerformanceTableViewController class]]) {
         DBPerformanceTableViewController *performanceTableViewController = (DBPerformanceTableViewController *)destinationViewController;
         performanceTableViewController.performanceToolkit = self.performanceToolkit;
-    } else if ([destinationViewController isKindOfClass:[DBConsoleViewController class]]) {
-        DBConsoleViewController *consoleViewController = (DBConsoleViewController *)destinationViewController;
-        consoleViewController.consoleOutputCaptor = self.consoleOutputCaptor;
-        consoleViewController.deviceInfoProvider = self.deviceInfoProvider;
-    } else if ([destinationViewController isKindOfClass:[DBNetworkViewController class]]) {
-        DBNetworkViewController *networkViewController = (DBNetworkViewController *)destinationViewController;
-        networkViewController.networkToolkit = self.networkToolkit;
     } else if ([destinationViewController isKindOfClass:[DBUserInterfaceTableViewController class]]) {
         DBUserInterfaceTableViewController *userInterfaceTableViewController = (DBUserInterfaceTableViewController *)destinationViewController;
         userInterfaceTableViewController.userInterfaceToolkit = self.userInterfaceToolkit;

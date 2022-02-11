@@ -1,3 +1,5 @@
+import Foundation
+
 @objc
 public extension Bundle {
     static var applicationName: String {

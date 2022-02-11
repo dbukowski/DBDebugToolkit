@@ -434,6 +434,26 @@ static NSString *const DBDebugToolkitObserverPresentationControllerPropertyKeyPa
 
 - (DBMenuTableViewController *)menuViewController {
     if (!_menuViewController) {
+        _menuViewController = [SwiftUIViewFactory
+            makeMenuListViewWithPerformanceToolkit:self.performanceToolkit
+            consoleOutputCaptor:self.consoleOutputCaptor
+            networkToolkit:self.networkToolkit
+            userInterfaceToolkit:self.userInterfaceToolkit
+            locationToolkit:self.locationToolkit
+            coreDataToolkit:self.coreDataToolkit
+            crashReportsToolkit:self.crashReportsToolkit
+            deviceInfoProvider:[DBDeviceInfoProvider new]
+            customVariables:self.customVariables
+            customActions:self.customActions
+            menuDismissAction:^{
+                [self closeMenu];
+            }
+        ];
+    }
+
+    return _menuViewController;
+
+    if (!_menuViewController) {
         NSBundle *bundle = [NSBundle debugToolkitBundle];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DBMenuTableViewController" bundle:bundle];
         _menuViewController = [storyboard instantiateInitialViewController];

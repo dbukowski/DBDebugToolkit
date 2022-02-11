@@ -24,6 +24,7 @@
 #import <DBRequestOutcome.h>
 
 @class DBNetworkToolkit;
+@class DBRequestModel;
 
 /**
  A protocol used for informing about changes in logging settings or in logged requests list.
@@ -71,11 +72,6 @@ extern Class DBNetworkURLProtocolClass;
 + (instancetype)sharedInstance;
 
 /**
- This method registers NSURLProtocol a protocol class.
- */
-+ (void)registerURLProtocolClass:(Class)protocolClass;
-
-/**
  Returns a string containing the path to the directory where the requests data is stored.
  */
 - (NSString *)savedRequestsPath;
@@ -108,6 +104,6 @@ extern Class DBNetworkURLProtocolClass;
 /**
  An array containing all the logged requests.
  */
-@property (nonatomic, readonly) NSArray *savedRequests;
+@property (nonatomic, readonly) NSArray<DBRequestModel *> *savedRequests;
 
 @end
