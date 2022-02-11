@@ -72,11 +72,6 @@ extern Class DBNetworkURLProtocolClass;
 + (instancetype)sharedInstance;
 
 /**
- This method registers NSURLProtocol a protocol class.
- */
-+ (void)registerURLProtocolClass:(Class)protocolClass;
-
-/**
  Returns a string containing the path to the directory where the requests data is stored.
  */
 - (NSString *)savedRequestsPath;

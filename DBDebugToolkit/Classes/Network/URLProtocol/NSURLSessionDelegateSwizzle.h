@@ -21,10 +21,13 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-
+#import <DBRequestOutcome.h>
 /**
- `DBURLProtocol` is a `NSURLProtocol` subclass that is used for logging all the requests sent by the application.
- */
-@interface DBURLProtocol : NSURLProtocol
+ `NSURLSessionDelegateSwizzle`
+*/
+@interface NSURLSessionDelegateSwizzle: NSObject
+//- (void)db_URLSession:(NSURLSession *)session
+//             dataTask:(NSURLSessionDataTask *)dataTask
+//       didReceiveData:(NSData *)data;
 
 @end

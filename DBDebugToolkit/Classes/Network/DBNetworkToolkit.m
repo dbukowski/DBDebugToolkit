@@ -21,10 +21,7 @@
 // THE SOFTWARE.
 
 #import "DBNetworkToolkit.h"
-#import "DBURLProtocol.h"
 #import "DBRequestModel.h"
-
-Class DBNetworkURLProtocolClass;
 
 @interface DBNetworkToolkit () <DBRequestModelDelegate>
 
@@ -37,13 +34,6 @@ Class DBNetworkURLProtocolClass;
 @implementation DBNetworkToolkit
 
 #pragma mark - Initialization
-
-+ (void)initialize {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        DBNetworkURLProtocolClass = [DBURLProtocol class];
-    });
-}
 
 - (instancetype)init {
     self = [super init];
@@ -60,19 +50,8 @@ Class DBNetworkURLProtocolClass;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DBNetworkToolkit alloc] init];
-        [self setupURLProtocol];
     });
     return sharedInstance;
-}
-
-+ (void)setupURLProtocol {
-    [NSURLProtocol registerClass:DBNetworkURLProtocolClass];
-}
-
-+ (void)registerURLProtocolClass:(Class)protocolClass {
-    @synchronized(self) {
-        DBNetworkURLProtocolClass = protocolClass;
-    }
 }
 
 - (void)setupOperationQueue {
