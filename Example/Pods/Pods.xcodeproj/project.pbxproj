@@ -195,7 +195,7 @@
 		8C11F12BE7A6EBB17E252B368F7AFC36 /* UIColor+DBDebugToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA6BAEE5988864705F3AAC93E2BFB0 /* UIColor+DBDebugToolkit.m */; };
 		8DC2960D3A7632AAB0E0E30DDAC551AA /* DBTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E199825FFB7EDA8604A7ED546EE1D9 /* DBTextViewTableViewCell.m */; };
 		8EB17308F3AE432F1488BE795C46C6A1 /* DBUserInterfaceToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC81C3B0E9F99B559BD99FA925D5EB /* DBUserInterfaceToolkit.m */; };
-		8ED6AB5A1578B5CD748D6AFC7A91CA87 /* DBDebugToolkit-DBDebugToolkit in Resources */ = {isa = PBXBuildFile; fileRef = C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit-DBDebugToolkit */; };
+		8ED6AB5A1578B5CD748D6AFC7A91CA87 /* DBDebugToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit.bundle */; };
 		90AC62CF051EA6476E552CC178FFBC29 /* NSBundle+DBDebugToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = FED0EC1806562419E0833B6AA6DC1E58 /* NSBundle+DBDebugToolkit.m */; };
 		90BE9D9C83A503DBE5E9483DAD2419D7 /* UILabel+DBDebugToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEAD0DCC21F5F011AF9A5A13DA39FE7 /* UILabel+DBDebugToolkit.m */; };
 		90FF1BFFDE33103EE3BEDE691F395CE7 /* DBImageViewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D6BFB20DB70B0538E26B5726CBFF4A0 /* DBImageViewViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -720,7 +720,7 @@
 		C5A57C2527B0457600A6E58C /* RequestSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSettings.swift; sourceTree = "<group>"; };
 		C5A57C2727B066A700A6E58C /* CookiesList+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CookiesList+ViewModel.swift"; sourceTree = "<group>"; };
 		C66D7E40BE0DE710A70750843710B610 /* DBFontFamiliesTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBFontFamiliesTableViewController.m; sourceTree = "<group>"; };
-		C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit-DBDebugToolkit */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "DBDebugToolkit-DBDebugToolkit"; path = DBDebugToolkit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBDebugToolkit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C9B8E2C4552E49EDB4AE3B970598DA /* DBDebugToolkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBDebugToolkit.m; path = DBDebugToolkit/Classes/DBDebugToolkit.m; sourceTree = "<group>"; };
 		C90408D6C2408612E79CF944D5BC68F8 /* DBDebugToolkitTrigger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBDebugToolkitTrigger.h; sourceTree = "<group>"; };
 		C9772B093039F7BCADE184B01A457D8C /* NSObject+Expecta.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+Expecta.h"; path = "Expecta/NSObject+Expecta.h"; sourceTree = "<group>"; };
@@ -1635,7 +1635,7 @@
 			isa = PBXGroup;
 			children = (
 				E99CFA8831B7F20CB4BA539F0582880D /* DBDebugToolkit */,
-				C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit-DBDebugToolkit */,
+				C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit.bundle */,
 				08F7F0770B4878B9883B87DCD8569CB4 /* Expecta */,
 				07023A66C5BB4B4BED58A5E4FA997482 /* Pods-DBDebugToolkit_Example */,
 				81E30E8F17009DF1D9256F35BC49F8FD /* Pods-DBDebugToolkit_Tests */,
@@ -1904,7 +1904,7 @@
 			);
 			name = "DBDebugToolkit-DBDebugToolkit";
 			productName = DBDebugToolkit;
-			productReference = C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit-DBDebugToolkit */;
+			productReference = C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		4E1B3B34BD09192573D90B8EF35F244D /* DBDebugToolkit */ = {
@@ -2070,7 +2070,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ED6AB5A1578B5CD748D6AFC7A91CA87 /* DBDebugToolkit-DBDebugToolkit in Resources */,
+				8ED6AB5A1578B5CD748D6AFC7A91CA87 /* DBDebugToolkit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2344,9 +2344,11 @@
 			baseConfigurationReference = 36E04FE070DCC6C470F88E43BA35B7EA /* DBDebugToolkit.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DBDebugToolkit";
+				DEVELOPMENT_TEAM = 395NY3AML5;
 				IBSC_MODULE = DBDebugToolkit;
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/ResourceBundle-DBDebugToolkit-DBDebugToolkit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.DBDebugToolkit.demo;
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2570,9 +2572,11 @@
 			baseConfigurationReference = 714060E75DE016C7F9C1CF866DB05BB8 /* DBDebugToolkit.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DBDebugToolkit";
+				DEVELOPMENT_TEAM = 395NY3AML5;
 				IBSC_MODULE = DBDebugToolkit;
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/ResourceBundle-DBDebugToolkit-DBDebugToolkit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.DBDebugToolkit.demo;
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

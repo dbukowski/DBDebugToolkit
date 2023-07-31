@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import <DBCustomAction.h>
+#import "DBCustomAction.h"
 
 /**
  `DBCustomActionsTableViewController` is a table view controller presenting the list of the defined custom actions.

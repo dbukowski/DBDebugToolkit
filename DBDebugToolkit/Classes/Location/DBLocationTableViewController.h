@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import <DBLocationToolkit.h>
+#import "DBLocationToolkit.h"
 
 /**
  `DBLocationTableViewController` is a view controller allowing the user to select a simulated location.

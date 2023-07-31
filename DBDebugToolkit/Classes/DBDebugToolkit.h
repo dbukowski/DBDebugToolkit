@@ -22,12 +22,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <DBDebugToolkitTrigger.h>
-#import <DBLongPressTrigger.h>
-#import <DBShakeTrigger.h>
-#import <DBTapTrigger.h>
-#import <DBCustomAction.h>
-#import <DBCustomVariable.h>
+#import "DBDebugToolkitTrigger.h"
+#import "DBLongPressTrigger.h"
+#import "DBShakeTrigger.h"
+#import "DBTapTrigger.h"
+#import "DBCustomAction.h"
+#import "DBCustomVariable.h"
 
 /**
  `DBDebugToolkit` provides the interface that can be used to setup and customize the debugging tools.

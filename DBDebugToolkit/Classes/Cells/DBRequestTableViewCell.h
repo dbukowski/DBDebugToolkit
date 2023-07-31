@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import <DBRequestModel.h>
+#import "DBRequestModel.h"
 
 /**
  `DBRequestTableViewCell` is a table view cell displaying information about a logged request.

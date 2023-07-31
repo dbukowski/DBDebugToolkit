@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import <DBTitleValueTableViewCellDataSource.h>
+#import "DBTitleValueTableViewCellDataSource.h"
 
 /**
  `DBTitleValueTableViewCell` is a table view cell displaying two labels for a title and a value. 

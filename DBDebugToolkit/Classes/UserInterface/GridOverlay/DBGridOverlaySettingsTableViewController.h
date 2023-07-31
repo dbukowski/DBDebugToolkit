@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import <DBUserInterfaceToolkit.h>
+#import "DBUserInterfaceToolkit.h"
 
 /**
  `DBGridOverlaySettingsTableViewController` is a view controller presenting options related to grid overlay.

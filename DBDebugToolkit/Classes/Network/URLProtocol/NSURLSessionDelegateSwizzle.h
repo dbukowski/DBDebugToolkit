@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <DBRequestOutcome.h>
+#import "DBRequestOutcome.h"
 /**
  `NSURLSessionDelegateSwizzle`
 */

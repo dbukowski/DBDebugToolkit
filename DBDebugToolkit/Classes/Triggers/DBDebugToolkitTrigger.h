@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import <DBDebugToolkitTriggerDelegate.h>
+#import "DBDebugToolkitTriggerDelegate.h"
 
 #ifndef DBDebugToolkitTrigger_h
 #define DBDebugToolkitTrigger_h
