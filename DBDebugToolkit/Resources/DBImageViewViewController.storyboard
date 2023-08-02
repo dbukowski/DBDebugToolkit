@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iB2-hL-jfm">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image View View Controller-->
+        <scene sceneID="fLX-hS-t5M">
+            <objects>
+                <viewController id="iB2-hL-jfm" customClass="DBImageViewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="esz-2X-2UL"/>
+                        <viewControllerLayoutGuide type="bottom" id="ATv-iu-hrY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BLZ-Ue-EBL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Svg-Rn-0kM">
+                                <rect key="frame" x="10" y="74" width="355" height="583"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVM-IR-Xig">
+                                <rect key="frame" x="16" y="323" width="343" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Svg-Rn-0kM" firstAttribute="leading" secondItem="BLZ-Ue-EBL" secondAttribute="leading" constant="10" id="5m2-P2-hca"/>
+                            <constraint firstItem="zVM-IR-Xig" firstAttribute="leading" secondItem="BLZ-Ue-EBL" secondAttribute="leading" constant="16" id="6El-Gg-Jn6"/>
+                            <constraint firstItem="Svg-Rn-0kM" firstAttribute="top" secondItem="esz-2X-2UL" secondAttribute="bottom" constant="10" id="DpX-KV-XK5"/>
+                            <constraint firstAttribute="trailing" secondItem="zVM-IR-Xig" secondAttribute="trailing" constant="16" id="JXL-xR-dPe"/>
+                            <constraint firstItem="zVM-IR-Xig" firstAttribute="centerX" secondItem="BLZ-Ue-EBL" secondAttribute="centerX" id="RRS-Rd-eNx"/>
+                            <constraint firstAttribute="trailing" secondItem="Svg-Rn-0kM" secondAttribute="trailing" constant="10" id="ZDw-Ay-xNW"/>
+                            <constraint firstItem="zVM-IR-Xig" firstAttribute="centerY" secondItem="BLZ-Ue-EBL" secondAttribute="centerY" id="bqc-nn-T6b"/>
+                            <constraint firstItem="ATv-iu-hrY" firstAttribute="top" secondItem="Svg-Rn-0kM" secondAttribute="bottom" constant="10" id="urm-X5-zmb"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="imageView" destination="Svg-Rn-0kM" id="b3l-Wt-a4o"/>
+                        <outlet property="placeholderLabel" destination="zVM-IR-Xig" id="BQV-Fa-pfe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H5v-tl-ugq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319" y="-372"/>
+        </scene>
+    </scenes>
+</document>

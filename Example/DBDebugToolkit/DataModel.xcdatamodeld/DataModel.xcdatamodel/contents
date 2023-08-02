@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Address" representedClassName="AddressMO" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="residents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="address" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Car" representedClassName="CarMO" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasAirConditioning" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modelYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numberOfDoors" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="plateNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="cars" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Passport" representedClassName="PassportMO" syncable="YES">
+        <attribute name="dateOfIssue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="passport" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="PersonMO" syncable="YES">
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="residents" inverseEntity="Address" syncable="YES"/>
+        <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owners" inverseEntity="Car" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="friends" inverseEntity="Person" syncable="YES"/>
+        <relationship name="passport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Passport" inverseName="owner" inverseEntity="Passport" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-27" positionY="18" width="128" height="120"/>
+        <element name="Car" positionX="-45" positionY="0" width="128" height="150"/>
+        <element name="Passport" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Person" positionX="-54" positionY="-9" width="128" height="150"/>
+    </elements>
+</model>

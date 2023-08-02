@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iXW-b8-FUg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select location-->
+        <scene sceneID="bbb-TV-Hdb">
+            <objects>
+                <viewController id="iXW-b8-FUg" customClass="DBCustomLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wz2-0H-VBj"/>
+                        <viewControllerLayoutGuide type="bottom" id="hXq-4v-XRT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ASE-RD-3gl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1vk-UN-8S7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="1vk-UN-8S7" secondAttribute="bottom" id="NpC-h2-f0p"/>
+                            <constraint firstAttribute="trailing" secondItem="1vk-UN-8S7" secondAttribute="trailing" id="UBt-Hk-ywY"/>
+                            <constraint firstItem="1vk-UN-8S7" firstAttribute="leading" secondItem="ASE-RD-3gl" secondAttribute="leading" id="XJj-AQ-RjV"/>
+                            <constraint firstItem="1vk-UN-8S7" firstAttribute="top" secondItem="ASE-RD-3gl" secondAttribute="top" id="z2e-1J-uis"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select location" id="5mr-Vg-XMY">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="GoS-FT-i4h">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="iXW-b8-FUg" id="khQ-81-JeH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="NnX-Oi-r0I">
+                            <connections>
+                                <action selector="doneButtonAction:" destination="iXW-b8-FUg" id="lw8-mc-h3k"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="doneButton" destination="NnX-Oi-r0I" id="tbf-bJ-QuP"/>
+                        <outlet property="mapView" destination="1vk-UN-8S7" id="Xbi-UI-iwD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ase-4b-Jhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108" y="143.47826086956522"/>
+        </scene>
+    </scenes>
+</document>

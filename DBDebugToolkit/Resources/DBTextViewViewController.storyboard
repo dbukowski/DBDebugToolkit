@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LXI-2H-HEB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Text View View Controller-->
+        <scene sceneID="PBC-N6-JAQ">
+            <objects>
+                <viewController id="LXI-2H-HEB" customClass="DBTextViewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HVC-1C-eXE"/>
+                        <viewControllerLayoutGuide type="bottom" id="5xz-0s-x7U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iC9-Ax-DNE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kJ-yR-Z63">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="667" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e68-sm-Jma">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="e68-sm-Jma" secondAttribute="trailing" id="FWd-ex-aSo"/>
+                                    <constraint firstItem="e68-sm-Jma" firstAttribute="top" secondItem="6kJ-yR-Z63" secondAttribute="top" id="PES-yY-1nh"/>
+                                    <constraint firstItem="e68-sm-Jma" firstAttribute="leading" secondItem="6kJ-yR-Z63" secondAttribute="leading" id="m52-Cm-ZJ0"/>
+                                    <constraint firstAttribute="bottom" secondItem="e68-sm-Jma" secondAttribute="bottom" id="uMM-UG-z0D"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6kJ-yR-Z63" secondAttribute="trailing" id="6TX-2N-wzc"/>
+                            <constraint firstItem="6kJ-yR-Z63" firstAttribute="leading" secondItem="iC9-Ax-DNE" secondAttribute="leading" id="dOd-fK-yri"/>
+                            <constraint firstItem="6kJ-yR-Z63" firstAttribute="top" secondItem="iC9-Ax-DNE" secondAttribute="top" id="fUR-Np-oQk"/>
+                            <constraint firstAttribute="bottom" secondItem="6kJ-yR-Z63" secondAttribute="bottom" id="h4f-CO-d5B"/>
+                            <constraint firstItem="e68-sm-Jma" firstAttribute="width" secondItem="iC9-Ax-DNE" secondAttribute="width" id="ybT-et-KGx"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textView" destination="e68-sm-Jma" id="ldt-sN-LJF"/>
+                        <outlet property="textViewWidthConstraint" destination="ybT-et-KGx" id="Lvf-Hs-cB4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nNL-uX-f81" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.80000000000001" y="124.58770614692655"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,6 @@
+framework module DBDebugToolkit {
+  umbrella header "DBDebugToolkit-umbrella.h"
+
+  export *
+  module * { export * }
+}

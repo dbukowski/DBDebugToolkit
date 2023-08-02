@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cJS-nu-gIj">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Network-->
+        <scene sceneID="NKT-lj-QEF">
+            <objects>
+                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="cJS-nu-gIj" customClass="DBNetworkViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Q8-6Z-p62"/>
+                        <viewControllerLayoutGuide type="bottom" id="QLk-A9-Lhm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G7w-9S-MOF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logging requests disabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Va7-rj-ZAx">
+                                <rect key="frame" x="82" y="301.5" width="211" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0Yc-DO-OxS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="V8R-cW-2sz"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cJS-nu-gIj" id="21L-hP-sXl"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f48-Qm-HRd">
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Va7-rj-ZAx" firstAttribute="centerY" secondItem="G7w-9S-MOF" secondAttribute="centerY" id="1fL-0Y-zLm"/>
+                            <constraint firstItem="0Yc-DO-OxS" firstAttribute="leading" secondItem="G7w-9S-MOF" secondAttribute="leading" id="F7R-6W-DLi"/>
+                            <constraint firstItem="0Yc-DO-OxS" firstAttribute="top" secondItem="0Q8-6Z-p62" secondAttribute="bottom" id="FaG-RW-ZyX"/>
+                            <constraint firstAttribute="bottom" secondItem="f48-Qm-HRd" secondAttribute="bottom" id="Kyz-cO-o0t"/>
+                            <constraint firstItem="f48-Qm-HRd" firstAttribute="top" secondItem="0Yc-DO-OxS" secondAttribute="bottom" id="Mj4-0T-8Pi"/>
+                            <constraint firstAttribute="trailing" secondItem="f48-Qm-HRd" secondAttribute="trailing" id="NzJ-36-A8Q"/>
+                            <constraint firstItem="f48-Qm-HRd" firstAttribute="leading" secondItem="G7w-9S-MOF" secondAttribute="leading" id="UQY-ot-64f"/>
+                            <constraint firstItem="Va7-rj-ZAx" firstAttribute="centerX" secondItem="G7w-9S-MOF" secondAttribute="centerX" id="jfF-8f-gCP"/>
+                            <constraint firstAttribute="trailing" secondItem="0Yc-DO-OxS" secondAttribute="trailing" id="mlA-8h-V80"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Network" id="pFB-6D-lYt">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="AEz-8U-QcJ">
+                            <connections>
+                                <segue destination="tcP-ko-bS2" kind="show" id="PBp-Cg-HQc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="loggingRequestsDisabledLabel" destination="Va7-rj-ZAx" id="p9c-M9-iJ7"/>
+                        <outlet property="searchBar" destination="0Yc-DO-OxS" id="8o1-ev-K53"/>
+                        <outlet property="tableView" destination="f48-Qm-HRd" id="4IR-sN-MBG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KPz-B4-mLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="-239.73013493253376"/>
+        </scene>
+        <!--DBNetworkSettingsTableViewController-->
+        <scene sceneID="XnG-Aj-HW9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DBNetworkSettingsTableViewController" id="tcP-ko-bS2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gnx-Qf-tvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1193" y="-253"/>
+        </scene>
+    </scenes>
+</document>

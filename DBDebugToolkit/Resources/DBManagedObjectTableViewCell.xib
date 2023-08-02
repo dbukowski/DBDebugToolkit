@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="267" id="9Wl-Pi-omd" customClass="DBManagedObjectTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="269"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Wl-Pi-omd" id="Dzc-Vn-rHx">
+                <rect key="frame" x="0.0" y="0.0" width="346" height="268"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Op-rW-9fy">
+                        <rect key="frame" x="0.0" y="47" width="346" height="213"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="213" id="Kq9-9r-eSA"/>
+                        </constraints>
+                    </tableView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot8-Iz-SLV">
+                        <rect key="frame" x="15" y="8" width="323" height="31"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ot8-Iz-SLV" secondAttribute="trailing" constant="8" id="HAx-pv-DjU"/>
+                    <constraint firstItem="ot8-Iz-SLV" firstAttribute="leading" secondItem="Dzc-Vn-rHx" secondAttribute="leading" constant="15" id="Szz-ZI-TzR"/>
+                    <constraint firstItem="1Op-rW-9fy" firstAttribute="top" secondItem="ot8-Iz-SLV" secondAttribute="bottom" constant="8" id="VVx-6t-F7f"/>
+                    <constraint firstItem="1Op-rW-9fy" firstAttribute="leading" secondItem="Dzc-Vn-rHx" secondAttribute="leading" id="de0-QI-lq1"/>
+                    <constraint firstAttribute="bottom" secondItem="1Op-rW-9fy" secondAttribute="bottom" constant="8" id="kwC-zK-F5A"/>
+                    <constraint firstItem="ot8-Iz-SLV" firstAttribute="top" secondItem="Dzc-Vn-rHx" secondAttribute="top" constant="8" id="mwB-y9-HaU"/>
+                    <constraint firstAttribute="trailing" secondItem="1Op-rW-9fy" secondAttribute="trailing" id="prF-1u-Sg8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="tableView" destination="1Op-rW-9fy" id="913-RQ-1uG"/>
+                <outlet property="tableViewHeightConstraint" destination="Kq9-9r-eSA" id="3Mc-6M-hgN"/>
+                <outlet property="titleLabel" destination="ot8-Iz-SLV" id="biF-U6-Iw1"/>
+            </connections>
+            <point key="canvasLocation" x="48.5" y="47.5"/>
+        </tableViewCell>
+    </objects>
+</document>

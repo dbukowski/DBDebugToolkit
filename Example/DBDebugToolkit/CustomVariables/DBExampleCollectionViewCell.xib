@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DBExampleCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="114" height="102"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="114" height="102"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnu-5S-2ut">
+                        <rect key="frame" x="0.0" y="0.0" width="114" height="102"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mnT-DK-FM1">
+                                <rect key="frame" x="36" y="41" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mnT-DK-FM1" secondAttribute="trailing" constant="4" id="HH4-9U-Ovx"/>
+                            <constraint firstItem="mnT-DK-FM1" firstAttribute="centerX" secondItem="Mnu-5S-2ut" secondAttribute="centerX" id="bLN-C8-jWE"/>
+                            <constraint firstItem="mnT-DK-FM1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mnu-5S-2ut" secondAttribute="leading" constant="4" id="cng-dn-6Dd"/>
+                            <constraint firstItem="mnT-DK-FM1" firstAttribute="centerY" secondItem="Mnu-5S-2ut" secondAttribute="centerY" id="s3u-tL-b3s"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Mnu-5S-2ut" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Wbn-wb-59l"/>
+                <constraint firstItem="Mnu-5S-2ut" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="m0P-is-jSU"/>
+                <constraint firstAttribute="bottom" secondItem="Mnu-5S-2ut" secondAttribute="bottom" id="o3o-DZ-2Pr"/>
+                <constraint firstAttribute="trailing" secondItem="Mnu-5S-2ut" secondAttribute="trailing" id="qNL-ce-3bX"/>
+            </constraints>
+            <size key="customSize" width="114" height="102"/>
+            <connections>
+                <outlet property="backgroundColorView" destination="Mnu-5S-2ut" id="mo0-TA-jvT"/>
+                <outlet property="titleLabel" destination="mnT-DK-FM1" id="lu5-co-lep"/>
+            </connections>
+            <point key="canvasLocation" x="66" y="80"/>
+        </collectionViewCell>
+    </objects>
+</document>

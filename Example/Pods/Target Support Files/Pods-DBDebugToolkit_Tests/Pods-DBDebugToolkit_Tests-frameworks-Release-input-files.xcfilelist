@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-DBDebugToolkit_Tests/Pods-DBDebugToolkit_Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework
+${BUILT_PRODUCTS_DIR}/Specta/Specta.framework

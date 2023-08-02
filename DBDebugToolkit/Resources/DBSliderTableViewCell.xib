@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="90" id="lE5-TK-hRW" customClass="DBSliderTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lE5-TK-hRW" id="SVQ-Ku-RGz">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRd-Zg-E5h">
+                        <rect key="frame" x="16" y="16" width="343" height="11.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuD-8u-ntA">
+                        <rect key="frame" x="327" y="48" width="32" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="h9C-8I-pAa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xL9-Di-TtJ">
+                        <rect key="frame" x="14" y="43.5" width="299" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="750" constant="300" id="3PJ-De-bGu"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="IBU-PH-ere"/>
+                            <constraint firstAttribute="height" constant="30" id="fPz-DB-HYF"/>
+                        </constraints>
+                    </slider>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xL9-Di-TtJ" firstAttribute="leading" secondItem="SVQ-Ku-RGz" secondAttribute="leading" constant="16" id="5vS-ZL-1LY"/>
+                    <constraint firstItem="oRd-Zg-E5h" firstAttribute="top" secondItem="SVQ-Ku-RGz" secondAttribute="top" constant="16" id="FKD-XN-Mia"/>
+                    <constraint firstAttribute="trailing" secondItem="oRd-Zg-E5h" secondAttribute="trailing" constant="16" id="I4q-Hu-Mdc"/>
+                    <constraint firstItem="oRd-Zg-E5h" firstAttribute="leading" secondItem="SVQ-Ku-RGz" secondAttribute="leading" constant="16" id="bP6-Hw-Qdt"/>
+                    <constraint firstItem="MuD-8u-ntA" firstAttribute="centerY" secondItem="xL9-Di-TtJ" secondAttribute="centerY" id="fAh-AD-K0i"/>
+                    <constraint firstItem="MuD-8u-ntA" firstAttribute="leading" secondItem="xL9-Di-TtJ" secondAttribute="trailing" constant="16" id="gcz-92-QG8"/>
+                    <constraint firstAttribute="bottom" secondItem="xL9-Di-TtJ" secondAttribute="bottom" constant="16" id="lA5-x4-qNv"/>
+                    <constraint firstItem="xL9-Di-TtJ" firstAttribute="top" secondItem="oRd-Zg-E5h" secondAttribute="bottom" constant="16" id="uGe-TL-qVc"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MuD-8u-ntA" secondAttribute="trailing" constant="16" id="wT9-hR-3sD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="slider" destination="xL9-Di-TtJ" id="HBD-wk-yhF"/>
+                <outlet property="titleLabel" destination="oRd-Zg-E5h" id="50F-qG-rog"/>
+                <outlet property="valueLabel" destination="MuD-8u-ntA" id="sVl-bP-J4l"/>
+            </connections>
+            <point key="canvasLocation" x="106.5" y="-101"/>
+        </tableViewCell>
+    </objects>
+</document>
